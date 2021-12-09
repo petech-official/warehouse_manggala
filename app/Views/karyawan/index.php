@@ -1,6 +1,6 @@
 <?= $this->extend('template/index'); ?>
 <?= $this->section('content'); ?>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col">
       <div class="card">
@@ -9,23 +9,23 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-          <table id="example1" class="table table-bordered table-striped">
+          <table class="table table-bordered table-striped" id="data-table1">
             <thead>
-            <tr>
-              <th>No</th>
-              <th>Nama</th>
-              <th>Jabatan</th>
-              <th>Aksi</th>
-            </tr>
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Jabatan</th>
+                <th>Aksi</th>
+              </tr>
             </thead>
             <tbody style="padding: 50px;">
-              <?php foreach ($karyawan as $key => $value) :?>
+              <?php foreach ($karyawan as $key => $value) : ?>
                 <tr>
                   <td></td>
                   <td><?= $value['nama'] ?></td>
                   <td></td>
                   <td></td>
-                </tr>  
+                </tr>
               <?php endforeach ?>
             </tbody>
             <tfoot>
@@ -38,28 +38,8 @@
             </tfoot>
           </table>
         </div>
-      </div>    
+      </div>
     </div>
   </div>
 </div>
-
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": true, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-      
-    });
-  });
-</script>
-
 <?= $this->endSection() ?>

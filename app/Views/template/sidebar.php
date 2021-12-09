@@ -19,30 +19,42 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="/supplier/index" class="nav-link">
+        <a href="/user/index" class="nav-link">
           <i class="nav-icon fas fa-user"></i>
           <p>
-            Supplier
+            User
           </p>
         </a>
       </li>
+      <!-- Supplier dan Customer -->
       <li class="nav-item">
-        <a href="pages/calendar.html" class="nav-link">
-          <i class="nav-icon far fa-user"></i>
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-user"></i>
           <p>
-            Customer
+            Supplier dan Customer
+            <i class="fas fa-angle-left right"></i>
           </p>
         </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/supplier/index" class="nav-link">
+              <i class="nav-icon far fa-circle text-success"></i>
+              <p>
+                Supplier
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/calendar.html" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>
+                Customer
+              </p>
+            </a>
+          </li>
+        </ul>
       </li>
-      <li class="nav-item">
-        <a href="pages/calendar.html" class="nav-link">
-          <i class="nav-icon far fa-calendar-alt"></i>
-          <p>
-            Task
-            <span class="badge badge-info right">2</span>
-          </p>
-        </a>
-      </li>
+
       <li class="nav-item">
         <a href="pages/calendar.html" class="nav-link">
           <i class="nav-icon far fa-calendar-alt"></i>
@@ -81,14 +93,37 @@
         <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="pages/mailbox/mailbox.html" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
+              <i class="nav-icon far fa-circle text-success"></i>
               <p>Standar</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="pages/mailbox/compose.html" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
+              <i class="nav-icon far fa-circle text-warning"></i>
               <p>Non Standar</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-user-friends"></i>
+          <p>
+            Supir dan Kenek
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="pages/mailbox/mailbox.html" class="nav-link">
+              <i class="nav-icon far fa-circle text-success"></i>
+              <p>Supir</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="pages/mailbox/compose.html" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Kenek</p>
             </a>
           </li>
         </ul>
@@ -101,13 +136,48 @@
           </p>
         </a>
       </li>
+
       <li class="nav-item">
-        <a href="pages/kanban.html" class="nav-link">
-          <i class="nav-icon fas fa-pallet"></i>
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-database"></i>
           <p>
-            Akesoris
+            Benang dan Aksesoris
+            <i class="fas fa-angle-left right"></i>
           </p>
         </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-circle text-success"></i>
+              <p>
+                Benang
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-dot-circle nav-icon"></i>
+                  <p>Standar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-dot-circle nav-icon"></i>
+                  <p>Non Standar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="pages/kanban.html" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>
+                Akesoris
+              </p>
+            </a>
+          </li>
+        </ul>
       </li>
     </ul>
   </nav>
