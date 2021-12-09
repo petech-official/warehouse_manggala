@@ -2,11 +2,9 @@
 
 namespace App\Database\Migrations;
 
-use CodeIgniter\Config\Factory;
 use CodeIgniter\Database\Migration;
-use CodeIgniter\I18n\Time;
 
-class MigrateKaryawan extends Migration
+class Admin extends Migration
 {
     public function up()
     {
@@ -17,18 +15,20 @@ class MigrateKaryawan extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'nama'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
-            ],
-            'jabatan'       => [
+            'username'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '50',
             ],
-            'telp' => [
+            'password'       => [
                 'type'       => 'VARCHAR',
-                'constraint' => '50',
+                'constraint' => '12',
             ],
+            'status'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '10',
+                'default'    => 'admin'
+            ],
+
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => TRUE
@@ -39,11 +39,11 @@ class MigrateKaryawan extends Migration
             ]
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('karyawan');
+        $this->forge->createTable('admin');
     }
 
     public function down()
     {
-        $this->forge->dropTable('karyawan');
+        $this->forge->dropTable('admin');
     }
 }
