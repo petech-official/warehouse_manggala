@@ -14,7 +14,7 @@ class admin extends Seeder
             $faker = \Faker\Factory::create('id_ID');
             $data = [
                 'username' => $faker->name,
-                'password' => '1234',
+                'password' => '1234manggalaadmin',
                 'created_at' => Time::now(),
                 'updated_at' => Time::now()
             ];
