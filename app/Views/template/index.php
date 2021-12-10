@@ -72,6 +72,7 @@
       <?= $this->include('template/content_header'); ?>
       <!-- /.content-header -->
 
+
       <!-- Main content -->
       <?= $this->renderSection('content'); ?>
       <!-- /.content -->
@@ -105,7 +106,7 @@
         "autoWidth": false,
         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
       }).buttons().container().appendTo('#data-table1_wrapper .col-md-6:eq(0)');
-      $('##data-table2').DataTable({
+      $('#data-table2').DataTable({
         "paging": true,
         "lengthChange": false,
         "searching": false,

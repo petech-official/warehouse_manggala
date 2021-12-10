@@ -22,11 +22,11 @@ class Admin extends Migration
             'password'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '12',
+                'default'    => '1234manggalaadmin'
             ],
             'status'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '10',
-                'default'    => 'admin'
             ],
 
             'created_at' => [

@@ -26,11 +26,32 @@
                                 <input type="hidden" name="id">
                                 <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" name="username" class="form-control" id="username" placeholder="Masukan username" value="<?= $user['username']; ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" id="username" name="username" autofocus value="<?= (old('username')) ? old('username') : $user['username']; ?>">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('username'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select class="form-select form-control  <?= ($validation->hasError('status')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus>
+                                        <?php foreach ($status as $key => $value) : ?>
+                                            <option value="<?= $value['status']; ?>" <?php if ($value['status'] == $user['status']) {
+                                                                                            echo "selected";
+                                                                                        } ?>>
+                                                <?= $value['status']; ?>
+                                            </option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('status'); ?>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" name="password" class="form-control" id="password" placeholder="Masukan Password" value="<?= $user['password']; ?>">
+                                    <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" name="password" autofocus value="<?= (old('password')) ? old('password') : $user['password']; ?>">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('password'); ?>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /.card-body -->

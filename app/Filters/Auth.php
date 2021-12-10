@@ -23,4 +23,11 @@ class Auth implements FilterInterface
     {
         // Do something here
     }
+    public function __construct()
+    {
+        if (!session()->get('logged_in')) {
+            // maka redirct ke halaman login
+            return redirect()->to('/loginAdmin');
+        }
+    }
 }

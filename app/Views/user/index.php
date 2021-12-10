@@ -21,7 +21,8 @@
                             <tr>
                                 <th>No</th>
                                 <th>Username</th>
-                                <th>Password</th>
+                                <!-- <th>Password</th> -->
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -32,14 +33,23 @@
                                 <tr>
                                     <td><?= $i++; ?></td>
                                     <td><?= $value['username'] ?></td>
-                                    <td><?= $value['password'] ?></td>
+                                    <!-- <td><?= $value['password'] ?></td> -->
+                                    <td>
+                                        <?php if ($value['status'] == 'Admin') { ?>
+                                            <span class="badge bg-success"><?= $value['status']; ?></span>
+                                        <?php } else {  ?>
+                                            <span class="badge bg-primary"><?= $value['status']; ?></span>
+                                        <?php } ?>
+                                    </td>
+
                                     <td>
                                         <a href="/user/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
-                                        <form action="/user/delete/<?= $value['id']; ?>" method="POST" class="d-inline">
-                                            <?= csrf_field(); ?>
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ?')"><i class="fas fa-trash"></i></button>
-                                        </form>
+                                        <?= csrf_field(); ?>
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
@@ -48,7 +58,8 @@
                             <tr>
                                 <th>No</th>
                                 <th>Username</th>
-                                <th>Passwors</th>
+                                <!-- <th>Password</th> -->
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
@@ -58,4 +69,36 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<form action="/user/delete" method="POST" class="d-inline">
+    <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Apakah anda yakin akan menghapus data ini ?
+                    <input type="hidden" id="id_user" name="id_user">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    // delete
+    function konfirmasiDelete(id) {
+        $('#id_user').val(id);
+    }
+</script>
+
 <?= $this->endSection(); ?>
