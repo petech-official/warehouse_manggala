@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Admin extends Migration
+class Kendaraan extends Migration
 {
     public function up()
     {
@@ -15,35 +15,29 @@ class Admin extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'username'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '50',
-            ],
-            'password'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '12',
-                'default'    => '1234manggalaadmin'
-            ],
-            'status'       => [
+            'nopol'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '10',
             ],
-
-            'created_at' => [
-                'type' => 'DATETIME',
-                'null' => TRUE
+            'tipe'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '15',
             ],
-            'updated_at' => [
-                'type' => 'DATETIME',
-                'null' => TRUE
-            ]
+            'km'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '15',
+            ],
+            'status'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '25',
+            ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('admin');
+        $this->forge->createTable('kendaraan');
     }
 
     public function down()
     {
-        $this->forge->dropTable('admin');
+        $this->forge->dropTable('kendaraan');
     }
 }
