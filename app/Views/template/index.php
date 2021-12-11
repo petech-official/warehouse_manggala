@@ -74,7 +74,9 @@
 
 
       <!-- Main content -->
-      <?= $this->renderSection('content'); ?>
+      <section class="content">
+        <?= $this->renderSection('content'); ?>
+      </section>
       <!-- /.content -->
 
 

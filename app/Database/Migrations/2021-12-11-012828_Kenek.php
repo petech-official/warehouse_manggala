@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Role extends Migration
+class Kenek extends Migration
 {
     public function up()
     {
@@ -15,15 +15,25 @@ class Role extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'nama'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'telp'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '15',
+            ],
             'status'       => [
                 'type'       => 'VARCHAR',
-                'constraint' => '10',
-            ]
+                'constraint' => '25',
+            ],
         ]);
+        $this->forge->addKey('id', true);
+        $this->forge->createTable('kenek');
     }
 
     public function down()
     {
-        //
+        $this->forge->dropTable('kenek');
     }
 }
