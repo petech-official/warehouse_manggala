@@ -13,9 +13,9 @@ class Customer extends Seeder
             $data = [
                 'nama' => $faker->company,
                 'telp' => $faker->phoneNumber,
-                'alamat' => $faker->address,
-                'km' => $faker->randomNumber(3, false),
-                'waktu' => $faker->time()
+                // 'alamat' => $faker->address,
+                // 'km' => $faker->randomNumber(3, false),
+                // 'waktu' => $faker->time()
             ];
             // Using Query Builder
             $this->db->table('customer')->insert($data);
