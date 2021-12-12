@@ -30,6 +30,9 @@ class Kendaraan extends Migration
             'status'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '25',
+            ], 'keterangan'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '50',
             ],
         ]);
         $this->forge->addKey('id', true);
