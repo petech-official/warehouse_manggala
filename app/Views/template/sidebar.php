@@ -99,13 +99,13 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="supir/" class="nav-link">
+            <a href="/supir/" class="nav-link">
               <i class="nav-icon far fa-circle text-success"></i>
               <p>Supir</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="kenek/" class="nav-link">
+            <a href="/kenek/" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Kenek</p>
             </a>
@@ -113,7 +113,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a href="pages/gallery.html" class="nav-link">
+        <a href="/kendaraan/" class="nav-link">
           <i class="nav-icon fas fa-truck"></i>
           <p>
             Kendaraan
