@@ -17,33 +17,33 @@
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Tambah Data</h3>
+                            <h3 class="card-title">Form Ubah Data <?= $judul; ?></h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/save">
+                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id']; ?>">
                             <div class="card-body">
+                                <input type="hidden" name="id">
                                 <div class="form-group">
-                                    <label for="nama">Nama</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" autofocus value="<?= old('nama'); ?>" placeholder="Masukan nama">
+                                    <label for="zzz">zzz</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('zzz')) ? 'is-invalid' : ''; ?>" id="zzz" name="zzz" autofocus value="<?= (old('zzz')) ? old('zzz') : $data['zzz']; ?>">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('nama'); ?>
+                                        <?= $validation->getError('zzz'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Telepon</label></label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" <?= ($validation->hasError('telp')) ? 'is-invalid' : ''; ?>" id="telp" name="telp" autofocus value="<?= old('telp'); ?>" placeholder="Masukan Telepon">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" autofocus value="<?= old('alamat'); ?>" placeholder="Masukan alamat">
+                                    <label for="status">Status</label>
+                                    <select class="form-select form-control  <?= ($validation->hasError('status')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus>
+                                        <?php foreach ($status as $key => $value) : ?>
+                                            <option value="<?= $value['status']; ?>" <?php if ($value['status'] == $data['status']) {
+                                                                                            echo "selected";
+                                                                                        } ?>>
+                                                <?= $value['status']; ?>
+                                            </option>
+                                        <?php endforeach ?>
+                                    </select>
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('alamat'); ?>
+                                        <?= $validation->getError('status'); ?>
                                     </div>
                                 </div>
                             </div>

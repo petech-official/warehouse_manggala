@@ -29,7 +29,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="/customer/" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
               <p>
                 Customer

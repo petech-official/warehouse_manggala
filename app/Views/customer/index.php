@@ -19,11 +19,9 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
-
                                 <!-- Masukan Disini -->
                                 <th>Nama</th>
-                                <th>Telp</th>
-                                <th>Alamat</th>
+                                <th>Telepon</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -33,13 +31,12 @@
                             $i = 1;
                             foreach ($data as $key => $value) : ?>
                                 <tr>
-
                                     <!-- Masukan Disini -->
                                     <td><?= $value['nama']; ?></td>
                                     <td><?= $value['telp']; ?></td>
-                                    <td><?= $value['alamat']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
+                                        <a href="/<?= $judul; ?>/lihat/<?= $value['id']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                                         <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
@@ -53,11 +50,9 @@
                         </tbody>
                         <tfoot>
                             <tr>
-
                                 <!-- Masukan Disini -->
                                 <th>Nama</th>
-                                <th>Telp</th>
-                                <th>Alamat</th>
+                                <th>Telepon</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

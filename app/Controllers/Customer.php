@@ -4,16 +4,16 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class Supplier extends BaseController
+class Customer extends BaseController
 {
     // model yang dibutuhkan
     // protected $userModel;
     public function __construct()
     {
-        $this->SupplierModel = new \App\Models\SupplierModel();
+        $this->CustomerModel = new \App\Models\CustomerModel();
     }
 
-    public $controller = 'Supplier';
+    public $controller = 'Customer';
     public function index()
     {
         $model = $this->controller . 'Model';
@@ -36,32 +36,24 @@ class Supplier extends BaseController
     {
         //Validasi
         if (!$this->validate([
-            'nama' => [
-                'rules' => 'required',
+            'zzz' => [
+                'rules' => 'required|is_unique[NamaTableZzz.AttributZzz]',
                 'errors' => [
-                    'required' => 'Masukan nama !',
+                    'required' => 'Masukan zzz !',
+                    'is_unique' => 'zzz harus unik !'
                 ]
-            ],
-            'telp' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan telp !',
-                ]
-            ],
-            'alamat' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan alamat !',
-                ]
+
             ]
         ])) {
             return redirect()->to('/' . $this->controller . '/tambah')->withInput();
         };
         $model = $this->controller . 'Model';
         $this->$model->save([
-            'nama' => $this->request->getVar('nama'),
-            'telp' => $this->request->getVar('telp'),
-            'alamat' => $this->request->getVar('alamat'),
+            'zzz' => $this->request->getVar('zzz'),
+            'zzz' => $this->request->getVar('zzz'),
+            'zzz' => $this->request->getVar('zzz'),
+            'zzz' => $this->request->getVar('zzz'),
+
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller);
@@ -81,33 +73,24 @@ class Supplier extends BaseController
     {
         //Validasi
         if (!$this->validate([
-            'nama' => [
-                'rules' => 'required',
+            'zzz' => [
+                'rules' => 'required|is_unique[NamaTableZzz.AttributZzz]',
                 'errors' => [
-                    'required' => 'Masukan nama !',
+                    'required' => 'Masukan zzz !',
+                    'is_unique' => 'zzz harus unik !'
                 ]
-            ],
-            'telp' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan telp !',
-                ]
-            ],
-            'alamat' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan alamat !',
-                ]
+
             ]
         ])) {
-            return redirect()->to('/' . $this->controller . '/tambah')->withInput();
+            return redirect()->to('/' . $this->controller . '/edit')->withInput();
         };
         $model = $this->controller . 'Model';
         $this->$model->save([
             'id' => $this->request->getVar('id'),
-            'nama' => $this->request->getVar('nama'),
-            'telp' => $this->request->getVar('telp'),
-            'alamat' => $this->request->getVar('alamat'),
+            'zzz' => $this->request->getVar('zzz'),
+            'zzz' => $this->request->getVar('zzz'),
+            'zzz' => $this->request->getVar('zzz'),
+            'zzz' => $this->request->getVar('zzz'),
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil diubah');
