@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CustomerModel extends Model
+class CustomerDetailModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'customer';
+    protected $table            = 'customer_detail';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama','telp'];
+    protected $allowedFields    = ['id_customer','alamat','km','waktu'];
 
     // Dates
     protected $useTimestamps = false;
@@ -39,11 +39,19 @@ class CustomerModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
     public function getData($id = false)
     {
         if ($id == false) {
             return $this->findAll();
         }
-        return $this->where(['id' => $id])->first();
+        return $this->where('id_customer', $id)->findAll();
+    }
+    public function getDataDetail($id = false)
+    {
+        if ($id == false) {
+            return $this->findAll();
+        }
+        return $this->where('id', $id)->first();
     }
 }

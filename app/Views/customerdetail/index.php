@@ -5,12 +5,25 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><?= $judul; ?></h3>
+                    <h3 class="card-title"><a href="/<?= $judulMain; ?>/index"><?= $judulMain; ?></a>
+                        <?= $aksi; ?> <?= $dataMain['nama'] ?></h3>
                 </div>
                 <!-- /.card-header -->
-                <!-- Tambah data -->
+                <!-- Tambah data -->                
                 <div class="card-body">
-                    <a href="/<?= $judul; ?>/tambah" class="btn btn-primary">Tambah Data</a><br><br>
+                  <table>
+                    <tr>
+                      <th>Supplier</th>
+                      <td>:</td>
+                      <td><?= $dataMain['nama'] ?></td>
+                    </tr>
+                      <th>Telp</th>
+                      <td>:</td>
+                      <td><?= $dataMain['telp'] ?></td>
+                    </tr>
+                  </table>
+                  <hr>
+                    <a href="/<?= $judul; ?>/tambah/<?= $dataMain['id'] ?>" class="btn btn-primary">Tambah Alamat</a><br><br>
                     <?php if (session()->getFlashdata('pesan')) : ?>
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashdata('pesan'); ?>
@@ -19,40 +32,42 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
-                                <!-- Masukan Disini -->
-                                <th>Nama</th>
-                                <th>Telepon</th>
+                                <!-- Masukan Disini -->                                
+                                <th>Alamat</th>
+                                <th>KM</th>
+                                <th>Waktu</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody style="padding: 50px;">
-                            <?php
+                        <?php
                             $i = 1;
                             foreach ($data as $key => $value) : ?>
-                                <tr>
-                                    <!-- Masukan Disini -->
-                                    <td><?= $value['nama']; ?></td>
-                                    <td><?= $value['telp']; ?></td>
+                                <tr>                                                                      
+                                    <!-- Masukan Disini -->                                    
+                                    <td><?= $value['alamat'] ?></td>
+                                    <td><?= $value['km'] ?></td>
+                                    <td><?= $value['waktu'] ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                                         <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id']; ?>,<?= $value['id_customer'] ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
                                 </tr>
-                            <?php endforeach ?>
+                              <?php endforeach ?>
                         </tbody>
                         <tfoot>
-                            <tr>
+                            <tr>                                
                                 <!-- Masukan Disini -->
-                                <th>Nama</th>
-                                <th>Telepon</th>
+                                <th>Alamat</th>
+                                <th>KM</th>
+                                <th>Waktu</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -78,6 +93,7 @@
                 <div class="modal-body">
                     Apakah anda yakin akan menghapus data ini ?
                     <input type="hidden" id="id" name="id">
+                    <input type="hidden" id="id_customer" name="id_customer">
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -90,8 +106,9 @@
 
 <script>
     // delete
-    function konfirmasiDelete(id) {
+    function konfirmasiDelete(id, id_customer) {
         $('#id').val(id);
+        $('#id_customer').val(id_customer);
     }
 </script>
 
