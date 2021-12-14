@@ -11,6 +11,7 @@ class Customer extends BaseController
     public function __construct()
     {
         $this->CustomerModel = new \App\Models\CustomerModel();
+        $this->CustomerDetailModel = new \App\Models\CustomerDetailModel();
     }
 
     public $controller = 'Customer';
@@ -36,24 +37,27 @@ class Customer extends BaseController
     {
         //Validasi
         if (!$this->validate([
-            'zzz' => [
-                'rules' => 'required|is_unique[NamaTableZzz.AttributZzz]',
+            'nama' => [
+                'rules' => 'required|is_unique[customer.nama]',
                 'errors' => [
-                    'required' => 'Masukan zzz !',
-                    'is_unique' => 'zzz harus unik !'
+                    'required' => 'Masukan nama !',
+                    'is_unique' => 'nama harus unik !'
                 ]
-
+            ],
+            'telp' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan telp !',
+                ]
             ]
+
         ])) {
             return redirect()->to('/' . $this->controller . '/tambah')->withInput();
         };
         $model = $this->controller . 'Model';
         $this->$model->save([
-            'zzz' => $this->request->getVar('zzz'),
-            'zzz' => $this->request->getVar('zzz'),
-            'zzz' => $this->request->getVar('zzz'),
-            'zzz' => $this->request->getVar('zzz'),
-
+            'nama' => $this->request->getVar('nama'),
+            'telp' => $this->request->getVar('telp'),            
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller);
@@ -73,24 +77,26 @@ class Customer extends BaseController
     {
         //Validasi
         if (!$this->validate([
-            'zzz' => [
-                'rules' => 'required|is_unique[NamaTableZzz.AttributZzz]',
+            'nama' => [
+                'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan zzz !',
-                    'is_unique' => 'zzz harus unik !'
+                    'required' => 'Masukan nama !',                    
                 ]
-
+            ],
+            'telp' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan telp !',
+                ]
             ]
         ])) {
-            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+            return redirect()->to('/' . $this->controller . '/tambah')->withInput();
         };
         $model = $this->controller . 'Model';
         $this->$model->save([
-            'id' => $this->request->getVar('id'),
-            'zzz' => $this->request->getVar('zzz'),
-            'zzz' => $this->request->getVar('zzz'),
-            'zzz' => $this->request->getVar('zzz'),
-            'zzz' => $this->request->getVar('zzz'),
+            'id' => $id,
+            'nama' => $this->request->getVar('nama'),
+            'telp' => $this->request->getVar('telp'),            
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil diubah');
@@ -104,4 +110,5 @@ class Customer extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/' . $this->controller);
     }
+    
 }

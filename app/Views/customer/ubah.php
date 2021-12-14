@@ -25,25 +25,19 @@
                             <div class="card-body">
                                 <input type="hidden" name="id">
                                 <div class="form-group">
-                                    <label for="zzz">zzz</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('zzz')) ? 'is-invalid' : ''; ?>" id="zzz" name="zzz" autofocus value="<?= (old('zzz')) ? old('zzz') : $data['zzz']; ?>">
+                                    <label for="nama">nama</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" autofocus value="<?= (old('nama')) ? old('nama') : $data['nama']; ?>">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('zzz'); ?>
+                                        <?= $validation->getError('nama'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="status">Status</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('status')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus>
-                                        <?php foreach ($status as $key => $value) : ?>
-                                            <option value="<?= $value['status']; ?>" <?php if ($value['status'] == $data['status']) {
-                                                                                            echo "selected";
-                                                                                        } ?>>
-                                                <?= $value['status']; ?>
-                                            </option>
-                                        <?php endforeach ?>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('status'); ?>
+                                    <label>Telepon</label></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" <?= ($validation->hasError('telp')) ? 'is-invalid' : ''; ?>" id="telp" name="telp" autofocus value="<?= (old('telp')) ? old('telp') : $data['telp']; ?>" placeholder="Masukan Telepon">
                                     </div>
                                 </div>
                             </div>

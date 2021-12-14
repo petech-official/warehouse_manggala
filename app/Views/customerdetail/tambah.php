@@ -24,19 +24,28 @@
                         <form id="quickForm" method="POST" action="/<?= $judul; ?>/save">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="zzz">zzz</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('zzz')) ? 'is-invalid' : ''; ?>" id="zzz" name="zzz" autofocus value="<?= old('zzz'); ?>" placeholder="Masukan zzz">
+                                    <label for="alamat">Alamat</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" autofocus value="<?= old('alamat'); ?>" placeholder="Masukan alamat">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('zzz'); ?>
+                                        <?= $validation->getError('alamat'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="zzz">zzz</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('zzz')) ? 'is-invalid' : ''; ?>" id="zzz" name="zzz" autofocus value="<?= old('zzz'); ?>" placeholder="Masukan zzz">
+                                    <label for="waktu">KM</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('km')) ? 'is-invalid' : ''; ?>" id="km" name="km" autofocus value="<?= old('km'); ?>" placeholder="Masukan km">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('zzz'); ?>
+                                        <?= $validation->getError('km'); ?>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="waktu">Waktu</label>
+                                    <!-- time Picker -->                                    
+                                    <input type="text" class="form-control <?= ($validation->hasError('waktu')) ? 'is-invalid' : ''; ?>" id="waktu" name="waktu" autofocus value="<?= old('waktu'); ?>" placeholder="Masukan waktu">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('waktu'); ?>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="id_customer" id="id_customer" value="<?= $id_customer ?>">
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
@@ -51,4 +60,9 @@
     </div>
 </div>
 <script>
+    $('#input_starttime').pickatime({
+// 12 or 24 hour
+    twelvehour: false,
+});
+</script>
     <?= $this->endSection(); ?>
