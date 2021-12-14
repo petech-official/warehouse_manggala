@@ -13,7 +13,7 @@ class Customer extends Seeder
             $data = [
                 'nama' => $faker->company,
                 'telp' => $faker->phoneNumber,
-                // 'alamat' => $faker->address,
+                'alamat' => $faker->address,
                 // 'km' => $faker->randomNumber(3, false),
                 // 'waktu' => $faker->time()
             ];

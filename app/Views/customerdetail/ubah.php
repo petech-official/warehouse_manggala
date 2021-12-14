@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/<?= $judul; ?>/index"><?= $judul; ?></a>
+                        <a href="/<?= $judul; ?>/index/<?= $id_customer; ?>"><?= $judul; ?></a>
                         <?= $aksi; ?>
                     </h3>
                 </div>
@@ -30,21 +30,21 @@
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('alamat'); ?>
                                     </div>
-                                </div>                                
+                                </div>
                                 <div class="form-group">
                                     <label for="km">Km</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('km')) ? 'is-invalid' : ''; ?>" id="km" name="km" autofocus value="<?= (old('km')) ? old('km') : $data['km']; ?>">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('km'); ?>
                                     </div>
-                                </div>    
+                                </div>
                                 <div class="form-group">
                                     <label for="waktu">waktu</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('waktu')) ? 'is-invalid' : ''; ?>" id="waktu" name="waktu" autofocus value="<?= (old('waktu')) ? old('waktu') : $data['waktu']; ?>">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('waktu'); ?>
                                     </div>
-                                </div>    
+                                </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">

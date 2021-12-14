@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/<?= $judul; ?>/index"><?= $judul; ?></a>
+                        <a href="/<?= $judul; ?>/index/<?= $id_customer; ?>"><?= $judul; ?></a>
                         <?= $aksi; ?>
                     </h3>
                 </div>
@@ -39,11 +39,26 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="waktu">Waktu</label>
-                                    <!-- time Picker -->                                    
+                                    <!-- time Picker -->
                                     <input type="text" class="form-control <?= ($validation->hasError('waktu')) ? 'is-invalid' : ''; ?>" id="waktu" name="waktu" autofocus value="<?= old('waktu'); ?>" placeholder="Masukan waktu">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('waktu'); ?>
                                     </div>
+                                </div>
+                                <!-- time Picker -->
+                                <div class="bootstrap-timepicker">
+                                    <div class="form-group">
+                                        <label>Time picker:</label>
+
+                                        <div class="input-group date" id="timepicker" data-target-input="nearest">
+                                            <input type="text" class="form-control datetimepicker-input" data-target="#timepicker" />
+                                            <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                            </div>
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form group -->
                                 </div>
                                 <input type="hidden" name="id_customer" id="id_customer" value="<?= $id_customer ?>">
                             </div>
@@ -54,15 +69,8 @@
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
-<script>
-    $('#input_starttime').pickatime({
-// 12 or 24 hour
-    twelvehour: false,
-});
-</script>
-    <?= $this->endSection(); ?>
+<?= $this->endSection(); ?>
