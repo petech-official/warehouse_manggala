@@ -23,6 +23,10 @@ class Customer extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '15',
             ],
+            'alamat'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('customer');

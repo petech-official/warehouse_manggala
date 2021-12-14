@@ -49,6 +49,12 @@ class Customer extends BaseController
                 'errors' => [
                     'required' => 'Masukan telp !',
                 ]
+            ],
+            'alamat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan alamat !',
+                ]
             ]
 
         ])) {
@@ -57,7 +63,8 @@ class Customer extends BaseController
         $model = $this->controller . 'Model';
         $this->$model->save([
             'nama' => $this->request->getVar('nama'),
-            'telp' => $this->request->getVar('telp'),            
+            'telp' => $this->request->getVar('telp'),
+            'alamat' => $this->request->getVar('alamat'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller);
@@ -80,13 +87,19 @@ class Customer extends BaseController
             'nama' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan nama !',                    
+                    'required' => 'Masukan nama !',
                 ]
             ],
             'telp' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Masukan telp !',
+                ]
+            ],
+            'alamat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan alamat !',
                 ]
             ]
         ])) {
@@ -96,7 +109,8 @@ class Customer extends BaseController
         $this->$model->save([
             'id' => $id,
             'nama' => $this->request->getVar('nama'),
-            'telp' => $this->request->getVar('telp'),            
+            'telp' => $this->request->getVar('telp'),
+            'alamat' => $this->request->getVar('alamat'),
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil diubah');
@@ -110,5 +124,4 @@ class Customer extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/' . $this->controller);
     }
-    
 }
