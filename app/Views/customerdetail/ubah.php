@@ -58,5 +58,4 @@
         </div>
     </div>
 </div>
-<script>
-    <?= $this->endSection(); ?>
+<?= $this->endSection(); ?>
