@@ -38,7 +38,60 @@
           </li>
         </ul>
       </li>
-
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-user-friends"></i>
+          <p>
+            Supir dan Kenek
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/supir/" class="nav-link">
+              <i class="nav-icon far fa-circle text-success"></i>
+              <p>Supir</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/kenek/" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Kenek</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a href="/kendaraan/" class="nav-link">
+          <i class="nav-icon fas fa-truck"></i>
+          <p>
+            Kendaraan
+          </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-user-friends"></i>
+          <p>
+            Data Barang dan Stock
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="/barang/" class="nav-link">
+              <i class="nav-icon far fa-circle text-success"></i>
+              <p>Master</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/stock/" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Stock</p>
+            </a>
+          </li>
+        </ul>
+      </li>
       <li class="nav-item">
         <a href="pages/calendar.html" class="nav-link">
           <i class="nav-icon far fa-calendar-alt"></i>
@@ -88,37 +141,6 @@
             </a>
           </li>
         </ul>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-user-friends"></i>
-          <p>
-            Supir dan Kenek
-            <i class="fas fa-angle-left right"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="/supir/" class="nav-link">
-              <i class="nav-icon far fa-circle text-success"></i>
-              <p>Supir</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/kenek/" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>Kenek</p>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item">
-        <a href="/kendaraan/" class="nav-link">
-          <i class="nav-icon fas fa-truck"></i>
-          <p>
-            Kendaraan
-          </p>
-        </a>
       </li>
 
       <li class="nav-item">

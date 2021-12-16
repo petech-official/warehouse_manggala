@@ -15,21 +15,21 @@ class Barang extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'jenis'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '10',
+            'id_jenis'       => [
+                'type'       => 'INT',
+                'constraint' => '11',
             ],
-            'keterangan'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '10',
+            'id_keterangan'       => [
+                'type'       => 'INT',
+                'constraint' => '11',
             ],
             'lot'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '10',
             ],
-            'grade'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '10',
+            'id_grade'       => [
+                'type'       => 'INT',
+                'constraint' => '11',
             ],
             'produk'       => [
                 'type'       => 'VARCHAR',
@@ -43,7 +43,7 @@ class Barang extends Migration
                 'type'       => 'FLOAT',
                 'constraint' => '10',
             ],
-            'keterangan'       => [
+            'keterangan_dus'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '10',
             ]
