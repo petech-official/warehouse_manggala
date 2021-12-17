@@ -81,7 +81,7 @@ class Barang extends BaseController
         $this->BarangKeterangan->save([
             'keterangan' => $this->request->getVar('keterangan'),
         ]);
-        session()->setFlashdata('pesan', 'Data berhasil ditambah');
+        session()->setFlashdata('pesan', 'Data keterangan barang berhasil ditambah');
         return redirect()->to('/' . $this->controller);
     }
 
@@ -104,7 +104,7 @@ class Barang extends BaseController
         $this->BarangJenis->save([
             'jenis' => $this->request->getVar('jenis'),
         ]);
-        session()->setFlashdata('pesan', 'Data berhasil ditambah');
+        session()->setFlashdata('pesan', 'Data jenis barang berhasil ditambah');
         return redirect()->to('/' . $this->controller);
     }
 
@@ -127,68 +127,136 @@ class Barang extends BaseController
         $this->BarangGrade->save([
             'grade' => $this->request->getVar('grade'),
         ]);
-        session()->setFlashdata('pesan', 'Data berhasil ditambah');
+        session()->setFlashdata('pesan', 'Data grade barang berhasil ditambah');
         return redirect()->to('/' . $this->controller);
     }
 
-    public function edit($id)
+    // edit Grade
+    public function editGrade($id)
     {
-        $model = $this->controller . 'Model';
         $data = [
             'judul' => $this->controller,
             'aksi' => ' / Ubah Data',
             'validation' => \Config\Services::validation(),
-            'data'  => $this->$model->getData($id),
+            'data'  => $this->BarangGrade->getData($id),
         ];
-        return view('/' . $this->controller . '/ubah', $data);
+        return view('/' . $this->controller . '/ubahGrade', $data);
     }
-    public function update($id)
+    // Update Grade
+    public function updateGrade($id)
     {
         //Validasi
         if (!$this->validate([
-            'zzz' => [
-                'rules' => 'required|is_unique[NamaTableZzz.AttributZzz]',
+            'grade' => [
+                'rules' => 'required|is_unique[barang_grade.grade]',
                 'errors' => [
-                    'required' => 'Masukan zzz !',
-                    'is_unique' => 'zzz harus unik !'
+                    'required' => 'Masukan grade !',
+                    'is_unique' => 'grade harus unik !'
                 ]
-
             ]
         ])) {
             return redirect()->to('/' . $this->controller . '/edit')->withInput();
         };
-        $model = $this->controller . 'Model';
-        $this->$model->save([
-            'id' => $this->request->getVar('id'),
-            'zzz' => $this->request->getVar('zzz'),
-            'zzz' => $this->request->getVar('zzz'),
-            'zzz' => $this->request->getVar('zzz'),
-            'zzz' => $this->request->getVar('zzz'),
+        $this->BarangGrade->save([
+            'id' => $id,
+            'grade' => $this->request->getVar('grade'),
         ]);
 
-        session()->setFlashdata('pesan', 'Data berhasil diubah');
+        session()->setFlashdata('pesan', 'Data grade barang berhasil diubah');
         return redirect()->to('/' . $this->controller);
     }
+
+    // edit keterangan
+    public function editKeterangan($id)
+    {
+        $data = [
+            'judul' => $this->controller,
+            'aksi' => ' / Ubah Data',
+            'validation' => \Config\Services::validation(),
+            'data'  => $this->BarangKeterangan->getData($id),
+        ];
+        return view('/' . $this->controller . '/ubahKeterangan', $data);
+    }
+    // Update keterangan
+    public function updateketerangan($id)
+    {
+        //Validasi
+        if (!$this->validate([
+            'keterangan' => [
+                'rules' => 'required|is_unique[barang_keterangan.keterangan]',
+                'errors' => [
+                    'required' => 'Masukan keterangan !',
+                    'is_unique' => 'keterangan harus unik !'
+                ]
+            ]
+        ])) {
+            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+        };
+        $this->BarangKeterangan->save([
+            'id' => $id,
+            'keterangan' => $this->request->getVar('keterangan'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data keterangan barang berhasil diubah');
+        return redirect()->to('/' . $this->controller);
+    }
+
+    // edit jenis
+    public function editJenis($id)
+    {
+        $data = [
+            'judul' => $this->controller,
+            'aksi' => ' / Ubah Data',
+            'validation' => \Config\Services::validation(),
+            'data'  => $this->BarangJenis->getData($id),
+        ];
+        return view('/' . $this->controller . '/ubahjenis', $data);
+    }
+    // Update jenis
+    public function updateJenis($id)
+    {
+        //Validasi
+        if (!$this->validate([
+            'jenis' => [
+                'rules' => 'required|is_unique[barang_jenis.jenis]',
+                'errors' => [
+                    'required' => 'Masukan jenis !',
+                    'is_unique' => 'jenis harus unik !'
+                ]
+            ]
+        ])) {
+            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+        };
+        $this->BarangJenis->save([
+            'id' => $id,
+            'jenis' => $this->request->getVar('jenis'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data jenis barang berhasil diubah');
+        return redirect()->to('/' . $this->controller);
+    }
+
+
     // Delete
     public function deleteKeterangan()
     {
         $id = $this->request->getVar('idKeterangan');
         $this->BarangKeterangan->delete($id);
-        session()->setFlashdata('pesan', 'Data berhasil dihapus');
+        session()->setFlashdata('pesan', 'Data keterangan barang berhasil dihapus');
         return redirect()->to('/' . $this->controller);
     }
     public function deleteJenis()
     {
         $id = $this->request->getVar('idJenis');
         $this->BarangJenis->delete($id);
-        session()->setFlashdata('pesan', 'Data berhasil dihapus');
+        session()->setFlashdata('pesan', 'Data jenis barang berhasil dihapus');
         return redirect()->to('/' . $this->controller);
     }
     public function deleteGrade()
     {
         $id = $this->request->getVar('idGrade');
         $this->BarangGrade->delete($id);
-        session()->setFlashdata('pesan', 'Data berhasil dihapus');
+        session()->setFlashdata('pesan', 'Data grade barang berhasil dihapus');
         return redirect()->to('/' . $this->controller);
     }
 }
