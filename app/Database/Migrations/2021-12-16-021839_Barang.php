@@ -23,6 +23,10 @@ class Barang extends Migration
                 'type'       => 'INT',
                 'constraint' => '11',
             ],
+            'keterangan_detail'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '50',
+            ],
             'lot'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '10',

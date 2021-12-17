@@ -5,7 +5,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><?= $judul; ?></h3>
+                    <h3 class="card-title">Stock <?= $judul; ?></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
@@ -20,16 +20,20 @@
                         <thead>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <th>Jenis</th>
-                                <th>Keterangan</th>
-                                <th>Lot</th>
-                                <th>Grade</th>
-                                <th>Produk</th>
+                                <th rowspan="2" style="vertical-align: middle;">Jenis</th>
+                                <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
+                                <th rowspan="2" style="vertical-align: middle;">Lot</th>
+                                <th rowspan="2" style="vertical-align: middle;">Grade</th>
+                                <th rowspan="2" style="vertical-align: middle;">Produk Pabrik</th>
+                                <th colspan="3">Saldo Awal</th>
+                                <!-- Selesai Disini -->
+                                <th rowspan="2" style="vertical-align: middle;">Aksi</th>
+                            </tr>
+                            <tr>
+
                                 <th>Dus</th>
                                 <th>KG</th>
                                 <th>Keterangan</th>
-                                <!-- Selesai Disini -->
-                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody style="padding: 50px;">
@@ -39,20 +43,20 @@
                                 <tr>
                                     <!-- Masukan Disini -->
                                     <td><?= $value['jenis']; ?></td>
-                                    <td><?= $value['keterangan']; ?></td>
+                                    <td><?= $value['keterangan']; ?> <?= $value['keterangan_detail']; ?></td>
                                     <td><?= $value['lot']; ?></td>
                                     <td><?= $value['grade']; ?></td>
                                     <td><?= $value['nama']; ?></td>
                                     <td><?= $value['dus']; ?></td>
                                     <td><?= $value['kg']; ?></td>
-                                    <td><?= $value['keterangan_dus']; ?> KG</td>
+                                    <td>@ <?= $value['keterangan_dus']; ?> KG</td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/Stock/edit/<?= $value['id_barang']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_barang']; ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -66,7 +70,7 @@
                                 <th>Keterangan</th>
                                 <th>Lot</th>
                                 <th>Grade</th>
-                                <th>Produk</th>
+                                <th>Produk Publik</th>
                                 <th>Dus</th>
                                 <th>KG</th>
                                 <th>Keterangan</th>
@@ -82,7 +86,7 @@
 </div>
 
 <!-- Modal -->
-<form action="/<?= $judul; ?>/delete" method="POST" class="d-inline">
+<form action="/Stock/delete" method="POST" class="d-inline">
     <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

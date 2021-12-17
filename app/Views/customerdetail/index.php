@@ -9,20 +9,26 @@
                         <?= $aksi; ?> <?= $dataMain['nama'] ?></h3>
                 </div>
                 <!-- /.card-header -->
-                <!-- Tambah data -->                
+                <!-- Tambah data -->
                 <div class="card-body">
-                  <table>
-                    <tr>
-                      <th>Supplier</th>
-                      <td>:</td>
-                      <td><?= $dataMain['nama'] ?></td>
-                    </tr>
-                      <th>Telp</th>
-                      <td>:</td>
-                      <td><?= $dataMain['telp'] ?></td>
-                    </tr>
-                  </table>
-                  <hr>
+                    <table>
+                        <tr>
+                            <th>Supplier</th>
+                            <td>:</td>
+                            <td><?= $dataMain['nama'] ?></td>
+                        </tr>
+                        <tr>
+                            <th>Telp</th>
+                            <td>:</td>
+                            <td><?= $dataMain['telp'] ?></td>
+                        </tr>
+                        <tr>
+                            <th>Alamat NPWP</th>
+                            <td>:</td>
+                            <td><?= $dataMain['alamat'] ?></td>
+                        </tr>
+                    </table>
+                    <hr>
                     <a href="/<?= $judul; ?>/tambah/<?= $dataMain['id'] ?>" class="btn btn-primary">Tambah Alamat</a><br><br>
                     <?php if (session()->getFlashdata('pesan')) : ?>
                         <div class="alert alert-success" role="alert">
@@ -32,7 +38,7 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
-                                <!-- Masukan Disini -->                                
+                                <!-- Masukan Disini -->
                                 <th>Alamat</th>
                                 <th>KM</th>
                                 <th>Waktu</th>
@@ -41,11 +47,11 @@
                             </tr>
                         </thead>
                         <tbody style="padding: 50px;">
-                        <?php
+                            <?php
                             $i = 1;
                             foreach ($data as $key => $value) : ?>
-                                <tr>                                                                      
-                                    <!-- Masukan Disini -->                                    
+                                <tr>
+                                    <!-- Masukan Disini -->
                                     <td><?= $value['alamat'] ?></td>
                                     <td><?= $value['km'] ?></td>
                                     <td><?= $value['waktu'] ?></td>
@@ -60,10 +66,10 @@
                                         </button>
                                     </td>
                                 </tr>
-                              <?php endforeach ?>
+                            <?php endforeach ?>
                         </tbody>
                         <tfoot>
-                            <tr>                                
+                            <tr>
                                 <!-- Masukan Disini -->
                                 <th>Alamat</th>
                                 <th>KM</th>

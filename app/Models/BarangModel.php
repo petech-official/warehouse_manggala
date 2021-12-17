@@ -8,13 +8,13 @@ class BarangModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'barang';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_barang';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_jenis', 'id_keterangan', 'lot', 'id_grade', 'produk', 'dus', 'kg', 'keterangan'];
+    protected $allowedFields    = ['id_jenis', 'id_keterangan', 'keterangan_detail', 'lot', 'id_grade', 'produk', 'dus', 'kg', 'keterangan_dus'];
 
     // Dates
     protected $useTimestamps = false;
@@ -44,7 +44,7 @@ class BarangModel extends Model
         if ($id == false) {
             return $this->findAll();
         }
-        return $this->where(['id' => $id])->first();
+        return $this->where(['id_barang' => $id])->first();
     }
     public function getBarang()
     {

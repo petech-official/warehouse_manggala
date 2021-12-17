@@ -36,7 +36,7 @@
                                     <td><?= $value['keterangan']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/editKeterangan/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
@@ -89,7 +89,7 @@
                                     <td><?= $value['grade']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/editGrade/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
@@ -143,7 +143,7 @@
                                     <td><?= $value['jenis']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/editJenis/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
@@ -165,10 +165,7 @@
                     </table>
                 </div>
             </div>
-
-
         </div>
-
     </div>
 </div>
 
@@ -186,7 +183,7 @@
                 </div>
                 <div class="modal-body">
                     Apakah anda yakin akan menghapus data ini ?
-                    <input type="text" id="idKeterangan" name="idKeterangan">
+                    <input type="hidden" id="idKeterangan" name="idKeterangan">
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -210,7 +207,7 @@
                 </div>
                 <div class="modal-body">
                     Apakah anda yakin akan menghapus data ini ?
-                    <input type="text" id="idJenis" name="idJenis">
+                    <input type="hidden" id="idJenis" name="idJenis">
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
