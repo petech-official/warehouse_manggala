@@ -31,6 +31,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="singkatan">Singkatan</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('singkatan')) ? 'is-invalid' : ''; ?>" id="singkatan" name="singkatan" autofocus value="<?= old('singkatan'); ?>" placeholder="Masukan singkatan">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('singkatan'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label>Telepon</label></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">

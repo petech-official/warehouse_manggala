@@ -22,6 +22,7 @@
 
                                 <!-- Masukan Disini -->
                                 <th>Nama</th>
+                                <th>Singkatan</th>
                                 <th>Telp</th>
                                 <th>Alamat</th>
                                 <!-- Selesai Disini -->
@@ -36,6 +37,7 @@
 
                                     <!-- Masukan Disini -->
                                     <td><?= $value['nama']; ?></td>
+                                    <td><?= $value['singkatan']; ?></td>
                                     <td><?= $value['telp']; ?></td>
                                     <td><?= $value['alamat']; ?></td>
                                     <!-- Selesai Disini -->
@@ -56,6 +58,7 @@
 
                                 <!-- Masukan Disini -->
                                 <th>Nama</th>
+                                <th>Singkatan</th>
                                 <th>Telp</th>
                                 <th>Alamat</th>
                                 <!-- Selesai Disini -->

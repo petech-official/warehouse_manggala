@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label for="jenis">Jenis</label>
                                     <select class="form-select form-control  <?= ($validation->hasError('jenis')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('jenis'); ?>" name="jenis" id="jenis">
-                                        <option selected disabled>Pilih jenis</option>
+                                        <option selected disabled>Pilih Jenis</option>
                                         <?php foreach ($dataJenis as $key => $value) : ?>
                                             <option value="<?= $value['id']; ?>"><?= $value['jenis']; ?></option>
                                         <?php endforeach ?>
@@ -36,30 +36,40 @@
                                         <?= $validation->getError('jenis'); ?>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="keterangan">Keterangan</label>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <select class="form-select form-control  <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('keterangan'); ?>" name="keterangan" id="keterangan">
-                                                <option selected disabled>Pilih Keterangan</option>
-                                                <?php foreach ($dataKeterangan as $key => $value) : ?>
-                                                    <option value="<?= $value['id']; ?>"><?= $value['keterangan']; ?></option>
-                                                <?php endforeach ?>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                <?= $validation->getError('keterangan'); ?>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <input type="text" id="keteranganDetail" name="keteranganDetail" class="form-control <?= ($validation->hasError('keteranganDetail')) ? 'is-invalid' : ''; ?>" id="keteranganDetail" name="keteranganDetail" autofocus value="<?= old('keteranganDetail'); ?>" placeholder="Masukan detail keterangan jika ada">
-                                        </div>
+                                    <label for="ukuran">Ukuran</label>
+                                    <select class="form-select form-control  <?= ($validation->hasError('ukuran')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('ukuran'); ?>" name="ukuran" id="ukuran">
+                                        <option selected disabled>Pilih Ukuran</option>
+                                        <?php foreach ($dataUkuran as $key => $value) : ?>
+                                            <option value="<?= $value['id']; ?>"><?= $value['ukuran']; ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('ukuran'); ?>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="lot">LOT</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('lot')) ? 'is-invalid' : ''; ?>" id="lot" name="lot" autofocus value="<?= old('lot'); ?>" placeholder="Masukan lot">
+                                    <label for="keterangan">Keterangan</label>
+                                    <select class="form-select form-control  <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('keterangan'); ?>" name="keterangan" id="keterangan">
+                                        <option selected disabled>Pilih Keterangan</option>
+                                        <?php foreach ($dataKeterangan as $key => $value) : ?>
+                                            <option value="<?= $value['id']; ?>"><?= $value['keterangan']; ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('keterangan'); ?>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="lot">Lot</label>
+                                    <select class="form-select form-control  <?= ($validation->hasError('lot')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('lot'); ?>" name="lot" id="lot">
+                                        <option selected disabled>Pilih lot</option>
+                                        <?php foreach ($dataLot as $key => $value) : ?>
+                                            <option value="<?= $value['id']; ?>"><?= $value['lot']; ?></option>
+                                        <?php endforeach ?>
+                                    </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('lot'); ?>
                                     </div>
@@ -92,18 +102,10 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="kg">Jumlah dus</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('dus')) ? 'is-invalid' : ''; ?>" id="dus" name="dus" autofocus value="<?= old('dus'); ?>" placeholder="Masukan jumlah dus">
+                                    <label for="berat">Berat</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('berat')) ? 'is-invalid' : ''; ?>" id="berat" name="berat" autofocus value="<?= old('berat'); ?>" placeholder="Masukan berat" readonly>
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('dus'); ?>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="kg">Jumlah KG</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('kg')) ? 'is-invalid' : ''; ?>" id="kg" name="kg" autofocus value="<?= old('kg'); ?>" placeholder="Masukan jumlah kg">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('kg'); ?>
+                                        <?= $validation->getError('berat'); ?>
                                     </div>
                                 </div>
                             </div>
@@ -119,5 +121,17 @@
         </div>
     </div>
 </div>
-
+<script>
+    $('#grade').change(function() {
+        var grade = $('#grade').val();
+        if (grade == 1) {
+            $('#berat').removeAttr('readonly');
+            $('#berat').focus();
+        } else
+        if (grade == 2) {
+            $('#berat').val('');
+            $('#berat').attr("readonly", true);
+        }
+    });
+</script>
 <?= $this->endSection(); ?>

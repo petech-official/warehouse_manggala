@@ -24,9 +24,10 @@
                         <form id="quickForm" method="POST" action="/Stock/update/<?= $data['id_barang']; ?>">
                             <div class="card-body">
                                 <input type="hidden" name="id">
+
                                 <div class="form-group">
                                     <label for="jenis">Jenis</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('jenis')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="jenis">
+                                    <select class="form-select form-control  <?= ($validation->hasError('jenis')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="jenis">
                                         <?php foreach ($dataJenis as $key => $value) : ?>
                                             <option value="<?= $value['id']; ?>" <?php if ($value['id'] == $data['id_jenis']) {
                                                                                         echo "selected";
@@ -40,43 +41,57 @@
                                     </div>
                                 </div>
 
-
                                 <div class="form-group">
-                                    <label for="keterangan">Keterangan</label>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <select class="form-select form-control  <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('keterangan'); ?>" name="keterangan" id="keterangan">
-                                                <option selected disabled>Pilih Keterangan</option>
-                                                <?php foreach ($dataKeterangan as $key => $value) : ?>
-                                                    <option value="<?= $value['id']; ?>" <?php if ($value['id'] == $data['id_keterangan']) {
-                                                                                                echo "selected";
-                                                                                            } ?>>
-                                                        <?= $value['keterangan']; ?>
-                                                    </option>
-                                                <?php endforeach ?>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                <?= $validation->getError('keterangan'); ?>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <input type="text" id="keteranganDetail" name="keteranganDetail" class="form-control <?= ($validation->hasError('keterangan_detail')) ? 'is-invalid' : ''; ?>" id="keterangan_detail" name="keterangan_detail" autofocus value="<?= (old('keterangan_detail')) ? old('keterangan_detail') : $data['keterangan_detail']; ?>">
-                                        </div>
+                                    <label for="ukuran">Ukuran</label>
+                                    <select class="form-select form-control  <?= ($validation->hasError('ukuran')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="ukuran">
+                                        <?php foreach ($dataUkuran as $key => $value) : ?>
+                                            <option value="<?= $value['id']; ?>" <?php if ($value['id'] == $data['id_ukuran']) {
+                                                                                        echo "selected";
+                                                                                    } ?>>
+                                                <?= $value['ukuran']; ?>
+                                            </option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('ukuran'); ?>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="lot">lot</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('lot')) ? 'is-invalid' : ''; ?>" id="lot" name="lot" autofocus value="<?= (old('lot')) ? old('lot') : $data['lot']; ?>">
+                                    <label for="keterangan">Keterangan</label>
+                                    <select class="form-select form-control  <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="keterangan">
+                                        <?php foreach ($dataKeterangan as $key => $value) : ?>
+                                            <option value="<?= $value['id']; ?>" <?php if ($value['id'] == $data['id_keterangan']) {
+                                                                                        echo "selected";
+                                                                                    } ?>>
+                                                <?= $value['keterangan']; ?>
+                                            </option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('keterangan'); ?>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="lot">Lot</label>
+                                    <select class="form-select form-control  <?= ($validation->hasError('lot')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="lot">
+                                        <?php foreach ($dataLot as $key => $value) : ?>
+                                            <option value="<?= $value['id']; ?>" <?php if ($value['id'] == $data['id_lot']) {
+                                                                                        echo "selected";
+                                                                                    } ?>>
+                                                <?= $value['lot']; ?>
+                                            </option>
+                                        <?php endforeach ?>
+                                    </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('lot'); ?>
                                     </div>
                                 </div>
 
-
                                 <div class="form-group">
                                     <label for="grade">Grade</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('grade')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="grade">
+                                    <select class="form-select form-control  <?= ($validation->hasError('grade')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="grade">
                                         <?php foreach ($dataGrade as $key => $value) : ?>
                                             <option value="<?= $value['id']; ?>" <?php if ($value['id'] == $data['id_grade']) {
                                                                                         echo "selected";
@@ -92,9 +107,9 @@
 
                                 <div class="form-group">
                                     <label for="produksi">Produksi</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('produksi')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="produksi">
+                                    <select class="form-select form-control  <?= ($validation->hasError('produksi')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="produksi">
                                         <?php foreach ($dataProduksi as $key => $value) : ?>
-                                            <option value="<?= $value['id']; ?>" <?php if ($value['id'] == $data['produk']) {
+                                            <option value="<?= $value['id']; ?>" <?php if ($value['id'] == $data['id_supplier']) {
                                                                                         echo "selected";
                                                                                     } ?>>
                                                 <?= $value['nama']; ?>
@@ -106,24 +121,15 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="dus">Dus</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('dus')) ? 'is-invalid' : ''; ?>" id="dus" name="dus" autofocus value="<?= (old('dus')) ? old('dus') : $data['dus']; ?>">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('dus'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="kg">kg</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('kg')) ? 'is-invalid' : ''; ?>" id="kg" name="kg" autofocus value="<?= (old('kg')) ? old('kg') : $data['kg']; ?>">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('kg'); ?>
-                                    </div>
-                                </div>
 
+                                <div class="form-group">
+                                    <label for="berat">Berat</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('berat')) ? 'is-invalid' : ''; ?>" id="berat" name="berat" value="<?= (old('berat')) ? old('berat') : $data['berat']; ?>">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('berat'); ?>
+                                    </div>
+                                </div>
                             </div>
-
-
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>

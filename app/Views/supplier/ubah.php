@@ -25,10 +25,17 @@
                             <div class="card-body">
                                 <input type="hidden" name="id">
                                 <div class="form-group">
-                                    <label for="nama">nama</label>
+                                    <label for="nama">Nama</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" autofocus value="<?= (old('nama')) ? old('nama') : $data['nama']; ?>">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('nama'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="singkatan">Singkatan</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('singkatan')) ? 'is-invalid' : ''; ?>" id="singkatan" name="singkatan" autofocus value="<?= (old('singkatan')) ? old('singkatan') : $data['singkatan']; ?>">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('singkatan'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">

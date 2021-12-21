@@ -19,6 +19,10 @@ class Supplier extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'singkatan'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '10',
+            ],
             'telp'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '15',

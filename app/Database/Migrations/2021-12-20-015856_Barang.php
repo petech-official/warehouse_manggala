@@ -15,7 +15,7 @@ class Barang extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_Jenis'       => [
+            'id_jenis'       => [
                 'type'       => 'INT',
                 'constraint' => '11',
             ],
@@ -24,23 +24,28 @@ class Barang extends Migration
                 'constraint' => '11',
             ],
             'id_keterangan'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '50',
+                'type'       => 'INT',
+                'constraint' => '11',
+            ],
+            'id_supplier'       => [
+                'type'       => 'INT',
+                'constraint' => '11',
             ],
             'id_lot'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '10',
+                'type'       => 'INT',
+                'constraint' => '11',
             ],
             'id_grade'       => [
                 'type'       => 'INT',
                 'constraint' => '11',
             ],
             'berat'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
+                'type'       => 'INT',
+                'constraint' => '11',
+                'null'       => true
             ]
         ]);
-        $this->forge->addKey('id', true);
+        $this->forge->addKey('id_barang', true);
         $this->forge->createTable('barang');
     }
 
