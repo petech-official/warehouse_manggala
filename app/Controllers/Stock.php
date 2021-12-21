@@ -14,6 +14,8 @@ class Stock extends BaseController
         $this->BarangJenis = new \App\Models\BarangJenisModel();
         $this->BarangKeterangan = new \App\Models\BarangKeteranganModel();
         $this->BarangGrade = new \App\Models\BarangGradeModel();
+        $this->BarangLot = new \App\Models\BarangLotModel();
+        $this->BarangUkuran = new \App\Models\BarangUkuranModel();
         $this->BarangProduksi = new \App\Models\SupplierModel();
     }
 
@@ -39,7 +41,9 @@ class Stock extends BaseController
             'dataJenis' => $this->BarangJenis->findAll(),
             'dataKeterangan' => $this->BarangKeterangan->findAll(),
             'dataGrade' => $this->BarangGrade->findAll(),
-            'dataProduksi' => $this->BarangProduksi->findAll()
+            'dataProduksi' => $this->BarangProduksi->findAll(),
+            'dataLot' => $this->BarangLot->findAll(),
+            'dataUkuran' => $this->BarangUkuran->findAll()
         ];
         return view('Stock/tambah', $data);
     }
@@ -57,6 +61,13 @@ class Stock extends BaseController
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Masukan lot !',
+                ]
+            ],
+
+            'ukuran' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan ukuran !',
                 ]
             ],
             'keterangan' => [
@@ -77,38 +88,20 @@ class Stock extends BaseController
                     'required' => 'Masukan produksi !',
                 ]
             ],
-            'dus' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan dus !',
-                ]
-            ],
-            'kg' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan kg !',
-                ]
-            ],
         ])) {
             return redirect()->to('/Stock/tambah')->withInput();
         };
-
-        $dus = $this->request->getVar('dus');
-        $kg = $this->request->getVar('kg');
-        $keterangan_dus = $kg / $dus;
-
 
         $model = $this->controller . 'Model';
         $this->$model->save([
             'id_jenis' => $this->request->getVar('jenis'),
             'id_keterangan' => $this->request->getVar('keterangan'),
-            'keterangan_detail' => $this->request->getVar('keteranganDetail'),
-            'lot' => $this->request->getVar('lot'),
+            'id_lot' => $this->request->getVar('lot'),
+            'id_ukuran' => $this->request->getVar('ukuran'),
             'id_grade' => $this->request->getVar('grade'),
-            'produk' => $this->request->getVar('produksi'),
-            'dus' => $dus,
-            'kg' => $kg,
-            'keterangan_dus' => $keterangan_dus
+            'id_supplier' => $this->request->getVar('produksi'),
+            'berat' => $this->request->getVar('berat'),
+
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/Stock/index');
@@ -123,53 +116,70 @@ class Stock extends BaseController
             'dataJenis' => $this->BarangJenis->findAll(),
             'dataKeterangan' => $this->BarangKeterangan->findAll(),
             'dataGrade' => $this->BarangGrade->findAll(),
-            'dataProduksi' => $this->BarangProduksi->findAll()
+            'dataProduksi' => $this->BarangProduksi->findAll(),
+            'dataLot' => $this->BarangLot->findAll(),
+            'dataUkuran' => $this->BarangUkuran->findAll()
         ];
         return view('/Stock/ubah', $data);
     }
     public function update($id)
     {
-
         //Validasi
         if (!$this->validate([
+            'jenis' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan jenis !',
+                ]
+            ],
             'lot' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Masukan lot !',
                 ]
             ],
-            'dus' => [
+
+            'ukuran' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan dus !',
+                    'required' => 'Masukan ukuran !',
                 ]
             ],
-            'kg' => [
+            'keterangan' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan kg !',
+                    'required' => 'Masukan keterangan !',
+                ]
+            ],
+            'grade' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan grade !',
+                ]
+            ],
+            'produksi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan produksi !',
                 ]
             ],
         ])) {
             return redirect()->to('/Stock/edit/' . $id)->withInput();
         };
-
-        $dus = $this->request->getVar('dus');
-        $kg = $this->request->getVar('kg');
-        $keterangan_dus = $kg / $dus;
-
         $model = $this->controller . 'Model';
+
+        // dd($this->request->getVar('jenis'), $this->request->getVar('keterangan'), $this->request->getVar('lot'), $this->request->getVar('ukuran'), $this->request->getVar('grade'), $this->request->getVar('produksi'), $this->request->getVar('berat'));
+
+
         $this->$model->save([
             'id_barang' => $id,
             'id_jenis' => $this->request->getVar('jenis'),
             'id_keterangan' => $this->request->getVar('keterangan'),
-            'keterangan_detail' => $this->request->getVar('keteranganDetail'),
-            'lot' => $this->request->getVar('lot'),
+            'id_lot' => $this->request->getVar('lot'),
+            'id_ukuran' => $this->request->getVar('ukuran'),
             'id_grade' => $this->request->getVar('grade'),
-            'produk' => $this->request->getVar('produksi'),
-            'dus' => $dus,
-            'kg' => $kg,
-            'keterangan_dus' => $keterangan_dus
+            'id_supplier' => $this->request->getVar('produksi'),
+            'berat' => $this->request->getVar('berat'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/Stock');

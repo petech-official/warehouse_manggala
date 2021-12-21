@@ -14,7 +14,7 @@ class SupplierModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama', 'telp', 'alamat'];
+    protected $allowedFields    = ['nama', 'singkatan', 'telp', 'alamat'];
 
     // Dates
     protected $useTimestamps = false;

@@ -14,7 +14,7 @@ class BarangModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_jenis', 'id_keterangan', 'keterangan_detail', 'lot', 'id_grade', 'produk', 'dus', 'kg', 'keterangan_dus'];
+    protected $allowedFields    = ['id_jenis', 'id_keterangan', 'id_ukuran', 'id_lot', 'id_grade', 'id_supplier', 'berat'];
 
     // Dates
     protected $useTimestamps = false;
@@ -50,9 +50,11 @@ class BarangModel extends Model
     {
         return $this->db->table('barang')
             ->join('barang_jenis', 'barang_jenis.id=barang.id_jenis')
+            ->join('barang_lot', 'barang_lot.id=barang.id_lot')
+            ->join('barang_ukuran', 'barang_ukuran.id=barang.id_ukuran')
+            ->join('supplier', 'supplier.id=barang.id_supplier')
             ->join('barang_keterangan', 'barang_keterangan.id=barang.id_keterangan')
             ->join('barang_grade', 'barang_grade.id=barang.id_grade')
-            ->join('supplier', 'supplier.id=barang.produk')
             ->get()->getResultArray();
     }
 }

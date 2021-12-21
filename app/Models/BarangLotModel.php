@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class BarangJenisModel extends Model
+class BarangLotModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'barang_jenis';
+    protected $table            = 'barang_lot';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['jenis'];
+    protected $allowedFields    = ['lot'];
 
     // Dates
     protected $useTimestamps = false;
@@ -46,5 +46,4 @@ class BarangJenisModel extends Model
         }
         return $this->where(['id' => $id])->first();
     }
-    // INI JENIS
 }

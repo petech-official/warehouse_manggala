@@ -20,36 +20,22 @@
                         <thead>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <th rowspan="2" style="vertical-align: middle;">Jenis</th>
-                                <th rowspan="2" style="vertical-align: middle;">Keterangan</th>
-                                <th rowspan="2" style="vertical-align: middle;">Lot</th>
-                                <th rowspan="2" style="vertical-align: middle;">Grade</th>
-                                <th rowspan="2" style="vertical-align: middle;">Produk Pabrik</th>
-                                <th colspan="3">Saldo Awal</th>
-                                <!-- Selesai Disini -->
-                                <th rowspan="2" style="vertical-align: middle;">Aksi</th>
-                            </tr>
-                            <tr>
-
-                                <th>Dus</th>
-                                <th>KG</th>
-                                <th>Keterangan</th>
+                                <td>Nama Barang</td>
+                                <td>Produk</td>
+                                <td>Berat (Kg)</td>
+                                <td>Aksi</td>
                             </tr>
                         </thead>
                         <tbody style="padding: 50px;">
                             <?php
                             $i = 1;
+
                             foreach ($data as $key => $value) : ?>
                                 <tr>
                                     <!-- Masukan Disini -->
-                                    <td><?= $value['jenis']; ?></td>
-                                    <td><?= $value['keterangan']; ?> <?= $value['keterangan_detail']; ?></td>
-                                    <td><?= $value['lot']; ?></td>
-                                    <td><?= $value['grade']; ?></td>
+                                    <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> <?= $value['lot']; ?> <?= $value['grade']; ?></td>
                                     <td><?= $value['nama']; ?></td>
-                                    <td><?= $value['dus']; ?></td>
-                                    <td><?= $value['kg']; ?></td>
-                                    <td>@ <?= $value['keterangan_dus']; ?> KG</td>
+                                    <td><?= $value['berat']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
                                         <a href="/Stock/edit/<?= $value['id_barang']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
@@ -66,16 +52,10 @@
                         <tfoot>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <th>Jenis</th>
-                                <th>Keterangan</th>
-                                <th>Lot</th>
-                                <th>Grade</th>
-                                <th>Produk Publik</th>
-                                <th>Dus</th>
-                                <th>KG</th>
-                                <th>Keterangan</th>
-                                <!-- Selesai Disini -->
-                                <th>Aksi</th>
+                                <td>Nama Barang</td>
+                                <td>Produk</td>
+                                <td>Berat</td>
+                                <td>Aksi</td>
                             </tr>
                         </tfoot>
                     </table>

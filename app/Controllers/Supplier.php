@@ -60,6 +60,7 @@ class Supplier extends BaseController
         $model = $this->controller . 'Model';
         $this->$model->save([
             'nama' => $this->request->getVar('nama'),
+            'singkatan' => $this->request->getVar('singkatan'),
             'telp' => $this->request->getVar('telp'),
             'alamat' => $this->request->getVar('alamat'),
         ]);
@@ -87,6 +88,12 @@ class Supplier extends BaseController
                     'required' => 'Masukan nama !',
                 ]
             ],
+            'singkatan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan singkatan !',
+                ]
+            ],
             'telp' => [
                 'rules' => 'required',
                 'errors' => [
@@ -104,8 +111,9 @@ class Supplier extends BaseController
         };
         $model = $this->controller . 'Model';
         $this->$model->save([
-            'id' => $this->request->getVar('id'),
+            'id' => $id,
             'nama' => $this->request->getVar('nama'),
+            'singkatan' => $this->request->getVar('singkatan'),
             'telp' => $this->request->getVar('telp'),
             'alamat' => $this->request->getVar('alamat'),
         ]);

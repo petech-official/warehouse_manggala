@@ -13,6 +13,8 @@ class Barang extends BaseController
         $this->BarangJenis = new \App\Models\BarangJenisModel();
         $this->BarangKeterangan = new \App\Models\BarangKeteranganModel();
         $this->BarangGrade = new \App\Models\BarangGradeModel();
+        $this->BarangUkuran = new \App\Models\BarangUkuranModel();
+        $this->BarangLot = new \App\Models\BarangLotModel();
     }
 
     public $controller = 'Barang';
@@ -21,11 +23,15 @@ class Barang extends BaseController
         $dataJenis = $this->BarangJenis->findAll();
         $dataKeterangan = $this->BarangKeterangan->findAll();
         $dataGrade = $this->BarangGrade->findAll();
+        $dataLot = $this->BarangLot->findAll();
+        $dataUkuran = $this->BarangUkuran->findAll();
         $data = [
             'judul' => 'Barang',
             'dataJenis' => $dataJenis,
             'dataKeterangan' => $dataKeterangan,
-            'dataGrade' => $dataGrade
+            'dataGrade' => $dataGrade,
+            'dataLot' => $dataLot,
+            'dataUkuran' => $dataUkuran
         ];
         return view($this->controller . '/index', $data);
     }
@@ -61,6 +67,28 @@ class Barang extends BaseController
             'validation' => \Config\Services::validation(),
         ];
         return view($this->controller . '/tambahGrade', $data);
+    }
+    // Tambah Lot
+    public function tambahLot()
+    {
+
+        $data = [
+            'judul' => $this->controller,
+            'aksi' => ' / Tambah Data',
+            'validation' => \Config\Services::validation(),
+        ];
+        return view($this->controller . '/tambahLot', $data);
+    }
+    // Tambah Ukuran
+    public function tambahUkuran()
+    {
+
+        $data = [
+            'judul' => $this->controller,
+            'aksi' => ' / Tambah Data',
+            'validation' => \Config\Services::validation(),
+        ];
+        return view($this->controller . '/tambahUkuran', $data);
     }
     // Save Keterangan
     public function saveKeterangan()
@@ -128,6 +156,50 @@ class Barang extends BaseController
             'grade' => $this->request->getVar('grade'),
         ]);
         session()->setFlashdata('pesan', 'Data grade barang berhasil ditambah');
+        return redirect()->to('/' . $this->controller);
+    }
+    // Save lot
+    public function saveLot()
+    {
+        // Validasi
+        if (!$this->validate([
+            'lot' => [
+                'rules' => 'required|is_unique[barang_lot.lot]',
+                'errors' => [
+                    'required' => 'Masukan lot !',
+                    'is_unique' => 'lot harus unik !'
+                ]
+
+            ]
+        ])) {
+            return redirect()->to('/' . $this->controller . '/tambahLot')->withInput();
+        };
+        $this->BarangLot->save([
+            'lot' => $this->request->getVar('lot'),
+        ]);
+        session()->setFlashdata('pesan', 'Data lot barang berhasil ditambah');
+        return redirect()->to('/' . $this->controller);
+    }
+    // Save ukuran
+    public function saveUkuran()
+    {
+        // Validasi
+        if (!$this->validate([
+            'ukuran' => [
+                'rules' => 'required|is_unique[barang_ukuran.ukuran]',
+                'errors' => [
+                    'required' => 'Masukan ukuran !',
+                    'is_unique' => 'ukuran harus unik !'
+                ]
+
+            ]
+        ])) {
+            return redirect()->to('/' . $this->controller . '/tambahUkuran')->withInput();
+        };
+        $this->BarangUkuran->save([
+            'ukuran' => $this->request->getVar('ukuran'),
+        ]);
+        session()->setFlashdata('pesan', 'Data ukuran barang berhasil ditambah');
         return redirect()->to('/' . $this->controller);
     }
 
@@ -210,7 +282,7 @@ class Barang extends BaseController
             'validation' => \Config\Services::validation(),
             'data'  => $this->BarangJenis->getData($id),
         ];
-        return view('/' . $this->controller . '/ubahjenis', $data);
+        return view('/' . $this->controller . '/ubahJenis', $data);
     }
     // Update jenis
     public function updateJenis($id)
@@ -236,27 +308,111 @@ class Barang extends BaseController
         return redirect()->to('/' . $this->controller);
     }
 
+    // edit Lot
+    public function editLot($id)
+    {
+        $data = [
+            'judul' => $this->controller,
+            'aksi' => ' / Ubah Data',
+            'validation' => \Config\Services::validation(),
+            'data'  => $this->BarangLot->getData($id),
+        ];
+        return view('/' . $this->controller . '/ubahLot', $data);
+    }
+    // Update Lot
+    public function updateLot($id)
+    {
+        //Validasi
+        if (!$this->validate([
+            'lot' => [
+                'rules' => 'required|is_unique[barang_lot.lot]',
+                'errors' => [
+                    'required' => 'Masukan lot !',
+                    'is_unique' => 'lot harus unik !'
+                ]
+            ]
+        ])) {
+            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+        };
+        $this->BarangLot->save([
+            'id' => $id,
+            'lot' => $this->request->getVar('lot'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data lot barang berhasil diubah');
+        return redirect()->to('/' . $this->controller);
+    }
+
+    // edit Ukuran
+    public function editUkuran($id)
+    {
+        $data = [
+            'judul' => $this->controller,
+            'aksi' => ' / Ubah Data',
+            'validation' => \Config\Services::validation(),
+            'data'  => $this->BarangUkuran->getData($id),
+        ];
+        return view('/' . $this->controller . '/ubahUkuran', $data);
+    }
+    // Update Ukuran
+    public function updateUkuran($id)
+    {
+        //Validasi
+        if (!$this->validate([
+            'ukuran' => [
+                'rules' => 'required|is_unique[barang_ukuran.ukuran]',
+                'errors' => [
+                    'required' => 'Masukan ukuran !',
+                    'is_unique' => 'ukuran harus unik !'
+                ]
+            ]
+        ])) {
+            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+        };
+        $this->BarangUkuran->save([
+            'id' => $id,
+            'ukuran' => $this->request->getVar('ukuran'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data ukuran barang berhasil diubah');
+        return redirect()->to('/' . $this->controller);
+    }
+
 
     // Delete
     public function deleteKeterangan()
     {
         $id = $this->request->getVar('idKeterangan');
         $this->BarangKeterangan->delete($id);
-        session()->setFlashdata('pesan', 'Data keterangan barang berhasil dihapus');
+        session()->setFlashdata('pesan', 'Data Keterangan barang berhasil dihapus');
         return redirect()->to('/' . $this->controller);
     }
     public function deleteJenis()
     {
         $id = $this->request->getVar('idJenis');
         $this->BarangJenis->delete($id);
-        session()->setFlashdata('pesan', 'Data jenis barang berhasil dihapus');
+        session()->setFlashdata('pesan', 'Data Jenis barang berhasil dihapus');
         return redirect()->to('/' . $this->controller);
     }
     public function deleteGrade()
     {
         $id = $this->request->getVar('idGrade');
         $this->BarangGrade->delete($id);
-        session()->setFlashdata('pesan', 'Data grade barang berhasil dihapus');
+        session()->setFlashdata('pesan', 'Data Grade barang berhasil dihapus');
+        return redirect()->to('/' . $this->controller);
+    }
+    public function deleteLot()
+    {
+        $id = $this->request->getVar('idLot');
+        $this->BarangLot->delete($id);
+        session()->setFlashdata('pesan', 'Data Lot barang berhasil dihapus');
+        return redirect()->to('/' . $this->controller);
+    }
+    public function deleteUkuran()
+    {
+        $id = $this->request->getVar('idUkuran');
+        $this->BarangUkuran->delete($id);
+        session()->setFlashdata('pesan', 'Data Ukuran barang berhasil dihapus');
         return redirect()->to('/' . $this->controller);
     }
 }
