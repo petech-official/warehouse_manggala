@@ -20,7 +20,10 @@
                         <thead>
                             <tr>
                                 <!-- Masukan Disini -->
-
+                                <th>No SO</th>
+                                <th>Tgl SO</th>
+                                <th>Nama Customer</th>
+                                <th>Alamat Kirim</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -31,14 +34,18 @@
                             foreach ($data as $key => $value) : ?>
                                 <tr>
                                     <!-- Masukan Disini -->
-
+                                    <td><?= $value['no_so']; ?></td>
+                                    <td class="tanggal"><?= $value['tgl_so']; ?></td>
+                                    <td><?= $value['nama']; ?></td>
+                                    <td><?= $value['alamat']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id_so']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_so']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_so']; ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -48,7 +55,10 @@
                         <tfoot>
                             <tr>
                                 <!-- Masukan Disini -->
-
+                                <th>No SO</th>
+                                <th>Tgl SO</th>
+                                <th>Nama Customer</th>
+                                <th>Alamat Kirim</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
