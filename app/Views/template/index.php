@@ -181,6 +181,95 @@
       format: 'HH:mm'
     })
   </script>
+  <script>
+    jQuery(document).ready(function() {
+      Main.init();
+      FormElements.init();
+      UIModals.init();
+      TableData.init();
+    });
+
+    //validasi upload file
+    function validasiFile() {
+      var inputFile = document.getElementById('file');
+      var pathFile = inputFile.value;
+      var ekstensiOk = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+      if (!ekstensiOk.exec(pathFile)) {
+        alert('Silakan upload file yang memiliki ekstensi .jpeg/.jpg/.png');
+        inputFile.value = '';
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    function validasiFile2() {
+      var inputFile = document.getElementById('file2');
+      var pathFile = inputFile.value;
+      var ekstensiOk = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+      if (!ekstensiOk.exec(pathFile)) {
+        alert('Silakan upload file yang memiliki ekstensi .jpeg/.jpg/.png');
+        inputFile.value = '';
+        return false;
+      } else {
+        return true;
+      }
+    }
+    //end validasi upload file	    
+
+    $.fn.digits = function() {
+      return this.each(function() {
+        $(this).text($(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1."));
+        $(this).val($(this).val().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1."));
+      })
+    }
+
+    $.fn.tanggal = function() {
+      return this.each(function() {
+        var tanggal = $(this).text().split('-');
+        var bulan = ['-', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        var xbulan = tanggal[1];
+        //var bulan = bulan[xbulan.replace('0','')];
+        if (tanggal[1] >= 10) {
+          var bulan = bulan[xbulan];
+        } else {
+          var bulan = bulan[xbulan.replace('0', '')];
+        }
+        $(this).text(tanggal[2] + ' ' + bulan + ' ' + tanggal[0]);
+      })
+    }
+    $.fn.tanggal_waktu = function() {
+      return this.each(function() {
+        var waktu = $(this).text().split(' ');
+        var tanggal = waktu[0].split('-');
+        var bulan = ['-', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        var xbulan = tanggal[1];
+        //var bulan = bulan[xbulan.replace('0','')];
+        if (tanggal[1] >= 10) {
+          var bulan = bulan[xbulan];
+        } else {
+          var bulan = bulan[xbulan.replace('0', '')];
+        }
+        $(this).text(tanggal[2] + ' ' + bulan + ' ' + tanggal[0] + ', ' + waktu[1]);
+      })
+    }
+
+    $(document).ready(function() {
+      $('.rupiah').digits();
+      $('.tanggal').tanggal();
+      $('.tanggal_waktu').tanggal_waktu();
+
+    });
+
+    $('.rupiah').on('keyup', function() {
+      var diajukan = $(this).val();
+      diajukan = parseInt(diajukan.replace(/[^0-9]/g, ''), 10);
+      if (isNaN(diajukan)) {
+        var diajukan = 0;
+      }
+      $(this).val(Number(diajukan).toLocaleString('id'));
+    });
+  </script>
 </body>
 
 </html>
