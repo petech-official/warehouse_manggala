@@ -4,9 +4,9 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header">                    
                     <h3 class="card-title"><a href="/<?= $judulMain; ?>/index"><?= $judulMain; ?></a>
-                        <?= $aksi; ?> <?= $dataMain['no_so'] ?></h3>
+                        <?= $aksi; ?> <?= $dataMain[0]['no_so'] ?></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
@@ -15,26 +15,31 @@
                         <tr>
                             <th>No SO</th>
                             <td>:</td>
-                            <td><?= $dataMain['no_so'] ?></td>
+                            <td><?= $dataMain[0]['no_so'] ?></td>
                         </tr>
                         <tr>
                             <th>TGL SO</th>
                             <td>:</td>
-                            <td class="tanggal"><?= $dataMain['tgl_so'] ?></td>
+                            <td class="tanggal"><?= $dataMain[0]['tgl_so'] ?></td>
                         </tr>
                         <tr>
                             <th>Nama Customer</th>
                             <td>:</td>
-                            <td><?= $dataMain['id_so'] ?></td>
+                            <td><?= $dataMain[0]['nama'] ?></td>
+                        </tr>
+                        <tr>
+                            <th>Alamat NPWP</th>
+                            <td>:</td>
+                            <td><?= $dataMain[0]['alamat_npwp'] ?></td>
                         </tr>
                         <tr>
                             <th>Alamat Kirim</th>
                             <td>:</td>
-                            <td><?= $dataMain['alamat_kirim'] ?></td>
+                            <td><?= $dataMain[0]['alamat'] ?></td>
                         </tr>
                     </table>
                     <hr>
-                    <!-- <a href="/<?= $judul; ?>/tambah/<?= $dataMain['id_so'] ?>" class="btn btn-primary">Tambah Alamat</a><br><br>
+                    <!-- <a href="/<?= $judul; ?>/tambah/<?= $dataMain[0]['id_so'] ?>" class="btn btn-primary">Tambah Alamat</a><br><br>
                     <?php if (session()->getFlashdata('pesan')) : ?>
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashdata('pesan'); ?>
@@ -44,10 +49,16 @@
                         <thead>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <th>Nama Barang</th>
-                                <th>Quantitas</th>
+                                <th rowspan="2">Nama Barang</th>
+                                <th rowspan="2">Lot</th>                                
+                                <th colspan="2">Quantity</th>                                
+                                <th rowspan="2">Keterangan</th>
                                 <!-- Selesai Disini -->
-                                <th>Aksi</th>
+                                <th rowspan="2">Aksi</th>
+                            </tr>
+                            <tr>
+                                <th>Box</th>
+                                <th>Kg</th>
                             </tr>
                         </thead>
                         <tbody style="padding: 50px;">
@@ -56,8 +67,11 @@
                             foreach ($data as $key => $value) : ?>
                                 <tr>
                                     <!-- Masukan Disini -->
-                                    <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> <?= $value['lot']; ?> <?= $value['grade']; ?></td>
+                                    <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?></td>
+                                    <td><?= $value['lot']; ?></td>
                                     <td class="rupiah"><?= $value['quantitas'] ?></td>
+                                    <td class="rupiah"><?= number_format($value['berat_total'],2) ?></td>
+                                    <td><?= $value['keterangan_so'] ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
                                         <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
@@ -75,7 +89,10 @@
                             <tr>
                                 <!-- Masukan Disini -->
                                 <th>Nama Barang</th>
-                                <th>Quantitas</th>
+                                <th>Lot</th>
+                                <th>Box</th>
+                                <th>Berat </th>
+                                <th>Keterangan</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

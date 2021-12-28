@@ -130,6 +130,12 @@
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <!-- <script src="<?= base_url('assets'); ?>/dist/js/pages/dashboard.js"></script> -->
 
+<!-- InputMask -->
+<script src="<?= base_url('assets'); ?>/plugins/moment/moment.min.js"></script>
+<script src="<?= base_url('assets'); ?>/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+
+
+
   <!-- DataTables  &  plugins -->
   <script src="<?= base_url('assets'); ?>/plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="<?= base_url('assets'); ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -181,13 +187,7 @@
       format: 'HH:mm'
     })
   </script>
-  <script>
-    jQuery(document).ready(function() {
-      Main.init();
-      FormElements.init();
-      UIModals.init();
-      TableData.init();
-    });
+  <script>    
 
     //validasi upload file
     function validasiFile() {
@@ -269,6 +269,10 @@
       }
       $(this).val(Number(diajukan).toLocaleString('id'));
     });
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    $('[data-mask]').inputmask()
   </script>
 </body>
 

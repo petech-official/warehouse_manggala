@@ -23,9 +23,10 @@
                                 <th>No SO</th>
                                 <th>Tgl SO</th>
                                 <th>Nama Customer</th>
+                                <th>Alamat NPWP</th>
                                 <th>Alamat Kirim</th>
                                 <!-- Selesai Disini -->
-                                <th>Aksi</th>
+                                <th width="150px">Aksi</th>
                             </tr>
                         </thead>
                         <tbody style="padding: 50px;">
@@ -37,6 +38,7 @@
                                     <td><?= $value['no_so']; ?></td>
                                     <td class="tanggal"><?= $value['tgl_so']; ?></td>
                                     <td><?= $value['nama']; ?></td>
+                                    <td><?= $value['alamat_npwp']; ?></td>
                                     <td><?= $value['alamat']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
@@ -58,6 +60,7 @@
                                 <th>No SO</th>
                                 <th>Tgl SO</th>
                                 <th>Nama Customer</th>
+                                <th>Alamat NPWP</th>
                                 <th>Alamat Kirim</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
