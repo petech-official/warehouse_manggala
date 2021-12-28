@@ -1,6 +1,9 @@
 <?= $this->extend('template/index'); ?>
 <?= $this->section('content'); ?>
 <!-- Main content -->
+<?php $pieces = explode("-", $data['tgl_so']);
+$tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
+
 
 <div class="container-fluid">
     <div class="row">
@@ -21,29 +24,46 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id']; ?>">
+                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_so']; ?>">
                             <div class="card-body">
                                 <input type="hidden" name="id">
                                 <div class="form-group">
-                                    <label for="zzz">zzz</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('zzz')) ? 'is-invalid' : ''; ?>" id="zzz" name="zzz" autofocus value="<?= (old('zzz')) ? old('zzz') : $data['zzz']; ?>">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('zzz'); ?>
+                                    <label>Date masks:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_so" name="tgl_so" value="<?= $tanggal; ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="status">Status</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('status')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus>
-                                        <?php foreach ($status as $key => $value) : ?>
-                                            <option value="<?= $value['status']; ?>" <?php if ($value['status'] == $data['status']) {
-                                                                                            echo "selected";
-                                                                                        } ?>>
-                                                <?= $value['status']; ?>
+                                    <label for="dataCustomer">Customer</label>
+                                    <select class="form-select form-control  <?= ($validation->hasError('dataCustomer')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus id="customer" name="customer">
+                                        <?php foreach ($dataCustomer as $key => $value) : ?>
+                                            <option value="<?= $value['id']; ?>" <?php if ($value['id'] == $data['id_customer']) {
+                                                                                        echo "selected";
+                                                                                    } ?>>
+                                                <?= $value['nama']; ?>
                                             </option>
                                         <?php endforeach ?>
                                     </select>
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('status'); ?>
+                                        <?= $validation->getError('dataCustomer'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="alamat_kirim">Alamat Kirim</label>
+                                    <select class="form-select form-control  <?= ($validation->hasError('alamat_kirim')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="alamat_kirim" id="alamat_kirim">
+                                        <?php foreach ($dataAlamat as $key => $value) : ?>
+                                            <option value="<?= $value['id']; ?>" <?php if ($value['id'] == $data['alamat_kirim']) {
+                                                                                        echo "selected";
+                                                                                    } ?>>
+                                                <?= $value['alamat']; ?>
+                                            </option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('alamat_kirim'); ?>
                                     </div>
                                 </div>
                             </div>
@@ -59,5 +79,26 @@
         </div>
     </div>
 </div>
-
+<script>
+    $('#customer').change(function() {
+        var customer = $('#customer').val();
+        $.ajax({
+            url: "/<?= $judul ?>/getAlamat",
+            type: "POST",
+            data: {
+                namaCustomer: customer
+            },
+            dataType: "json",
+            success: function(data) {
+                // let obj = JSON.parse(data)
+                var baris = '';
+                for (let i = 0; i < data.length; i++) {
+                    const element = data[i];
+                    baris += '<option value="' + element.id + '" >' + element.alamat + '</option>';
+                }
+                $('#alamat_kirim').html(baris);
+            }
+        })
+    });
+</script>
 <?= $this->endSection(); ?>

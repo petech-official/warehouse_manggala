@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/<?= $judul; ?>/index/<?= $id_customer; ?>"><?= $judul; ?></a>
+                        <a href="/<?= $judul; ?>/index"><?= $judul; ?></a>
                         <?= $aksi; ?>
                     </h3>
                 </div>
@@ -21,28 +21,29 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id']; ?>">
+                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_so_detail']; ?>">
                             <div class="card-body">
-                                <input type="hidden" name="id_customer" value="<?= $data['id_customer'] ?>">
                                 <div class="form-group">
-                                    <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" autofocus value="<?= (old('alamat')) ? old('alamat') : $data['alamat']; ?>">
+                                    <label for="id_barang">Barang</label>
+                                    <input type="hidden" value="<?= $data['id_so']; ?>" name="id_so" id="id_so">
+                                    <select class="form-select form-control  <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" name="id_barang">
+                                        <?php foreach ($dataBarang as $key => $value) : ?>
+                                            <option value="<?= $value['id_barang']; ?>" <?php if ($value['id_barang'] == $data['id_barang']) {
+                                                                                            echo "selected";
+                                                                                        } ?>>
+                                                <?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> <?= $value['lot']; ?> <?= $value['grade']; ?>
+                                            </option>
+                                        <?php endforeach ?>
+                                    </select>
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('alamat'); ?>
+                                        <?= $validation->getError('id_barang'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="km">Km</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('km')) ? 'is-invalid' : ''; ?>" id="km" name="km" autofocus value="<?= (old('km')) ? old('km') : $data['km']; ?>">
+                                    <label for="quantitas">Box</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('quantitas')) ? 'is-invalid' : ''; ?>" id="quantitas" name="quantitas" autofocus value="<?= (old('quantitas')) ? old('quantitas') : $data['quantitas']; ?>">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('km'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="waktu">waktu</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('waktu')) ? 'is-invalid' : ''; ?>" id="waktu" name="waktu" autofocus value="<?= (old('waktu')) ? old('waktu') : $data['waktu']; ?>">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('waktu'); ?>
+                                        <?= $validation->getError('quantitas'); ?>
                                     </div>
                                 </div>
                             </div>
@@ -58,4 +59,5 @@
         </div>
     </div>
 </div>
+
 <?= $this->endSection(); ?>

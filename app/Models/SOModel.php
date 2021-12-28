@@ -14,7 +14,7 @@ class SOModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['no_so', 'tgl_so', 'id_customer', 'alamat_kirim'];
 
     // Dates
     protected $useTimestamps = false;
@@ -50,7 +50,16 @@ class SOModel extends Model
     {
         return $this->db->table('so')
             ->join('customer', 'customer.id=so.id_customer')
-            ->join('customer_detail', 'customer_detail.id_customer=so.id_customer', 'customer_detail.id=so.alamat')            
+            ->join('customer_detail', 'customer_detail.id=so.alamat_kirim', 'customer_detail.id_customer=so.id_customer',)
             ->get()->getResultArray();
+    }
+    public function getNoSo()
+    {
+
+        return $this->db->table("so")->select('no_so')->orderBy('no_so', 'DESC')->get()->getResultArray();
+    }
+    public function getAlamat($id_customer)
+    {
+        return $this->db->table('customer_detail')->where('id_customer', $id_customer)->get()->getResultArray();
     }
 }
