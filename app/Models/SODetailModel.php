@@ -8,13 +8,13 @@ class SODetailModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'so_detail';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_so_detail';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['id_so', 'id_barang', 'quantitas', 'berat_total', 'keterangan_so'];
 
     // Dates
     protected $useTimestamps = false;
@@ -51,7 +51,7 @@ class SODetailModel extends Model
         if ($id == false) {
             return $this->findAll();
         }
-        return $this->where('id', $id)->first();
+        return $this->where('id_so_detail', $id)->first();
     }
     public function getSODetail($id)
     {
@@ -67,9 +67,9 @@ class SODetailModel extends Model
     }
     public function getSO($id)
     {
-        return $this->db->table('so')->where('id', $id)
+        return $this->db->table('so')->where('id_so', $id)
             ->join('customer', 'customer.id=so.id_customer')
-            ->join('customer_detail', 'customer_detail.id_customer=so.id_customer', 'customer_detail.id=so.alamat')            
-            ->get()->getResultArray();
+            ->join('customer_detail', 'customer_detail.id=so.alamat_kirim', 'customer_detail.id_customer=so.id_customer',)
+            ->get()->getResultArray()[0];
     }
 }
