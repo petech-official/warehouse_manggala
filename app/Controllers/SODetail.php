@@ -24,7 +24,7 @@ class SODetail extends BaseController
             'judulMain' => $this->controllerMain,
             'aksi' => ' / Detail Data',
             'validation' => \Config\Services::validation(),
-            'dataMain' => $this->$model->getData($id),
+            'dataMain' => $this->$model->getSO($id),
             'data'  => $this->$modelDetail->getSODetail($id),
         ];
         return view('/' . $this->controller . '/index', $data);

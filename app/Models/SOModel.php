@@ -50,7 +50,7 @@ class SOModel extends Model
     {
         return $this->db->table('so')
             ->join('customer', 'customer.id=so.id_customer')
-            ->join('customer_detail', 'customer_detail.id_customer=so.id_customer')
+            ->join('customer_detail', 'customer_detail.id_customer=so.id_customer', 'customer_detail.id=so.alamat')            
             ->get()->getResultArray();
     }
 }

@@ -65,4 +65,11 @@ class SODetailModel extends Model
             ->join('barang_grade', 'barang_grade.id=barang.id_grade')
             ->get()->getResultArray();
     }
+    public function getSO($id)
+    {
+        return $this->db->table('so')->where('id', $id)
+            ->join('customer', 'customer.id=so.id_customer')
+            ->join('customer_detail', 'customer_detail.id_customer=so.id_customer', 'customer_detail.id=so.alamat')            
+            ->get()->getResultArray();
+    }
 }
