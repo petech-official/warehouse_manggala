@@ -35,7 +35,8 @@
                                     <!-- Masukan Disini -->
                                     <td><?= $value['nama']; ?></td>
                                     <td><?= $value['telp']; ?></td>
-                                    <td><?= $value['alamat']; ?></td>
+                                    <td><?= $value['alamat_npwp']; ?></td>
+                                    
                                     <!-- Selesai Disini -->
                                     <td>
                                         <a href="/<?= $judul; ?>Detail/index/<?= $value['id']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
@@ -55,7 +56,7 @@
                                 <!-- Masukan Disini -->
                                 <th>Nama</th>
                                 <th>Telepon</th>
-                                <th>Alamat NPWP</th>
+                                <th>Alamat_npwp NPWP</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

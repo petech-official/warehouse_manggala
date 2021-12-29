@@ -64,7 +64,7 @@ class Customer extends BaseController
         $this->$model->save([
             'nama' => $this->request->getVar('nama'),
             'telp' => $this->request->getVar('telp'),
-            'alamat' => $this->request->getVar('alamat'),
+            'alamat_npwp' => $this->request->getVar('alamat'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller);
@@ -110,7 +110,7 @@ class Customer extends BaseController
             'id' => $id,
             'nama' => $this->request->getVar('nama'),
             'telp' => $this->request->getVar('telp'),
-            'alamat' => $this->request->getVar('alamat'),
+            'alamat_npwp' => $this->request->getVar('alamat'),
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil diubah');
