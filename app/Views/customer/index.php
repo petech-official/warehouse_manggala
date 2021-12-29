@@ -36,6 +36,7 @@
                                     <td><?= $value['nama']; ?></td>
                                     <td><?= $value['telp']; ?></td>
                                     <td><?= $value['alamat_npwp']; ?></td>
+                                    
                                     <!-- Selesai Disini -->
                                     <td>
                                         <a href="/<?= $judul; ?>Detail/index/<?= $value['id']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
