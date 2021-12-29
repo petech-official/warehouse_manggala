@@ -25,7 +25,7 @@
                         <tr>
                             <th>Alamat NPWP</th>
                             <td>:</td>
-                            <td><?= $dataMain['alamat'] ?></td>
+                            <td><?= $dataMain['alamat_npwp'] ?></td>
                         </tr>
                     </table>
                     <hr>
