@@ -33,8 +33,10 @@ class SODetail extends BaseController
     }
     public function tambah($id)
     {
+        $modelDetail = $this->controller . 'Model';
         $data = [
-            'id_so' => $id,
+            'id_so_detail' => $id,
+            'id_so' => $this->$modelDetail->getIdSo($id),
             'judul' => $this->controller,
             'aksi' => ' / Tambah Data',
             'validation' => \Config\Services::validation(),
@@ -86,10 +88,12 @@ class SODetail extends BaseController
     {
 
         $modelDetail = $this->controller . 'Model';
+
         $data = [
             'judul' => $this->controller,
             'aksi' => ' / Ubah Data',
-            'id_so' => $id,
+            'id_so_detail' => $id,
+            'id_so' => $this->$modelDetail->getIdSo($id),
             'validation' => \Config\Services::validation(),
             'data'  => $this->$modelDetail->getDataDetail($id),
             'dataBarang' => $this->BarangModel->getBarang()
