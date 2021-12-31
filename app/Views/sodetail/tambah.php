@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/<?= $judul; ?>/index"><?= $judul; ?></a>
+                        <a href="/<?= $judul; ?>/index/<?= $id_so['id_so'] ?>"><?= $judul; ?></a>
                         <?= $aksi; ?>
                     </h3>
                 </div>
@@ -25,7 +25,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="id_barang">Barang</label>
-                                    <input type="hidden" value="<?= $id_so; ?>" name="id_so" id="id_so">
+                                    <input type="hidden" value="<?= $id_so_detail; ?>" name="id_so" id="id_so">
                                     <select class="form-select form-control  <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" name="id_barang">
                                         <option value="" selected disabled>Pilih Barang</option>
                                         <?php foreach ($dataBarang as $key => $value) : ?>

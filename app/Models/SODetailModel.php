@@ -72,4 +72,11 @@ class SODetailModel extends Model
             ->join('customer_detail', 'customer_detail.id=so.alamat_kirim', 'customer_detail.id_customer=so.id_customer',)
             ->get()->getResultArray()[0];
     }
+    public function getIdSo($id)
+    {
+        if ($id == false) {
+            return $this->findAll();
+        }
+        return $this->select('id_so')->where('id_so_detail', $id)->first();
+    }
 }

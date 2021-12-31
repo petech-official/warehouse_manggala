@@ -23,6 +23,7 @@
                         <!-- form start -->
                         <form id="quickForm" method="POST" action="/<?= $judul; ?>/save">
                             <div class="card-body">
+                                <input type="hidden" id="id_customer" name="id_customer" value="<?= $id_customer; ?>">
                                 <div class="form-group">
                                     <label for="alamat">Alamat</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" autofocus value="<?= old('alamat'); ?>" placeholder="Masukan alamat">
@@ -37,24 +38,19 @@
                                         <?= $validation->getError('km'); ?>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="waktu">Waktu</label>
-                                    <!-- time Picker -->
-                                    <input type="text" class="form-control <?= ($validation->hasError('waktu')) ? 'is-invalid' : ''; ?>" id="waktu" name="waktu" autofocus value="<?= old('waktu'); ?>" placeholder="Masukan waktu">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('waktu'); ?>
-                                    </div>
-                                </div>
                                 <!-- time Picker -->
                                 <div class="bootstrap-timepicker">
                                     <div class="form-group">
-                                        <label>Time picker:</label>
+                                        <label>Waktu</label>
 
                                         <div class="input-group date" id="timepicker" data-target-input="nearest">
-                                            <input type="text" class="form-control datetimepicker-input" data-target="#timepicker" />
+                                            <input type="text" class="form-control datetimepicker-input <?= ($validation->hasError('waktu')) ? 'is-invalid' : ''; ?>" id="waktu" name="waktu" autofocus value="<?= old('waktu'); ?>" placeholder="Masukan waktu" data-target=" #timepicker">
                                             <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="far fa-clock"></i></div>
                                             </div>
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('waktu'); ?>
                                         </div>
                                         <!-- /.input group -->
                                     </div>

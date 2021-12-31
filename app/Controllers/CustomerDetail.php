@@ -63,7 +63,7 @@ class CustomerDetail extends BaseController
                 ]
             ],
         ])) {
-            return redirect()->to('/' . $this->controller . '/tambah')->withInput();
+            return redirect()->to('/' . $this->controller . '/tambah/' . $this->request->getVar('id_customer'))->withInput();
         };
         $model = $this->controller . 'Model';
         $this->$model->save([
