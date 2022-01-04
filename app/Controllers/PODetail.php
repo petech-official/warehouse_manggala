@@ -4,30 +4,30 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class SODetail extends BaseController
+class PODetail extends BaseController
 {
     // model yang dibutuhkan
     // protected $userModel;
     public function __construct()
     {
-        $this->SOModel = new \App\Models\SOModel();
-        $this->SODetailModel = new \App\Models\SODetailModel();
+        $this->POModel = new \App\Models\POModel();
+        $this->PODetailModel = new \App\Models\PODetailModel();
         $this->BarangModel = new \App\Models\BarangModel();
     }
-    public $controllerMain = 'SO';
-    public $controller = 'SODetail';
+    public $controllerMain = 'PO';
+    public $controller = 'PODetail';
     public function index($id)
     {
         $model = $this->controllerMain . 'Model';
         $modelDetail = $this->controller . 'Model';
-        $this->$model->getSO($id);
+        $this->$model->getPO($id);
         $data = [
             'judul' => $this->controller,
             'judulMain' => $this->controllerMain,
             'aksi' => ' / Detail Data',
             'validation' => \Config\Services::validation(),
-            'dataMain' => $this->$modelDetail->getSO($id),
-            'data'  => $this->$modelDetail->getSODetail($id),
+            'dataMain' => $this->$modelDetail->getPO($id),
+            'data'  => $this->$modelDetail->getPODetail($id),
         ];
         return view('/' . $this->controller . '/index', $data);
     }
@@ -35,8 +35,8 @@ class SODetail extends BaseController
     {
         $modelDetail = $this->controller . 'Model';
         $data = [
-            'id_so_detail' => $id,
-            'id_so' => $this->$modelDetail->getIdSo($id),
+            'id_po_detail' => $id,
+            'id_po' => $this->$modelDetail->getIdPO($id),
             'judul' => $this->controller,
             'aksi' => ' / Tambah Data',
             'validation' => \Config\Services::validation(),
@@ -62,27 +62,22 @@ class SODetail extends BaseController
                 ]
             ],
         ])) {
-            return redirect()->to('/' . $this->controller . '/tambah/' . $this->request->getVar('id_so'))->withInput();
+            return redirect()->to('/' . $this->controller . '/tambah')->withInput();
         };
 
         $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
         $totalBerat = $barang['berat'] * $this->request->getVar('quantitas');
-        // if ($totalBerat != 0) {
-        //     $keterangan_so = 'Barang Standar, 1 Box emiliki berat ' . $barang['berat'] . 'Kg';
-        // } else {
-        //     $keterangan_so = 'Barang Non Standar';
-        // }
 
         $model = $this->controller . 'Model';
         $this->$model->save([
-            'id_so' => $this->request->getVar('id_so'),
+            'id_po' => $this->request->getVar('id_po'),
             'id_barang' => $this->request->getVar('id_barang'),
             'quantitas' => $this->request->getVar('quantitas'),
             'berat_total' => $totalBerat,
-            'keterangan_so' => $this->request->getVar('keterangan_so')
+            'keterangan_po_detail' => $this->request->getVar('keterangan_po_detail'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
-        return redirect()->to('/' . $this->controller . '/index/' . $this->request->getVar('id_so'));
+        return redirect()->to('/' . $this->controller . '/index/' . $this->request->getVar('id_po'));
     }
     public function edit($id)
     {
@@ -92,8 +87,8 @@ class SODetail extends BaseController
         $data = [
             'judul' => $this->controller,
             'aksi' => ' / Ubah Data',
-            'id_so_detail' => $id,
-            'id_so' => $this->$modelDetail->getIdSo($id),
+            'id_po_detail' => $id,
+            'id_po' => $this->$modelDetail->getIdPO($id),
             'validation' => \Config\Services::validation(),
             'data'  => $this->$modelDetail->getDataDetail($id),
             'dataBarang' => $this->BarangModel->getBarang()
@@ -117,34 +112,30 @@ class SODetail extends BaseController
                 ]
             ],
         ])) {
-            return redirect()->to('/' . $this->controller . '/edit/' . $this->request->getVar('id_so'))->withInput();
+            return redirect()->to('/' . $this->controller . '/edit')->withInput();
         };
         $model = $this->controller . 'Model';
         $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
         $totalBerat = $barang['berat'] * $this->request->getVar('quantitas');
-        // if ($totalBerat != 0) {
-        //     $keterangan_so = 'Barang Standar, 1 Box emiliki berat ' . $barang['berat'] . 'Kg';
-        // } else {
-        //     $keterangan_so = 'Barang Non Standar';
-        // }        
+
         $this->$model->save([
-            'id_so_detail' => $id,
-            'id_so' => $this->request->getVar('id_so'),
+            'id_po_detail' => $id,
+            'id_po' => $this->request->getVar('id_po'),
             'id_barang' => $this->request->getVar('id_barang'),
             'quantitas' => $this->request->getVar('quantitas'),
             'berat_total' => $totalBerat,
-            'keterangan_so' => $this->request->getVar('keterangan_so')
+            'keterangan_po' => $this->request->getVar('keterangan_po_detail'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
-        return redirect()->to('/' . $this->controller . '/index/' . $this->request->getVar('id_so'));
+        return redirect()->to('/' . $this->controller . '/index/' . $this->request->getVar('id_po'));
     }
     public function delete()
     {
         $model = $this->controller . 'Model';
         $id = $this->request->getVar('id');
-        $id_SO = $this->request->getVar('id_so');
+        $id_po = $this->request->getVar('id_po');
         $this->$model->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
-        return redirect()->to('/' . $this->controller . '/index/' . $id_SO);
+        return redirect()->to('/' . $this->controller . '/index/' . $id_po);
     }
 }

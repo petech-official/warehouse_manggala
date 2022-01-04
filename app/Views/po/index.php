@@ -20,12 +20,11 @@
                         <thead>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <th>No SO</th>
-                                <th>Tgl SO</th>
-                                <th>Nama Customer</th>
-                                <th>Alamat NPWP</th>
-                                <th>Alamat Kirim</th>
-                                <th>Keterangan PO</th>
+                                <th>No PO</th>
+                                <th>Tgl PO</th>
+                                <th>Nama Supplier</th>
+                                <th>Alamat</th>
+                                <th>Keterangan</th>
                                 <!-- Selesai Disini -->
                                 <th width="150px">Aksi</th>
                             </tr>
@@ -36,20 +35,19 @@
                             foreach ($data as $key => $value) : ?>
                                 <tr>
                                     <!-- Masukan Disini -->
-                                    <td><?= $value['no_so']; ?></td>
-                                    <td class="tanggal"><?= $value['tgl_so']; ?></td>
+                                    <td><?= $value['no_po']; ?></td>
+                                    <td class="tanggal"><?= $value['tgl_po']; ?></td>
                                     <td><?= $value['nama']; ?></td>
-                                    <td><?= $value['alamat_npwp']; ?></td>
                                     <td><?= $value['alamat']; ?></td>
-                                    <td><?= $value['keterangan']; ?></td>
+                                    <td><?= $value['keterangan_po']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id_so']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_so']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id_po']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_po']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_so']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_po']; ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -59,12 +57,11 @@
                         <tfoot>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <th>No SO</th>
-                                <th>Tgl SO</th>
-                                <th>Nama Customer</th>
-                                <th>Alamat NPWP</th>
-                                <th>Alamat Kirim</th>
-                                <th>Keterangan PO</th>
+                                <th>No PO</th>
+                                <th>Tgl PO</th>
+                                <th>Nama Supplier</th>
+                                <th>Alamat</th>
+                                <th>Keterangan</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

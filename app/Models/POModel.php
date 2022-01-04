@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SOModel extends Model
+class POModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'so';
-    protected $primaryKey       = 'id_so';
+    protected $table            = 'po';
+    protected $primaryKey       = 'id_po';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['no_so', 'tgl_so', 'id_customer', 'alamat_kirim', 'keterangan'];
+    protected $allowedFields    = ['no_po', 'tgl_po', 'id_supplier', 'keterangan_po'];
 
     // Dates
     protected $useTimestamps = false;
@@ -39,27 +39,23 @@ class SOModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getPO()
+    {
+        return $this->db->table('po')
+            ->join('supplier', 'supplier.id=po.id_supplier')
+            ->get()->getResultArray();
+    }
+    public function getNoPo()
+    {
+
+        return $this->db->table("po")->select('no_po')->orderBy('no_po', 'DESC')->get()->getResultArray();
+    }
     public function getData($id = false)
     {
         if ($id == false) {
             return $this->findAll();
         }
-        return $this->where(['id_so' => $id])->first();
-    }
-    public function getSO()
-    {
-        return $this->db->table('so')
-            ->join('customer', 'customer.id=so.id_customer')
-            ->join('customer_detail', 'customer_detail.id=so.alamat_kirim', 'customer_detail.id_customer=so.id_customer',)
-            ->get()->getResultArray();
-    }
-    public function getNoSo()
-    {
-
-        return $this->db->table("so")->select('no_so')->orderBy('no_so', 'DESC')->get()->getResultArray();
-    }
-    public function getAlamat($id_customer)
-    {
-        return $this->db->table('customer_detail')->where('id_customer', $id_customer)->get()->getResultArray();
+        return $this->where(['id_po' => $id])->first();
     }
 }

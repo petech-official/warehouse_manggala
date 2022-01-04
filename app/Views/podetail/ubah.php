@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/<?= $judul; ?>/index/<?= $id_so['id_so'] ?>"><?= $judul; ?></a>
+                        <a href="/<?= $judul; ?>/index/<?= $id_po['id_po']; ?>"><?= $judul; ?></a>
                         <?= $aksi; ?>
                     </h3>
                 </div>
@@ -17,19 +17,20 @@
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Tambah Data</h3>
+                            <h3 class="card-title">Form Ubah Data <?= $judul; ?></h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/save">
+                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_po_detail']; ?>">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="id_barang">Barang</label>
-                                    <input type="hidden" value="<?= $id_so_detail; ?>" name="id_so" id="id_so">
-                                    <select class="form-select form-control  <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" id="id_barang">
-                                        <option value="" selected disabled>Pilih Barang</option>
+                                    <input type="hidden" value="<?= $data['id_po']; ?>" name="id_po" id="id_po">
+                                    <select class="form-select form-control  <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" name="id_barang">
                                         <?php foreach ($dataBarang as $key => $value) : ?>
-                                            <option value="<?= $value['id_barang']; ?>" } ?>
+                                            <option value="<?= $value['id_barang']; ?>" <?php if ($value['id_barang'] == $data['id_barang']) {
+                                                                                            echo "selected";
+                                                                                        } ?>>
                                                 <?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> <?= $value['lot']; ?> <?= $value['grade']; ?>
                                             </option>
                                         <?php endforeach ?>
@@ -40,16 +41,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="quantitas">Box</label>
-                                    <input type="number" class="form-control <?= ($validation->hasError('quantitas')) ? 'is-invalid' : ''; ?>" id="quantitas" name="quantitas" autofocus value="<?= old('quantitas'); ?>" placeholder="Masukan jumlah box">
+                                    <input type="text" class="form-control <?= ($validation->hasError('quantitas')) ? 'is-invalid' : ''; ?>" id="quantitas" name="quantitas" autofocus value="<?= (old('quantitas')) ? old('quantitas') : $data['quantitas']; ?>">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('quantitas'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="keterangan_so">Keterangan SO</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_so')) ? 'is-invalid' : ''; ?>" id="keterangan_so" name="keterangan_so" autofocus value="<?= old('keterangan_so'); ?>" placeholder="Masukan keterangan">
+                                    <label for="keterangan_po_detail">Keterangan PO Detail</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_po_detail')) ? 'is-invalid' : ''; ?>" id="keterangan_po_detail" name="keterangan_po_detail" autofocus value="<?= (old('keterangan_po_detail')) ? old('keterangan_po_detail') : $data['keterangan_po_detail']; ?>">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('keterangan_so'); ?>
+                                        <?= $validation->getError('keterangan_po_detail'); ?>
                                     </div>
                                 </div>
                             </div>
