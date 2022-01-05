@@ -46,6 +46,13 @@
                                         <?= $validation->getError('quantitas'); ?>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="keterangan_so">Keteranga SO</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_so')) ? 'is-invalid' : ''; ?>" id="keterangan_so" name="keterangan_so" autofocus value="<?= (old('keterangan_so')) ? old('keterangan_so') : $data['keterangan_so']; ?>">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('keterangan_so'); ?>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">

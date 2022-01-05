@@ -25,37 +25,25 @@
                             <div class="card-body">
                                 <!-- Date dd/mm/yyyy -->
                                 <div class="form-group">
-                                    <label>Tanggal SO</label>
+                                    <label>Tgl PO</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_so" name="tgl_so">
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('tgl_so'); ?>
+                                        <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_po" name="tgl_po">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="customer">Customer</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('customer')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('customer'); ?>" name="customer" id="customer">
-                                        <option selected disabled>Pilih customer</option>
-                                        <?php foreach ($dataCustomer as $key => $value) : ?>
+                                    <label for="supplier">Supplier</label>
+                                    <select class="form-select form-control  <?= ($validation->hasError('supplier')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('supplier'); ?>" name="supplier" id="supplier">
+                                        <option selected disabled>Pilih Supplier</option>
+                                        <?php foreach ($dataSupplier as $key => $value) : ?>
                                             <option value="<?= $value['id']; ?>"><?= $value['nama']; ?></option>
                                         <?php endforeach ?>
                                     </select>
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('customer'); ?>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="alamat_kirim">Alamat Kirim</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('alamat_kirim')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('alamat_kirim'); ?>" name="alamat_kirim" id="alamat_kirim">
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('alamat_kirim'); ?>
+                                        <?= $validation->getError('supplier'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -87,27 +75,6 @@
     </div>
 </div>
 <script>
-    $('#customer').change(function() {
-        var customer = $('#customer').val();
-        console.log(customer);
-        $.ajax({
-            url: "/<?= $judul ?>/getAlamat",
-            type: "POST",
-            data: {
-                namaCustomer: customer
-            },
-            dataType: "json",
-            success: function(data) {
-                // let obj = JSON.parse(data)
-                var baris = '';
-                for (let i = 0; i < data.length; i++) {
-                    const element = data[i];
-                    baris += '<option value="' + element.id + '" >' + element.alamat + '</option>';
-                }
-                $('#alamat_kirim').html(baris);
-            }
-        })
-    });
 </script>
 
 <?= $this->endSection(); ?>

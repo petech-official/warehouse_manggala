@@ -50,7 +50,8 @@ class SO extends BaseController
                 'errors' => [
                     'required' => 'Masukan customer !',
                 ]
-            ]
+            ],
+
         ])) {
             return redirect()->to('/' . $this->controller . '/tambah')->withInput();
         };
@@ -79,6 +80,7 @@ class SO extends BaseController
             'tgl_so' => $tanggal,
             'id_customer' => $this->request->getVar('customer'),
             'alamat_kirim' => $this->request->getVar('alamat_kirim'),
+            'keterangan' => $this->request->getVar('keterangan'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller);
@@ -100,19 +102,23 @@ class SO extends BaseController
     }
     public function update($id)
     {
-        //Validasi
-        // if (!$this->validate([
-        //     'zzz' => [
-        //         'rules' => 'required|is_unique[NamaTableZzz.AttributZzz]',
-        //         'errors' => [
-        //             'required' => 'Masukan zzz !',
-        //             'is_unique' => 'zzz harus unik !'
-        //         ]
+        if (!$this->validate([
+            'tgl_so' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan tgl_so !',
+                ]
+            ],
+            'customer' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan customer !',
+                ]
+            ],
 
-        //     ]
-        // ])) {
-        //     return redirect()->to('/' . $this->controller . '/edit')->withInput();
-        // };
+        ])) {
+            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+        };
         $pieces = explode("/", $this->request->getVar('tgl_so'));
         $tanggal = $pieces[2] . '-' . $pieces[1] . '-' . $pieces[0];
         $model = $this->controller . 'Model';
@@ -121,6 +127,7 @@ class SO extends BaseController
             'tgl_so' => $tanggal,
             'id_customer' => $this->request->getVar('customer'),
             'alamat_kirim' => $this->request->getVar('alamat_kirim'),
+            'keterangan' => $this->request->getVar('keterangan'),
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil diubah');

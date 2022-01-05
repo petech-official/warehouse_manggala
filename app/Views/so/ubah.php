@@ -28,7 +28,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                             <div class="card-body">
                                 <input type="hidden" name="id">
                                 <div class="form-group">
-                                    <label>Date masks:</label>
+                                    <label>Tgl SO</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -64,6 +64,13 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                     </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('alamat_kirim'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="keterangan">keterangan</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" id="keterangan" name="keterangan" autofocus value="<?= (old('keterangan')) ? old('keterangan') : $data['keterangan']; ?>">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('keterangan'); ?>
                                     </div>
                                 </div>
                             </div>
