@@ -36,7 +36,7 @@ class SODetail extends BaseController
         $modelDetail = $this->controller . 'Model';
         $data = [
             'id_so_detail' => $id,
-            'id_so' => $this->$modelDetail->getIdSo($id),
+            'id_so' => $id,
             'judul' => $this->controller,
             'aksi' => ' / Tambah Data',
             'validation' => \Config\Services::validation(),

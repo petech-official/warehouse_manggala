@@ -20,7 +20,12 @@
                         <thead>
                             <tr>
                                 <!-- Masukan Disini -->
-
+                                <th>NO BPB</th>
+                                <th>Tanggal</th>
+                                <th>No SJ Supplier</th>
+                                <th>No Mobil</th>
+                                <th>Supplier</th>
+                                <th>NO PO</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -31,17 +36,21 @@
                             foreach ($data as $key => $value) : ?>
                                 <tr>
                                     <!-- Masukan Disini -->
-
+                                    <td> <?= $value['no_bpb']; ?></td>
+                                    <td> <?= $value['tgl_bpb']; ?></td>
+                                    <td> <?= $value['no_surat_jalan']; ?></td>
+                                    <td> <?= $value['no_mobil']; ?></td>
+                                    <td> <?= $dataPO[0]['nama'];
+                                            ?></td>
+                                    <td> <?= $value['no_po']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <!-- hapus jika perlu -->
-                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                        <!-- end hapus -->
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id_bpb']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_bpb']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_bpb']; ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -51,7 +60,12 @@
                         <tfoot>
                             <tr>
                                 <!-- Masukan Disini -->
-
+                                <th>NO BPB</th>
+                                <th>Tanggal</th>
+                                <th>No SJ Supplier</th>
+                                <th>No Mobil</th>
+                                <th>Supplier</th>
+                                <th>NO PO</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

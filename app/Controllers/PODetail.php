@@ -36,7 +36,7 @@ class PODetail extends BaseController
         $modelDetail = $this->controller . 'Model';
         $data = [
             'id_po_detail' => $id,
-            'id_po' => $this->$modelDetail->getIdPO($id),
+            'id_po' => $id,
             'judul' => $this->controller,
             'aksi' => ' / Tambah Data',
             'validation' => \Config\Services::validation(),
