@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/<?= $judul; ?>/index/<?= $id_po['id_po'] ?>"><?= $judul; ?></a>
+                        <a href="/<?= $judul; ?>/index/<?= $id_po ?>"><?= $judul; ?></a>
                         <?= $aksi; ?>
                     </h3>
                 </div>
