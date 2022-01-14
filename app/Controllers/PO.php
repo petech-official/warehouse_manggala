@@ -55,6 +55,7 @@ class PO extends BaseController
         };
         $model = $this->controller . 'Model';
 
+        
         $poTerakhir = substr($this->$model->getNoPo('no_po')[0]['no_po'], 6);
         $cekbulantahun = substr($this->$model->getNoPo('no_po')[0]['no_po'], 2, -4);
         $cekbulan = substr($cekbulantahun, 2);
