@@ -120,7 +120,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="pages/calendar.html" class="nav-link">
+        <a href="/bpb/" class="nav-link">
           <i class="nav-icon far fa-calendar-alt"></i>
           <p>
             BPB

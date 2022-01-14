@@ -55,9 +55,16 @@ class PO extends BaseController
         };
         $model = $this->controller . 'Model';
 
+        if ($this->$model->countAllResult() == 0) {
+            $poTerakhir = substr("PO00000000",6);
+            $cekbulantahun = substr("PO00000000",2.-4);
+        }else{
+            $poTerakhir = substr($this->$model->getNoPo('no_po')[0]['no_po'],6);
+            $cekbulantahun = substr($this->$model->getNoPo('no_po')[0]['no_po'],2,-4);
+        }
+
+
         
-        $poTerakhir = substr($this->$model->getNoPo('no_po')[0]['no_po'], 6);
-        $cekbulantahun = substr($this->$model->getNoPo('no_po')[0]['no_po'], 2, -4);
         $cekbulan = substr($cekbulantahun, 2);
         $cektahun = substr($cekbulantahun, 0, -2);
 

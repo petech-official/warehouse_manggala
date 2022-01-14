@@ -57,8 +57,15 @@ class SO extends BaseController
         };
         $model = $this->controller . 'Model';
 
-        $SOTerakhir = substr($this->$model->getNoSo('no_so')[0]['no_so'], 6);
-        $cekbulantahun = substr($this->$model->getNoSo('no_so')[0]['no_so'], 2, -4);
+        // cek jumlah so
+
+        if ($this->$model->countAllResults() == 0) {
+            $SOTerakhir = substr("SO00000000", 6);
+            $cekbulantahun = substr("SO00000000", 2, -4);
+        } else {
+            $SOTerakhir = substr($this->$model->getNoSo('no_so')[0]['no_so'], 6);
+            $cekbulantahun = substr($this->$model->getNoSo('no_so')[0]['no_so'], 2, -4);
+        }
         $cekbulan = substr($cekbulantahun, 2);
         $cektahun = substr($cekbulantahun, 0, -2);
 
