@@ -14,7 +14,7 @@ class POModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['no_po', 'tgl_po', 'id_supplier', 'keterangan_po'];
+    protected $allowedFields    = ['no_po', 'tgl_po', 'id_supplier', 'keterangan_po', 'status'];
 
     // Dates
     protected $useTimestamps = false;

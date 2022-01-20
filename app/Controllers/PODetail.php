@@ -13,6 +13,7 @@ class PODetail extends BaseController
         $this->POModel = new \App\Models\POModel();
         $this->PODetailModel = new \App\Models\PODetailModel();
         $this->BarangModel = new \App\Models\BarangModel();
+        $this->BarangGradeModel = new \App\Models\BarangGradeModel();
     }
     public $controllerMain = 'PO';
     public $controller = 'PODetail';
@@ -33,19 +34,22 @@ class PODetail extends BaseController
     }
     public function tambah($id)
     {
-        $modelDetail = $this->controller . 'Model';
+
+        $supplier = $this->POModel->getData($id)['id_supplier'];
+
         $data = [
             'id_po_detail' => $id,
             'id_po' => $id,
             'judul' => $this->controller,
             'aksi' => ' / Tambah Data',
             'validation' => \Config\Services::validation(),
-            'dataBarang' => $this->BarangModel->getBarang()
+            'dataBarang' => $this->BarangModel->getBarangPO($supplier)
         ];
         return view($this->controller . '/tambah', $data);
     }
     public function save()
     {
+        $id_po = $this->request->getVar('id_po');
         //Validasi
         if (!$this->validate([
             'id_barang' => [
@@ -62,11 +66,24 @@ class PODetail extends BaseController
                 ]
             ],
         ])) {
-            return redirect()->to('/' . $this->controller . '/tambah')->withInput();
+
+            return redirect()->to('/' . $this->controller . '/tambah/' . $id_po)->withInput();
         };
 
-        $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
-        $totalBerat = $barang['berat'] * $this->request->getVar('quantitas');
+        $grade = $this->BarangModel->where('id_barang', $this->request->getVar('id_barang'))->find()[0]['id_grade'];
+        $gradeStandar = $this->BarangGradeModel->where('id', 1)->find()[0]['id'];
+
+        if ($grade == $gradeStandar) {
+            $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
+            $totalBerat = $barang['berat'] * $this->request->getVar('quantitas');
+        } else {
+            if ($this->request->getVar('berat_total') == '') {
+                return redirect()->to('/' . $this->controller . '/tambah/' . $id_po)->withInput();
+            }
+            $totalBerat = $this->request->getVar('berat_total');
+        }
+
+
 
         $model = $this->controller . 'Model';
         $this->$model->save([

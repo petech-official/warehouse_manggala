@@ -1,6 +1,7 @@
 <?= $this->extend('template/index'); ?>
 <?= $this->section('content'); ?>
 <div class="container-fluid">
+
     <div class="row">
         <div class="col">
             <div class="card">
@@ -23,6 +24,8 @@
                                 <th>NO BPB</th>
                                 <th>Tanggal</th>
                                 <th>No SJ Supplier</th>
+                                <th>Packing List</th>
+                                <th>Supir</th>
                                 <th>No Mobil</th>
                                 <th>Supplier</th>
                                 <th>NO PO</th>
@@ -32,15 +35,20 @@
                         </thead>
                         <tbody style="padding: 50px;">
                             <?php
-                            $i = 1;
+                            $i = 0;
                             foreach ($data as $key => $value) : ?>
                                 <tr>
                                     <!-- Masukan Disini -->
                                     <td> <?= $value['no_bpb']; ?></td>
-                                    <td> <?= $value['tgl_bpb']; ?></td>
+                                    <td class="tanggal"> <?= $value['tgl_bpb']; ?></td>
                                     <td> <?= $value['no_surat_jalan']; ?></td>
+                                    <td>
+                                        <a class="btn btn-secondary" href="/packing_list/<?= $value['packing_list']; ?>"><i class="fa fa-download" aria-hidden="true"></i></a>
+                                    </td>
+                                    <td> <?= $value['supir']; ?></td>
                                     <td> <?= $value['no_mobil']; ?></td>
-                                    <td> <?= $dataPO[0]['nama'];
+
+                                    <td> <?= $dataPO[$i]['nama'];
                                             ?></td>
                                     <td> <?= $value['no_po']; ?></td>
                                     <!-- Selesai Disini -->
@@ -55,7 +63,8 @@
                                         </button>
                                     </td>
                                 </tr>
-                            <?php endforeach ?>
+                            <?php $i++;
+                            endforeach ?>
                         </tbody>
                         <tfoot>
                             <tr>
@@ -63,6 +72,8 @@
                                 <th>NO BPB</th>
                                 <th>Tanggal</th>
                                 <th>No SJ Supplier</th>
+                                <th>Packing List</th>
+                                <th>Supir</th>
                                 <th>No Mobil</th>
                                 <th>Supplier</th>
                                 <th>NO PO</th>

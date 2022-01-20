@@ -2,6 +2,7 @@
 <?= $this->section('content'); ?>
 
 <div class="container-fluid">
+
     <div class="row">
         <div class="col">
             <div class="card">
@@ -66,7 +67,10 @@
                             </tr>
                         </thead>
                         <tbody>
+
+
                             <td><?= $data[0]['jenis']; ?> <?= $data[0]['ukuran']; ?> <?= $data[0]['keterangan']; ?> - <?= $data[0]['grade']; ?></td>
+                            </td>
                             <td><?= $data[0]['lot']; ?></td>
                             <td class="rupiah"><?= $dataMain['quantitas'] ?></td>
                             <td class="rupiah"><?= number_format($dataMain['berat'], 2)

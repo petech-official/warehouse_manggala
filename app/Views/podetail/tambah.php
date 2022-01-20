@@ -21,6 +21,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
+
                         <form id="quickForm" method="POST" action="/<?= $judul; ?>/save">
                             <div class="card-body">
                                 <div class="form-group">
@@ -46,8 +47,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="berat_total">Kg</label>
+                                    <input type="number" class="form-control <?= ($validation->hasError('berat_total')) ? 'is-invalid' : ''; ?>" id="berat_total" name="berat_total" autofocus value="<?= old('berat_total'); ?>" placeholder="Masukan berat jika barang non standar">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('berat_total'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="keterangan_po_detail">Keterangan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_po_detail')) ? 'is-invalid' : ''; ?>" id="keterangan_po_detail" name="keterangan_po_detail" autofocus value="<?= old('keterangan_po_detail'); ?>" placeholder="Masukan jumlah keterangan">
+                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_po_detail')) ? 'is-invalid' : ''; ?>" id="keterangan_po_detail" name="keterangan_po_detail" autofocus value="<?= old('keterangan_po_detail'); ?>" placeholder="Masukan keterangan">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('keterangan_po_detail'); ?>
                                     </div>

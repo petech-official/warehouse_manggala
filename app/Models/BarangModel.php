@@ -57,4 +57,15 @@ class BarangModel extends Model
             ->join('barang_grade', 'barang_grade.id=barang.id_grade')
             ->get()->getResultArray();
     }
+    public function getBarangPO($id_supplier)
+    {
+        return $this->db->table('barang')->where('id_supplier', $id_supplier)
+            ->join('barang_jenis', 'barang_jenis.id=barang.id_jenis')
+            ->join('barang_lot', 'barang_lot.id=barang.id_lot')
+            ->join('barang_ukuran', 'barang_ukuran.id=barang.id_ukuran')
+            ->join('supplier', 'supplier.id=barang.id_supplier')
+            ->join('barang_keterangan', 'barang_keterangan.id=barang.id_keterangan')
+            ->join('barang_grade', 'barang_grade.id=barang.id_grade')
+            ->get()->getResultArray();
+    }
 }

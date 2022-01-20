@@ -21,7 +21,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/save">
+                        <form id="quickForm" method="POST" enctype="multipart/form-data" action="/<?= $judul; ?>/save">
                             <div class="card-body">
                                 <!-- Date dd/mm/yyyy -->
                                 <div class="form-group">
@@ -30,7 +30,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_bpb" name="tgl_bpb">
+                                        <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_bpb" name="tgl_bpb" autofocus value="<?= old('tgl_bpb'); ?>">
                                     </div>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('tgl_bpb'); ?>
@@ -42,6 +42,23 @@
                                     <input type="text" class="form-control <?= ($validation->hasError('no_surat_jalan')) ? 'is-invalid' : ''; ?>" id="no_surat_jalan" name="no_surat_jalan" autofocus value="<?= old('no_surat_jalan'); ?>" placeholder="Masukan no surat jalan">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('no_surat_jalan'); ?>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="packing_list" class="col-sm-2 col-form-label">Packing List</label>
+                                    <input class="form-control <?= ($validation->hasError('packing_list')) ? 'is-invalid' : ''; ?>" type="file" id="packing_list" name="packing_list">
+
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('packing_list'); ?>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="supir">Supir</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('supir')) ? 'is-invalid' : ''; ?>" id="supir" name="supir" autofocus value="<?= old('supir'); ?>" placeholder="Masukan no surat jalan">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('supir'); ?>
                                     </div>
                                 </div>
 
@@ -77,10 +94,17 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="quantitas">Quantitas</label>
+                                    <label for="quantitas">Box</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('quantitas')) ? 'is-invalid' : ''; ?>" id="quantitas" name="quantitas" autofocus value="<?= old('quantitas'); ?>" placeholder="Masukan quantitas">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('quantitas'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="berat_total">Kg</label>
+                                    <input type="number" class="form-control <?= ($validation->hasError('berat_total')) ? 'is-invalid' : ''; ?>" id="berat_total" name="berat_total" autofocus value="<?= old('berat_total'); ?>" placeholder="Masukan berat jika barang non standar">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('berat_total'); ?>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +137,7 @@
                 var baris = '';
                 for (let i = 0; i < data.length; i++) {
                     const element = data[i];
-                    baris += '<option value="' + element.id_barang + '" >' + element.jenis + ' ' + element.ukuran + ' ' + element.keterangan + ' ' + element.grade + ' ' + element.lot + '</option>';
+                    baris += '<option value="' + element.id_po_detail + '" >' + element.jenis + ' ' + element.ukuran + ' ' + element.keterangan + ' ' + element.grade + ' ' + element.lot + '</option>';
                 }
                 $('#barang').html(baris);
             }

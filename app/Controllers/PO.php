@@ -49,10 +49,11 @@ class PO extends BaseController
                 'errors' => [
                     'required' => 'Masukan supplier !',
                 ]
-            ]
+            ],
         ])) {
             return redirect()->to('/' . $this->controller . '/tambah')->withInput();
         };
+
         $model = $this->controller . 'Model';
 
         if ($this->$model->countAllResults() == 0) {
@@ -82,12 +83,12 @@ class PO extends BaseController
 
         $pieces = explode("/", $this->request->getVar('tgl_po'));
         $tanggal = $pieces[2] . '-' . $pieces[1] . '-' . $pieces[0];
-
         $this->$model->save([
             'no_po' => 'PO' .  date('ym') . $poBaru,
             'tgl_po' => $tanggal,
             'id_supplier' => $this->request->getVar('supplier'),
             'keterangan_po' => $this->request->getVar('keterangan'),
+
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller);
@@ -107,18 +108,23 @@ class PO extends BaseController
     public function update($id)
     {
         //Validasi
-        // if (!$this->validate([
-        //     'zzz' => [
-        //         'rules' => 'required|is_unique[NamaTableZzz.AttributZzz]',
-        //         'errors' => [
-        //             'required' => 'Masukan zzz !',
-        //             'is_unique' => 'zzz harus unik !'
-        //         ]
+        if (!$this->validate([
+            'tgl_po' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan tgl_po !',
+                ]
+            ],
+            'supplier' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan supplier !',
+                ]
+            ],
 
-        //     ]
-        // ])) {
-        //     return redirect()->to('/' . $this->controller . '/edit')->withInput();
-        // };
+        ])) {
+            return redirect()->to('/' . $this->controller . '/edit/' . $id)->withInput();
+        };
         $pieces = explode("/", $this->request->getVar('tgl_po'));
         $tanggal = $pieces[2] . '-' . $pieces[1] . '-' . $pieces[0];
         $model = $this->controller . 'Model';
@@ -127,11 +133,12 @@ class PO extends BaseController
             'tgl_po' => $tanggal,
             'id_supplier' => $this->request->getVar('supplier'),
             'keterangan_po' => $this->request->getVar('keterangan_po'),
-        ]);
 
+        ]);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/' . $this->controller);
     }
+
     public function delete()
     {
         $model = $this->controller . 'Model';

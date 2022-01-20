@@ -37,6 +37,7 @@
                                         <option value="Double">Double</option>
                                         <option value="Engkel">Engkel</option>
                                         <option value="Losbak">Losbak</option>
+                                        <option value="Porklift">Porklift</option>
                                         <option value="SS">SS</option>
                                     </select>
                                     <div class="invalid-feedback">

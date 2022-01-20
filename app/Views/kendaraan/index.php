@@ -39,7 +39,7 @@
                                     <!-- Masukan Disini -->
                                     <td><?= $value['nopol']; ?></td>
                                     <td><?= $value['tipe']; ?></td>
-                                    <td><?= $value['km']; ?></td>
+                                    <td class="rupiah"><?= $value['km']; ?></td>
                                     <td><?= $value['status']; ?></td>
                                     <td><?= $value['keterangan']; ?></td>
                                     <!-- Selesai Disini -->
