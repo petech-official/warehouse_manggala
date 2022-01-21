@@ -23,7 +23,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_bpb']; ?>">
+                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_bpb']; ?>" enctype="multipart/form-data">
                             <div class="card-body">
                                 <input type="hidden" name="id">
                                 <div class="form-group">
@@ -41,6 +41,17 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('no_surat_jalan'); ?>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dataSupplier">Packing List</label>
+
+                                    <br>
+                                    <a href="/packing_list/<?= $data['packing_list']; ?>" class="btn btn-secondary mb-4"><i class="fa fa-download" aria-hidden="true"></i></a>
+                                    <input class="form-control <?= ($validation->hasError('packing_list')) ? 'is-invalid' : ''; ?>" type="file" id="packing_list" name="packing_list">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('packing_list'); ?>
+                                    </div>
+
                                 </div>
                                 <div class="form-group">
                                     <label for="no_mobil">No Mobil</label>

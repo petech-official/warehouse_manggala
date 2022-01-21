@@ -25,6 +25,7 @@
                                 <th>Nama Supplier</th>
                                 <th>Alamat</th>
                                 <th>Keterangan</th>
+                                <th>Status</th>
                                 <!-- Selesai Disini -->
                                 <th width="150px">Aksi</th>
                             </tr>
@@ -40,6 +41,14 @@
                                     <td><?= $value['nama']; ?></td>
                                     <td><?= $value['alamat']; ?></td>
                                     <td><?= $value['keterangan_po']; ?></td>
+                                    <td><?php
+                                        if ($value['status'] == 0) {
+                                        ?>
+                                            <span class="badge bg-warning">Berjalan</span>
+                                        <?php } else { ?>
+                                            <span class="badge bg-success">Selesai</span>
+                                        <?php } ?>
+                                    </td>
                                     <!-- Selesai Disini -->
                                     <td>
                                         <a href="/<?= $judul; ?>Detail/index/<?= $value['id_po']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
@@ -62,6 +71,7 @@
                                 <th>Nama Supplier</th>
                                 <th>Alamat</th>
                                 <th>Keterangan</th>
+                                <th>Status</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

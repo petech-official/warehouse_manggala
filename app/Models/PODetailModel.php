@@ -14,7 +14,7 @@ class PODetailModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_po', 'id_barang', 'quantitas', 'berat_total', 'keterangan_po_detail'];
+    protected $allowedFields    = ['id_po', 'id_barang', 'quantitas', 'quantitas_mutasi', 'berat_total', 'berat_total_mutasi', 'keterangan_po_detail', 'status_po'];
 
     // Dates
     protected $useTimestamps = false;
@@ -65,6 +65,19 @@ class PODetailModel extends Model
             ->join('barang_grade', 'barang_grade.id=barang.id_grade')
             ->get()->getResultArray();
     }
+
+    public function getPODetailBerjalan($id)
+    {
+        return $this->db->table('po_detail')->where('id_po', $id)->where('status_po', 0)
+            ->join('barang', 'barang.id_barang=po_detail.id_barang')
+            ->join('barang_jenis', 'barang_jenis.id=barang.id_jenis')
+            ->join('barang_lot', 'barang_lot.id=barang.id_lot')
+            ->join('barang_ukuran', 'barang_ukuran.id=barang.id_ukuran')
+            ->join('supplier', 'supplier.id=barang.id_supplier')
+            ->join('barang_keterangan', 'barang_keterangan.id=barang.id_keterangan')
+            ->join('barang_grade', 'barang_grade.id=barang.id_grade')
+            ->get()->getResultArray();
+    }
     public function getPO($id)
     {
         return $this->db->table('po')->where('id_po', $id)
@@ -77,5 +90,11 @@ class PODetailModel extends Model
             return $this->findAll();
         }
         return $this->select('id_po')->where('id_po_detail', $id)->first();
+    }
+
+    public function getPoDetailBarang($id_po, $id_barang, $status_po)
+    {
+
+        return $this->where('id_po', $id_po)->where('id_po_detail', $id_barang)->where('status_po', $status_po)->first();
     }
 }

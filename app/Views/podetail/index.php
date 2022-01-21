@@ -48,12 +48,19 @@
                                 <!-- Masukan Disini -->
                                 <th rowspan="2">Nama Barang</th>
                                 <th rowspan="2">Lot</th>
-                                <th colspan="2">Quantity</th>
+                                <th colspan="2">Saldo Awal</th>
+                                <th colspan="2">Mutasi</th>
+                                <th colspan="2">Saldo Akhir</th>
                                 <th rowspan="2">Keterangan</th>
+                                <th rowspan="2">Status</th>
                                 <!-- Selesai Disini -->
                                 <th rowspan="2">Aksi</th>
                             </tr>
                             <tr>
+                                <th>Box</th>
+                                <th>Kg</th>
+                                <th>Box</th>
+                                <th>Kg</th>
                                 <th>Box</th>
                                 <th>Kg</th>
                             </tr>
@@ -68,7 +75,25 @@
                                 <td class="rupiah"><?= $value['quantitas'] ?></td>
                                 <td class="rupiah"><?= number_format($value['berat_total'], 2)
                                                     ?></td>
+                                <td class="rupiah"><?= $value['quantitas_mutasi'] ?></td>
+                                <td class="rupiah"><?= number_format($value['berat_total_mutasi'], 2)
+                                                    ?></td>
+                                <td class="rupiah"><?php $q_akhir = $value['quantitas'] - $value['quantitas_mutasi'];
+                                                    echo $q_akhir ?></td>
+                                <td class="rupiah"><?php $q_akhir_berat = $value['berat_total'] - $value['berat_total_mutasi'];
+                                                    echo number_format($q_akhir_berat, 2) ?></td>
+
+
+
                                 <td><?= $value['keterangan_po_detail'] ?></td>
+                                <td><?php
+                                    if ($value['status_po'] == 0) {
+                                    ?>
+                                        <span class="badge bg-warning">Berjalan</span>
+                                    <?php } else { ?>
+                                        <span class="badge bg-success">Selesai</span>
+                                    <?php } ?>
+                                </td>
                                 <!-- Selesai Disini -->
                                 <td>
                                     <a href="/<?= $judul; ?>/edit/<?= $value['id_po_detail']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
@@ -89,7 +114,12 @@
                                 <th>Lot</th>
                                 <th>Box</th>
                                 <th>Kg </th>
+                                <th>Box</th>
+                                <th>Kg </th>
+                                <th>Box</th>
+                                <th>Kg </th>
                                 <th>Keterangan</th>
+                                <th>Status</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

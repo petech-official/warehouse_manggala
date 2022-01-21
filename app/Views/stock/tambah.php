@@ -128,7 +128,7 @@
             $('#berat').removeAttr('readonly');
             $('#berat').focus();
         } else
-        if (grade == 2) {
+        if (grade != 1) {
             $('#berat').val('');
             $('#berat').attr("readonly", true);
         }

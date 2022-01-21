@@ -18,7 +18,8 @@ class BPBDetail extends BaseController
     {
         $model = $this->controllerMain . 'Model';
         $no_po = $this->$model->getData($id)['no_po'];
-        $id_barang = $this->$model->getData($id)['id_barang'];
+        $id_po_detail = $this->$model->getData($id)['id_po_detail'];
+
         $data = [
             'judul' => $this->controller,
             'judulMain' => $this->controllerMain,
@@ -26,7 +27,7 @@ class BPBDetail extends BaseController
             'validation' => \Config\Services::validation(),
             'dataMain' => $this->$model->getData($id),
             'dataPO' => $this->$model->getPO(),
-            'data'  => $this->$model->getPODetail($no_po, $id_barang),
+            'data'  => $this->$model->getPODetail($no_po, $id_po_detail),
         ];
         return view('/' . $this->controller . '/index', $data);
     }

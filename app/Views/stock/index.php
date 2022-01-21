@@ -34,7 +34,7 @@
                                 <tr>
                                     <!-- Masukan Disini -->
                                     <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> <?= $value['lot']; ?> <?= $value['grade']; ?></td>
-                                    <td><?= $value['nama']; ?></td>
+                                    <td><?= $value['singkatan']; ?></td>
                                     <td><?= $value['berat']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>

@@ -14,7 +14,7 @@ class BPBModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['no_bpb', 'tgl_bpb', 'no_surat_jalan', 'no_mobil', 'no_po', 'id_barang', 'quantitas', 'berat'];
+    protected $allowedFields    = ['no_bpb', 'tgl_bpb', 'no_surat_jalan', 'packing_list', 'supir', 'no_mobil', 'no_po', 'id_po_detail', 'quantitas', 'berat'];
 
     // Dates
     protected $useTimestamps = false;
@@ -43,7 +43,7 @@ class BPBModel extends Model
     public function getPO()
     {
         return $this->db->table('bpb')
-            ->join('po', 'po.no_po=bpb.no_po')
+            ->join('po', 'po.no_po = bpb.no_po')
             ->join('supplier', 'supplier.id=po.id_supplier')
             ->get()->getResultArray();
     }
@@ -54,12 +54,12 @@ class BPBModel extends Model
         }
         return $this->where(['id_bpb' => $id])->first();
     }
-    public function getPODetail($id, $id_barang)
+    public function getPODetail($id, $id_po_detail)
     {
-        return $this->db->table('bpb')->where('bpb.no_po', $id, 'bpb.id_barang', $id_barang)
+        return $this->db->table('bpb')->where('bpb.no_po', $id)->where('bpb.id_po_detail', $id_po_detail)
             ->join('po', 'po.no_po = bpb.no_po')
-            ->join('po_detail', 'po_detail.id_po=po.id_po', 'po_detail.id_barang=bpb.id_barang')
-            ->join('barang', 'barang.id_barang=' . $id_barang)
+            ->join('po_detail', 'po_detail.id_po_detail=bpb.id_po_detail')
+            ->join('barang', 'barang.id_barang=po_detail.id_barang')
             ->join('barang_jenis', 'barang_jenis.id=barang.id_jenis')
             ->join('barang_lot', 'barang_lot.id=barang.id_lot')
             ->join('barang_ukuran', 'barang_ukuran.id=barang.id_ukuran')
@@ -68,6 +68,7 @@ class BPBModel extends Model
             ->join('barang_grade', 'barang_grade.id=barang.id_grade')
             ->get()->getResultArray();
     }
+
     public function getNoBPB()
     {
         return $this->db->table("bpb")->select('no_bpb')->orderBy('no_bpb', 'DESC')->get()->getResultArray();

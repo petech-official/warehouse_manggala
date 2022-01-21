@@ -17,7 +17,7 @@ class BarangLot extends Migration
             ],
             'lot'       => [
                 'type'       => 'VARCHAR',
-                'constraint' => '10',
+                'constraint' => '15',
             ]
         ]);
         $this->forge->addKey('id', true);

@@ -21,7 +21,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/save">
+                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/save" enctype="multipart/form-data">
                             <div class="card-body">
                                 <!-- Date dd/mm/yyyy -->
                                 <div class="form-group">
@@ -30,7 +30,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_po" name="tgl_po">
+                                        <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_po" name="tgl_po" autofocus value="<?= old('tgl_po'); ?>">
                                     </div>
                                 </div>
 
@@ -54,6 +54,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
