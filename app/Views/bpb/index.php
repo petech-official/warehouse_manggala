@@ -1,5 +1,6 @@
 <?= $this->extend('template/index'); ?>
 <?= $this->section('content'); ?>
+
 <div class="container-fluid">
 
     <div class="row">
@@ -43,7 +44,13 @@
                                     <td class="tanggal"> <?= $value['tgl_bpb']; ?></td>
                                     <td> <?= $value['no_surat_jalan']; ?></td>
                                     <td>
-                                        <a class="btn btn-secondary" href="/packing_list/<?= $value['packing_list']; ?>"><i class="fa fa-download" aria-hidden="true"></i></a>
+                                        <form action="/Iframe/index/<?= $value['packing_list'] ?>" method="post">
+                                            <input type="hidden" name="link" value="<?= $value['packing_list']; ?>">
+                                            <button type="submit">Liat</button>
+                                        </form>
+                                        <a href="packing_list/BPB22020001.pdf" target="blank">Cerita.pdf</a>
+
+                                        <!-- <a class="btn btn-secondary" href="/OpenPDF/index/<?= $value['packing_list']; ?>"><i class="fa fa-download" aria-hidden="true"></i></a> -->
                                     </td>
                                     <td> <?= $value['supir']; ?></td>
                                     <td> <?= $value['no_mobil']; ?></td>

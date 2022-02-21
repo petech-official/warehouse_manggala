@@ -40,17 +40,18 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="quantitas">Box</label>
-                                    <input type="number" class="form-control <?= ($validation->hasError('quantitas')) ? 'is-invalid' : ''; ?>" id="quantitas" name="quantitas" autofocus value="<?= old('quantitas'); ?>" placeholder="Masukan jumlah box">
+                                    <label for="berat_total">Kg</label>
+                                    <input type="number" class="form-control <?= ($validation->hasError('berat_total')) ? 'is-invalid' : ''; ?>" id="berat_total" name="berat_total" autofocus value="<?= old('berat_total'); ?>" placeholder="Masukan berat">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('quantitas'); ?>
+                                        <?= $validation->getError('berat_total'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="berat_total">Kg</label>
-                                    <input type="number" class="form-control <?= ($validation->hasError('berat_total')) ? 'is-invalid' : ''; ?>" id="berat_total" name="berat_total" autofocus value="<?= old('berat_total'); ?>" placeholder="Masukan berat jika barang non standar">
+                                    <label for="quantitas">Box</label>
+                                    <input type="number" class="form-control <?= ($validation->hasError('quantitas')) ? 'is-invalid' : ''; ?>" id="quantitas" name="quantitas" autofocus value="<?= old('quantitas'); ?>" placeholder="Masukan jumlah box">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('berat_total'); ?>
+                                        <?= $validation->getError('quantitas');
+                                        ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
