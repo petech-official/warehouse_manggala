@@ -130,9 +130,9 @@
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <!-- <script src="<?= base_url('assets'); ?>/dist/js/pages/dashboard.js"></script> -->
 
-<!-- InputMask -->
-<script src="<?= base_url('assets'); ?>/plugins/moment/moment.min.js"></script>
-<script src="<?= base_url('assets'); ?>/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+  <!-- InputMask -->
+  <script src="<?= base_url('assets'); ?>/plugins/moment/moment.min.js"></script>
+  <script src="<?= base_url('assets'); ?>/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
 
 
 
@@ -146,6 +146,7 @@
   <script src="<?= base_url('assets'); ?>/plugins/jszip/jszip.min.js"></script>
   <script src="<?= base_url('assets'); ?>/plugins/pdfmake/pdfmake.min.js"></script>
   <script src="<?= base_url('assets'); ?>/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="<?= base_url('assets'); ?>/plugins/pdfobject/pdfobject.min.js"></script>
   <script src="<?= base_url('assets'); ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="<?= base_url('assets'); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="<?= base_url('assets'); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
@@ -187,8 +188,7 @@
       format: 'HH:mm'
     })
   </script>
-  <script>    
-
+  <script>
     //validasi upload file
     function validasiFile() {
       var inputFile = document.getElementById('file');
@@ -271,7 +271,9 @@
     });
 
     //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    $('#datemask').inputmask('dd/mm/yyyy', {
+      'placeholder': 'dd/mm/yyyy'
+    })
     $('[data-mask]').inputmask()
   </script>
 </body>

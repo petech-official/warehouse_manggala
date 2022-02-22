@@ -59,7 +59,7 @@ class PODetail extends BaseController
 
                 ]
             ],
-            'quantitas' => [
+            'berat_total' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Masukan quantitas !',
@@ -70,27 +70,31 @@ class PODetail extends BaseController
             return redirect()->to('/' . $this->controller . '/tambah/' . $id_po)->withInput();
         };
 
+
         $grade = $this->BarangModel->where('id_barang', $this->request->getVar('id_barang'))->find()[0]['id_grade'];
+
         $gradeStandar = $this->BarangGradeModel->where('id', 1)->find()[0]['id'];
+        $BeratPO = $this->request->getVar('berat_total');
 
         if ($grade == $gradeStandar) {
+
             $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
-            $totalBerat = $barang['berat'] * $this->request->getVar('quantitas');
+            $beratBarang = $barang['berat'];
+            $box = ceil($BeratPO / $beratBarang);
         } else {
             if ($this->request->getVar('berat_total') == '') {
                 return redirect()->to('/' . $this->controller . '/tambah/' . $id_po)->withInput();
             }
-            $totalBerat = $this->request->getVar('berat_total');
+            $beratBarang = $this->request->getVar('berat_total');
+            $box = ceil($this->request->getVar('quantitas'));
         }
-
-
 
         $model = $this->controller . 'Model';
         $this->$model->save([
             'id_po' => $this->request->getVar('id_po'),
             'id_barang' => $this->request->getVar('id_barang'),
-            'quantitas' => $this->request->getVar('quantitas'),
-            'berat_total' => $totalBerat,
+            'quantitas' => $box,
+            'berat_total' => $beratBarang,
             'keterangan_po_detail' => $this->request->getVar('keterangan_po_detail'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
