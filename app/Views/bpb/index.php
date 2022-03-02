@@ -44,13 +44,10 @@
                                     <td class="tanggal"> <?= $value['tgl_bpb']; ?></td>
                                     <td> <?= $value['no_surat_jalan']; ?></td>
                                     <td>
-                                        <form action="/Iframe/index/<?= $value['packing_list'] ?>" method="post">
-                                            <input type="hidden" name="link" value="<?= $value['packing_list']; ?>">
-                                            <button type="submit">Liat</button>
+                                        <form action="/openPDF/index" method="post" target="_blank">
+                                            <input type="hidden" id="link" name="link" value="<?= $value['packing_list']; ?>">
+                                            <button type="submit" class="btn btn-primary" name="view" id="view" target="_blank"><i class="fas fa-eye"></i></button>
                                         </form>
-                                        <a href="packing_list/BPB22020001.pdf" target="blank">Cerita.pdf</a>
-
-                                        <!-- <a class="btn btn-secondary" href="/OpenPDF/index/<?= $value['packing_list']; ?>"><i class="fa fa-download" aria-hidden="true"></i></a> -->
                                     </td>
                                     <td> <?= $value['supir']; ?></td>
                                     <td> <?= $value['no_mobil']; ?></td>
@@ -126,4 +123,22 @@
     }
 </script>
 
+<script>
+    $('#view').click(function() {
+        var link = $('#link').val();
+        console.log(link);
+        $.ajax({
+            url: "/openPDF/reader",
+            type: "POST",
+            data: {
+                datalink: link
+            },
+            dataType: "json",
+            success: function(data) {
+                // let obj = JSON.parse(data)
+                console.log("success");
+            }
+        })
+    });
+</script>
 <?= $this->endSection(); ?>

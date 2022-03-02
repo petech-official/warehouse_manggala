@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use phpDocumentor\Reflection\Types\This;
+use PhpParser\Node\Stmt\Echo_;
 
 class BPB extends BaseController
 {
@@ -20,6 +22,7 @@ class BPB extends BaseController
     public $controller = 'BPB';
     public function index()
     {
+
         $model = $this->controller . 'Model';
         $data = [
             'judul' => $this->controller,
@@ -57,7 +60,7 @@ class BPB extends BaseController
             ],
             'packing_list' => [
 
-                'rules' => 'max_size[packing_list,1024]|ext_in[packing_list,docx,pdf,xlsx,txt]',
+                'rules' => 'max_size[packing_list,1024]|ext_in[packing_list,pdf]',
                 'errors' => [
                     'max_size' => 'Ukuran harus dibawah 1 Mb !',
                     'ext_in' => 'Yang anda pilih bukan document !',
@@ -99,6 +102,7 @@ class BPB extends BaseController
         };
 
         $filePackingList = $this->request->getFile('packing_list');
+
         $kosong = $filePackingList->getName();
         if ($kosong == '') {
             return redirect()->to('/' . $this->controller . '/tambah')->withInput();
@@ -144,6 +148,9 @@ class BPB extends BaseController
         $barang = $this->BarangModel->getData($GetQuantitas['id_barang']);
         $QuantitasAwal = $GetQuantitas['quantitas'];
         $QuantitasBaru = $GetQuantitas['quantitas_mutasi'] + $this->request->getVar('quantitas');
+
+        $BeratAwal = $GetQuantitas['berat_total'];
+
         if ($grade == $gradeStandar) {
             $totalBerat = $barang['berat'] * $this->request->getVar('quantitas');
             $beratBaru = $barang['berat'] * $QuantitasBaru;
@@ -156,12 +163,11 @@ class BPB extends BaseController
         }
 
         // Ganti Status
-        if ($QuantitasBaru == $QuantitasAwal) {
+        if ($QuantitasBaru >= $QuantitasAwal and $beratBaru >= $BeratAwal) {
             $status = 1;
         } else {
             $status = 0;
         }
-
         //ambil document
         $filePackingList = $this->request->getFile('packing_list');
 
@@ -177,12 +183,6 @@ class BPB extends BaseController
             $filePackingList->move('packing_list', $namaPackingList . '.' . $pecah[1]);
         }
 
-        $this->PODetailModel->save([
-            'id_po_detail' => $GetQuantitas['id_po_detail'],
-            'quantitas_mutasi' => $QuantitasBaru,
-            'berat_total_mutasi' => $beratBaru,
-            'status_po' => $status
-        ]);
 
         $this->$model->save([
             'no_bpb' => 'BPB' . date('ym') . $BPBBaru,
@@ -197,6 +197,37 @@ class BPB extends BaseController
             'supir' => $this->request->getVar('supir'),
 
         ]);
+
+
+        // po detail status
+        $this->PODetailModel->save([
+            'id_po_detail' => $GetQuantitas['id_po_detail'],
+            'quantitas_mutasi' => $QuantitasBaru,
+            'berat_total_mutasi' => $beratBaru,
+            'status_po' => $status
+        ]);
+
+
+        // po
+        $ID_PO = $this->PODetailModel->getIdPO($GetQuantitas['id_po_detail']);
+        $statusPO = $this->PODetailModel->GetStatus($ID_PO)[0]['status_po'];
+        if ((int)$statusPO == 1) {
+
+            $this->POModel->save([
+                'id_po' => $ID_PO,
+                'status' => 1
+            ]);
+            // echo "1";
+            // die;
+        };
+        // echo "2";
+        // die;
+        // $int = (int)$status;
+        // dd($status);
+
+
+
+
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller);
     }
@@ -206,11 +237,18 @@ class BPB extends BaseController
         $barang = $this->$model->getData($id)['no_po'];
         $po = $this->POModel->where('no_po', $barang)->find();
         $barang = $po[0]['id_po'];
+
+        $id_bpb = $this->$model->getData($id)['id_bpb'];
+        $id_po_detail = $this->$model->getData($id)['id_po_detail'];
+
+        $data = $this->$model->getPODetailBarang($id_bpb, $id_po_detail);
+
         $data = [
             'judul' => $this->controller,
             'aksi' => ' / Ubah Data',
             'validation' => \Config\Services::validation(),
             'data'  => $this->$model->getData($id),
+            'dataIdBarang' => $this->$model->getPODetailBarang($id_bpb, $id_po_detail),
             'dataPO' => $this->POModel->where('status', 0)->findAll(),
             'dataBarang' => $this->$model->getBarang($barang)
         ];
@@ -234,7 +272,7 @@ class BPB extends BaseController
             ],
 
             'packing_list' => [
-                'rules' => 'max_size[packing_list,1024]|ext_in[packing_list,docx,pdf,xlsx,txt]',
+                'rules' => 'max_size[packing_list,1024]|ext_in[packing_list,pdf]',
                 'errors' => [
                     'max_size' => 'Ukuran harus dibawah 1 Mb !',
                     'ext_in' => 'Yang anda pilih bukan document !',
@@ -264,14 +302,20 @@ class BPB extends BaseController
                     'required' => 'Masukan barang !',
                 ]
             ],
-            'box' => [
+            'quantitas' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Masukan box !',
                 ]
             ],
+            'berat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan berat !',
+                ]
+            ],
         ])) {
-            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+            return redirect()->to('/' . $this->controller . '/edit/' . $id)->withInput();
         };
         $pieces = explode("/", $this->request->getVar('tgl_bpb'));
         $tanggal = $pieces[2] . '-' . $pieces[1] . '-' . $pieces[0];
@@ -282,25 +326,31 @@ class BPB extends BaseController
 
         $model = $this->controller . 'Model';
         $filePackingList = $this->request->getFile('packing_list');
-        // cek gambar, apakah tetap ?
+        // cek gambar, apakah tetap ?      
+
+        $packingListLama = $this->$model->where('id_bpb', $id)->findAll()[0]['packing_list'];
+
 
         if ($filePackingList != '') {
 
-            unlink('packing_list/' . $this->request->getVar('packing_list_lama'));
+            unlink('packing_list/' .  $packingListLama);
             //generate random nama        
             $namaPackingList = $filePackingList->getName();
             $pecah = explode(".", $namaPackingList);
 
-            $BPBBaru = substr($this->$model->getNoBPB('no_bpb')[0]['no_bpb'], 6);
+            $BPBBaru = substr($this->$model->getNoBPB('no_bpb')[0]['no_bpb'], 7);
             $namaPackingList = 'BPB' .  date('ym') . $BPBBaru . '.' . $pecah[1];
+
             // pindahkan file ke folder packing
             $filePackingList->move('packing_list', $namaPackingList);
             //hapus file lama
         } else {
-
-            $BPBBaru = substr($this->$model->getNoBPB('no_bpb')[0]['no_bpb'], 6);;
-            $namaPackingList = $this->request->getVar('packing_list_lama');
+            $namaPackingList = $this->$model->where('id_bpb', $id)->findAll()[0]['packing_list'];
         }
+
+        $id_po_detail = $this->PODetailModel->where('id_barang', $this->request->getVar('barang'))->findAll()[0]['id_po_detail'];
+
+
         $this->$model->save([
             'id_bpb' => $id,
             'tgl_bpb' => $tanggal,
@@ -308,7 +358,7 @@ class BPB extends BaseController
             'packing_list' => $namaPackingList,
             'no_mobil' => $this->request->getVar('no_mobil'),
             'no_po' => $PO,
-            'id_po_detail' => $this->request->getVar('barang'),
+            'id_po_detail' => $id_po_detail,
             'quantitas' => $this->request->getVar('quantitas'),
             'berat' => $this->request->getVar('berat'),
         ]);

@@ -56,7 +56,7 @@
 
                                 <div class="form-group">
                                     <label for="supir">Supir</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('supir')) ? 'is-invalid' : ''; ?>" id="supir" name="supir" autofocus value="<?= old('supir'); ?>" placeholder="Masukan no surat jalan">
+                                    <input type="text" class="form-control <?= ($validation->hasError('supir')) ? 'is-invalid' : ''; ?>" id="supir" name="supir" autofocus value="<?= old('supir'); ?>" placeholder="Masukan nama supir">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('supir'); ?>
                                     </div>
@@ -95,7 +95,7 @@
 
                                 <div class="form-group">
                                     <label for="quantitas">Box</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('quantitas')) ? 'is-invalid' : ''; ?>" id="quantitas" name="quantitas" autofocus value="<?= old('quantitas'); ?>" placeholder="Masukan quantitas">
+                                    <input type="text" class="form-control <?= ($validation->hasError('quantitas')) ? 'is-invalid' : ''; ?>" id="quantitas" name="quantitas" autofocus value="<?= old('quantitas'); ?>" placeholder="Masukan box">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('quantitas'); ?>
                                     </div>

@@ -11,6 +11,7 @@ class PO extends BaseController
     public function __construct()
     {
         $this->POModel = new \App\Models\POModel();
+        $this->PODetailModel = new \App\Models\PODetailModel();
         $this->SupplierModel = new \App\Models\SupplierModel();
     }
 

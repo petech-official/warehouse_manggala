@@ -23,9 +23,23 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
+                        <form action="/openPDF/index" method="post" target="_blank" id="quickForm">
+                            <div class="card-body">
+                                <input type="hidden" class="form-control" id="link" name="link" value="<?= $data['packing_list']; ?>">
+                                <button type="submit" class="btn btn-primary" name="view" id="view" target="_blank"><i class="fas fa-eye"></i> Lihat packing list sebelumnya</button>
+                            </div>
+                        </form>
                         <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_bpb']; ?>" enctype="multipart/form-data">
                             <div class="card-body">
                                 <input type="hidden" name="id">
+                                <div class="form-group">
+                                    <label for="dataSupplier">Packing List</label>
+                                    <br>
+                                    <input class="form-control <?= ($validation->hasError('packing_list')) ? 'is-invalid' : ''; ?>" type="file" id="packing_list" name="packing_list">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('packing_list'); ?>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label>Tgl BPB</label>
                                     <div class="input-group">
@@ -33,6 +47,9 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                         </div>
                                         <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_bpb" name="tgl_bpb" value="<?= $tanggal; ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('tgl_bpb'); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -42,17 +59,15 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                         <?= $validation->getError('no_surat_jalan'); ?>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="dataSupplier">Packing List</label>
-
-                                    <br>
-                                    <a href="/packing_list/<?= $data['packing_list']; ?>" class="btn btn-secondary mb-4"><i class="fa fa-download" aria-hidden="true"></i></a>
-                                    <input class="form-control <?= ($validation->hasError('packing_list')) ? 'is-invalid' : ''; ?>" type="file" id="packing_list" name="packing_list">
+                                    <label for="supir">Supir</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('supir')) ? 'is-invalid' : ''; ?>" id="supir" name="supir" autofocus value="<?= (old('supir')) ? old('supir') : $data['supir']; ?>">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('packing_list'); ?>
+                                        <?= $validation->getError('supir'); ?>
                                     </div>
-
                                 </div>
+
                                 <div class="form-group">
                                     <label for="no_mobil">No Mobil</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('no_mobil')) ? 'is-invalid' : ''; ?>" id="no_mobil" name="no_mobil" autofocus value="<?= (old('no_mobil')) ? old('no_mobil') : $data['no_mobil']; ?>">
@@ -73,23 +88,25 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                         <?php endforeach ?>
                                     </select>
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('dataPO'); ?>
+                                        <?= $validation->getError('po'); ?>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="id_barang">Barang</label>
                                     <select class="form-select form-control  <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="barang" id="barang">
+
+
                                         <?php foreach ($dataBarang as $key => $value) : ?>
-                                            <option value="<?= $value['id_barang']; ?>" <?php if ($value['id_barang'] == $data['id_barang']) {
+                                            <option value="<?= $value['id_barang']; ?>" <?php if ($value['id_barang'] == $dataIdBarang[0]['id_barang']) {
                                                                                             echo "selected";
                                                                                         } ?>>
-                                                <?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?><?= $value['grade']; ?> <?= $value['lot']; ?>
+                                                <?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> <?= $value['grade']; ?> <?= $value['lot']; ?>
                                             </option>
                                         <?php endforeach ?>
                                     </select>
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('id_barang'); ?>
+                                        <?= $validation->getError('id_barangbarang'); ?>
                                     </div>
                                 </div>
 
@@ -113,6 +130,8 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
+
+
                     </div>
                 </div>
 

@@ -54,10 +54,25 @@ class BPBModel extends Model
         }
         return $this->where(['id_bpb' => $id])->first();
     }
+
+
     public function getPODetail($id, $id_po_detail)
     {
         return $this->db->table('bpb')->where('bpb.no_po', $id)->where('bpb.id_po_detail', $id_po_detail)
             ->join('po', 'po.no_po = bpb.no_po')
+            ->join('po_detail', 'po_detail.id_po_detail=bpb.id_po_detail')
+            ->join('barang', 'barang.id_barang=po_detail.id_barang')
+            ->join('barang_jenis', 'barang_jenis.id=barang.id_jenis')
+            ->join('barang_lot', 'barang_lot.id=barang.id_lot')
+            ->join('barang_ukuran', 'barang_ukuran.id=barang.id_ukuran')
+            ->join('supplier', 'supplier.id=barang.id_supplier')
+            ->join('barang_keterangan', 'barang_keterangan.id=barang.id_keterangan')
+            ->join('barang_grade', 'barang_grade.id=barang.id_grade')
+            ->get()->getResultArray();
+    }
+    public function getPODetailBarang($id, $id_po_detail)
+    {
+        return $this->db->table('bpb')->where('bpb.id_bpb', $id)->where('bpb.id_po_detail', $id_po_detail)
             ->join('po_detail', 'po_detail.id_po_detail=bpb.id_po_detail')
             ->join('barang', 'barang.id_barang=po_detail.id_barang')
             ->join('barang_jenis', 'barang_jenis.id=barang.id_jenis')
