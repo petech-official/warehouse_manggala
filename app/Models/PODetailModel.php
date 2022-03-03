@@ -97,4 +97,12 @@ class PODetailModel extends Model
 
         return $this->where('id_po', $id_po)->where('id_po_detail', $id_barang)->where('status_po', $status_po)->first();
     }
+    public function getStatus($id = false)
+    {
+        if ($id == false) {
+            return $this->findAll();
+        }
+        return $this->select('status_po')->where('id_po', $id)->groupBy('status_po')->findAll();
+        // return $this->select('status_po')->where('id_po', $id)->findAll();
+    }
 }

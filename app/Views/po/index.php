@@ -1,6 +1,7 @@
 <?= $this->extend('template/index'); ?>
 <?= $this->section('content'); ?>
 <div class="container-fluid">
+
     <div class="row">
         <div class="col">
             <div class="card">
@@ -41,7 +42,8 @@
                                     <td><?= $value['nama']; ?></td>
                                     <td><?= $value['alamat']; ?></td>
                                     <td><?= $value['keterangan_po']; ?></td>
-                                    <td><?php
+                                    <td>
+                                        <?php
                                         if ($value['status'] == 0) {
                                         ?>
                                             <span class="badge bg-warning">Berjalan</span>

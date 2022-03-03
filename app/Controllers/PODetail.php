@@ -94,7 +94,7 @@ class PODetail extends BaseController
             'id_po' => $this->request->getVar('id_po'),
             'id_barang' => $this->request->getVar('id_barang'),
             'quantitas' => $box,
-            'berat_total' => $beratBarang,
+            'berat_total' => $BeratPO,
             'keterangan_po_detail' => $this->request->getVar('keterangan_po_detail'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');

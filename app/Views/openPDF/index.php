@@ -10,8 +10,9 @@
                 <!-- /.card-header -->
                 <!-- Tambah data -->
                 <div class="card-body">
+                    <iframe src="/openPdf/reader" width=" 100%" height="700px"></iframe>
+                    <!-- <iframe src="/packing_list/<?= $judul; ?>" width=" 100%" height="700px"></iframe> -->
                 </div>
-                <iframe src="/packing_list/<?= $judul; ?>" style="width:600px; height:500px;" frameborder="0"></iframe>
             </div>
         </div>
     </div>
