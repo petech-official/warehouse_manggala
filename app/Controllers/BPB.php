@@ -17,6 +17,7 @@ class BPB extends BaseController
         $this->PODetailModel = new \App\Models\PODetailModel();
         $this->BarangModel = new \App\Models\BarangModel();
         $this->BarangGradeModel = new \App\Models\BarangGradeModel();
+        $this->StockBarangModel = new \App\Models\StockBarangModel();
     }
 
     public $controller = 'BPB';
@@ -217,15 +218,19 @@ class BPB extends BaseController
                 'id_po' => $ID_PO,
                 'status' => 1
             ]);
-            // echo "1";
-            // die;
         };
-        // echo "2";
-        // die;
-        // $int = (int)$status;
-        // dd($status);
 
 
+        // masuk ke stock   
+        $id_stock = ($this->StockBarangModel->getIdStock($barang['id_barang']));
+        $box_stock = ($this->StockBarangModel->getBoxStock($barang['id_barang']))['box'];
+        $berat_stock = ($this->StockBarangModel->getBeratStock($barang['id_barang']))['berat_total'];
+        $this->StockBarangModel->save([
+            'id_stock' => $id_stock['id_stock'],
+            'id_barang' => $barang['id_barang'],
+            'box' => (int)$box_stock +  $this->request->getVar('quantitas'),
+            'berat_total' => (int)$berat_stock + $totalBerat,
+        ]);
 
 
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
