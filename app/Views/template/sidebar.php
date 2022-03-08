@@ -111,7 +111,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="/stock/" class="nav-link">
+        <a href="/stockbarang/" class="nav-link">
           <i class="nav-icon far fa-calendar-alt"></i>
           <p>
             Stock
