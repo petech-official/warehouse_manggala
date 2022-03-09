@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SupirModel extends Model
+class DOModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'supir';
-    protected $primaryKey       = 'id';
+    protected $table            = 'do';
+    protected $primaryKey       = 'id_do';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_supir', 'telp_supir', 'status', 'keterangan'];
+    protected $allowedFields    = ['tgl_do', 'no_do', 'id_so', 'no_po', 'id_kendaraan', 'id_supir', 'catatan'];
 
     // Dates
     protected $useTimestamps = false;
@@ -44,6 +44,28 @@ class SupirModel extends Model
         if ($id == false) {
             return $this->findAll();
         }
-        return $this->where(['id' => $id])->first();
+        return $this->where(['id_do' => $id])->first();
+    }
+    public function getDO()
+    {
+        return $this->db->table('do')
+            ->join('so', 'so.id_so = do.id_so')
+            ->join('customer', 'customer.id = so.id_customer')
+            ->join('customer_detail', 'customer_detail.id = so.alamat_kirim')
+            ->join('supir', 'supir.id=do.id_supir')
+            ->join('kendaraan', 'kendaraan.id=do.id_kendaraan')
+            ->get()->getResultArray();
+    }
+    public function getDOrder()
+    {
+        return $this->db->table('do')
+            ->join('customer', 'customer.id=do.id_customer')
+            ->join('customer_detail', 'customer_detail.id=do.alamat_kirim', 'customer_detail.id_customer=so.id_customer',)
+            ->get()->getResultArray();
+    }
+    public function getNoDo()
+    {
+
+        return $this->db->table("do")->select('no_do')->orderBy('no_do', 'DESC')->get()->getResultArray();
     }
 }

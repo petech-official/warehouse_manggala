@@ -34,9 +34,21 @@
                             foreach ($data as $key => $value) : ?>
                                 <tr>
                                     <!-- Masukan Disini -->
-                                    <td><?= $value['nama']; ?></td>
-                                    <td><?= $value['telp']; ?></td>
-                                    <td><?= $value['status']; ?></td>
+                                    <td><?= $value['nama_supir']; ?></td>
+                                    <td><?= $value['telp_supir']; ?></td>
+                                    <td>
+                                    <td>
+                                        <?php
+                                        if ($value['status'] == 0) {
+                                        ?>
+                                            <span class="badge bg-success">Ada</span>
+                                        <?php } elseif ($value['status'] == 1) { ?>
+                                            <span class="badge bg-warning">Perjalanan Pengiriman</span>
+                                        <?php } else { ?>
+                                            <span class="badge bg-danger">Tidak ada</span>
+                                        <?php } ?>
+                                    </td>
+
                                     <td><?= $value['keterangan']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>

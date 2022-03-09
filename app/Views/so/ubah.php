@@ -51,7 +51,6 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                         <?= $validation->getError('dataCustomer'); ?>
                                     </div>
                                 </div>
-                                <?php dd($dataAlamat) ?>
                                 <div class="form-group">
                                     <label for="alamat_kirim">Alamat Kirim</label>
                                     <select class="form-select form-control  <?= ($validation->hasError('alamat_kirim')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="alamat_kirim" id="alamat_kirim">
