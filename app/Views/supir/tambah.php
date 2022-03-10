@@ -24,10 +24,10 @@
                         <form id="quickForm" method="POST" action="/<?= $judul; ?>/save">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="nama">Nama</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" autofocus value="<?= old('nama'); ?>" placeholder="Masukan Nama">
+                                    <label for="nama_supir">Nama Supir</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('nama_supir')) ? 'is-invalid' : ''; ?>" id="nama_supir" name="nama_supir" autofocus value="<?= old('nama_supir'); ?>" placeholder="Masukan nama_supir">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('nama'); ?>
+                                        <?= $validation->getError('nama_supir'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -36,7 +36,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" <?= ($validation->hasError('telp')) ? 'is-invalid' : ''; ?>" id="telp" name="telp" autofocus value="<?= old('telp'); ?>" placeholder="Masukan Telepon">
+                                        <input type="text" class="form-control" <?= ($validation->hasError('telp_supir')) ? 'is-invalid' : ''; ?>" id="telp_supir" name="telp_supir" autofocus value="<?= old('telp_supir'); ?>" placeholder="Masukan Telepon">
                                     </div>
                                 </div>
                             </div>

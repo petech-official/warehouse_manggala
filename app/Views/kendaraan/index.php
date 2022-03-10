@@ -40,7 +40,17 @@
                                     <td><?= $value['nopol']; ?></td>
                                     <td><?= $value['tipe']; ?></td>
                                     <td class="rupiah"><?= $value['km']; ?></td>
-                                    <td><?= $value['status']; ?></td>
+                                    <td>
+                                        <?php
+                                        if ($value['status'] == 0) {
+                                        ?>
+                                            <span class="badge bg-success">Ada</span>
+                                        <?php } elseif ($value['status'] == 1) { ?>
+                                            <span class="badge bg-warning">Perjalanan Pengiriman</span>
+                                        <?php } else { ?>
+                                            <span class="badge bg-danger">Tidak ada</span>
+                                        <?php } ?>
+                                    </td>
                                     <td><?= $value['keterangan']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>

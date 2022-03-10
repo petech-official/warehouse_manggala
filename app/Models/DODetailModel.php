@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SupirModel extends Model
+class DODetailModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'supir';
+    protected $table            = 'dodetails';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_supir', 'telp_supir', 'status', 'keterangan'];
+    protected $allowedFields    = [];
 
     // Dates
     protected $useTimestamps = false;
@@ -39,11 +39,4 @@ class SupirModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-    public function getData($id = false)
-    {
-        if ($id == false) {
-            return $this->findAll();
-        }
-        return $this->where(['id' => $id])->first();
-    }
 }

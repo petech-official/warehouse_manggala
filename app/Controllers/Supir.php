@@ -37,16 +37,16 @@ class Supir extends BaseController
     {
         //Validasi
         if (!$this->validate([
-            'nama' => [
+            'nama_supir' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Masukan nama !',
                 ]
             ],
-            'telp' => [
+            'telp_supir' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan telpon !',
+                    'required' => 'Masukan telp_supiron !',
                 ]
 
             ]
@@ -55,8 +55,8 @@ class Supir extends BaseController
         };
         $model = $this->controller . 'Model';
         $this->$model->save([
-            'nama' => $this->request->getVar('nama'),
-            'telp' => $this->request->getVar('telp'),
+            'nama_supir' => $this->request->getVar('nama_supir'),
+            'telp_supir' => $this->request->getVar('telp_supir'),
             'status' => $this->request->getVar('status'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
@@ -78,15 +78,15 @@ class Supir extends BaseController
     {
         //Validasi
         if (!$this->validate([
-            'nama' => [
+            'nama_supir' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan nama !',
+                    'required' => 'Masukan nama_supir !',
                 ],
-                'telp' => [
+                'telp_supir' => [
                     'rules' => 'required',
                     'errors' => [
-                        'required' => 'Masukan telp !',
+                        'required' => 'Masukan telp_supir !',
                     ]
                 ],
                 'status' => [
@@ -108,8 +108,8 @@ class Supir extends BaseController
         $model = $this->controller . 'Model';
         $this->$model->save([
             'id' => $id,
-            'nama' => $this->request->getVar('nama'),
-            'telp' => $this->request->getVar('telp'),
+            'nama_supir' => $this->request->getVar('nama_supir'),
+            'telp_supir' => $this->request->getVar('telp_supir'),
             'status' => $this->request->getVar('status'),
             'keterangan' => $this->request->getVar('keterangan'),
         ]);

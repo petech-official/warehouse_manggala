@@ -25,19 +25,19 @@
                             <div class="card-body">
                                 <input type="hidden" name="id">
                                 <div class="form-group">
-                                    <label for="nama">nama</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" autofocus value="<?= (old('nama')) ? old('nama') : $data['nama']; ?>">
+                                    <label for="nama_supir">Nama Supir</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('nama_supir')) ? 'is-invalid' : ''; ?>" id="nama_supir" name="nama_supir" autofocus value="<?= (old('nama_supir')) ? old('nama_supir') : $data['nama_supir']; ?>">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('nama'); ?>
+                                        <?= $validation->getError('nama_supir'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Telepon</label></label>
+                                    <label>Telepon Supir</label></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" <?= ($validation->hasError('telp')) ? 'is-invalid' : ''; ?>" id="telp" name="telp" autofocus value="<?= (old('telp')) ? old('telp') : $data['telp']; ?>" placeholder="Masukan Telepon">
+                                        <input type="text" class="form-control" <?= ($validation->hasError('telp_supir')) ? 'is-invalid' : ''; ?>" id="telp_supir" name="telp_supir" autofocus value="<?= (old('telp_supir')) ? old('telp_supir') : $data['telp_supir']; ?>" placeholder="Masukan Telepon">
                                     </div>
                                 </div>
                                 <div class="form-group">
