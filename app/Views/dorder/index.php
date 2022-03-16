@@ -48,7 +48,7 @@
                                     <!-- Selesai Disini -->
                                     <td>
                                         <!-- hapus jika perlu -->
-                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id_do']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                        <a href="/DODetail/index/<?= $value['id_do']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                                         <!-- end hapus -->
                                         <a href="/<?= $judul; ?>/edit/<?= $value['id_do']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>

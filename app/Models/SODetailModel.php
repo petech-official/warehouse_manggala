@@ -14,7 +14,7 @@ class SODetailModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_so', 'id_barang', 'quantitas', 'berat_total', 'keterangan_so'];
+    protected $allowedFields    = ['id_so_detail', 'id_so', 'id_barang', 'quantitas', 'quantitas_mutasi', 'berat_total', 'berat_total_mutasi', 'keterangan_so', 'status_so'];
 
     // Dates
     protected $useTimestamps = false;
@@ -78,5 +78,10 @@ class SODetailModel extends Model
             return $this->findAll();
         }
         return $this->select('id_so')->where('id_so_detail', $id)->first();
+    }
+    public function getSoDetailBarang($id_so, $id_barang, $status_so)
+    {
+
+        return $this->where('id_so', $id_so)->where('id_barang', $id_barang)->where('status_so', $status_so)->first();
     }
 }

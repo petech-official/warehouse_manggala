@@ -67,11 +67,6 @@ class SODetail extends BaseController
 
         $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
         $totalBerat = $barang['berat'] * $this->request->getVar('quantitas');
-        // if ($totalBerat != 0) {
-        //     $keterangan_so = 'Barang Standar, 1 Box emiliki berat ' . $barang['berat'] . 'Kg';
-        // } else {
-        //     $keterangan_so = 'Barang Non Standar';
-        // }
 
         $model = $this->controller . 'Model';
         $this->$model->save([
