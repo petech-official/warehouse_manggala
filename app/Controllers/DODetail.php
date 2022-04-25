@@ -16,6 +16,7 @@ class DODetail extends BaseController
         $this->SODetailModel = new \App\Models\SODetailModel();
         $this->BarangModel = new \App\Models\BarangModel();
         $this->BarangGradeModel = new \App\Models\BarangGradeModel();
+        $this->StockBarangModel = new \App\Models\StockBarangModel();
     }
 
     public $controller = 'DODetail';
@@ -105,6 +106,7 @@ class DODetail extends BaseController
             $status = 0;
         }
 
+        //so detail
         $this->SODetailModel->save([
             'id_so_detail' => $GetQuantitas['id_so_detail'],
             'id_so' => $id_so,
@@ -113,7 +115,27 @@ class DODetail extends BaseController
             'berat_total_mutasi' => $BeratBaru,
             'status_so' => $status
         ]);
-        // Motong Stock
+
+        // so        
+        $statusSO = $this->SODetailModel->GetStatus($id_so)[0]['status_so'];
+        if ((int)$statusSO == 1) {
+            $this->SOModel->save([
+                'id_so' => $id_so,
+                'status' => 1
+            ]);
+        };
+
+        // Motong Stock        
+        $id_stock = ($this->StockBarangModel->getIdStock($barang['id_barang']));
+        $box_stock = ($this->StockBarangModel->getBoxStock($barang['id_barang']))['box'];
+        $berat_stock = ($this->StockBarangModel->getBeratStock($barang['id_barang']))['berat_total'];
+        $this->StockBarangModel->save([
+            'id_stock' => $id_stock['id_stock'],
+            'id_barang' => $barang['id_barang'],
+            'box' => (int)$box_stock -  $this->request->getVar('box'),
+            'berat_total' => (int)$berat_stock - $totalBerat,
+        ]);
+
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller . '/index/' . $this->request->getVar('id_do'));
     }

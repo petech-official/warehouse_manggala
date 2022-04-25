@@ -13,6 +13,7 @@ class SODetail extends BaseController
         $this->SOModel = new \App\Models\SOModel();
         $this->SODetailModel = new \App\Models\SODetailModel();
         $this->BarangModel = new \App\Models\BarangModel();
+        $this->BarangGradeModel = new \App\Models\BarangGradeModel();
     }
     public $controllerMain = 'SO';
     public $controller = 'SODetail';
@@ -55,25 +56,38 @@ class SODetail extends BaseController
 
                 ]
             ],
-            'quantitas' => [
+            'berat_total' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan quantitas !',
+                    'required' => 'Masukan berat !',
                 ]
             ],
         ])) {
             return redirect()->to('/' . $this->controller . '/tambah/' . $this->request->getVar('id_so'))->withInput();
         };
+        $id_so = $this->request->getVar('id_so');
+        $grade = $this->BarangModel->where('id_barang', $this->request->getVar('id_barang'))->find()[0]['id_grade'];
+        $gradeStandar = $this->BarangGradeModel->where('id', 1)->find()[0]['id'];
 
-        $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
-        $totalBerat = $barang['berat'] * $this->request->getVar('quantitas');
+        if ($grade == $gradeStandar) {
+
+            $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
+            $beratBarang = $barang['berat'];
+            $box = ceil($this->request->getVar('quantitas') * $beratBarang);
+        } else {
+            if ($this->request->getVar('quantitas') == '') {
+                return redirect()->to('/' . $this->controller . '/tambah/' . $id_so)->withInput();
+            }
+            $beratBarang = $this->request->getVar('berat_total');
+            $box = ceil($this->request->getVar('quantitas') * $beratBarang);
+        }
 
         $model = $this->controller . 'Model';
         $this->$model->save([
             'id_so' => $this->request->getVar('id_so'),
             'id_barang' => $this->request->getVar('id_barang'),
             'quantitas' => $this->request->getVar('quantitas'),
-            'berat_total' => $totalBerat,
+            'berat_total' => $box,
             'keterangan_so' => $this->request->getVar('keterangan_so')
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
