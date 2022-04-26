@@ -25,8 +25,8 @@
                                 <th>NO SO</th>
                                 <th>NO PO</th>
                                 <th>Customer</th>
-                                <th>Alamat</th>
-                                <th>Alamat Kirim</th>
+                                <th width="180px">Alamat</th>
+                                <th width="180px">Alamat Kirim</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

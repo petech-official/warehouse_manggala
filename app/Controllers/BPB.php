@@ -213,7 +213,6 @@ class BPB extends BaseController
         $ID_PO = $this->PODetailModel->getIdPO($GetQuantitas['id_po_detail']);
         $statusPO = $this->PODetailModel->GetStatus($ID_PO)[0]['status_po'];
         if ((int)$statusPO == 1) {
-
             $this->POModel->save([
                 'id_po' => $ID_PO,
                 'status' => 1

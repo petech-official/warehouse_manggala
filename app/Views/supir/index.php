@@ -23,7 +23,7 @@
                                 <th>Nama</th>
                                 <th>Telp</th>
                                 <th>Status</th>
-                                <th>Keterangan</th>
+                                <th width="240px">Keterangan</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -36,7 +36,6 @@
                                     <!-- Masukan Disini -->
                                     <td><?= $value['nama_supir']; ?></td>
                                     <td><?= $value['telp_supir']; ?></td>
-                                    <td>
                                     <td>
                                         <?php
                                         if ($value['status'] == 0) {
