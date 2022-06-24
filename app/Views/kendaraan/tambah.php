@@ -24,7 +24,7 @@
                         <form id="quickForm" method="POST" action="/<?= $judul; ?>/save">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="nopol">No Pol</label>
+                                    <label for="nopol">No Kendaraan</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('nopol')) ? 'is-invalid' : ''; ?>" id="nopol" name="nopol" autofocus value="<?= old('nopol'); ?>" placeholder="Masukan nopol">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('nopol'); ?>
@@ -42,13 +42,6 @@
                                     </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('status'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="km">KM</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('km')) ? 'is-invalid' : ''; ?>" id="km" name="km" autofocus value="<?= old('km'); ?>" placeholder="Masukan km">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('km'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">

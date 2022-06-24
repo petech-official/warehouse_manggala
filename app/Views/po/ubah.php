@@ -40,9 +40,9 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                     <label for="dataSupplier">Supplier</label>
                                     <select class="form-select form-control  <?= ($validation->hasError('dataSupplier')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus id="supplier" name="supplier">
                                         <?php foreach ($dataSupplier as $key => $value) : ?>
-                                            <option value="<?= $value['id']; ?>" <?php if ($value['id'] == $data['id_supplier']) {
-                                                                                        echo "selected";
-                                                                                    } ?>>
+                                            <option value="<?= $value['id_supplier']; ?>" <?php if ($value['id_supplier'] == $data['id_supplier']) {
+                                                                                                echo "selected";
+                                                                                            } ?>>
                                                 <?= $value['nama']; ?>
                                             </option>
                                         <?php endforeach ?>

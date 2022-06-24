@@ -21,14 +21,14 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id']; ?>">
+                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_customer']; ?>">
                             <div class="card-body">
                                 <input type="hidden" name="id">
                                 <div class="form-group">
-                                    <label for="nama">nama</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" autofocus value="<?= (old('nama')) ? old('nama') : $data['nama']; ?>">
+                                    <label for="nama">Nama</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('nama_customer')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" autofocus value="<?= (old('nama_customer')) ? old('nama_customer') : $data['nama_customer']; ?>">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('nama'); ?>
+                                        <?= $validation->getError('nama_customer'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="alamat">Alamat</label>
+                                    <label for="alamat">Alamat NPWP</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" autofocus value="<?= (old('alamat')) ? old('alamat') : $data['alamat_npwp']; ?>">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('alamat'); ?>

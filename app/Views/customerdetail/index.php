@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title"><a href="/<?= $judulMain; ?>/index"><?= $judulMain; ?></a>
-                        <?= $aksi; ?> <?= $dataMain['nama'] ?></h3>
+                        <?= $aksi; ?> <?= $dataMain['nama_customer'] ?></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
@@ -15,7 +15,7 @@
                         <tr>
                             <th>Supplier</th>
                             <td>:</td>
-                            <td><?= $dataMain['nama'] ?></td>
+                            <td><?= $dataMain['nama_customer'] ?></td>
                         </tr>
                         <tr>
                             <th>Telp</th>
@@ -29,7 +29,7 @@
                         </tr>
                     </table>
                     <hr>
-                    <a href="/<?= $judul; ?>/tambah/<?= $dataMain['id'] ?>" class="btn btn-primary">Tambah Alamat</a><br><br>
+                    <a href="/<?= $judul; ?>/tambah/<?= $dataMain['id_customer'] ?>" class="btn btn-primary">Tambah Alamat</a><br><br>
                     <?php if (session()->getFlashdata('pesan')) : ?>
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashdata('pesan'); ?>
@@ -39,9 +39,7 @@
                         <thead>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <th>Alamat</th>
-                                <th>KM</th>
-                                <th>Waktu</th>
+                                <th>Alamat Kirim</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -53,15 +51,13 @@
                                 <tr>
                                     <!-- Masukan Disini -->
                                     <td><?= $value['alamat'] ?></td>
-                                    <td><?= $value['km'] ?></td>
-                                    <td><?= $value['waktu'] ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_customer_detail']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id']; ?>,<?= $value['id_customer'] ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_customer_detail']; ?>,<?= $value['id_customer'] ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -71,9 +67,7 @@
                         <tfoot>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <th>Alamat</th>
-                                <th>KM</th>
-                                <th>Waktu</th>
+                                <th>Alamat Kirim</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

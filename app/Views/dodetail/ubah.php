@@ -8,7 +8,8 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/<?= $judul; ?>/index/<?= $id_so['id_so']; ?>"><?= $judul; ?></a>
+
+                        <a href="/<?= $judul; ?>/index/<?= $data['id_do']; ?>"><?= $judul; ?></a>
                         <?= $aksi; ?>
                     </h3>
                 </div>
@@ -21,11 +22,11 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_so_detail']; ?>">
+                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_do_detail']; ?>">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="id_barang">Barang</label>
-                                    <input type="hidden" value="<?= $data['id_so']; ?>" name="id_so" id="id_so">
+                                    <input type="hidden" value="<?= $data['id_do']; ?>" name="id_do" id="id_do">
                                     <select class="form-select form-control  <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" name="id_barang">
                                         <?php foreach ($dataBarang as $key => $value) : ?>
                                             <option value="<?= $value['id_barang']; ?>" <?php if ($value['id_barang'] == $data['id_barang']) {
@@ -39,20 +40,7 @@
                                         <?= $validation->getError('id_barang'); ?>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="quantitas">Box</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('quantitas')) ? 'is-invalid' : ''; ?>" id="quantitas" name="quantitas" autofocus value="<?= (old('quantitas')) ? old('quantitas') : $data['quantitas']; ?>">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('quantitas'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="keterangan_so">Keteranga SO</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_so')) ? 'is-invalid' : ''; ?>" id="keterangan_so" name="keterangan_so" autofocus value="<?= (old('keterangan_so')) ? old('keterangan_so') : $data['keterangan_so']; ?>">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('keterangan_so'); ?>
-                                    </div>
-                                </div>
+
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">

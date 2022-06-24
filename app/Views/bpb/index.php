@@ -52,8 +52,7 @@
                                     <td> <?= $value['supir']; ?></td>
                                     <td> <?= $value['no_mobil']; ?></td>
 
-                                    <td> <?= $dataPO[$i]['nama'];
-                                            ?></td>
+                                    <td> <?= $value['singkatan']; ?></td>
                                     <td> <?= $value['no_po']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>

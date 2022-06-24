@@ -39,7 +39,7 @@
                                     <!-- Masukan Disini -->
                                     <td><?= $value['no_so']; ?></td>
                                     <td class="tanggal"><?= $value['tgl_so']; ?></td>
-                                    <td><?= $value['nama']; ?></td>
+                                    <td><?= $value['nama_customer']; ?></td>
                                     <td><?= $value['alamat_npwp']; ?></td>
                                     <td><?= $value['alamat']; ?></td>
                                     <td><?= $value['keterangan']; ?></td>

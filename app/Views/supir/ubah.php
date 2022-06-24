@@ -21,7 +21,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id']; ?>">
+                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_supir']; ?>">
                             <div class="card-body">
                                 <input type="hidden" name="id">
                                 <div class="form-group">
@@ -38,28 +38,6 @@
                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                         </div>
                                         <input type="text" class="form-control" <?= ($validation->hasError('telp_supir')) ? 'is-invalid' : ''; ?>" id="telp_supir" name="telp_supir" autofocus value="<?= (old('telp_supir')) ? old('telp_supir') : $data['telp_supir']; ?>" placeholder="Masukan Telepon">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="status">Status</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('status')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="status" id="status">
-                                        <?php foreach ($status as $key => $value) : ?>
-                                            <option value="<?= $value['status']; ?>" <?php if ($value['status'] == $data['status']) {
-                                                                                            echo "selected";
-                                                                                        } ?>>
-                                                <?= $value['status']; ?>
-                                            </option>
-                                        <?php endforeach ?>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('status'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="keterangan">Keterangan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" id="keterangan" name="keterangan" autofocus value="<?= (old('keterangan')) ? old('keterangan') : $data['keterangan']; ?>">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('keterangan'); ?>
                                     </div>
                                 </div>
                             </div>

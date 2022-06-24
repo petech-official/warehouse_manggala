@@ -22,8 +22,6 @@
                                 <!-- Masukan Disini -->
                                 <th>Nama</th>
                                 <th>Telp</th>
-                                <th>Status</th>
-                                <th width="240px">Keterangan</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -36,27 +34,14 @@
                                     <!-- Masukan Disini -->
                                     <td><?= $value['nama_supir']; ?></td>
                                     <td><?= $value['telp_supir']; ?></td>
-                                    <td>
-                                        <?php
-                                        if ($value['status'] == 0) {
-                                        ?>
-                                            <span class="badge bg-success">Ada</span>
-                                        <?php } elseif ($value['status'] == 1) { ?>
-                                            <span class="badge bg-warning">Perjalanan Pengiriman</span>
-                                        <?php } else { ?>
-                                            <span class="badge bg-danger">Tidak ada</span>
-                                        <?php } ?>
-                                    </td>
-
-                                    <td><?= $value['keterangan']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Aksi edit di sesuaikan -->
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_supir']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <!-- Aksi hapus di sesuaikan -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_supir']; ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -68,8 +53,6 @@
                                 <!-- Masukan Disini -->
                                 <th>Nama</th>
                                 <th>Telp</th>
-                                <th>Status</th>
-                                <th>Keterangan</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

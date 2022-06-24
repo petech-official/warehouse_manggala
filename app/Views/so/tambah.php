@@ -42,7 +42,7 @@
                                     <select class="form-select form-control  <?= ($validation->hasError('customer')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('customer'); ?>" name="customer" id="customer">
                                         <option selected disabled>Pilih customer</option>
                                         <?php foreach ($dataCustomer as $key => $value) : ?>
-                                            <option value="<?= $value['id']; ?>"><?= $value['nama']; ?></option>
+                                            <option value="<?= $value['id_customer']; ?>"><?= $value['nama_customer']; ?></option>
                                         <?php endforeach ?>
                                     </select>
                                     <div class="invalid-feedback">
@@ -53,6 +53,7 @@
                                 <div class="form-group">
                                     <label for="alamat_kirim">Alamat Kirim</label>
                                     <select class="form-select form-control  <?= ($validation->hasError('alamat_kirim')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('alamat_kirim'); ?>" name="alamat_kirim" id="alamat_kirim">
+
                                     </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('alamat_kirim'); ?>
@@ -102,7 +103,7 @@
                 var baris = '';
                 for (let i = 0; i < data.length; i++) {
                     const element = data[i];
-                    baris += '<option value="' + element.id + '" >' + element.alamat + '</option>';
+                    baris += '<option value="' + element.id_customer_detail + '" >' + element.alamat + '</option>';
                 }
                 $('#alamat_kirim').html(baris);
             }

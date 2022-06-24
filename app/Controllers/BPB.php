@@ -27,8 +27,8 @@ class BPB extends BaseController
         $model = $this->controller . 'Model';
         $data = [
             'judul' => $this->controller,
-            'data' => $this->$model->findAll(),
-            'dataPO' => $this->$model->getPO(),
+            'data' => $this->$model->getPO(),
+            //'dataPO' => $this->$model->getPO(),
         ];
         return view($this->controller . '/index', $data);
     }
@@ -91,12 +91,6 @@ class BPB extends BaseController
                     'required' => 'Masukan barang !',
                 ]
             ],
-            'quantitas' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan box !',
-                ]
-            ],
         ])) {
 
             return redirect()->to('/' . $this->controller . '/tambah')->withInput();
@@ -140,28 +134,31 @@ class BPB extends BaseController
         // cek barang standar
         // Motong PO
         // ambil quantitas standar
-        $barang_po = $this->request->getVar('barang');
-        $id_barang = $this->PODetailModel->where('id_po_detail', $barang_po)->find()[0]['id_barang'];
-        $grade = $this->BarangModel->where('id_barang', $id_barang)->find()[0]['id_grade'];
-        $gradeStandar = $this->BarangGradeModel->where('id', 1)->find()[0]['id'];
+        // $barang_po = $this->request->getVar('barang');
+        // $id_barang = $this->PODetailModel->where('id_po_detail', $barang_po)->find()[0]['id_barang'];
+        // $grade = $this->BarangModel->where('id_barang', $id_barang)->find()[0]['id_grade'];
+        // $gradeStandar = $this->BarangGradeModel->where('id', 1)->find()[0]['id'];
         $PO = $this->POModel->where('id_po', $this->request->getVar('po'))->find()[0]['no_po'];
+
         $GetQuantitas = $this->PODetailModel->getPoDetailBarang($this->request->getVar('po'), $this->request->getVar('barang'), 0);
         $barang = $this->BarangModel->getData($GetQuantitas['id_barang']);
         $QuantitasAwal = $GetQuantitas['quantitas'];
-        $QuantitasBaru = $GetQuantitas['quantitas_mutasi'] + $this->request->getVar('quantitas');
+        $Box = ceil($this->request->getVar('berat_total') / $barang['berat']);
+        $QuantitasBaru = $GetQuantitas['quantitas_mutasi'] + $Box;
+
 
         $BeratAwal = $GetQuantitas['berat_total'];
 
-        if ($grade == $gradeStandar) {
-            $totalBerat = $barang['berat'] * $this->request->getVar('quantitas');
-            $beratBaru = $barang['berat'] * $QuantitasBaru;
-        } else {
-            if ($this->request->getVar('berat_total') == '') {
-                return redirect()->to('/' . $this->controller . '/tambah')->withInput();
-            }
-            $totalBerat = $this->request->getVar('berat_total');
-            $beratBaru = $GetQuantitas['berat_total_mutasi'] + $totalBerat;
-        }
+        // if ($grade == $gradeStandar) {
+        $totalBerat = $barang['berat'] * $Box;
+        $beratBaru = $barang['berat'] * $QuantitasBaru;
+        // } else {
+        //     if ($this->request->getVar('berat_total') == '') {
+        //         return redirect()->to('/' . $this->controller . '/tambah')->withInput();
+        //     }
+        //     $totalBerat = $this->request->getVar('berat_total');
+        //     $beratBaru = $GetQuantitas['berat_total_mutasi'] + $totalBerat;
+        // }
 
         // Ganti Status
         if ($QuantitasBaru >= $QuantitasAwal and $beratBaru >= $BeratAwal) {
@@ -184,7 +181,6 @@ class BPB extends BaseController
             $filePackingList->move('packing_list', $namaPackingList . '.' . $pecah[1]);
         }
 
-
         $this->$model->save([
             'no_bpb' => 'BPB' . date('ym') . $BPBBaru,
             'tgl_bpb' => $tanggal,
@@ -192,11 +188,10 @@ class BPB extends BaseController
             'no_mobil' => $this->request->getVar('no_mobil'),
             'no_po' => $PO,
             'id_po_detail' => $this->request->getVar('barang'),
-            'quantitas' => $this->request->getVar('quantitas'),
-            'berat' => $totalBerat,
+            'quantitas' => $Box,
+            'berat' => $this->request->getVar('berat_total'),
             'packing_list' => $namaPackingList . '.' . $pecah[1],
             'supir' => $this->request->getVar('supir'),
-
         ]);
 
 
@@ -227,7 +222,7 @@ class BPB extends BaseController
         $this->StockBarangModel->save([
             'id_stock' => $id_stock['id_stock'],
             'id_barang' => $barang['id_barang'],
-            'box' => (int)$box_stock +  $this->request->getVar('quantitas'),
+            'box' => (int)$box_stock +  $Box,
             'berat_total' => (int)$berat_stock + $totalBerat,
         ]);
 
@@ -304,12 +299,6 @@ class BPB extends BaseController
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Masukan barang !',
-                ]
-            ],
-            'quantitas' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan box !',
                 ]
             ],
             'berat' => [

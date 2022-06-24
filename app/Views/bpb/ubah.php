@@ -109,14 +109,6 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                         <?= $validation->getError('id_barangbarang'); ?>
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="quantitas">Box</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('quantitas')) ? 'is-invalid' : ''; ?>" id="quantitas" name="quantitas" autofocus value="<?= (old('quantitas')) ? old('quantitas') : $data['quantitas']; ?>">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('quantitas'); ?>
-                                    </div>
-                                </div>
                                 <div class="form-group">
                                     <label for="berat">Berat</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('berat')) ? 'is-invalid' : ''; ?>" id="berat" name="berat" autofocus value="<?= (old('berat')) ? old('berat') : $data['berat']; ?>">

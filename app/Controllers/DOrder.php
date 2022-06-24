@@ -32,8 +32,8 @@ class DOrder extends BaseController
             'judul' => $this->controller,
             'aksi' => ' / Tambah Data',
             'dataSO' => $this->SOModel->where('status', 0)->findAll(),
-            'dataMobil' => $this->KendaraanModel->where('status', 0)->findAll(),
-            'dataSupir' => $this->SupirModel->where('status', 0)->findAll(),
+            'dataMobil' => $this->KendaraanModel->findAll(),
+            'dataSupir' => $this->SupirModel->findAll(),
             'validation' => \Config\Services::validation(),
         ];
         return view($this->controller . '/tambah', $data);
@@ -123,8 +123,8 @@ class DOrder extends BaseController
             'validation' => \Config\Services::validation(),
             'data'  => $this->$model->getData($id),
             'dataSO' => $this->SOModel->where('status', 0)->findAll(),
-            'dataKendaraan' => $this->KendaraanModel->where('status', 0)->findAll(),
-            'dataSupir' => $this->SupirModel->where('status', 0)->findAll(),
+            'dataKendaraan' => $this->KendaraanModel->findAll(),
+            'dataSupir' => $this->SupirModel->findAll(),
         ];
         return view('/' . $this->controller . '/ubah', $data);
     }

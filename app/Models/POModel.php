@@ -43,12 +43,11 @@ class POModel extends Model
     public function getPO()
     {
         return $this->db->table('po')
-            ->join('supplier', 'supplier.id=po.id_supplier')
+            ->join('supplier', 'supplier.id_supplier=po.id_supplier')
             ->get()->getResultArray();
     }
     public function getNoPo()
     {
-
         return $this->db->table("po")->select('no_po')->orderBy('no_po', 'DESC')->get()->getResultArray();
     }
     public function getData($id = false)

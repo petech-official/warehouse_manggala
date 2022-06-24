@@ -8,13 +8,13 @@ class CustomerModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'customer';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_customer';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama', 'telp', 'alamat_npwp'];
+    protected $allowedFields    = ['nama_customer', 'telp', 'alamat_npwp'];
 
     // Dates
     protected $useTimestamps = false;
@@ -44,6 +44,6 @@ class CustomerModel extends Model
         if ($id == false) {
             return $this->findAll();
         }
-        return $this->where(['id' => $id])->first();
+        return $this->where(['id_customer' => $id])->first();
     }
 }

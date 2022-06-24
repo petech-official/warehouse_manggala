@@ -47,21 +47,8 @@ class CustomerDetail extends BaseController
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Masukan alamat !',
-
                 ]
-            ],
-            'km' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan km !',
-                ]
-            ],
-            'waktu' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan waktu !',
-                ]
-            ],
+            ]
         ])) {
             return redirect()->to('/' . $this->controller . '/tambah/' . $this->request->getVar('id_customer'))->withInput();
         };
@@ -69,8 +56,6 @@ class CustomerDetail extends BaseController
         $this->$model->save([
             'id_customer' => $this->request->getVar('id_customer'),
             'alamat' => $this->request->getVar('alamat'),
-            'km' => $this->request->getVar('km'),
-            'waktu' => $this->request->getVar('waktu'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller . '/index/' . $this->request->getVar('id_customer'));
@@ -81,7 +66,6 @@ class CustomerDetail extends BaseController
         $data = [
             'judul' => $this->controller,
             'aksi' => ' / Ubah Data',
-            'id_customer' => $id,
             'validation' => \Config\Services::validation(),
             'data'  => $this->$model->getDataDetail($id),
         ];
@@ -96,28 +80,14 @@ class CustomerDetail extends BaseController
                     'required' => 'Masukan alamat !',
 
                 ]
-            ],
-            'km' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan km !',
-                ]
-            ],
-            'waktu' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan waktu !',
-                ]
-            ],
+            ]
         ])) {
             return redirect()->to('/' . $this->controller . '/edit')->withInput();
         };
         $model = $this->controller . 'Model';
         $this->$model->save([
-            'id' => $id,
+            'id_customer_detail' => $id,
             'alamat' => $this->request->getVar('alamat'),
-            'km' => $this->request->getVar('km'),
-            'waktu' => $this->request->getVar('waktu'),
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil diubah');

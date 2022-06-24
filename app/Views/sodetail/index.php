@@ -26,7 +26,7 @@
                         <tr>
                             <th>Nama Customer</th>
                             <td>:</td>
-                            <td><?= $dataMain['nama'] ?></td>
+                            <td><?= $dataMain['nama_customer'] ?></td>
                         </tr>
                         <tr>
                             <th>Alamat NPWP</th>

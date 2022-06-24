@@ -41,7 +41,7 @@
                         <tr>
                             <th>Customer</th>
                             <td>:</td>
-                            <td><?= $dataMain['nama']
+                            <td><?= $dataMain['nama_customer']
                                 ?></td>
                         </tr>
                         <tr>

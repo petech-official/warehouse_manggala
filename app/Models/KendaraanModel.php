@@ -8,13 +8,13 @@ class KendaraanModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'kendaraan';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_kendaraan';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nopol', 'tipe', 'km', 'status', 'keterangan'];
+    protected $allowedFields    = ['nopol', 'tipe'];
 
     // Dates
     protected $useTimestamps = false;
@@ -44,6 +44,6 @@ class KendaraanModel extends Model
         if ($id == false) {
             return $this->findAll();
         }
-        return $this->where(['id' => $id])->first();
+        return $this->where(['id_kendaraan' => $id])->first();
     }
 }

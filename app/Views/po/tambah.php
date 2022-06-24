@@ -39,7 +39,7 @@
                                     <select class="form-select form-control  <?= ($validation->hasError('supplier')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('supplier'); ?>" name="supplier" id="supplier">
                                         <option selected disabled>Pilih Supplier</option>
                                         <?php foreach ($dataSupplier as $key => $value) : ?>
-                                            <option value="<?= $value['id']; ?>"><?= $value['nama']; ?></option>
+                                            <option value="<?= $value['id_supplier']; ?>"><?= $value['nama']; ?></option>
                                         <?php endforeach ?>
                                     </select>
                                     <div class="invalid-feedback">

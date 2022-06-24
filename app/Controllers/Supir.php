@@ -46,7 +46,7 @@ class Supir extends BaseController
             'telp_supir' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan telp_supiron !',
+                    'required' => 'Masukan telp_supir !',
                 ]
 
             ]
@@ -57,7 +57,6 @@ class Supir extends BaseController
         $this->$model->save([
             'nama_supir' => $this->request->getVar('nama_supir'),
             'telp_supir' => $this->request->getVar('telp_supir'),
-            'status' => $this->request->getVar('status'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller);
@@ -70,7 +69,6 @@ class Supir extends BaseController
             'aksi' => ' / Ubah Data',
             'validation' => \Config\Services::validation(),
             'data'  => $this->$model->getData($id),
-            'status' => $this->StatusModel->findAll()
         ];
         return view('/' . $this->controller . '/ubah', $data);
     }
@@ -88,18 +86,6 @@ class Supir extends BaseController
                     'errors' => [
                         'required' => 'Masukan telp_supir !',
                     ]
-                ],
-                'status' => [
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => 'Masukan status !',
-                    ]
-                ],
-                'keterangan' => [
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => 'Masukan keterangan !',
-                    ]
                 ]
             ]
         ])) {
@@ -107,11 +93,10 @@ class Supir extends BaseController
         };
         $model = $this->controller . 'Model';
         $this->$model->save([
-            'id' => $id,
+            'id_supir' => $id,
             'nama_supir' => $this->request->getVar('nama_supir'),
             'telp_supir' => $this->request->getVar('telp_supir'),
-            'status' => $this->request->getVar('status'),
-            'keterangan' => $this->request->getVar('keterangan'),
+
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil diubah');

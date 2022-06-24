@@ -40,10 +40,10 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                     <label for="dataCustomer">Customer</label>
                                     <select class="form-select form-control  <?= ($validation->hasError('dataCustomer')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus id="customer" name="customer">
                                         <?php foreach ($dataCustomer as $key => $value) : ?>
-                                            <option value="<?= $value['id']; ?>" <?php if ($value['id'] == $data['id_customer']) {
-                                                                                        echo "selected";
-                                                                                    } ?>>
-                                                <?= $value['nama']; ?>
+                                            <option value="<?= $value['id_customer']; ?>" <?php if ($value['id_customer'] == $data['id_customer']) {
+                                                                                                echo "selected";
+                                                                                            } ?>>
+                                                <?= $value['nama_customer']; ?>
                                             </option>
                                         <?php endforeach ?>
                                     </select>
@@ -55,9 +55,9 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                     <label for="alamat_kirim">Alamat Kirim</label>
                                     <select class="form-select form-control  <?= ($validation->hasError('alamat_kirim')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="alamat_kirim" id="alamat_kirim">
                                         <?php foreach ($dataAlamat as $key => $value) : ?>
-                                            <option value="<?= $value['id']; ?>" <?php if ($value['id'] == $data['alamat_kirim']) {
-                                                                                        echo "selected";
-                                                                                    } ?>>
+                                            <option value="<?= $value['id_customer']; ?>" <?php if ($value['id_customer'] == $data['alamat_kirim']) {
+                                                                                                echo "selected";
+                                                                                            } ?>>
                                                 <?= $value['alamat']; ?>
                                             </option>
                                         <?php endforeach ?>

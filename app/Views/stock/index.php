@@ -5,7 +5,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Stock <?= $judul; ?></h3>
+                    <h3 class="card-title"><?= $judul; ?></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
@@ -20,10 +20,11 @@
                         <thead>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <td>Nama Barang</td>
-                                <td>Produk</td>
-                                <td>Berat (Kg)</td>
-                                <td>Aksi</td>
+                                <th>Nama Barang</th>
+                                <th>Produk</th>
+                                <th>Berat (Kg)</th>
+                                <th>Max Berat (Kg)</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody style="padding: 50px;">
@@ -37,6 +38,7 @@
                                     <td><?= $value['singkatan']; ?></td>
                                     <td><?= $value['berat']; ?></td>
                                     <!-- Selesai Disini -->
+                                    <td></td>
                                     <td>
                                         <a href="/Stock/edit/<?= $value['id_barang']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
@@ -52,10 +54,11 @@
                         <tfoot>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <td>Nama Barang</td>
-                                <td>Produk</td>
-                                <td>Berat</td>
-                                <td>Aksi</td>
+                                <th>Nama Barang</th>
+                                <th>Produk</th>
+                                <th>Berat (Kg)</th>
+                                <th>Max Berat (Kg)</th>
+                                <th>Aksi</th>
                             </tr>
                         </tfoot>
                     </table>

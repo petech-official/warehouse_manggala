@@ -38,7 +38,7 @@ class Customer extends BaseController
         //Validasi
         if (!$this->validate([
             'nama' => [
-                'rules' => 'required|is_unique[customer.nama]',
+                'rules' => 'required|is_unique[customer.nama_customer]',
                 'errors' => [
                     'required' => 'Masukan nama !',
                     'is_unique' => 'nama harus unik !'
@@ -62,7 +62,7 @@ class Customer extends BaseController
         };
         $model = $this->controller . 'Model';
         $this->$model->save([
-            'nama' => $this->request->getVar('nama'),
+            'nama_customer' => $this->request->getVar('nama'),
             'telp' => $this->request->getVar('telp'),
             'alamat_npwp' => $this->request->getVar('alamat'),
         ]);
@@ -107,8 +107,8 @@ class Customer extends BaseController
         };
         $model = $this->controller . 'Model';
         $this->$model->save([
-            'id' => $id,
-            'nama' => $this->request->getVar('nama'),
+            'id_customer' => $id,
+            'nama_customer' => $this->request->getVar('nama'),
             'telp' => $this->request->getVar('telp'),
             'alamat_npwp' => $this->request->getVar('alamat'),
         ]);
