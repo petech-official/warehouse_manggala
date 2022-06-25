@@ -21,7 +21,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/updateGrade/<?= $data['id']; ?>">
+                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/updateGrade/<?= $data['id_barang_grade']; ?>">
                             <div class="card-body">
                                 <input type="hidden" name="id">
                                 <div class="form-group">

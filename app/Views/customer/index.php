@@ -33,18 +33,18 @@
                             foreach ($data as $key => $value) : ?>
                                 <tr>
                                     <!-- Masukan Disini -->
-                                    <td><?= $value['nama']; ?></td>
+                                    <td><?= $value['nama_customer']; ?></td>
                                     <td><?= $value['telp']; ?></td>
                                     <td><?= $value['alamat_npwp']; ?></td>
-                                    
+
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id_customer']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_customer']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_customer']; ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>

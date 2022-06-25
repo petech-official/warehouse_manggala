@@ -8,7 +8,7 @@ class BarangJenisModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'barang_jenis';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_barang_jenis';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
@@ -44,7 +44,7 @@ class BarangJenisModel extends Model
         if ($id == false) {
             return $this->findAll();
         }
-        return $this->where(['id' => $id])->first();
+        return $this->where(['id_barang_jenis' => $id])->first();
     }
     // INI JENIS
 }

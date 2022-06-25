@@ -57,19 +57,19 @@ class SODetailModel extends Model
     {
         return $this->db->table('so_detail')->where('id_so', $id)
             ->join('barang', 'barang.id_barang=so_detail.id_barang')
-            ->join('barang_jenis', 'barang_jenis.id=barang.id_jenis')
-            ->join('barang_lot', 'barang_lot.id=barang.id_lot')
-            ->join('barang_ukuran', 'barang_ukuran.id=barang.id_ukuran')
-            ->join('supplier', 'supplier.id=barang.id_supplier')
-            ->join('barang_keterangan', 'barang_keterangan.id=barang.id_keterangan')
-            ->join('barang_grade', 'barang_grade.id=barang.id_grade')
+            ->join('barang_jenis', 'barang_jenis.id_barang_jenis=barang.id_jenis')
+            ->join('barang_lot', 'barang_lot.id_barang_lot=barang.id_lot')
+            ->join('barang_ukuran', 'barang_ukuran.id_barang_ukuran=barang.id_ukuran')
+            ->join('supplier', 'supplier.id_supplier=barang.id_supplier')
+            ->join('barang_keterangan', 'barang_keterangan.id_barang_keterangan=barang.id_keterangan')
+            ->join('barang_grade', 'barang_grade.id_barang_grade=barang.id_grade')
             ->get()->getResultArray();
     }
     public function getSO($id)
     {
         return $this->db->table('so')->where('id_so', $id)
-            ->join('customer', 'customer.id=so.id_customer')
-            ->join('customer_detail', 'customer_detail.id=so.alamat_kirim', 'customer_detail.id_customer=so.id_customer',)
+            ->join('customer', 'customer.id_customer=so.id_customer')
+            ->join('customer_detail', 'customer_detail.id_customer_detail=so.alamat_kirim', 'customer_detail.id_customer=so.id_customer',)
             ->get()->getResultArray()[0];
     }
     public function getIdSo($id)

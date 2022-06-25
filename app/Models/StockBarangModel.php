@@ -43,24 +43,24 @@ class StockBarangModel extends Model
     {
         return $this->db->table('stock_barang')
             ->join('barang', 'barang.id_barang=stock_barang.id_barang')
-            ->join('barang_jenis', 'barang_jenis.id=barang.id_jenis')
-            ->join('barang_lot', 'barang_lot.id=barang.id_lot')
-            ->join('barang_ukuran', 'barang_ukuran.id=barang.id_ukuran')
-            ->join('supplier', 'supplier.id=barang.id_supplier')
-            ->join('barang_keterangan', 'barang_keterangan.id=barang.id_keterangan')
-            ->join('barang_grade', 'barang_grade.id=barang.id_grade')
+            ->join('barang_jenis', 'barang_jenis.id_barang_jenis=barang.id_jenis')
+            ->join('barang_lot', 'barang_lot.id_barang_lot=barang.id_lot')
+            ->join('barang_ukuran', 'barang_ukuran.id_barang_ukuran=barang.id_ukuran')
+            ->join('supplier', 'supplier.id_supplier=barang.id_supplier')
+            ->join('barang_keterangan', 'barang_keterangan.id_barang_keterangan=barang.id_keterangan')
+            ->join('barang_grade', 'barang_grade.id_barang_grade=barang.id_grade')
             ->get()->getResultArray();
     }
     public function getDataStockDetail($id)
     {
         return $this->db->table('stock_barang')->where('id_stock', $id)
             ->join('barang', 'barang.id_barang=stock_barang.id_barang')
-            ->join('barang_jenis', 'barang_jenis.id=barang.id_jenis')
-            ->join('barang_lot', 'barang_lot.id=barang.id_lot')
-            ->join('barang_ukuran', 'barang_ukuran.id=barang.id_ukuran')
-            ->join('supplier', 'supplier.id=barang.id_supplier')
-            ->join('barang_keterangan', 'barang_keterangan.id=barang.id_keterangan')
-            ->join('barang_grade', 'barang_grade.id=barang.id_grade')
+            ->join('barang_jenis', 'barang_jenis.id_barang_jenis=barang.id_jenis')
+            ->join('barang_lot', 'barang_lot.id_barang_lot=barang.id_lot')
+            ->join('barang_ukuran', 'barang_ukuran.id_barang_ukuran=barang.id_ukuran')
+            ->join('supplier', 'supplier.id_supplier=barang.id_supplier')
+            ->join('barang_keterangan', 'barang_keterangan.id_barang_keterangan=barang.id_keterangan')
+            ->join('barang_grade', 'barang_grade.id_barang_grade=barang.id_grade')
             ->get()->getResultArray()[0];
     }
     public function getIdStock($id_barang)

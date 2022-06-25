@@ -8,7 +8,7 @@ class BarangLotModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'barang_lot';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_barang_lot';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
@@ -44,6 +44,6 @@ class BarangLotModel extends Model
         if ($id == false) {
             return $this->findAll();
         }
-        return $this->where(['id' => $id])->first();
+        return $this->where(['id_barang_lot' => $id])->first();
     }
 }

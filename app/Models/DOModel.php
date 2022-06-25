@@ -50,17 +50,17 @@ class DOModel extends Model
     {
         return $this->db->table('do')
             ->join('so', 'so.id_so = do.id_so')
-            ->join('customer', 'customer.id = so.id_customer')
-            ->join('customer_detail', 'customer_detail.id = so.alamat_kirim')
-            ->join('supir', 'supir.id=do.id_supir')
-            ->join('kendaraan', 'kendaraan.id=do.id_kendaraan')
+            ->join('customer', 'customer.id_customer = so.id_customer')
+            ->join('customer_detail', 'customer_detail.id_customer_detail = so.alamat_kirim')
+            ->join('supir', 'supir.id_supir=do.id_supir')
+            ->join('kendaraan', 'kendaraan.id_kendaraan=do.id_kendaraan')
             ->get()->getResultArray();
     }
     public function getDOrder()
     {
         return $this->db->table('do')
-            ->join('customer', 'customer.id=do.id_customer')
-            ->join('customer_detail', 'customer_detail.id=do.alamat_kirim', 'customer_detail.id_customer=so.id_customer',)
+            ->join('customer', 'customer.id_customer=do.id_customer')
+            ->join('customer_detail', 'customer_detail.id_customer_detail=do.alamat_kirim', 'customer_detail.id_customer=so.id_customer',)
             ->get()->getResultArray();
     }
     public function getNoDo()

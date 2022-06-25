@@ -24,8 +24,8 @@
                                 <th rowspan="2">Lot</th>
                                 <th rowspan="2">Produk</th>
                                 <th colspan="3">Stock</th>
-                                <th rowspan="2">Keterangan</th>
                                 <th rowspan="2">Status</th>
+                                <th rowspan="2">ROP</th>
                                 <th rowspan="2">Lokasi</th>
                                 <!-- Selesai Disini -->
                                 <th rowspan="2">Aksi</th>
@@ -53,6 +53,7 @@
                                     <td><?= $value['lokasi_stock']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
+                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id_stock']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                                         <a href="/<?= $judul; ?>/edit/<?= $value['id_stock']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
@@ -73,8 +74,8 @@
                                 <th>Box</th>
                                 <th>Kg</th>
                                 <th>Keterangan</th>
-                                <th>Keterangan</th>
                                 <th>Status</th>
+                                <th>ROP</th>
                                 <th>Lokasi</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>

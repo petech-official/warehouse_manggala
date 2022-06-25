@@ -19,13 +19,9 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
-                                <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>No Polisi</th>
+                                <th>No Kendaraan</th>
                                 <th>Tipe</th>
-                                <th>KM</th>
-                                <th>Status</th>
-                                <th>Keterangan</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -35,30 +31,16 @@
                             $i = 1;
                             foreach ($data as $key => $value) : ?>
                                 <tr>
-                                    <td><?= $i++; ?></td>
                                     <!-- Masukan Disini -->
                                     <td><?= $value['nopol']; ?></td>
                                     <td><?= $value['tipe']; ?></td>
-                                    <td class="rupiah"><?= $value['km']; ?></td>
-                                    <td>
-                                        <?php
-                                        if ($value['status'] == 0) {
-                                        ?>
-                                            <span class="badge bg-success">Ada</span>
-                                        <?php } elseif ($value['status'] == 1) { ?>
-                                            <span class="badge bg-warning">Perjalanan Pengiriman</span>
-                                        <?php } else { ?>
-                                            <span class="badge bg-danger">Tidak ada</span>
-                                        <?php } ?>
-                                    </td>
-                                    <td><?= $value['keterangan']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_kendaraan']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_kendaraan']; ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -67,13 +49,9 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>No Polisi</th>
+                                <th>No Kendaraan</th>
                                 <th>Tipe</th>
-                                <th>KM</th>
-                                <th>Status</th>
-                                <th>Keterangan</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

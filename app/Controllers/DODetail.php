@@ -58,35 +58,36 @@ class DODetail extends BaseController
 
                 ]
             ],
-            'box' => [
+            'berat_total' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan box !',
+                    'required' => 'Masukan berat !',
                 ]
             ],
         ])) {
             return redirect()->to('/' . $this->controller . '/tambah/' .  $this->request->getVar('id_do'))->withInput();
         };
-        $id_do = $this->request->getVar('id_do');
+        // $id_do = $this->request->getVar('id_do');
         $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
-        $grade = $this->BarangModel->where('id_barang', $this->request->getVar('id_barang'))->find()[0]['id_grade'];
-        $gradeStandar = $this->BarangGradeModel->where('id', 1)->find()[0]['id'];
+        // $grade = $this->BarangModel->where('id_barang', $this->request->getVar('id_barang'))->find()[0]['id_grade'];
+        // $gradeStandar = $this->BarangGradeModel->where('id', 1)->find()[0]['id'];
 
-        if ($grade == $gradeStandar) {
-            $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
-            $totalBerat = $barang['berat'] * $this->request->getVar('box');
-        } else {
-            if ($this->request->getVar('berat_total') == '') {
-                return redirect()->to('/' . $this->controller . '/tambah/' . $id_do)->withInput();
-            }
-            $totalBerat = ceil($this->request->getVar('berat_total'));
-        }
+        // if ($grade == $gradeStandar) {
+        $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
+        $Box = ceil($this->request->getVar('berat_total') / $barang['berat']);
+        $totalBerat = $barang['berat'] * $Box;
+        // } else {
+        //     if ($this->request->getVar('berat_total') == '') {
+        //         return redirect()->to('/' . $this->controller . '/tambah/' . $id_do)->withInput();
+        //     }
+        //     $totalBerat = ceil($this->request->getVar('berat_total'));
+        // }
 
         $model = $this->controller . 'Model';
         $this->$model->save([
             'id_do' => $this->request->getVar('id_do'),
             'id_barang' => $this->request->getVar('id_barang'),
-            'box' => $this->request->getVar('box'),
+            'box' => $Box,
             'berat_total' => $totalBerat,
 
         ]);
@@ -95,7 +96,7 @@ class DODetail extends BaseController
         $id_so = $this->DOModel->where('id_do', $this->request->getVar('id_do'))->find()[0]['id_so'];;
         $GetQuantitas = $this->SODetailModel->getSoDetailBarang($id_so, $this->request->getVar('id_barang'), 0);
         $QuantitasAwal = $GetQuantitas['quantitas'];
-        $QuantitasBaru = $GetQuantitas['quantitas_mutasi'] + $this->request->getVar('box');
+        $QuantitasBaru = $GetQuantitas['quantitas_mutasi'] + $Box;
         $BeratAwal = $GetQuantitas['berat_total'];
         $BeratBaru = $GetQuantitas['berat_total_mutasi'] + $totalBerat;
 
@@ -132,7 +133,7 @@ class DODetail extends BaseController
         $this->StockBarangModel->save([
             'id_stock' => $id_stock['id_stock'],
             'id_barang' => $barang['id_barang'],
-            'box' => (int)$box_stock -  $this->request->getVar('box'),
+            'box' => (int)$box_stock -  $Box,
             'berat_total' => (int)$berat_stock - $totalBerat,
         ]);
 
@@ -147,6 +148,7 @@ class DODetail extends BaseController
             'aksi' => ' / Ubah Data',
             'validation' => \Config\Services::validation(),
             'data'  => $this->$model->getData($id),
+            'dataBarang' => $this->BarangModel->getBarang()
         ];
         return view('/' . $this->controller . '/ubah', $data);
     }

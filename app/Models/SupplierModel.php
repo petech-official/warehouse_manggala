@@ -8,7 +8,7 @@ class SupplierModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'supplier';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_supplier';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
@@ -44,6 +44,6 @@ class SupplierModel extends Model
         if ($id == false) {
             return $this->findAll();
         }
-        return $this->where(['id' => $id])->first();
+        return $this->where(['id_supplier' => $id])->first();
     }
 }

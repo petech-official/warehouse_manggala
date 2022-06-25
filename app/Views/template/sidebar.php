@@ -10,19 +10,19 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-      <!-- Supplier dan Customer -->
+      <!-- Data Master -->
       <li class="nav-item">
         <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-user"></i>
+          <i class="nav-icon fas fa-server"></i>
           <p>
-            Supplier dan Customer
+            Data Master
             <i class="fas fa-angle-left right"></i>
           </p>
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="/supplier/index" class="nav-link">
-              <i class="nav-icon far fa-circle text-success"></i>
+              <i class="nav-icon far fa-circle text-info"></i>
               <p>
                 Supplier
               </p>
@@ -36,61 +36,39 @@
               </p>
             </a>
           </li>
-        </ul>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-user-friends"></i>
-          <p>
-            Supir dan Kenek
-            <i class="fas fa-angle-left right"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="/supir/" class="nav-link">
-              <i class="nav-icon far fa-circle text-success"></i>
-              <p>Supir</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/kenek/" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
-              <p>Kenek</p>
+              <p>
+                Supir
+              </p>
             </a>
           </li>
-        </ul>
-      </li>
-      <li class="nav-item">
-        <a href="/kendaraan/" class="nav-link">
-          <i class="nav-icon fas fa-truck"></i>
-          <p>
-            Kendaraan
-          </p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-user-friends"></i>
-          <p>
-            Data Master
-            <i class="fas fa-angle-left right"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="/barang/" class="nav-link">
-              <i class="nav-icon far fa-circle text-success"></i>
-              <p>Master Data</p>
+            <a href="/kendaraan/" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>
+                Kendaraan
+              </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="/stock/" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
-              <p>Master Barang</p>
+              <p>
+                Barang
+              </p>
             </a>
           </li>
         </ul>
+      </li>
+      <li class="nav-item">
+        <a href="/barang/" class="nav-link">
+          <i class="nav-icon fas fa-database"></i>
+          <p>
+            Sub Master Barang
+          </p>
+        </a>
       </li>
       <li class="nav-item">
         <a href="/po/" class="nav-link">

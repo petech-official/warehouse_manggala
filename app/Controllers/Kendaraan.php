@@ -49,12 +49,6 @@ class Kendaraan extends BaseController
                     'required' => 'Masukan Tipe !'
                 ]
             ],
-            'km' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan KM !'
-                ]
-            ],
         ])) {
             return redirect()->to('/' . $this->controller . '/tambah')->withInput();
         };
@@ -62,9 +56,6 @@ class Kendaraan extends BaseController
         $this->$model->save([
             'nopol' => $this->request->getVar('nopol'),
             'tipe' => $this->request->getVar('tipe'),
-            'km' => $this->request->getVar('km'),
-            'status' => $this->request->getVar('status'),
-
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller);
@@ -77,7 +68,6 @@ class Kendaraan extends BaseController
             'aksi' => ' / Ubah Data',
             'validation' => \Config\Services::validation(),
             'data'  => $this->$model->getData($id),
-            'status' => $this->StatusModel->findAll()
         ];
         return view('/' . $this->controller . '/ubah', $data);
     }
@@ -92,22 +82,13 @@ class Kendaraan extends BaseController
                     'required' => 'Masukan No Polisi !'
                 ]
             ],
-            'km' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan KM !'
-                ]
-            ],
         ])) {
             return redirect()->to('/' . $this->controller . '/edit')->withInput();
         };
         $model = $this->controller . 'Model';
         $this->$model->save([
-            'id' => $id,
+            'id_kendaraan' => $id,
             'nopol' => $this->request->getVar('nopol'),
-            'km' => $this->request->getVar('km'),
-            'status' => $this->request->getVar('status'),
-            'keterangan' => $this->request->getVar('keterangan'),
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil diubah');

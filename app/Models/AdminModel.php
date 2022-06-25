@@ -8,7 +8,7 @@ class AdminModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'admin';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_admin';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
@@ -45,6 +45,6 @@ class AdminModel extends Model
         if ($id == false) {
             return $this->findAll();
         }
-        return $this->where(['id' => $id])->first();
+        return $this->where(['id_admin' => $id])->first();
     }
 }

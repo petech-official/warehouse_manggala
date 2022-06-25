@@ -109,9 +109,10 @@ class Supplier extends BaseController
         ])) {
             return redirect()->to('/' . $this->controller . '/tambah')->withInput();
         };
+
         $model = $this->controller . 'Model';
         $this->$model->save([
-            'id' => $id,
+            'id_supplier' => $id,
             'nama' => $this->request->getVar('nama'),
             'singkatan' => $this->request->getVar('singkatan'),
             'telp' => $this->request->getVar('telp'),

@@ -49,8 +49,8 @@ class SOModel extends Model
     public function getSO()
     {
         return $this->db->table('so')
-            ->join('customer', 'customer.id=so.id_customer')
-            ->join('customer_detail', 'customer_detail.id=so.alamat_kirim', 'customer_detail.id_customer=so.id_customer',)
+            ->join('customer', 'customer.id_customer=so.id_customer')
+            ->join('customer_detail', 'customer_detail.id_customer_detail=so.alamat_kirim', 'customer_detail.id_customer=so.id_customer',)
             ->get()->getResultArray();
     }
     public function getNoSo()

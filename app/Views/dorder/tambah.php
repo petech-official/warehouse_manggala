@@ -62,7 +62,7 @@
                                     <select class="form-select form-control  <?= ($validation->hasError('kendaraan')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('kendaraan'); ?>" name="kendaraan" id="kendaraan">
                                         <option selected disabled>Pilih Kendaraan</option>
                                         <?php foreach ($dataMobil as $key => $value) : ?>
-                                            <option value="<?= $value['id']; ?>"><?= $value['tipe']; ?> - <?= $value['nopol']; ?></option>
+                                            <option value="<?= $value['id_kendaraan']; ?>"><?= $value['tipe']; ?> - <?= $value['nopol']; ?></option>
                                         <?php endforeach ?>
                                     </select>
                                     <div class="invalid-feedback">
@@ -75,7 +75,7 @@
                                     <select class="form-select form-control  <?= ($validation->hasError('supir')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('supir'); ?>" name="supir" id="supir">
                                         <option selected disabled>Pilih Supir</option>
                                         <?php foreach ($dataSupir as $key => $value) : ?>
-                                            <option value="<?= $value['id']; ?>"><?= $value['nama_supir']; ?></option>
+                                            <option value="<?= $value['id_supir']; ?>"><?= $value['nama_supir']; ?></option>
                                         <?php endforeach ?>
                                     </select>
                                     <div class="invalid-feedback">

@@ -42,7 +42,7 @@
                                     <td><?= $value['tgl_do']; ?></td>
                                     <td><?= $value['no_so']; ?></td>
                                     <td><?= $value['no_po']; ?></td>
-                                    <td><?= $value['nama']; ?></td>
+                                    <td><?= $value['nama_customer']; ?></td>
                                     <td><?= $value['alamat_npwp']; ?></td>
                                     <td><?= $value['alamat']; ?></td>
                                     <!-- Selesai Disini -->

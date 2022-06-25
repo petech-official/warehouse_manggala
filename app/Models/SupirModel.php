@@ -8,13 +8,13 @@ class SupirModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'supir';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_supir';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama_supir', 'telp_supir', 'status', 'keterangan'];
+    protected $allowedFields    = ['nama_supir', 'telp_supir'];
 
     // Dates
     protected $useTimestamps = false;
@@ -44,6 +44,6 @@ class SupirModel extends Model
         if ($id == false) {
             return $this->findAll();
         }
-        return $this->where(['id' => $id])->first();
+        return $this->where(['id_supir' => $id])->first();
     }
 }

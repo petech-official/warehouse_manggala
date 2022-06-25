@@ -230,7 +230,7 @@ class Barang extends BaseController
             return redirect()->to('/' . $this->controller . '/edit')->withInput();
         };
         $this->BarangGrade->save([
-            'id' => $id,
+            'id_barang_grade' => $id,
             'grade' => $this->request->getVar('grade'),
         ]);
 
@@ -265,7 +265,7 @@ class Barang extends BaseController
             return redirect()->to('/' . $this->controller . '/edit')->withInput();
         };
         $this->BarangKeterangan->save([
-            'id' => $id,
+            'id_barang_keterangan' => $id,
             'keterangan' => $this->request->getVar('keterangan'),
         ]);
 
@@ -300,7 +300,7 @@ class Barang extends BaseController
             return redirect()->to('/' . $this->controller . '/edit')->withInput();
         };
         $this->BarangJenis->save([
-            'id' => $id,
+            'id_barang_jenis' => $id,
             'jenis' => $this->request->getVar('jenis'),
         ]);
 
@@ -335,7 +335,7 @@ class Barang extends BaseController
             return redirect()->to('/' . $this->controller . '/edit')->withInput();
         };
         $this->BarangLot->save([
-            'id' => $id,
+            'id_barang_lot' => $id,
             'lot' => $this->request->getVar('lot'),
         ]);
 
@@ -370,7 +370,7 @@ class Barang extends BaseController
             return redirect()->to('/' . $this->controller . '/edit')->withInput();
         };
         $this->BarangUkuran->save([
-            'id' => $id,
+            'id_barang_ukuran' => $id,
             'ukuran' => $this->request->getVar('ukuran'),
         ]);
 

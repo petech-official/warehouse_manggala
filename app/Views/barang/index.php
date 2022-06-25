@@ -7,23 +7,23 @@
         </div>
     <?php endif ?>
     <div class="row">
-        <!-- DATA Jenis -->
-
         <div class="col-4">
+            <!-- DATA LOT -->
+
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Jenis <?= $judul; ?></h3>
+                    <h3 class="card-title">Lot <?= $judul; ?></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
                 <div class="card-body">
-                    <a href="/<?= $judul; ?>/tambahJenis" class="btn btn-primary">Tambah Data Jenis</a><br><br>
+                    <a href="/<?= $judul; ?>/tambahLot" class="btn btn-primary">Tambah Data Lot</a><br><br>
 
                     <table class="table table-bordered table-striped data-table1">
                         <thead>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <th>Jenis</th>
+                                <th>Lot</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -31,17 +31,17 @@
                         <tbody style="padding: 50px;">
                             <?php
                             $i = 1;
-                            foreach ($dataJenis as $key => $value) : ?>
+                            foreach ($dataLot as $key => $value) : ?>
                                 <tr>
                                     <!-- Masukan Disini -->
-                                    <td><?= $value['jenis']; ?></td>
+                                    <td><?= $value['lot']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/editJenis/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/editLot/<?= $value['id_barang_lot']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapusJenis' onclick="konfirmasiDeleteJenis(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapusLot' onclick="konfirmasiDeleteLot(<?= $value['id_barang_lot']; ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -51,7 +51,7 @@
                         <tfoot>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <th>Jenis</th>
+                                <th>Lot</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -90,11 +90,11 @@
                                     <td><?= $value['ukuran']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/editUkuran/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/editUkuran/<?= $value['id_barang_ukuran']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapusUkuran' onclick="konfirmasiDeleteUkuran(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapusUkuran' onclick="konfirmasiDeleteUkuran(<?= $value['id_barang_ukuran']; ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -143,11 +143,11 @@
                                     <td><?= $value['keterangan']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/editKeterangan/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/editKeterangan/<?= $value['id_barang_keterangan']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapusKeterangan' onclick="konfirmasiDeleteKeterangan(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapusKeterangan' onclick="konfirmasiDeleteKeterangan(<?= $value['id_barang_keterangan']; ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -171,23 +171,23 @@
 
     </div>
     <div class="row">
-        <div class="col-4">
-            <!-- DATA LOT -->
+        <!-- DATA Jenis -->
 
+        <div class="col-4">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Lot <?= $judul; ?></h3>
+                    <h3 class="card-title">Jenis <?= $judul; ?></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
                 <div class="card-body">
-                    <a href="/<?= $judul; ?>/tambahLot" class="btn btn-primary">Tambah Data Lot</a><br><br>
+                    <a href="/<?= $judul; ?>/tambahJenis" class="btn btn-primary">Tambah Data Jenis</a><br><br>
 
                     <table class="table table-bordered table-striped data-table1">
                         <thead>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <th>Lot</th>
+                                <th>Jenis</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -195,17 +195,17 @@
                         <tbody style="padding: 50px;">
                             <?php
                             $i = 1;
-                            foreach ($dataLot as $key => $value) : ?>
+                            foreach ($dataJenis as $key => $value) : ?>
                                 <tr>
                                     <!-- Masukan Disini -->
-                                    <td><?= $value['lot']; ?></td>
+                                    <td><?= $value['jenis']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/editLot/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/editJenis/<?= $value['id_barang_jenis']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapusLot' onclick="konfirmasiDeleteLot(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapusJenis' onclick="konfirmasiDeleteJenis(<?= $value['id_barang_jenis']; ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -215,7 +215,7 @@
                         <tfoot>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <th>Lot</th>
+                                <th>Jenis</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -224,6 +224,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-4">
             <!-- DATA GRADE -->
 
@@ -254,11 +255,11 @@
                                     <td><?= $value['grade']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/editGrade/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/editGrade/<?= $value['id_barang_grade']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapusGrade' onclick="konfirmasiDeleteGrade(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapusGrade' onclick="konfirmasiDeleteGrade(<?= $value['id_barang_grade']; ?>)" class="btn btn-danger" data-toggle="modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -294,7 +295,7 @@
                 </div>
                 <div class="modal-body">
                     Apakah anda yakin akan menghapus data ini ?
-                    <input type="text" id="idLot" name="idLot">
+                    <input type="hidden" id="idLot" name="idLot">
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>

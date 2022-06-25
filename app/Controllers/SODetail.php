@@ -34,7 +34,6 @@ class SODetail extends BaseController
     }
     public function tambah($id)
     {
-        $modelDetail = $this->controller . 'Model';
         $data = [
             'id_so_detail' => $id,
             'id_so' => $id,
@@ -65,28 +64,28 @@ class SODetail extends BaseController
         ])) {
             return redirect()->to('/' . $this->controller . '/tambah/' . $this->request->getVar('id_so'))->withInput();
         };
-        $id_so = $this->request->getVar('id_so');
-        $grade = $this->BarangModel->where('id_barang', $this->request->getVar('id_barang'))->find()[0]['id_grade'];
-        $gradeStandar = $this->BarangGradeModel->where('id', 1)->find()[0]['id'];
+        // $id_so = $this->request->getVar('id_so');
+        // $grade = $this->BarangModel->where('id_barang', $this->request->getVar('id_barang'))->find()[0]['id_grade'];
+        // $gradeStandar = $this->BarangGradeModel->where('id', 1)->find()[0]['id'];
 
-        if ($grade == $gradeStandar) {
+        // if ($grade == $gradeStandar) {
+        $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
+        $beratBarang = $barang['berat'];
+        $Box = ceil($this->request->getVar('berat_total') / $barang['berat']);
 
-            $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
-            $beratBarang = $barang['berat'];
-            $box = ceil($this->request->getVar('quantitas') * $beratBarang);
-        } else {
-            if ($this->request->getVar('quantitas') == '') {
-                return redirect()->to('/' . $this->controller . '/tambah/' . $id_so)->withInput();
-            }
-            $beratBarang = $this->request->getVar('berat_total');
-            $box = ceil($this->request->getVar('quantitas') * $beratBarang);
-        }
-
+        $box = ceil($Box * $beratBarang);
+        // } else {
+        //     if ($this->request->getVar('quantitas') == '') {
+        //         return redirect()->to('/' . $this->controller . '/tambah/' . $id_so)->withInput();
+        //     }
+        //     $beratBarang = $this->request->getVar('berat_total');
+        //     $box = ceil($this->request->getVar('quantitas') * $beratBarang);
+        // }        
         $model = $this->controller . 'Model';
         $this->$model->save([
             'id_so' => $this->request->getVar('id_so'),
             'id_barang' => $this->request->getVar('id_barang'),
-            'quantitas' => $this->request->getVar('quantitas'),
+            'quantitas' => $Box,
             'berat_total' => $box,
             'keterangan_so' => $this->request->getVar('keterangan_so')
         ]);
@@ -119,12 +118,6 @@ class SODetail extends BaseController
                     'required' => 'Masukan barang !',
                 ]
             ],
-            'quantitas' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan quantitas !',
-                ]
-            ],
         ])) {
             return redirect()->to('/' . $this->controller . '/edit/' . $this->request->getVar('id_so'))->withInput();
         };
@@ -140,8 +133,6 @@ class SODetail extends BaseController
             'id_so_detail' => $id,
             'id_so' => $this->request->getVar('id_so'),
             'id_barang' => $this->request->getVar('id_barang'),
-            'quantitas' => $this->request->getVar('quantitas'),
-            'berat_total' => $totalBerat,
             'keterangan_so' => $this->request->getVar('keterangan_so')
         ]);
         session()->setFlashdata('pesan', 'Data berhasil diubah');

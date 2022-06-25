@@ -38,13 +38,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="box">Box</label>
-                                <input type="number" class="form-control <?= ($validation->hasError('box')) ? 'is-invalid' : ''; ?>" id="box" name="box" autofocus value="<?= old('box'); ?>" placeholder="Masukan jumlah box">
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('box'); ?>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label for="berat_total">Kg</label>
                                 <input type="number" class="form-control <?= ($validation->hasError('berat_total')) ? 'is-invalid' : ''; ?>" id="berat_total" name="berat_total" autofocus value="<?= old('berat_total'); ?>" placeholder="Masukan berat">
                                 <div class="invalid-feedback">
