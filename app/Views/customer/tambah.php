@@ -24,24 +24,24 @@
                         <form id="quickForm" method="POST" action="/<?= $judul; ?>/save">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="nama">Nama</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" autofocus value="<?= old('nama'); ?>" placeholder="Masukan nama">
+                                    <label for="nama">Nama Customer</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" autofocus value="<?= old('nama'); ?>" placeholder="Masukan nama customer" autocomplete="off" autofocus>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('nama'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Telepon</label></label>
+                                    <label>No Telp</label></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" <?= ($validation->hasError('telp')) ? 'is-invalid' : ''; ?>" id="telp" name="telp" autofocus value="<?= old('telp'); ?>" placeholder="Masukan Telepon">
+                                        <input type="text" class="form-control" <?= ($validation->hasError('telp')) ? 'is-invalid' : ''; ?>" id="telp" name="telp" autofocus value="<?= old('telp'); ?>" placeholder="Masukan no telepon" autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="alamat">Alamat NPWP</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" autofocus value="<?= old('alamat'); ?>" placeholder="Masukan alamat">
+                                    <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" autofocus value="<?= old('alamat'); ?>" placeholder="Masukan alamat NPWP" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('alamat'); ?>
                                     </div>

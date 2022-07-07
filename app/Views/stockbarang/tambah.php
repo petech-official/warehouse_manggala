@@ -25,7 +25,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="id_barang">Barang</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" name="id_barang">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" name="id_barang">
                                         <option value="" selected disabled>Pilih Barang</option>
                                         <?php foreach ($dataBarang as $key => $value) : ?>
                                             <option value="<?= $value['id_barang']; ?>" } ?>

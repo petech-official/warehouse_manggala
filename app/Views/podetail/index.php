@@ -19,7 +19,7 @@
                             <td><?= $dataMain['no_po'] ?></td>
                         </tr>
                         <tr>
-                            <th>TGL PO</th>
+                            <th>Tanggal PO</th>
                             <td>:</td>
                             <td class="tanggal"><?= $dataMain['tgl_po'] ?></td>
                         </tr>
@@ -29,7 +29,7 @@
                             <td><?= $dataMain['nama'] ?></td>
                         </tr>
                         <tr>
-                            <th>Alamat</th>
+                            <th>Alamat Supplier</th>
                             <td>:</td>
                             <td><?= $dataMain['alamat'] ?></td>
                         </tr>
@@ -45,6 +45,7 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
+                                <th rowspan="2">No</th>
                                 <!-- Masukan Disini -->
                                 <th rowspan="2">Nama Barang</th>
                                 <th rowspan="2">Lot</th>
@@ -69,6 +70,7 @@
                         $i = 1;
                         foreach ($data as $key => $value) : ?>
                             <tr>
+                                <td><?= $i++; ?></td>
                                 <!-- Masukan Disini -->
                                 <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?></td>
                                 <td><?= $value['lot']; ?></td>
@@ -109,6 +111,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
                                 <th>Nama Barang</th>
                                 <th>Lot</th>

@@ -27,7 +27,7 @@
 
                                 <div class="form-group">
                                     <label for="jenis">Jenis</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('jenis')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="jenis">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('jenis')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="jenis">
                                         <?php foreach ($dataJenis as $key => $value) : ?>
                                             <option value="<?= $value['id_barang_jenis']; ?>" <?php if ($value['id_barang_jenis'] == $data['id_jenis']) {
                                                                                                     echo "selected";
@@ -43,7 +43,7 @@
 
                                 <div class="form-group">
                                     <label for="ukuran">Ukuran</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('ukuran')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="ukuran">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('ukuran')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="ukuran">
                                         <?php foreach ($dataUkuran as $key => $value) : ?>
                                             <option value="<?= $value['id_barang_ukuran']; ?>" <?php if ($value['id_barang_ukuran'] == $data['id_ukuran']) {
                                                                                                     echo "selected";
@@ -59,7 +59,7 @@
 
                                 <div class="form-group">
                                     <label for="keterangan">Keterangan</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="keterangan">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="keterangan">
                                         <?php foreach ($dataKeterangan as $key => $value) : ?>
                                             <option value="<?= $value['id_barang_keterangan']; ?>" <?php if ($value['id_barang_keterangan'] == $data['id_keterangan']) {
                                                                                                         echo "selected";
@@ -75,7 +75,7 @@
 
                                 <div class="form-group">
                                     <label for="lot">Lot</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('lot')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="lot">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('lot')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="lot">
                                         <?php foreach ($dataLot as $key => $value) : ?>
                                             <option value="<?= $value['id_barang_lot']; ?>" <?php if ($value['id_barang_lot'] == $data['id_lot']) {
                                                                                                 echo "selected";
@@ -91,7 +91,7 @@
 
                                 <div class="form-group">
                                     <label for="grade">Grade</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('grade')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="grade">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('grade')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="grade">
                                         <?php foreach ($dataGrade as $key => $value) : ?>
                                             <option value="<?= $value['id_barang_grade']; ?>" <?php if ($value['id_barang_grade'] == $data['id_grade']) {
                                                                                                     echo "selected";
@@ -106,8 +106,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="produksi">Produksi</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('produksi')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="produksi">
+                                    <label for="produksi">Supplier</label>
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('produksi')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="produksi">
                                         <?php foreach ($dataProduksi as $key => $value) : ?>
                                             <option value="<?= $value['id_supplier']; ?>" <?php if ($value['id_supplier'] == $data['id_supplier']) {
                                                                                                 echo "selected";
@@ -123,10 +123,17 @@
 
 
                                 <div class="form-group">
-                                    <label for="berat">Berat</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('berat')) ? 'is-invalid' : ''; ?>" id="berat" name="berat" value="<?= (old('berat')) ? old('berat') : $data['berat']; ?>">
+                                    <label for="berat">Berat (kg)</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('berat')) ? 'is-invalid' : ''; ?>" id="berat" name="berat" value="<?= (old('berat')) ? old('berat') : $data['berat']; ?>" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('berat'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="max_berat">Max Berat (kg)</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('max_berat')) ? 'is-invalid' : ''; ?>" id="max_berat" name="max_berat" value="<?= (old('max_berat')) ? old('max_berat') : $data['max_berat']; ?>" autocomplete="off">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('max_berat'); ?>
                                     </div>
                                 </div>
                             </div>

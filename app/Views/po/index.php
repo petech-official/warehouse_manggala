@@ -20,13 +20,14 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
                                 <th>No PO</th>
-                                <th>Tgl PO</th>
+                                <th>Tanggal PO</th>
                                 <th>Nama Supplier</th>
-                                <th>Alamat</th>
+                                <th>Alamat Supplier</th>
                                 <th>Keterangan</th>
-                                <th>Status</th>
+                                <th>Status PO</th>
                                 <!-- Selesai Disini -->
                                 <th width="150px">Aksi</th>
                             </tr>
@@ -36,6 +37,7 @@
                             $i = 1;
                             foreach ($data as $key => $value) : ?>
                                 <tr>
+                                    <td><?= $i++; ?></td>
                                     <!-- Masukan Disini -->
                                     <td><?= $value['no_po']; ?></td>
                                     <td class="tanggal"><?= $value['tgl_po']; ?></td>
@@ -67,13 +69,14 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
                                 <th>No PO</th>
                                 <th>Tgl PO</th>
                                 <th>Nama Supplier</th>
-                                <th>Alamat</th>
+                                <th>Alamat Supplier</th>
                                 <th>Keterangan</th>
-                                <th>Status</th>
+                                <th>Status PO</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

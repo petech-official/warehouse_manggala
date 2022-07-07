@@ -25,7 +25,7 @@
                             <div class="card-body">
                                 <!-- Date dd/mm/yyyy -->
                                 <div class="form-group">
-                                    <label>Tanggal</label>
+                                    <label>Tanggal BPB</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -55,7 +55,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="supir">Supir</label>
+                                    <label for="supir">Supir Supplier</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('supir')) ? 'is-invalid' : ''; ?>" id="supir" name="supir" autofocus value="<?= old('supir'); ?>" placeholder="Masukan nama supir">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('supir'); ?>
@@ -63,7 +63,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="no_mobil">No Mobil</label>
+                                    <label for="no_mobil">No Kendaraan</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('no_mobil')) ? 'is-invalid' : ''; ?>" id="no_mobil" name="no_mobil" autofocus value="<?= old('no_mobil'); ?>" placeholder="Masukan no surat jalan">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('no_mobil'); ?>
@@ -101,7 +101,7 @@
                                     </div>
                                 </div> -->
                                 <div class="form-group">
-                                    <label for="berat_total">Kg</label>
+                                    <label for="berat_total">Berat (kg)</label>
                                     <input type="number" class="form-control <?= ($validation->hasError('berat_total')) ? 'is-invalid' : ''; ?>" id="berat_total" name="berat_total" autofocus value="<?= old('berat_total'); ?>" placeholder="Masukan berat">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('berat_total'); ?>

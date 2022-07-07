@@ -19,7 +19,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Ubah Data <?= $judul; ?></h3>
+                            <h3 class="card-title">Form Ubah Data </h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -41,7 +41,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Tgl BPB</label>
+                                    <label>Tanggal BPB</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -61,7 +61,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="supir">Supir</label>
+                                    <label for="supir">Supir Supplier</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('supir')) ? 'is-invalid' : ''; ?>" id="supir" name="supir" autofocus value="<?= (old('supir')) ? old('supir') : $data['supir']; ?>">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('supir'); ?>
@@ -69,7 +69,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="no_mobil">No Mobil</label>
+                                    <label for="no_mobil">No Kendaraan</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('no_mobil')) ? 'is-invalid' : ''; ?>" id="no_mobil" name="no_mobil" autofocus value="<?= (old('no_mobil')) ? old('no_mobil') : $data['no_mobil']; ?>">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('no_mobil'); ?>
@@ -110,7 +110,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="berat">Berat</label>
+                                    <label for="berat">Berat (kg)</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('berat')) ? 'is-invalid' : ''; ?>" id="berat" name="berat" autofocus value="<?= (old('berat')) ? old('berat') : $data['berat']; ?>">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('berat'); ?>

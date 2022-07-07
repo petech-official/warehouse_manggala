@@ -8,7 +8,6 @@ class User extends BaseController
     public function __construct()
     {
         $this->adminModel = new \App\Models\AdminModel();
-        $this->roleModel = new \App\Models\RoleModel();
     }
     public function index()
     {

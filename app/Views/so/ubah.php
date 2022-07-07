@@ -28,7 +28,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                             <div class="card-body">
                                 <input type="hidden" name="id">
                                 <div class="form-group">
-                                    <label>Tgl SO</label>
+                                    <label>Tanggal SO</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -51,23 +51,27 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                         <?= $validation->getError('dataCustomer'); ?>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="alamat_kirim">Alamat Kirim</label>
                                     <select class="form-select form-control  <?= ($validation->hasError('alamat_kirim')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="alamat_kirim" id="alamat_kirim">
-                                        <?php foreach ($dataAlamat as $key => $value) : ?>
-                                            <option value="<?= $value['id_customer']; ?>" <?php if ($value['id_customer'] == $data['alamat_kirim']) {
-                                                                                                echo "selected";
-                                                                                            } ?>>
-                                                <?= $value['alamat']; ?>
+                                        <? //php foreach ($dataAlamat as $key => $value) : 
+                                        ?>
+                                            <option value="<? // $value['id_customer']; 
+                                                            ?>" <? //php if ($value['id_customer'] == $data['alamat_kirim']) {echo "selected";} 
+                                                                                            ?>>
+                                                <? //= $value['alamat']; 
+                                                ?>
                                             </option>
-                                        <?php endforeach ?>
+                                        <? //php endforeach 
+                                        ?>
                                     </select>
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('alamat_kirim'); ?>
+                                        <? //= $validation->getError('alamat_kirim'); 
+                                        ?>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
-                                    <label for="keterangan">keterangan</label>
+                                    <label for="keterangan">Keterangan</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" id="keterangan" name="keterangan" autofocus value="<?= (old('keterangan')) ? old('keterangan') : $data['keterangan']; ?>">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('keterangan'); ?>

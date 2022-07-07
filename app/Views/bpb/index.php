@@ -21,12 +21,13 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>NO BPB</th>
-                                <th>Tanggal</th>
+                                <th>No BPB</th>
+                                <th>Tanggal BPB</th>
                                 <th>No SJ Supplier</th>
                                 <th>Packing List</th>
-                                <th>Supir</th>
+                                <th>Supir Supplier</th>
                                 <th>No Mobil</th>
                                 <th>Supplier</th>
                                 <th>NO PO</th>
@@ -36,9 +37,10 @@
                         </thead>
                         <tbody style="padding: 50px;">
                             <?php
-                            $i = 0;
+                            $i = 1;
                             foreach ($data as $key => $value) : ?>
                                 <tr>
+                                    <td><?= $i++; ?></td>
                                     <!-- Masukan Disini -->
                                     <td> <?= $value['no_bpb']; ?></td>
                                     <td class="tanggal"> <?= $value['tgl_bpb']; ?></td>
@@ -71,12 +73,13 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>NO BPB</th>
-                                <th>Tanggal</th>
+                                <th>No BPB</th>
+                                <th>Tanggal BPB</th>
                                 <th>No SJ Supplier</th>
                                 <th>Packing List</th>
-                                <th>Supir</th>
+                                <th>Supir Supplier</th>
                                 <th>No Mobil</th>
                                 <th>Supplier</th>
                                 <th>NO PO</th>

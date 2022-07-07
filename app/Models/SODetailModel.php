@@ -63,13 +63,14 @@ class SODetailModel extends Model
             ->join('supplier', 'supplier.id_supplier=barang.id_supplier')
             ->join('barang_keterangan', 'barang_keterangan.id_barang_keterangan=barang.id_keterangan')
             ->join('barang_grade', 'barang_grade.id_barang_grade=barang.id_grade')
+            ->join('customer_detail', 'customer_detail.id_customer_detail=so_detail.keterangan_so')
             ->get()->getResultArray();
     }
     public function getSO($id)
     {
         return $this->db->table('so')->where('id_so', $id)
             ->join('customer', 'customer.id_customer=so.id_customer')
-            ->join('customer_detail', 'customer_detail.id_customer_detail=so.alamat_kirim', 'customer_detail.id_customer=so.id_customer',)
+            ->join('customer_detail', 'customer_detail.id_customer=so.id_customer',)
             ->get()->getResultArray()[0];
     }
     public function getIdSo($id)

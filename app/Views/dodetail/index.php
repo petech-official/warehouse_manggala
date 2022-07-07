@@ -1,6 +1,5 @@
 <?= $this->extend('template/index'); ?>
 <?= $this->section('content'); ?>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col">
@@ -50,12 +49,7 @@
                             <td><?= $dataMain['alamat_npwp']
                                 ?></td>
                         </tr>
-                        <tr>
-                            <th>Alamat Kirim</th>
-                            <td>:</td>
-                            <td><?= $dataMain['alamat']
-                                ?></td>
-                        </tr>
+
                         <tr>
                             <th>Supir</th>
                             <td>:</td>
@@ -84,6 +78,7 @@
                                 <th rowspan="2">Nama Barang</th>
                                 <th rowspan="2">Lot</th>
                                 <th colspan="2">Saldo</th>
+                                <th rowspan="2">Alamat Kirim</th>
                                 <!-- Selesai Disini -->
                                 <th rowspan="2">Aksi</th>
                             </tr>
@@ -97,11 +92,12 @@
                         foreach ($data as $key => $value) : ?>
                             <tr>
                                 <!-- Masukan Disini -->
-                                <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?></td>
+                                <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['barang_keterangan']; ?> - <?= $value['grade']; ?></td>
                                 <td><?= $value['lot']; ?></td>
                                 <td class="rupiah"><?= $value['box'] ?></td>
-                                <td class="rupiah"><?= number_format($value['berat_total'], 2)
+                                <td class="rupiah"><?= number_format($value['do_berat_total'], 2)
                                                     ?></td>
+                                <td><?= $value['alamat']; ?></td>
 
                                 <!-- Selesai Disini -->
                                 <td>
@@ -123,6 +119,7 @@
                                 <th>Lot</th>
                                 <th>Box</th>
                                 <th>Kg </th>
+                                <th rowspan="2">Alamat Kirim</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

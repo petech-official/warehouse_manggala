@@ -138,12 +138,6 @@ class DOrder extends BaseController
                     'required' => 'Masukan tgl_do !',
                 ]
             ],
-            'so' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan so !',
-                ]
-            ],
             'no_po' => [
                 'rules' => 'required',
                 'errors' => [
@@ -171,7 +165,7 @@ class DOrder extends BaseController
         $this->$model->save([
             'id_do' => $id,
             'tgl_do' => $tanggal,
-            'id_so' => $this->request->getVar('so'),
+            // 'id_so' => $this->request->getVar('so'),
             'no_po' => $this->request->getVar('no_po'),
             'id_supir' => $this->request->getVar('supir'),
             'id_kendaraan' => $this->request->getVar('kendaraan'),

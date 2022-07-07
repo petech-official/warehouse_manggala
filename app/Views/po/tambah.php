@@ -25,7 +25,7 @@
                             <div class="card-body">
                                 <!-- Date dd/mm/yyyy -->
                                 <div class="form-group">
-                                    <label>Tgl PO</label>
+                                    <label>Tanggal PO</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -36,7 +36,7 @@
 
                                 <div class="form-group">
                                     <label for="supplier">Supplier</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('supplier')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('supplier'); ?>" name="supplier" id="supplier">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('supplier')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('supplier'); ?>" name="supplier" id="supplier">
                                         <option selected disabled>Pilih Supplier</option>
                                         <?php foreach ($dataSupplier as $key => $value) : ?>
                                             <option value="<?= $value['id_supplier']; ?>"><?= $value['nama']; ?></option>
@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="keterangan">Keterangan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" id="keterangan" name="keterangan" autofocus value="<?= old('keterangan'); ?>" placeholder="Masukan keterangan">
+                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" id="keterangan" name="keterangan" autofocus value="<?= old('keterangan'); ?>" placeholder="Masukan keterangan" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('keterangan'); ?>
                                     </div>

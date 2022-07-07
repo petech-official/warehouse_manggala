@@ -19,14 +19,15 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
                                 <th>No DO</th>
-                                <th>Tgl DO</th>
+                                <th>Tanggal DO</th>
                                 <th>NO SO</th>
                                 <th>NO PO</th>
                                 <th>Customer</th>
                                 <th width="180px">Alamat</th>
-                                <th width="180px">Alamat Kirim</th>
+                                <!-- <th width="180px">Alamat Kirim</th> -->
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -37,14 +38,16 @@
                             $i = 1;
                             foreach ($data as $key => $value) : ?>
                                 <tr>
+                                    <td><?= $i++; ?></td>
                                     <!-- Masukan Disini -->
                                     <td><?= $value['no_do']; ?></td>
-                                    <td><?= $value['tgl_do']; ?></td>
+                                    <td class="tanggal"><?= $value['tgl_do']; ?></td>
                                     <td><?= $value['no_so']; ?></td>
                                     <td><?= $value['no_po']; ?></td>
                                     <td><?= $value['nama_customer']; ?></td>
                                     <td><?= $value['alamat_npwp']; ?></td>
-                                    <td><?= $value['alamat']; ?></td>
+                                    <!-- <td><? //= $value['alamat']; 
+                                                ?></td> -->
                                     <!-- Selesai Disini -->
                                     <td>
                                         <!-- hapus jika perlu -->
@@ -63,14 +66,15 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
                                 <th>No DO</th>
-                                <th>Tgl DO</th>
+                                <th>Tanggal DO</th>
                                 <th>NO SO</th>
                                 <th>NO PO</th>
                                 <th>Customer</th>
                                 <th>Alamat</th>
-                                <th>Alamat Kirim</th>
+                                <!-- <th>Alamat Kirim</th> -->
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

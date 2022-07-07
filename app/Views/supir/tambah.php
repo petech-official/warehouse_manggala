@@ -25,18 +25,18 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="nama_supir">Nama Supir</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('nama_supir')) ? 'is-invalid' : ''; ?>" id="nama_supir" name="nama_supir" autofocus value="<?= old('nama_supir'); ?>" placeholder="Masukan nama_supir">
+                                    <input type="text" class="form-control <?= ($validation->hasError('nama_supir')) ? 'is-invalid' : ''; ?>" id="nama_supir" name="nama_supir" autofocus value="<?= old('nama_supir'); ?>" placeholder="Masukan nama supir" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('nama_supir'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Telepon</label></label>
+                                    <label>No Telp</label></label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" <?= ($validation->hasError('telp_supir')) ? 'is-invalid' : ''; ?>" id="telp_supir" name="telp_supir" autofocus value="<?= old('telp_supir'); ?>" placeholder="Masukan Telepon">
+                                        <input type="text" class="form-control" <?= ($validation->hasError('telp_supir')) ? 'is-invalid' : ''; ?>" id="telp_supir" name="telp_supir" autofocus value="<?= old('telp_supir'); ?>" placeholder="Masukan Telepon" autocomplete="off">
                                     </div>
                                 </div>
                             </div>

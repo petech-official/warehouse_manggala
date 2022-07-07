@@ -88,6 +88,12 @@ class Stock extends BaseController
                     'required' => 'Masukan produksi !',
                 ]
             ],
+            'berat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan berat !',
+                ]
+            ],
         ])) {
             return redirect()->to('/Stock/tambah')->withInput();
         };
@@ -101,6 +107,7 @@ class Stock extends BaseController
             'id_grade' => $this->request->getVar('grade'),
             'id_supplier' => $this->request->getVar('produksi'),
             'berat' => $this->request->getVar('berat'),
+            'max_berat' => $this->request->getVar('max_berat'),
 
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
@@ -163,6 +170,12 @@ class Stock extends BaseController
                     'required' => 'Masukan produksi !',
                 ]
             ],
+            'berat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan berat !',
+                ]
+            ],
         ])) {
             return redirect()->to('/Stock/edit/' . $id)->withInput();
         };
@@ -180,6 +193,7 @@ class Stock extends BaseController
             'id_grade' => $this->request->getVar('grade'),
             'id_supplier' => $this->request->getVar('produksi'),
             'berat' => $this->request->getVar('berat'),
+            'max_berat' => $this->request->getVar('max_berat'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/Stock');

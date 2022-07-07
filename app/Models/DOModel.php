@@ -51,7 +51,7 @@ class DOModel extends Model
         return $this->db->table('do')
             ->join('so', 'so.id_so = do.id_so')
             ->join('customer', 'customer.id_customer = so.id_customer')
-            ->join('customer_detail', 'customer_detail.id_customer_detail = so.alamat_kirim')
+            // ->join('customer_detail', 'customer_detail.id_customer_detail = so.alamat_kirim')
             ->join('supir', 'supir.id_supir=do.id_supir')
             ->join('kendaraan', 'kendaraan.id_kendaraan=do.id_kendaraan')
             ->get()->getResultArray();

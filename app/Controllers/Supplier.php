@@ -53,6 +53,12 @@ class Supplier extends BaseController
                 'errors' => [
                     'required' => 'Masukan alamat !',
                 ]
+            ],
+            'lead_time' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan lead_time !',
+                ]
             ]
         ])) {
             return redirect()->to('/' . $this->controller . '/tambah')->withInput();
@@ -63,6 +69,7 @@ class Supplier extends BaseController
             'singkatan' => $this->request->getVar('singkatan'),
             'telp' => $this->request->getVar('telp'),
             'alamat' => $this->request->getVar('alamat'),
+            'lead_time' => $this->request->getVar('lead_time'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller);
@@ -105,6 +112,12 @@ class Supplier extends BaseController
                 'errors' => [
                     'required' => 'Masukan alamat !',
                 ]
+            ],
+            'lead_time' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Masukan lead_time !',
+                ]
             ]
         ])) {
             return redirect()->to('/' . $this->controller . '/tambah')->withInput();
@@ -117,6 +130,7 @@ class Supplier extends BaseController
             'singkatan' => $this->request->getVar('singkatan'),
             'telp' => $this->request->getVar('telp'),
             'alamat' => $this->request->getVar('alamat'),
+            'lead_time' => $this->request->getVar('lead_time'),
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil diubah');

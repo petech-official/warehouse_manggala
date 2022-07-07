@@ -19,6 +19,7 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
                                 <th>No Kendaraan</th>
                                 <th>Tipe</th>
@@ -31,6 +32,7 @@
                             $i = 1;
                             foreach ($data as $key => $value) : ?>
                                 <tr>
+                                    <td><?= $i++; ?></td>
                                     <!-- Masukan Disini -->
                                     <td><?= $value['nopol']; ?></td>
                                     <td><?= $value['tipe']; ?></td>
@@ -49,6 +51,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
                                 <th>No Kendaraan</th>
                                 <th>Tipe</th>

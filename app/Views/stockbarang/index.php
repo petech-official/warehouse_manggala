@@ -10,7 +10,7 @@
                 <!-- /.card-header -->
                 <!-- Tambah data -->
                 <div class="card-body">
-                    <a href="/<?= $judul; ?>/tambah" class="btn btn-primary">Tambah Data</a><br><br>
+                    <!-- <a href="/<?= $judul; ?>/tambah" class="btn btn-primary">Tambah Data</a><br><br> -->
                     <?php if (session()->getFlashdata('pesan')) : ?>
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashdata('pesan'); ?>
@@ -19,14 +19,15 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
+                                <th rowspan="2">No</th>
                                 <!-- Masukan Disini -->
                                 <th rowspan="2">Nama Barang</th>
                                 <th rowspan="2">Lot</th>
-                                <th rowspan="2">Produk</th>
+                                <th rowspan="2">Supplier</th>
                                 <th colspan="3">Stock</th>
-                                <th rowspan="2">Status</th>
                                 <th rowspan="2">ROP</th>
-                                <th rowspan="2">Lokasi</th>
+                                <th rowspan="2">Status Pengadaan</th>
+
                                 <!-- Selesai Disini -->
                                 <th rowspan="2">Aksi</th>
                             </tr>
@@ -41,6 +42,7 @@
                             $i = 1;
                             foreach ($data as $key => $value) : ?>
                                 <tr>
+                                    <td><?= $i++; ?></td>
                                     <!-- Masukan Disini -->
                                     <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?></td>
                                     <td><?= $value['lot']; ?></td>
@@ -48,13 +50,23 @@
                                     <td class="rupiah"><?= $value['box'] ?></td>
                                     <td class="rupiah"><?= number_format($value['berat_total'], 2) ?></td>
                                     <td><?= $value['berat']; ?></td>
-                                    <td><?= $value['keterangan_stock']; ?></td>
-                                    <td><?= $value['status_stock']; ?></td>
-                                    <td><?= $value['lokasi_stock']; ?></td>
+
+
+                                    <td><?= $value['rop']; ?></td>
+                                    <td><?php if ($value['berat_total'] < $value['rop']) { ?>
+
+                                            <span class="badge bg-warning">Perlu Pengadaan</span>
+                                        <?php } else { ?>
+
+                                            <span class="badge bg-primary">Tidak Perlu Pengadaan</span>
+                                        <?php } ?>
+                                    </td>
+
                                     <!-- Selesai Disini -->
                                     <td>
                                         <a href="/<?= $judul; ?>Detail/index/<?= $value['id_stock']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_stock']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <!-- <a href="/<?= $judul; ?>/edit/<? //= $value['id_stock']; 
+                                                                            ?>" class="btn btn-success"><i class="fas fa-pen"></i></a> -->
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
@@ -67,16 +79,17 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
                                 <th>Nama Barang</th>
                                 <th>Lot</th>
-                                <th>Produk</th>
+                                <th>Supplier</th>
                                 <th>Box</th>
                                 <th>Kg</th>
                                 <th>Keterangan</th>
-                                <th>Status</th>
                                 <th>ROP</th>
-                                <th>Lokasi</th>
+                                <th>Status Pengadaan</th>
+
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

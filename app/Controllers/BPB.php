@@ -18,6 +18,7 @@ class BPB extends BaseController
         $this->BarangModel = new \App\Models\BarangModel();
         $this->BarangGradeModel = new \App\Models\BarangGradeModel();
         $this->StockBarangModel = new \App\Models\StockBarangModel();
+        $this->StockBarangDetailModel = new \App\Models\StockBarangDetailModel();
     }
 
     public $controller = 'BPB';
@@ -219,6 +220,10 @@ class BPB extends BaseController
         $id_stock = ($this->StockBarangModel->getIdStock($barang['id_barang']));
         $box_stock = ($this->StockBarangModel->getBoxStock($barang['id_barang']))['box'];
         $berat_stock = ($this->StockBarangModel->getBeratStock($barang['id_barang']))['berat_total'];
+
+
+
+        // masuk ke stock
         $this->StockBarangModel->save([
             'id_stock' => $id_stock['id_stock'],
             'id_barang' => $barang['id_barang'],
@@ -226,6 +231,13 @@ class BPB extends BaseController
             'berat_total' => (int)$berat_stock + $totalBerat,
         ]);
 
+        $id_stock_detail = ($this->StockBarangModel->getIdStock($barang['id_barang']));
+        // masuk ke stock detail penerimaan
+        $this->StockBarangDetailModel->save([
+            'id_stock' => $id_stock_detail['id_stock'],
+            'tgl_masuk' => $tanggal,
+            'berat_detail' => $this->request->getVar('berat_total'),
+        ]);
 
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller);

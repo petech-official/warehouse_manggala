@@ -11,7 +11,6 @@ class Supir extends BaseController
     public function __construct()
     {
         $this->SupirModel = new \App\Models\SupirModel();
-        $this->StatusModel = new \App\Models\StatusModel();
     }
 
     public $controller = 'Supir';

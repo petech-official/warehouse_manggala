@@ -43,21 +43,26 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                         <?= $validation->getError('no_po'); ?>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="so">NO SO</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('so')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="so" id="so">
-                                        <?php foreach ($dataSO as $key => $value) : ?>
-                                            <option value="<?= $value['id_so']; ?>" <?php if ($value['id_so'] == $data['id_so']) {
-                                                                                        echo "selected";
-                                                                                    } ?>>
-                                                <?= $value['no_so']; ?>
+                                    <select class="form-select form-control  <? //= ($validation->hasError('so')) ? 'is-invalid' : ''; 
+                                                                                ?>" aria-label="Default select example" autofocus name="so" id="so">
+                                        <? //php foreach ($dataSO as $key => $value) : 
+                                        ?>
+                                            <option value="<? //= $value['id_so']; 
+                                                            ?>" <? //php if ($value['id_so'] == $data['id_so']) {echo "selected";} 
+                                                                ?>>
+                                                <? //= $value['no_so']; 
+                                                ?>
                                             </option>
-                                        <?php endforeach ?>
+                                        <? //php endforeach 
+                                        ?>
                                     </select>
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('so'); ?>
+                                        <? //= $validation->getError('so'); 
+                                        ?>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group">
                                     <label for="kendaraan">Kendaraan</label>

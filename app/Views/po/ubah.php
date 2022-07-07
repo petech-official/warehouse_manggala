@@ -28,7 +28,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                             <div class="card-body">
                                 <input type="hidden" name="id">
                                 <div class="form-group">
-                                    <label>Tgl PO</label>
+                                    <label>Tanggal PO</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -38,7 +38,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="dataSupplier">Supplier</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('dataSupplier')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus id="supplier" name="supplier">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('dataSupplier')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus id="supplier" name="supplier">
                                         <?php foreach ($dataSupplier as $key => $value) : ?>
                                             <option value="<?= $value['id_supplier']; ?>" <?php if ($value['id_supplier'] == $data['id_supplier']) {
                                                                                                 echo "selected";
@@ -53,7 +53,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="keterangan_po">Keterangan PO</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_po')) ? 'is-invalid' : ''; ?>" id="keterangan_po" name="keterangan_po" autofocus value="<?= (old('keterangan_po')) ? old('keterangan_po') : $data['keterangan_po']; ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_po')) ? 'is-invalid' : ''; ?>" id="keterangan_po" name="keterangan_po" autofocus value="<?= (old('keterangan_po')) ? old('keterangan_po') : $data['keterangan_po']; ?>" autocomplete="$_COOKIE">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('keterangan_po'); ?>
                                     </div>
