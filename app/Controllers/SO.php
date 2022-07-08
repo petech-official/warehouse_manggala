@@ -86,7 +86,6 @@ class SO extends BaseController
             'no_so' => 'SO' .  date('ym') . $SOBaru,
             'tgl_so' => $tanggal,
             'id_customer' => $this->request->getVar('customer'),
-            'alamat_kirim' => $this->request->getVar('alamat_kirim'),
             'keterangan' => $this->request->getVar('keterangan'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');

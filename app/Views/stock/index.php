@@ -19,9 +19,10 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
                                 <th>Nama Barang</th>
-                                <th>Produk</th>
+                                <th>Supplier</th>
                                 <th>Berat (Kg)</th>
                                 <th>Max Berat (Kg)</th>
                                 <th>Aksi</th>
@@ -33,12 +34,14 @@
 
                             foreach ($data as $key => $value) : ?>
                                 <tr>
+                                    <td><?= $i++; ?></td>
                                     <!-- Masukan Disini -->
                                     <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> <?= $value['lot']; ?> <?= $value['grade']; ?></td>
                                     <td><?= $value['singkatan']; ?></td>
                                     <td><?= $value['berat']; ?></td>
+                                    <td><?= $value['max_berat']; ?></td>
                                     <!-- Selesai Disini -->
-                                    <td></td>
+
                                     <td>
                                         <a href="/Stock/edit/<?= $value['id_barang']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
@@ -53,9 +56,10 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
                                 <th>Nama Barang</th>
-                                <th>Produk</th>
+                                <th>Supplier</th>
                                 <th>Berat (Kg)</th>
                                 <th>Max Berat (Kg)</th>
                                 <th>Aksi</th>

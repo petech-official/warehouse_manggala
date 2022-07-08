@@ -19,7 +19,7 @@
                             <td><?= $dataMain['no_so'] ?></td>
                         </tr>
                         <tr>
-                            <th>TGL SO</th>
+                            <th>Tanggal SO</th>
                             <td>:</td>
                             <td class="tanggal"><?= $dataMain['tgl_so'] ?></td>
                         </tr>
@@ -33,11 +33,12 @@
                             <td>:</td>
                             <td><?= $dataMain['alamat_npwp'] ?></td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <th>Alamat Kirim</th>
                             <td>:</td>
-                            <td><?= $dataMain['alamat'] ?></td>
-                        </tr>
+                            <td><? //= $dataMain['alamat'] 
+                                ?></td>
+                        </tr> -->
                         <tr>
                             <th>Keterangan SO</th>
                             <td>:</td>
@@ -54,13 +55,14 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
+                                <th rowspan="2">No</th>
                                 <!-- Masukan Disini -->
                                 <th rowspan="2">Nama Barang</th>
                                 <th rowspan="2">Lot</th>
                                 <th colspan="2">Saldo Awal</th>
                                 <th colspan="2">Mutasi</th>
                                 <th colspan="2">Saldo Akhir</th>
-                                <th rowspan="2">Keterangan</th>
+                                <th rowspan="2">Alama Kirim</th>
                                 <th rowspan="2">Status</th>
                                 <!-- Selesai Disini -->
                                 <th rowspan="2">Aksi</th>
@@ -78,6 +80,7 @@
                         $i = 1;
                         foreach ($data as $key => $value) : ?>
                             <tr>
+                                <td><?= $i++; ?></td>
                                 <!-- Masukan Disini -->
                                 <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?></td>
                                 <td><?= $value['lot']; ?></td>
@@ -94,7 +97,7 @@
 
 
 
-                                <td><?= $value['keterangan_so'] ?></td>
+                                <td><?= $value['alamat'] ?></td>
                                 <td><?php
                                     if ($value['status_so'] == 0) {
                                     ?>
@@ -118,6 +121,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
                                 <th>Nama Barang</th>
                                 <th>Lot</th>
@@ -127,7 +131,7 @@
                                 <th>Kg </th>
                                 <th>Box</th>
                                 <th>Kg </th>
-                                <th>Keterangan</th>
+                                <th>Alamat Kirim</th>
                                 <th>Status</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>

@@ -19,12 +19,13 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
-
+                                <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>Nama</th>
+                                <th>Nama Supplier</th>
                                 <th>Singkatan</th>
-                                <th>Telp</th>
-                                <th>Alamat</th>
+                                <th>No Telp</th>
+                                <th width="500px">Alamat</th>
+                                <th>Waktu Kirim (hari)</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -34,12 +35,13 @@
                             $i = 1;
                             foreach ($data as $key => $value) : ?>
                                 <tr>
-
+                                    <td><?= $i++; ?></td>
                                     <!-- Masukan Disini -->
                                     <td><?= $value['nama']; ?></td>
                                     <td><?= $value['singkatan']; ?></td>
                                     <td><?= $value['telp']; ?></td>
                                     <td><?= $value['alamat']; ?></td>
+                                    <td><?= $value['lead_time']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
                                         <a href="/<?= $judul; ?>/edit/<?= $value['id_supplier']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
@@ -55,12 +57,13 @@
                         </tbody>
                         <tfoot>
                             <tr>
-
+                                <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>Nama</th>
+                                <th>Nama Supplier</th>
                                 <th>Singkatan</th>
-                                <th>Telp</th>
+                                <th>No Telp</th>
                                 <th>Alamat</th>
+                                <th>Waktu Kirim (hari)</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

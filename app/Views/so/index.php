@@ -19,14 +19,15 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
                                 <th>No SO</th>
-                                <th>Tgl SO</th>
+                                <th>Tanggal SO</th>
                                 <th>Nama Customer</th>
                                 <th width="200px">Alamat NPWP</th>
-                                <th width="200px">Alamat Kirim</th>
+                                <!-- <th width="200px">Alamat Kirim</th> -->
                                 <th>Keterangan</th>
-                                <th>Status</th>
+                                <th>Status SO</th>
                                 <!-- Selesai Disini -->
                                 <th width="150px">Aksi</th>
                             </tr>
@@ -36,12 +37,14 @@
                             $i = 1;
                             foreach ($data as $key => $value) : ?>
                                 <tr>
+                                    <td><?= $i++; ?></td>
                                     <!-- Masukan Disini -->
                                     <td><?= $value['no_so']; ?></td>
                                     <td class="tanggal"><?= $value['tgl_so']; ?></td>
                                     <td><?= $value['nama_customer']; ?></td>
                                     <td><?= $value['alamat_npwp']; ?></td>
-                                    <td><?= $value['alamat']; ?></td>
+                                    <!-- <td><? //= $value['alamat']; 
+                                                ?></td> -->
                                     <td><?= $value['keterangan']; ?></td>
                                     <td>
                                         <?php
@@ -68,14 +71,14 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
                                 <th>No SO</th>
-                                <th>Tgl SO</th>
+                                <th>Tanggal SO</th>
                                 <th>Nama Customer</th>
                                 <th>Alamat NPWP</th>
-                                <th>Alamat Kirim</th>
                                 <th>Keterangan</th>
-                                <th>Status</th>
+                                <th>Status SO</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

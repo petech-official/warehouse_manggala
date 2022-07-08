@@ -25,19 +25,18 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="nopol">No Kendaraan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('nopol')) ? 'is-invalid' : ''; ?>" id="nopol" name="nopol" autofocus value="<?= old('nopol'); ?>" placeholder="Masukan nopol">
+                                    <input type="text" class="form-control <?= ($validation->hasError('nopol')) ? 'is-invalid' : ''; ?>" id="nopol" name="nopol" autofocus value="<?= old('nopol'); ?>" placeholder="Masukan no kendaraan" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('nopol'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="tipe">Tipe</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('tipe')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('tipe'); ?>" name="tipe" id="tipe">
-                                        <option selected disabled>Pilih tipe</option>
+                                    <label for="tipe">Tipe Kendaraan</label>
+                                    <select class="form-select form-control select2bs4  <?= ($validation->hasError('tipe')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('tipe'); ?>" name="tipe" id="tipe">
+                                        <option selected disabled>Pilih tipe kendaraan</option>
                                         <option value="Double">Double</option>
                                         <option value="Engkel">Engkel</option>
                                         <option value="Losbak">Losbak</option>
-                                        <option value="Porklift">Porklift</option>
                                         <option value="SS">SS</option>
                                     </select>
                                     <div class="invalid-feedback">

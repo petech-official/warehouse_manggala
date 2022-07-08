@@ -19,9 +19,10 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>Nama</th>
-                                <th>Telepon</th>
+                                <th>Nama Customer</th>
+                                <th>No Telp</th>
                                 <th>Alamat NPWP</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
@@ -32,6 +33,7 @@
                             $i = 1;
                             foreach ($data as $key => $value) : ?>
                                 <tr>
+                                    <td><?= $i++; ?></td>
                                     <!-- Masukan Disini -->
                                     <td><?= $value['nama_customer']; ?></td>
                                     <td><?= $value['telp']; ?></td>
@@ -53,10 +55,11 @@
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>Nama</th>
-                                <th>Telepon</th>
-                                <th>Alamat_npwp NPWP</th>
+                                <th>Nama Customer</th>
+                                <th>No Telp</th>
+                                <th>Alamat NPWP</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

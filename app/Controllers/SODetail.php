@@ -14,6 +14,7 @@ class SODetail extends BaseController
         $this->SODetailModel = new \App\Models\SODetailModel();
         $this->BarangModel = new \App\Models\BarangModel();
         $this->BarangGradeModel = new \App\Models\BarangGradeModel();
+        $this->CustomerDetailModel = new \App\Models\CustomerDetailModel();
     }
     public $controllerMain = 'SO';
     public $controller = 'SODetail';
@@ -34,13 +35,16 @@ class SODetail extends BaseController
     }
     public function tambah($id)
     {
+        $id_customer = $this->SOModel->where('id_so', $id)->findColumn('id_customer')[0];
         $data = [
             'id_so_detail' => $id,
             'id_so' => $id,
             'judul' => $this->controller,
             'aksi' => ' / Tambah Data',
             'validation' => \Config\Services::validation(),
-            'dataBarang' => $this->BarangModel->getBarang()
+            'dataBarang' => $this->BarangModel->getBarang(),
+            'dataAlamat' => $this->CustomerDetailModel->where('id_customer', $id_customer)->findAll()
+
         ];
         return view($this->controller . '/tambah', $data);
     }
@@ -96,6 +100,8 @@ class SODetail extends BaseController
     {
 
         $modelDetail = $this->controller . 'Model';
+        $id_so = $this->SODetailModel->where('id_so_detail', $id)->findColumn('id_so')[0];
+        $id_customer = $this->SOModel->where('id_so', $id_so)->findColumn('id_customer')[0];
 
         $data = [
             'judul' => $this->controller,
@@ -104,7 +110,8 @@ class SODetail extends BaseController
             'id_so' => $this->$modelDetail->getIdSo($id),
             'validation' => \Config\Services::validation(),
             'data'  => $this->$modelDetail->getDataDetail($id),
-            'dataBarang' => $this->BarangModel->getBarang()
+            'dataBarang' => $this->BarangModel->getBarang(),
+            'dataAlamat' => $this->CustomerDetailModel->where('id_customer', $id_customer)->findAll()
         ];
         return view('/' . $this->controller . '/ubah', $data);
     }
@@ -129,6 +136,7 @@ class SODetail extends BaseController
         // } else {
         //     $keterangan_so = 'Barang Non Standar';
         // }        
+
         $this->$model->save([
             'id_so_detail' => $id,
             'id_so' => $this->request->getVar('id_so'),

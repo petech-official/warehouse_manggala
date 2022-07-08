@@ -20,7 +20,7 @@
                             <td><?= $dataMain['no_bpb'] ?></td>
                         </tr>
                         <tr>
-                            <th>Tanggal</th>
+                            <th>Tanggal BPP</th>
                             <td>:</td>
                             <td><?= $dataMain['tgl_bpb'] ?></td>
                         </tr>
@@ -30,7 +30,7 @@
                             <td><?= $dataMain['no_surat_jalan'] ?></td>
                         </tr>
                         <tr>
-                            <th>No Mobil</th>
+                            <th>No Kendaraan</th>
                             <td>:</td>
                             <td><?= $dataMain['no_mobil'] ?></td>
                         </tr>
@@ -67,8 +67,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
-
                             <td><?= $data[0]['jenis']; ?> <?= $data[0]['ukuran']; ?> <?= $data[0]['keterangan']; ?> - <?= $data[0]['grade']; ?></td>
                             </td>
                             <td><?= $data[0]['lot']; ?></td>

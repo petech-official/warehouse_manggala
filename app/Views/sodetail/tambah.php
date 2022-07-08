@@ -26,7 +26,7 @@
                                 <div class="form-group">
                                     <label for="id_barang">Barang</label>
                                     <input type="hidden" value="<?= $id_so_detail; ?>" name="id_so" id="id_so">
-                                    <select class="form-select form-control  <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" id="id_barang">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" id="id_barang">
                                         <option value="" selected disabled>Pilih Barang</option>
                                         <?php foreach ($dataBarang as $key => $value) : ?>
                                             <option value="<?= $value['id_barang']; ?>" } ?>
@@ -39,15 +39,23 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="berat_total">Kg</label>
+                                    <label for="berat_total">Berat (kg)</label>
                                     <input type="number" class="form-control <?= ($validation->hasError('berat_total')) ? 'is-invalid' : ''; ?>" id="berat_total" name="berat_total" autofocus value="<?= old('berat_total'); ?>" placeholder="Masukan berat">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('berat_total'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="keterangan_so">Keterangan SO</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_so')) ? 'is-invalid' : ''; ?>" id="keterangan_so" name="keterangan_so" autofocus value="<?= old('keterangan_so'); ?>" placeholder="Masukan keterangan">
+                                    <label for="keterangan_so">Alamat Kirim</label>
+                                    <input type="hidden" value="<?= $id_so_detail; ?>" name="id_so" id="id_so">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('keterangan_so')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="keterangan_so" id="keterangan_so">
+                                        <option value="" selected disabled>Pilih Alamat</option>
+                                        <?php foreach ($dataAlamat as $key => $value) : ?>
+                                            <option value="<?= $value['id_customer_detail']; ?>" } ?>
+                                                <?= $value['alamat']; ?>
+                                            </option>
+                                        <?php endforeach ?>
+                                    </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('keterangan_so'); ?>
                                     </div>

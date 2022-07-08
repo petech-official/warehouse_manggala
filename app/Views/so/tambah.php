@@ -39,7 +39,7 @@
 
                                 <div class="form-group">
                                     <label for="customer">Customer</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('customer')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('customer'); ?>" name="customer" id="customer">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('customer')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('customer'); ?>" name="customer" id="customer">
                                         <option selected disabled>Pilih customer</option>
                                         <?php foreach ($dataCustomer as $key => $value) : ?>
                                             <option value="<?= $value['id_customer']; ?>"><?= $value['nama_customer']; ?></option>
@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="alamat_kirim">Alamat Kirim</label>
                                     <select class="form-select form-control  <?= ($validation->hasError('alamat_kirim')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('alamat_kirim'); ?>" name="alamat_kirim" id="alamat_kirim">
 
@@ -58,10 +58,10 @@
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('alamat_kirim'); ?>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="keterangan">Keterangan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" id="keterangan" name="keterangan" autofocus value="<?= old('keterangan'); ?>" placeholder="Masukan keterangan">
+                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" id="keterangan" name="keterangan" autofocus value="<?= old('keterangan'); ?>" placeholder="Masukan keterangan" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('keterangan'); ?>
                                     </div>

@@ -27,11 +27,14 @@
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <?php if (session()->get('status')  == 'Admin') : ?>
           <a href="/user/index" class="nav-link">
-            <i class="nav-icon fas fa-user"></i>
+            <i class=" fas fa-user"></i>
             User
           </a>
         <?php endif ?>
-
+        <a class="nav-link" href="https://www.manggala-id.com/" target="blank">
+          <i class="fas fa-users"></i>
+          Profil Perusaahaan
+        </a>
         <a class="nav-link" href="/loginAdmin/logout">
           <i class="fas fa-sign-out-alt"></i>
           Logout

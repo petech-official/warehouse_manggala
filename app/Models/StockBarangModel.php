@@ -14,7 +14,7 @@ class StockBarangModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_barang', 'box', 'berat_total', 'status_stock', 'keterangan_stock', 'lokasi_stock'];
+    protected $allowedFields    = ['id_barang', 'box', 'berat_total', 'status_stock', 'keterangan_stock', 'lokasi_stock', 'safetystock', 'rop'];
 
     // Dates
     protected $useTimestamps = false;
@@ -74,5 +74,36 @@ class StockBarangModel extends Model
     public function getBoxStock($id_barang)
     {
         return $this->select('box')->where('id_barang', $id_barang)->first();
+    }
+    public function getKebutuhan()
+    {
+        return $this->db->table('stock_barang')->where('stock_barang.berat_total < rop')
+            ->join('barang', 'barang.id_barang=stock_barang.id_barang')
+            ->join('barang_jenis', 'barang_jenis.id_barang_jenis=barang.id_jenis')
+            ->join('barang_lot', 'barang_lot.id_barang_lot=barang.id_lot')
+            ->join('barang_ukuran', 'barang_ukuran.id_barang_ukuran=barang.id_ukuran')
+            ->join('supplier', 'supplier.id_supplier=barang.id_supplier')
+            ->join('barang_keterangan', 'barang_keterangan.id_barang_keterangan=barang.id_keterangan')
+            ->join('barang_grade', 'barang_grade.id_barang_grade=barang.id_grade')
+            // ->join('do_detail', 'do_detail.id_barang=stock_barang.id_barang')
+            // ->orderBy('do_detail.id_do_detail', 'DESC')
+            // ->limit(3)
+
+            ->get()->getResultArray();
+    }
+    public function getPengeluaran($id)
+    {
+        return $this->db->table('stock_barang')->where('stock_barang.id_barang', $id)->where(['berat_total < rop'])
+            ->join('barang', 'barang.id_barang=stock_barang.id_barang')
+            // ->join('barang_jenis', 'barang_jenis.id_barang_jenis=barang.id_jenis')
+            // ->join('barang_lot', 'barang_lot.id_barang_lot=barang.id_lot')
+            // ->join('barang_ukuran', 'barang_ukuran.id_barang_ukuran=barang.id_ukuran')
+            ->join('supplier', 'supplier.id_supplier=barang.id_supplier')
+            // ->join('barang_keterangan', 'barang_keterangan.id_barang_keterangan=barang.id_keterangan')
+            // ->join('barang_grade', 'barang_grade.id_barang_grade=barang.id_grade')
+            ->join('do_detail', 'do_detail.id_barang=stock_barang.id_barang')
+            ->orderBy('do_detail.id_do_detail', 'DESC')
+            ->limit(3)
+            ->get()->getResultArray();
     }
 }

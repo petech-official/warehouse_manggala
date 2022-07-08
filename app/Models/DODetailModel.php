@@ -14,7 +14,7 @@ class DODetailModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_do', 'id_barang', 'box', 'berat_total'];
+    protected $allowedFields    = ['id_do', 'id_barang', 'box', 'do_berat_total'];
 
     // Dates
     protected $useTimestamps = false;
@@ -51,7 +51,7 @@ class DODetailModel extends Model
         return $this->db->table('do')->where('id_do', $id)
             ->join('so', 'so.id_so = do.id_so')
             ->join('customer', 'customer.id_customer = so.id_customer')
-            ->join('customer_detail', 'customer_detail.id_customer_detail = so.alamat_kirim')
+
             ->join('supir', 'supir.id_supir=do.id_supir')
             ->join('kendaraan', 'kendaraan.id_kendaraan=do.id_kendaraan')
             ->get()->getResultArray()[0];
@@ -59,14 +59,19 @@ class DODetailModel extends Model
     public function getDODetail($id)
     {
         return $this->db->table('do_detail')->where('do_detail.id_do', $id)
+
             ->join('barang', 'barang.id_barang=do_detail.id_barang')
             ->join('barang_jenis', 'barang_jenis.id_barang_jenis=barang.id_jenis')
             ->join('barang_lot', 'barang_lot.id_barang_lot=barang.id_lot')
             ->join('barang_ukuran', 'barang_ukuran.id_barang_ukuran=barang.id_ukuran')
-            ->join('supplier', 'supplier.id_supplier=barang.id_supplier')
+            // ->join('supplier', 'supplier.id_supplier=barang.id_supplier')
             ->join('barang_keterangan', 'barang_keterangan.id_barang_keterangan=barang.id_keterangan')
+            ->select('* , barang_keterangan.keterangan as barang_keterangan')
             ->join('barang_grade', 'barang_grade.id_barang_grade=barang.id_grade')
             ->join('do', 'do.id_do = do_detail.id_do')
+            ->join('so', 'so.id_so = do.id_so')
+            ->join('so_detail', 'so_detail.id_so = so.id_so and so_detail.id_barang=do_detail.id_barang')
+            ->join('customer_detail', 'customer_detail.id_customer_detail = so_detail.keterangan_so')
             ->get()->getResultArray();
     }
     public function getBarang($id)

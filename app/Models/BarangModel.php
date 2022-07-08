@@ -14,7 +14,7 @@ class BarangModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_jenis', 'id_keterangan', 'id_ukuran', 'id_lot', 'id_grade', 'id_supplier', 'berat'];
+    protected $allowedFields    = ['id_jenis', 'id_keterangan', 'id_ukuran', 'id_lot', 'id_grade', 'id_supplier', 'berat', 'max_berat'];
 
     // Dates
     protected $useTimestamps = false;
@@ -67,5 +67,16 @@ class BarangModel extends Model
             ->join('barang_keterangan', 'barang_keterangan.id_barang_keterangan=barang.id_keterangan')
             ->join('barang_grade', 'barang_grade.id_barang_grade=barang.id_grade')
             ->get()->getResultArray();
+    }
+    public function getLeadTime($id_supplier, $id_barang)
+    {
+        return $this->db->table('barang')->where('barang.id_supplier', $id_supplier)->where('barang.id_barang', $id_barang)
+            ->join('barang_jenis', 'barang_jenis.id_barang_jenis=barang.id_jenis')
+            ->join('barang_lot', 'barang_lot.id_barang_lot=barang.id_lot')
+            ->join('barang_ukuran', 'barang_ukuran.id_barang_ukuran=barang.id_ukuran')
+            ->join('supplier', 'supplier.id_supplier=barang.id_supplier')
+            ->join('barang_keterangan', 'barang_keterangan.id_barang_keterangan=barang.id_keterangan')
+            ->join('barang_grade', 'barang_grade.id_barang_grade=barang.id_grade')
+            ->get()->getResultArray()[0];
     }
 }

@@ -25,7 +25,7 @@
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label>Tanggal</label>
+                                    <label>Tanggal BPB</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -40,7 +40,7 @@
 
                                 <div class="form-group">
                                     <label for="so">SO</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('so')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('so'); ?>" name="so" id="so">
+                                    <select class="form-select form-control select2bs4  <?= ($validation->hasError('so')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('so'); ?>" name="so" id="so">
                                         <option selected disabled>Pilih SO</option>
                                         <?php foreach ($dataSO as $key => $value) : ?>
                                             <option value="<?= $value['id_so']; ?>"><?= $value['no_so']; ?></option>
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="kendaraan">Kendaraan</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('kendaraan')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('kendaraan'); ?>" name="kendaraan" id="kendaraan">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('kendaraan')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('kendaraan'); ?>" name="kendaraan" id="kendaraan">
                                         <option selected disabled>Pilih Kendaraan</option>
                                         <?php foreach ($dataMobil as $key => $value) : ?>
                                             <option value="<?= $value['id_kendaraan']; ?>"><?= $value['tipe']; ?> - <?= $value['nopol']; ?></option>
@@ -72,7 +72,7 @@
 
                                 <div class="form-group">
                                     <label for="supir">Supir</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('supir')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('supir'); ?>" name="supir" id="supir">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('supir')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('supir'); ?>" name="supir" id="supir">
                                         <option selected disabled>Pilih Supir</option>
                                         <?php foreach ($dataSupir as $key => $value) : ?>
                                             <option value="<?= $value['id_supir']; ?>"><?= $value['nama_supir']; ?></option>

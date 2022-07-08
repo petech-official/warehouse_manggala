@@ -11,7 +11,6 @@ class Kendaraan extends BaseController
     public function __construct()
     {
         $this->KendaraanModel = new \App\Models\KendaraanModel();
-        $this->StatusModel = new \App\Models\StatusModel();
     }
 
     public $controller = 'Kendaraan';
