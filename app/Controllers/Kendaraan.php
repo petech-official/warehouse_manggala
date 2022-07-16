@@ -39,13 +39,13 @@ class Kendaraan extends BaseController
             'nopol' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan No Polisi !'
+                    'required' => 'Data tidak boleh kosong!'
                 ]
             ],
             'tipe' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan Tipe !'
+                    'required' => 'Data tidak boleh kosong!'
                 ]
             ],
         ])) {
@@ -78,7 +78,13 @@ class Kendaraan extends BaseController
             'nopol' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan No Polisi !'
+                    'required' => 'Data tidak boleh kosong!'
+                ]
+            ],
+            'tipe' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!'
                 ]
             ],
         ])) {
@@ -88,6 +94,7 @@ class Kendaraan extends BaseController
         $this->$model->save([
             'id_kendaraan' => $id,
             'nopol' => $this->request->getVar('nopol'),
+            'tipe' => $this->request->getVar('tipe'),
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil diubah');

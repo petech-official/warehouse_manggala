@@ -29,11 +29,11 @@ class LoginAdmin extends BaseController
                 $session->set($ses_data);
                 return redirect()->to('/dashboard');
             } else {
-                $session->setFlashdata('msg', 'Wrong Password');
+                $session->setFlashdata('msg', 'Password salah/kosong coba ulangi!');
                 return redirect()->to('/loginAdmin');
             }
         } else {
-            $session->setFlashdata('msg', 'Username not Found');
+            $session->setFlashdata('msg', 'Username tidak ditemukan coba ulangi!');
             return redirect()->to('/loginAdmin');
         }
     }

@@ -19,7 +19,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Ubah Data <?= $judul; ?></h3>
+                            <h3 class="card-title">Form Ubah Data </h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -32,13 +32,16 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_do" name="tgl_do" value="<?= $tanggal; ?>">
+                                        <input type="text" class="form-control <?= ($validation->hasError('tgl_do')) ? 'is-invalid' : ''; ?>" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_do" name="tgl_do" value="<?= $tanggal; ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('tgl_do'); ?>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="no_po">NO PO</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('no_po')) ? 'is-invalid' : ''; ?>" id="no_po" name="no_po" autofocus value="<?= (old('no_po')) ? old('no_po') : $data['no_po']; ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('no_po')) ? 'is-invalid' : ''; ?>" id="no_po" name="no_po" autofocus value="<?= (old('no_po')) ? old('no_po') : $data['no_po']; ?>" placeholder="Masukan no po">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('no_po'); ?>
                                     </div>
@@ -96,7 +99,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="catatan">Catatan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('catatan')) ? 'is-invalid' : ''; ?>" id="catatan" name="catatan" autofocus value="<?= (old('catatan')) ? old('catatan') : $data['catatan']; ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('catatan')) ? 'is-invalid' : ''; ?>" id="catatan" name="catatan" autofocus value="<?= (old('catatan')) ? old('catatan') : $data['catatan']; ?>" placeholder="Masukan catatan" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('catatan'); ?>
                                     </div>

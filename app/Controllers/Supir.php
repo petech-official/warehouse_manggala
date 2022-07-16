@@ -39,13 +39,13 @@ class Supir extends BaseController
             'nama_supir' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan nama !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'telp_supir' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan telp_supir !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
 
             ]
@@ -78,17 +78,18 @@ class Supir extends BaseController
             'nama_supir' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan nama_supir !',
-                ],
-                'telp_supir' => [
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => 'Masukan telp_supir !',
-                    ]
+                    'required' => 'Data tidak boleh kosong!',
                 ]
+            ],
+            'telp_supir' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
+                ]
+
             ]
         ])) {
-            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+            return redirect()->to('/' . $this->controller . '/edit/' . $id)->withInput();
         };
         $model = $this->controller . 'Model';
         $this->$model->save([

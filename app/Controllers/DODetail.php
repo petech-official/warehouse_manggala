@@ -55,14 +55,14 @@ class DODetail extends BaseController
             'id_barang' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan barang !',
+                    'required' => 'Data tidak boleh kosong!',
 
                 ]
             ],
             'berat_total' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan berat !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
         ])) {
@@ -90,35 +90,41 @@ class DODetail extends BaseController
         $id_barang = $this->request->getVar('id_barang');
         $pengeluaran = $this->StockBarangModel->getPengeluaran($id_barang);
 
-        $pengeluaran1 = $pengeluaran[0]['berat_total'];
-        $pengeluaran2 = $pengeluaran[1]['berat_total'];
-        $pengeluaran3 = $pengeluaran[2]['berat_total'];
+        if (count($pengeluaran) >= 3) {
+            $pengeluaran1 = $pengeluaran[0]['berat_total'];
+            $pengeluaran2 = $pengeluaran[1]['berat_total'];
+            $pengeluaran3 = $pengeluaran[2]['berat_total'];
 
-        // cari demand rata-rata
-        $rata2pengeluaran = ($pengeluaran1 + $pengeluaran2 + $pengeluaran3) / count($pengeluaran);
+            // cari demand rata-rata
+            $rata2pengeluaran = ($pengeluaran1 + $pengeluaran2 + $pengeluaran3) / count($pengeluaran);
 
-        // Cari lead time
-        $id_supplier = $this->BarangModel->getData($id_barang);
+            // Cari lead time
+            $id_supplier = $this->BarangModel->getData($id_barang);
 
-        $leadtime = $this->BarangModel->getLeadTime($id_supplier['id_supplier'], $id_barang);
+            $leadtime = $this->BarangModel->getLeadTime($id_supplier['id_supplier'], $id_barang);
 
-        // service level
-        $z = 1.34;
+            // service level
+            $z = 1.34;
 
-        // Safety Stock
-        // standar deviasi
-        $sd = sqrt((pow(($pengeluaran1 - $rata2pengeluaran), 2)) + (pow(($pengeluaran2 - $rata2pengeluaran), 2)) + (pow(($pengeluaran3 - $rata2pengeluaran), 2))) / (count($pengeluaran) - 1);
+            // Safety Stock
+            // standar deviasi
+            $sd = sqrt((pow(($pengeluaran1 - $rata2pengeluaran), 2)) + (pow(($pengeluaran2 - $rata2pengeluaran), 2)) + (pow(($pengeluaran3 - $rata2pengeluaran), 2))) / (count($pengeluaran) - 1);
 
-        $akarleadtime = sqrt($leadtime['lead_time']);
+            $akarleadtime = sqrt($leadtime['lead_time']);
 
-        // standar deviasi * akar leadtime
-        $sdl = $sd * $akarleadtime;
+            // standar deviasi * akar leadtime
+            $sdl = $sd * $akarleadtime;
 
-        // safetystock
-        $safetyStock = $z * $sdl;
+            // safetystock
+            $safetyStock = $z * $sdl;
 
-        // rop
-        $rop = ($rata2pengeluaran * $leadtime['lead_time']) + $safetyStock;
+            // rop
+            $rop = ($rata2pengeluaran * $leadtime['lead_time']) + $safetyStock;
+        } else {
+            $safetyStock = 0;
+            $rop = 0;
+        }
+
 
 
         // die;

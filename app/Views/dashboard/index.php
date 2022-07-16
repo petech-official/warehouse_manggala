@@ -4,50 +4,37 @@
 <div class="container-fluid">
     <!-- Small boxes (Stat box) -->
     <div class="row">
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-6 col-12">
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>99 Ton</h3>
+                    <h3><?= count($dataPO); ?> Purchase Order </h3>
 
-                    <p>Purchase Order</p>
+                    <p>Berjalan</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="/po/index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-6 col-12">
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>99 Ton</h3>
+                    <h3><?= count($dataSO); ?> Sales Order</h3>
 
-                    <p>Stock</p>
+                    <p>Berjalan</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="/so/index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-                <div class="inner">
-                    <h3>99 Ton</h3>
 
-                    <p>Sales Order</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
         <!-- ./col -->
     </div>
 </div>

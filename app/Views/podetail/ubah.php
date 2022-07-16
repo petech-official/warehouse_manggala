@@ -23,9 +23,10 @@
                         <!-- form start -->
                         <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_po_detail']; ?>">
                             <div class="card-body">
-                                <div class="form-group">
+                                <input type="hidden" value="<?= $data['id_po']; ?>" name="id_po" id="id_po">
+                                <!-- <div class="form-group">
                                     <label for="id_barang">Barang</label>
-                                    <input type="hidden" value="<?= $data['id_po']; ?>" name="id_po" id="id_po">
+                                    
                                     <select class="form-select form-control select2bs4  <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" name="id_barang">
                                         <?php foreach ($dataBarang as $key => $value) : ?>
                                             <option value="<?= $value['id_barang']; ?>" <?php if ($value['id_barang'] == $data['id_barang']) {
@@ -38,10 +39,10 @@
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('id_barang'); ?>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="keterangan_po_detail">Keterangan PO Detail</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_po_detail')) ? 'is-invalid' : ''; ?>" id="keterangan_po_detail" name="keterangan_po_detail" autofocus value="<?= (old('keterangan_po_detail')) ? old('keterangan_po_detail') : $data['keterangan_po_detail']; ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_po_detail')) ? 'is-invalid' : ''; ?>" id="keterangan_po_detail" name="keterangan_po_detail" autofocus value="<?= (old('keterangan_po_detail')) ? old('keterangan_po_detail') : $data['keterangan_po_detail']; ?>" placeholder="Masukan keterangan detail" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('keterangan_po_detail'); ?>
                                     </div>

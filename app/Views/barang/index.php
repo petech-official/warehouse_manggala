@@ -37,11 +37,11 @@
                                     <td><?= $value['lot']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/editLot/<?= $value['id_barang_lot']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/editLot/<?= $value['id_barang_lot']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapusLot' onclick="konfirmasiDeleteLot(<?= $value['id_barang_lot']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapusLot' onclick="konfirmasiDeleteLot(<?= $value['id_barang_lot']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -90,11 +90,11 @@
                                     <td><?= $value['ukuran']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/editUkuran/<?= $value['id_barang_ukuran']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/editUkuran/<?= $value['id_barang_ukuran']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapusUkuran' onclick="konfirmasiDeleteUkuran(<?= $value['id_barang_ukuran']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapusUkuran' onclick="konfirmasiDeleteUkuran(<?= $value['id_barang_ukuran']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -143,11 +143,11 @@
                                     <td><?= $value['keterangan']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/editKeterangan/<?= $value['id_barang_keterangan']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/editKeterangan/<?= $value['id_barang_keterangan']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapusKeterangan' onclick="konfirmasiDeleteKeterangan(<?= $value['id_barang_keterangan']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapusKeterangan' onclick="konfirmasiDeleteKeterangan(<?= $value['id_barang_keterangan']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -201,11 +201,11 @@
                                     <td><?= $value['jenis']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/editJenis/<?= $value['id_barang_jenis']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/editJenis/<?= $value['id_barang_jenis']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapusJenis' onclick="konfirmasiDeleteJenis(<?= $value['id_barang_jenis']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapusJenis' onclick="konfirmasiDeleteJenis(<?= $value['id_barang_jenis']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -255,11 +255,11 @@
                                     <td><?= $value['grade']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>/editGrade/<?= $value['id_barang_grade']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/editGrade/<?= $value['id_barang_grade']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapusGrade' onclick="konfirmasiDeleteGrade(<?= $value['id_barang_grade']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapusGrade' onclick="konfirmasiDeleteGrade(<?= $value['id_barang_grade']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>

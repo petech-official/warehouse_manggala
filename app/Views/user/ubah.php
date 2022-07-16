@@ -21,7 +21,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/user/update/<?= $user['id']; ?>">
+                        <form id="quickForm" method="POST" action="/user/update/<?= $user['id_admin']; ?>">
                             <div class="card-body">
                                 <input type="hidden" name="id">
                                 <div class="form-group">
@@ -34,13 +34,10 @@
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <select class="form-select form-control  <?= ($validation->hasError('status')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus>
-                                        <?php foreach ($status as $key => $value) : ?>
-                                            <option value="<?= $value['status']; ?>" <?php if ($value['status'] == $user['status']) {
-                                                                                            echo "selected";
-                                                                                        } ?>>
-                                                <?= $value['status']; ?>
-                                            </option>
-                                        <?php endforeach ?>
+                                        <option value="Admin" <?php if ($user['status'] == "Admin") : ?> selected <?php endif ?>>Admin</option>
+                                        <option value="Marketing" <?php if ($user['status'] == "Marketing") : ?> selected <?php endif ?>>Marketing</option>
+                                        <option value="Manager Warehouse" <?php if ($user['status'] == "Manager Warehouse") : ?> selected <?php endif ?>>Manager Warehouse</option>
+
                                     </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('status'); ?>

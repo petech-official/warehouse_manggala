@@ -75,15 +75,15 @@
                                 <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?></td>
                                 <td><?= $value['lot']; ?></td>
                                 <td class="rupiah"><?= $value['quantitas'] ?></td>
-                                <td class="rupiah"><?= number_format($value['berat_total'], 2)
+                                <td class="rupiah"><?= $value['berat_total']
                                                     ?></td>
                                 <td class="rupiah"><?= $value['quantitas_mutasi'] ?></td>
-                                <td class="rupiah"><?= number_format($value['berat_total_mutasi'], 2)
+                                <td class="rupiah"><?= $value['berat_total_mutasi']
                                                     ?></td>
                                 <td class="rupiah"><?php $q_akhir = $value['quantitas'] - $value['quantitas_mutasi'];
                                                     echo $q_akhir ?></td>
                                 <td class="rupiah"><?php $q_akhir_berat = $value['berat_total'] - $value['berat_total_mutasi'];
-                                                    echo number_format($q_akhir_berat, 2) ?></td>
+                                                    echo $q_akhir_berat ?></td>
 
 
 
@@ -98,11 +98,11 @@
                                 </td>
                                 <!-- Selesai Disini -->
                                 <td>
-                                    <a href="/<?= $judul; ?>/edit/<?= $value['id_po_detail']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                    <a href="/<?= $judul; ?>/edit/<?= $value['id_po_detail']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
                                     <?= csrf_field(); ?>
                                     <input type="hidden" name="_method" value="DELETE">
                                     <!-- Button trigger modal -->
-                                    <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_po_detail']; ?>,<?= $value['id_po'] ?>)" class="btn btn-danger" data-toggle="modal">
+                                    <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_po_detail']; ?>,<?= $value['id_po'] ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </td>

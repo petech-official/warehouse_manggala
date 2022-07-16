@@ -25,15 +25,15 @@
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label>Tanggal BPB</label>
+                                    <label>Tanggal DO</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_do" name="tgl_do" autofocus value="<?= old('tgl_do'); ?>">
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('tgl_do'); ?>
+                                        <input type="text" class="form-control <?= ($validation->hasError('tgl_do')) ? 'is-invalid' : ''; ?>" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_do" name="tgl_do" autofocus value="<?= old('tgl_do'); ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('tgl_do'); ?>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -51,8 +51,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="no_po">NO PO</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('no_po')) ? 'is-invalid' : ''; ?>" id="no_po" name="no_po" autofocus value="<?= old('no_po'); ?>" placeholder="Masukan NO PO">
+                                    <label for="no_po">No PO Customer</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('no_po')) ? 'is-invalid' : ''; ?>" id="no_po" name="no_po" autofocus value="<?= old('no_po'); ?>" placeholder="Masukan NO PO" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('no_po'); ?>
                                     </div>

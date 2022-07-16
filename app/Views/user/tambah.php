@@ -25,7 +25,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" id="username" name="username" autofocus value="<?= old('username'); ?>" placeholder="Masukan username">
+                                    <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" id="username" name="username" placeholder="Masukan username" value="<?= old('username'); ?>" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('username'); ?>
                                     </div>
@@ -34,9 +34,9 @@
                                     <label for="status">Status</label>
                                     <select class="form-select form-control  <?= ($validation->hasError('status')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('status'); ?>" name="status" id="status">
                                         <option selected disabled>Pilih status</option>
-                                        <?php foreach ($status as $key => $value) : ?>
-                                            <option value="<?= $value['status']; ?>"><?= $value['status']; ?></option>
-                                        <?php endforeach ?>
+                                        <option value="Admin">Admin</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Manager Warehouse">Manager Warehouse</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('status'); ?>

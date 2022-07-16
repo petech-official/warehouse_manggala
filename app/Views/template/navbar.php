@@ -25,10 +25,10 @@
         <i class="fas fa-th-large"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        <?php if (session()->get('status')  == 'Admin') : ?>
+        <?php if (session()->get('status')  == 'Manager Warehouse') : ?>
           <a href="/user/index" class="nav-link">
             <i class=" fas fa-user"></i>
-            User
+            Admin
           </a>
         <?php endif ?>
         <a class="nav-link" href="https://www.manggala-id.com/" target="blank">

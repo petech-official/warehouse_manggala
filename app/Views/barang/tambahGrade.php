@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Tambah Data Grade <?= $judul; ?></h3>
+                            <h3 class="card-title">Form Tambah Data Grade</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -25,7 +25,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="grade">Grade</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('grade')) ? 'is-invalid' : ''; ?>" id="grade" name="grade" autofocus value="<?= old('grade'); ?>" placeholder="Masukan grade">
+                                    <input type="text" class="form-control <?= ($validation->hasError('grade')) ? 'is-invalid' : ''; ?>" id="grade" name="grade" autofocus value="<?= old('grade'); ?>" placeholder="Masukan grade" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('grade'); ?>
                                     </div>

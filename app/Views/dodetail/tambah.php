@@ -38,8 +38,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="berat_total">Kg</label>
-                                <input type="number" class="form-control <?= ($validation->hasError('berat_total')) ? 'is-invalid' : ''; ?>" id="berat_total" name="berat_total" autofocus value="<?= old('berat_total'); ?>" placeholder="Masukan berat">
+                                <label for="berat_total">Berat (kg)</label>
+                                <input type="number" class="form-control <?= ($validation->hasError('berat_total')) ? 'is-invalid' : ''; ?>" id="berat_total" name="berat_total" autofocus value="<?= old('berat_total'); ?>" placeholder="Masukan berat" autocomplete="off">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('berat_total'); ?>
                                 </div>

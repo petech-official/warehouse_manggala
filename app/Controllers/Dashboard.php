@@ -11,6 +11,8 @@ class Dashboard extends BaseController
     {
         $this->StockBarangModel = new \App\Models\StockBarangModel();
         $this->BarangModel = new \App\Models\BarangModel();
+        $this->POModel = new \App\Models\POModel();
+        $this->SOModel = new \App\Models\SOModel();
     }
     public function index()
     {
@@ -25,6 +27,8 @@ class Dashboard extends BaseController
 
         $data = [
             'data' => $this->StockBarangModel->getKebutuhan(),
+            'dataPO' => $this->POModel->where('status', 0)->findAll(),
+            'dataSO' => $this->SOModel->where('status', 0)->findAll(),
             // 'data_pengeluaran' => $this->StockBarangModel->getPengeluaran(),
         ];
         return view('dashboard/index', $data);

@@ -51,13 +51,13 @@ class BPB extends BaseController
             'tgl_bpb' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan tgl_bpb !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'no_surat_jalan' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan no_surat_jalan !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'packing_list' => [
@@ -71,25 +71,32 @@ class BPB extends BaseController
             'supir' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan supir !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'no_mobil' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan no_mobil !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'po' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan po !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
+
             'barang' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan barang !',
+                    'required' => 'Data tidak boleh kosong!',
+                ]
+            ],
+            'berat_total' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
         ])) {
@@ -272,13 +279,13 @@ class BPB extends BaseController
             'tgl_bpb' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan tgl_bpb !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'no_surat_jalan' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan no_surat_jalan !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
 
@@ -292,33 +299,33 @@ class BPB extends BaseController
             'supir' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan supir !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'no_mobil' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan no_mobil !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
-            'po' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan po !',
-                ]
-            ],
-            'barang' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan barang !',
-                ]
-            ],
-            'berat' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan berat !',
-                ]
-            ],
+            // 'po' => [
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'MData tidak boleh kosong!',
+            //     ]
+            // ],
+            // 'barang' => [
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'Data tidak boleh kosong!',
+            //     ]
+            // ],
+            // 'berat_total' => [
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'Data tidak boleh kosong!',
+            //     ]
+            // ],
         ])) {
             return redirect()->to('/' . $this->controller . '/edit/' . $id)->withInput();
         };
@@ -327,7 +334,6 @@ class BPB extends BaseController
 
         $model = $this->controller . 'Model';
 
-        $PO = $this->POModel->where('id_po', $this->request->getVar('po'))->find()[0]['no_po'];
 
         $model = $this->controller . 'Model';
         $filePackingList = $this->request->getFile('packing_list');
@@ -353,7 +359,7 @@ class BPB extends BaseController
             $namaPackingList = $this->$model->where('id_bpb', $id)->findAll()[0]['packing_list'];
         }
 
-        $id_po_detail = $this->PODetailModel->where('id_barang', $this->request->getVar('barang'))->findAll()[0]['id_po_detail'];
+        // $id_po_detail = $this->PODetailModel->where('id_barang', $this->request->getVar('barang'))->findAll()[0]['id_po_detail'];
 
 
         $this->$model->save([
@@ -362,10 +368,10 @@ class BPB extends BaseController
             'no_surat_jalan' => $this->request->getVar('no_surat_jalan'),
             'packing_list' => $namaPackingList,
             'no_mobil' => $this->request->getVar('no_mobil'),
-            'no_po' => $PO,
-            'id_po_detail' => $id_po_detail,
-            'quantitas' => $this->request->getVar('quantitas'),
-            'berat' => $this->request->getVar('berat'),
+            // 'no_po' => $PO,
+            // 'id_po_detail' => $id_po_detail,
+            // 'quantitas' => $this->request->getVar('quantitas'),
+            // 'berat' => $this->request->getVar('berat'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/' . $this->controller);

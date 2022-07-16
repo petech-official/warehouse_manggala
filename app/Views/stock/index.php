@@ -23,6 +23,7 @@
                                 <!-- Masukan Disini -->
                                 <th>Nama Barang</th>
                                 <th>Supplier</th>
+                                <th>Jenis Box</th>
                                 <th>Berat (Kg)</th>
                                 <th>Max Berat (Kg)</th>
                                 <th>Aksi</th>
@@ -38,16 +39,17 @@
                                     <!-- Masukan Disini -->
                                     <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> <?= $value['lot']; ?> <?= $value['grade']; ?></td>
                                     <td><?= $value['singkatan']; ?></td>
-                                    <td><?= $value['berat']; ?></td>
-                                    <td><?= $value['max_berat']; ?></td>
+                                    <td><?= $value['jenis_box']; ?></td>
+                                    <td class="rupiah"><?= $value['berat']; ?></td>
+                                    <td class="rupiah"><?= $value['max_berat']; ?></td>
                                     <!-- Selesai Disini -->
 
                                     <td>
-                                        <a href="/Stock/edit/<?= $value['id_barang']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/Stock/edit/<?= $value['id_barang']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_barang']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_barang']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -60,6 +62,7 @@
                                 <!-- Masukan Disini -->
                                 <th>Nama Barang</th>
                                 <th>Supplier</th>
+                                <th>Jenis Box</th>
                                 <th>Berat (Kg)</th>
                                 <th>Max Berat (Kg)</th>
                                 <th>Aksi</th>

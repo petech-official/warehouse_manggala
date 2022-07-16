@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="keterangan_po_detail">Keterangan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_po_detail')) ? 'is-invalid' : ''; ?>" id="keterangan_po_detail" name="keterangan_po_detail" autofocus value="<?= old('keterangan_po_detail'); ?>" placeholder="Masukan keterangan" autocomplete="off">
+                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_po_detail')) ? 'is-invalid' : ''; ?>" id="keterangan_po_detail" name="keterangan_po_detail" autofocus value="<?= old('keterangan_po_detail'); ?>" placeholder="Masukan keterangan detail" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('keterangan_po_detail'); ?>
                                     </div>

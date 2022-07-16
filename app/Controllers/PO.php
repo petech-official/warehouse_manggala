@@ -42,13 +42,13 @@ class PO extends BaseController
             'tgl_po' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan tgl_po !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'supplier' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan supplier !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
         ])) {
@@ -113,13 +113,13 @@ class PO extends BaseController
             'tgl_po' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan tgl_po !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'supplier' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan supplier !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
 

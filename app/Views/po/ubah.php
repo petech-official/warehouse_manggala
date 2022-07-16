@@ -20,7 +20,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Ubah Data <?= $judul; ?></h3>
+                            <h3 class="card-title">Form Ubah Data </h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -53,7 +53,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="keterangan_po">Keterangan PO</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_po')) ? 'is-invalid' : ''; ?>" id="keterangan_po" name="keterangan_po" autofocus value="<?= (old('keterangan_po')) ? old('keterangan_po') : $data['keterangan_po']; ?>" autocomplete="$_COOKIE">
+                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan_po')) ? 'is-invalid' : ''; ?>" id="keterangan_po" name="keterangan_po" autofocus value="<?= (old('keterangan_po')) ? old('keterangan_po') : $data['keterangan_po']; ?>" autocomplete="off" placeholder="Masukan keterangan po">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('keterangan_po'); ?>
                                     </div>

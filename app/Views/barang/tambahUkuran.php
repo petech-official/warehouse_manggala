@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Tambah Data Ukuran <?= $judul; ?></h3>
+                            <h3 class="card-title">Form Tambah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->

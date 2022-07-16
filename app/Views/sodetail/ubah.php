@@ -17,15 +17,16 @@
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Ubah Data <?= $judul; ?></h3>
+                            <h3 class="card-title">Form Ubah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_so_detail']; ?>">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="id_barang">Barang</label>
                                     <input type="hidden" value="<?= $data['id_so']; ?>" name="id_so" id="id_so">
+                                    <!-- <label for="id_barang">Barang</label>
+
                                     <select class="form-select form-control select2bs4  <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" name="id_barang">
                                         <?php foreach ($dataBarang as $key => $value) : ?>
                                             <option value="<?= $value['id_barang']; ?>" <?php if ($value['id_barang'] == $data['id_barang']) {
@@ -37,7 +38,7 @@
                                     </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('id_barang'); ?>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="form-group">
                                     <label for="keterangan_so">Alamat Kirim</label>

@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/<?= $judul; ?>/index"><?= $judul; ?></a>
+                        <a href="/<?= $judul; ?>/index"><?= $judul; ?> Grade</a>
                         <?= $aksi; ?>
                     </h3>
                 </div>
@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Ubah Data <?= $judul; ?></h3>
+                            <h3 class="card-title">Form Ubah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -26,7 +26,7 @@
                                 <input type="hidden" name="id">
                                 <div class="form-group">
                                     <label for="grade">Grade</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('grade')) ? 'is-invalid' : ''; ?>" id="grade" name="grade" autofocus value="<?= (old('grade')) ? old('grade') : $data['grade']; ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('grade')) ? 'is-invalid' : ''; ?>" id="grade" name="grade" autofocus value="<?= (old('grade')) ? old('grade') : $data['grade']; ?>" placeholder="Masukan grade" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('grade'); ?>
                                     </div>

@@ -46,12 +46,12 @@ class StockBarangDetail extends BaseController
             'posisi' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan posisi !',
+                    'required' => 'Data tidak boleh kosong!',
 
                 ]
             ]
         ])) {
-            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+            return redirect()->to('/' . $this->controller . '/edit/' . $id)->withInput();
         };
         $model = $this->controller . 'Model';
         $this->$model->save([

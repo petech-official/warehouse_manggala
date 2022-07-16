@@ -56,14 +56,14 @@ class PODetail extends BaseController
             'id_barang' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan barang !',
+                    'required' => 'Data tidak boleh kosong!',
 
                 ]
             ],
             'berat_total' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan quantitas !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
         ])) {
@@ -120,29 +120,29 @@ class PODetail extends BaseController
     public function update($id)
     {
         //Validasi
-        if (!$this->validate([
-            'id_barang' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan barang !',
-                ]
-            ],
-            // 'quantitas' => [
-            //     'rules' => 'required',
-            //     'errors' => [
-            //         'required' => 'Masukan quantitas !',
-            //     ]
-            // ],
-        ])) {
-            return redirect()->to('/' . $this->controller . '/edit')->withInput();
-        };
+        // if (!$this->validate([
+        //     'id_barang' => [
+        //         'rules' => 'required',
+        //         'errors' => [
+        //             'required' => 'Data tidak boleh kosong!',
+        //         ]
+        //     ],
+        //     // 'quantitas' => [
+        //     //     'rules' => 'required',
+        //     //     'errors' => [
+        //     //         'required' => 'Masukan quantitas !',
+        //     //     ]
+        //     // ],
+        // ])) {
+        //     return redirect()->to('/' . $this->controller . '/edit')->withInput();
+        // };
         $model = $this->controller . 'Model';
-        $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
-        $totalBerat = $barang['berat'] * $this->request->getVar('quantitas');
+        // $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
+        // $totalBerat = $barang['berat'] * $this->request->getVar('quantitas');
 
         $this->$model->save([
             'id_po_detail' => $id,
-            'id_po' => $this->request->getVar('id_po'),
+            // 'id_po' => $this->request->getVar('id_po'),
             // 'id_barang' => $this->request->getVar('id_barang'),
             // 'quantitas' => $this->request->getVar('quantitas'),
             // 'berat_total' => $totalBerat,

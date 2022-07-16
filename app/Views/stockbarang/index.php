@@ -23,6 +23,7 @@
                                 <!-- Masukan Disini -->
                                 <th rowspan="2">Nama Barang</th>
                                 <th rowspan="2">Lot</th>
+                                <th rowspan="2">Jenis Box</th>
                                 <th rowspan="2">Supplier</th>
                                 <th colspan="3">Stock</th>
                                 <th rowspan="2">ROP</th>
@@ -47,12 +48,13 @@
                                     <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?></td>
                                     <td><?= $value['lot']; ?></td>
                                     <td><?= $value['singkatan']; ?></td>
+                                    <td><?= $value['jenis_box']; ?></td>
                                     <td class="rupiah"><?= $value['box'] ?></td>
-                                    <td class="rupiah"><?= number_format($value['berat_total'], 2) ?></td>
+                                    <td class="rupiah"><?= $value['berat_total'] ?></td>
                                     <td><?= $value['berat']; ?></td>
 
 
-                                    <td><?= $value['rop']; ?></td>
+                                    <td class="rupiah"><?= $value['rop']; ?></td>
                                     <td><?php if ($value['berat_total'] < $value['rop']) { ?>
 
                                             <span class="badge bg-warning">Perlu Pengadaan</span>
@@ -64,13 +66,13 @@
 
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id_stock']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id_stock']; ?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
                                         <!-- <a href="/<?= $judul; ?>/edit/<? //= $value['id_stock']; 
                                                                             ?>" class="btn btn-success"><i class="fas fa-pen"></i></a> -->
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_stock']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_stock']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -84,6 +86,7 @@
                                 <th>Nama Barang</th>
                                 <th>Lot</th>
                                 <th>Supplier</th>
+                                <th>Jenis Box</th>
                                 <th>Box</th>
                                 <th>Kg</th>
                                 <th>Keterangan</th>

@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Ubah Data <?= $judul; ?></h3>
+                            <h3 class="card-title">Form Ubah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -26,14 +26,14 @@
                                 <input type="hidden" name="id">
                                 <div class="form-group">
                                     <label for="nama">Nama Supplier</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" autofocus value="<?= (old('nama')) ? old('nama') : $data['nama']; ?>" autocomplete="off">
+                                    <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" autofocus value="<?= (old('nama')) ? old('nama') : $data['nama']; ?>" autocomplete="off" placeholder="Masukan nama supplier">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('nama'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="singkatan">Singkatan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('singkatan')) ? 'is-invalid' : ''; ?>" id="singkatan" name="singkatan" autofocus value="<?= (old('singkatan')) ? old('singkatan') : $data['singkatan']; ?>" autocomplete="off">
+                                    <input type="text" class="form-control <?= ($validation->hasError('singkatan')) ? 'is-invalid' : ''; ?>" id="singkatan" name="singkatan" autofocus value="<?= (old('singkatan')) ? old('singkatan') : $data['singkatan']; ?>" autocomplete="off" placeholder="Masukan singkatan supplier">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('singkatan'); ?>
                                     </div>
@@ -44,19 +44,22 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" <?= ($validation->hasError('telp')) ? 'is-invalid' : ''; ?>" id="telp" name="telp" autofocus value="<?= (old('telp')) ? old('telp') : $data['telp']; ?>" placeholder="Masukan Telepon" autocomplete="off">
+                                        <input type="text" class="form-control <?= ($validation->hasError('telp')) ? 'is-invalid' : ''; ?>" id="telp" name="telp" autofocus value="<?= (old('telp')) ? old('telp') : $data['telp']; ?>" placeholder="Masukan no telepon" autocomplete="off">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('telp'); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" autofocus value="<?= (old('alamat')) ? old('alamat') : $data['alamat']; ?>" autocomplete="off">
+                                    <input type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" autofocus value="<?= (old('alamat')) ? old('alamat') : $data['alamat']; ?>" autocomplete="off" placeholder="Masukan alamat">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('alamat'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="lead_time">Waktu Kirim (hari)</label>
-                                    <input type="number" class="form-control <?= ($validation->hasError('lead_time')) ? 'is-invalid' : ''; ?>" id="lead_time" name="lead_time" autofocus value="<?= (old('lead_time')) ? old('lead_time') : $data['lead_time']; ?>" autocomplete="off">
+                                    <input type="number" class="form-control <?= ($validation->hasError('lead_time')) ? 'is-invalid' : ''; ?>" id="lead_time" name="lead_time" autofocus value="<?= (old('lead_time')) ? old('lead_time') : $data['lead_time']; ?>" autocomplete="off" placeholder="masukan waktu kirim">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('lead_time'); ?>
                                     </div>

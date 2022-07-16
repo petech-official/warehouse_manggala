@@ -121,17 +121,37 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="jenis_box">Jenis Box</label>
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('jenis_box')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="jenis_box">
+                                        <option value="Standar" <?php $jenis = "Standar";
+                                                                if ($jenis == $data['jenis_box']) {
+                                                                    echo "selected";
+                                                                } ?>>Standar</option>
+                                        <option value="Small" <?php $jenis = "Small";
+                                                                if ($jenis == $data['jenis_box']) {
+                                                                    echo "selected";
+                                                                } ?>>Small</option>
+                                        <option value="Jumbo" <?php $jenis = "Jumbo";
+                                                                if ($jenis == $data['jenis_box']) {
+                                                                    echo "selected";
+                                                                } ?>>Jumbo</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('jenis_box'); ?>
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="berat">Berat (kg)</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('berat')) ? 'is-invalid' : ''; ?>" id="berat" name="berat" value="<?= (old('berat')) ? old('berat') : $data['berat']; ?>" autocomplete="off">
+                                    <input type="text" class="form-control <?= ($validation->hasError('berat')) ? 'is-invalid' : ''; ?>" id="berat" name="berat" value="<?= (old('berat')) ? old('berat') : $data['berat']; ?>" autocomplete="off" placeholder="Masukan berat (kg)">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('berat'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="max_berat">Max Berat (kg)</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('max_berat')) ? 'is-invalid' : ''; ?>" id="max_berat" name="max_berat" value="<?= (old('max_berat')) ? old('max_berat') : $data['max_berat']; ?>" autocomplete="off">
+                                    <input type="text" class="form-control <?= ($validation->hasError('max_berat')) ? 'is-invalid' : ''; ?>" id="max_berat" name="max_berat" value="<?= (old('max_berat')) ? old('max_berat') : $data['max_berat']; ?>" autocomplete="off" placeholder="Masukan max berat (kg)">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('max_berat'); ?>
                                     </div>

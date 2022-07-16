@@ -30,7 +30,10 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_po" name="tgl_po" autofocus value="<?= old('tgl_po'); ?>">
+                                        <input type="text" class="form-control <?= ($validation->hasError('tgl_po')) ? 'is-invalid' : ''; ?>" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_po" name="tgl_po" autofocus value="<?= old('tgl_po'); ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('tgl_po'); ?>
+                                        </div>
                                     </div>
                                 </div>
 
