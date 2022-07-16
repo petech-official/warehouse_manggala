@@ -26,7 +26,7 @@
                                 <th>NO SO</th>
                                 <th>NO PO</th>
                                 <th>Customer</th>
-                                <th width="180px">Alamat</th>
+                                <th width="180px">Catatan</th>
                                 <!-- <th width="180px">Alamat Kirim</th> -->
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
@@ -45,19 +45,19 @@
                                     <td><?= $value['no_so']; ?></td>
                                     <td><?= $value['no_po']; ?></td>
                                     <td><?= $value['nama_customer']; ?></td>
-                                    <td><?= $value['alamat_npwp']; ?></td>
+                                    <td><?= $value['catatan']; ?></td>
                                     <!-- <td><? //= $value['alamat']; 
                                                 ?></td> -->
                                     <!-- Selesai Disini -->
                                     <td>
                                         <!-- hapus jika perlu -->
-                                        <a href="/DODetail/index/<?= $value['id_do']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                        <a href="/DODetail/index/<?= $value['id_do']; ?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
                                         <!-- end hapus -->
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_do']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_do']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_do']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_do']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </td>
@@ -73,8 +73,8 @@
                                 <th>NO SO</th>
                                 <th>NO PO</th>
                                 <th>Customer</th>
-                                <th>Alamat</th>
-                                <!-- <th>Alamat Kirim</th> -->
+                                <th>Catatan</th>
+                                <!-- <th>Catatan Kirim</th> -->
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

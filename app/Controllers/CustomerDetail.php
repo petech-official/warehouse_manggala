@@ -46,7 +46,7 @@ class CustomerDetail extends BaseController
             'alamat' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan alamat !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ]
         ])) {
@@ -77,12 +77,12 @@ class CustomerDetail extends BaseController
             'alamat' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan alamat !',
+                    'required' => 'Data tidak boleh kosong!',
 
                 ]
             ]
         ])) {
-            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+            return redirect()->to('/' . $this->controller . '/edit/' . $id)->withInput();
         };
         $model = $this->controller . 'Model';
         $this->$model->save([

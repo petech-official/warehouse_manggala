@@ -54,7 +54,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="no_surat_jalan">No Surat Jalan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('no_surat_jalan')) ? 'is-invalid' : ''; ?>" id="no_surat_jalan" name="no_surat_jalan" autofocus value="<?= (old('no_surat_jalan')) ? old('no_surat_jalan') : $data['no_surat_jalan']; ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('no_surat_jalan')) ? 'is-invalid' : ''; ?>" id="no_surat_jalan" name="no_surat_jalan" autofocus value="<?= (old('no_surat_jalan')) ? old('no_surat_jalan') : $data['no_surat_jalan']; ?>" placeholder="Masukan no surat jalan" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('no_surat_jalan'); ?>
                                     </div>
@@ -62,7 +62,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
 
                                 <div class="form-group">
                                     <label for="supir">Supir Supplier</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('supir')) ? 'is-invalid' : ''; ?>" id="supir" name="supir" autofocus value="<?= (old('supir')) ? old('supir') : $data['supir']; ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('supir')) ? 'is-invalid' : ''; ?>" id="supir" name="supir" autofocus value="<?= (old('supir')) ? old('supir') : $data['supir']; ?>" placeholder="Masukan supir supplier" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('supir'); ?>
                                     </div>
@@ -70,13 +70,13 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
 
                                 <div class="form-group">
                                     <label for="no_mobil">No Kendaraan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('no_mobil')) ? 'is-invalid' : ''; ?>" id="no_mobil" name="no_mobil" autofocus value="<?= (old('no_mobil')) ? old('no_mobil') : $data['no_mobil']; ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('no_mobil')) ? 'is-invalid' : ''; ?>" id="no_mobil" name="no_mobil" autofocus value="<?= (old('no_mobil')) ? old('no_mobil') : $data['no_mobil']; ?>" placeholder="Masukan no kendaraan" autocomplete="offs">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('no_mobil'); ?>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="dataPO">PO</label>
                                     <select class="form-select form-control  <?= ($validation->hasError('dataPO')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus id="po" name="po">
                                         <?php foreach ($dataPO as $key => $value) : ?>
@@ -111,11 +111,11 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="berat">Berat (kg)</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('berat')) ? 'is-invalid' : ''; ?>" id="berat" name="berat" autofocus value="<?= (old('berat')) ? old('berat') : $data['berat']; ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('berat')) ? 'is-invalid' : ''; ?>" id="berat" name="berat" autofocus value="<?= (old('berat')) ? old('berat') : $data['berat']; ?>" placeholder="masukan berat (kg)" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('berat'); ?>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">

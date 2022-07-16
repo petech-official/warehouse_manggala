@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/<?= $judul; ?>/index"><?= $judul; ?></a>
+                        <a href="/<?= $judul; ?>/index/<?= $data['id_stock']; ?>"><?= $judul; ?></a>
                         <?= $aksi; ?>
                     </h3>
                 </div>
@@ -17,29 +17,27 @@
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Ubah Data <?= $judul; ?></h3>
+                            <h3 class="card-title">Form Ubah Data </h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_stock_detail']; ?>">
                             <div class="card-body">
-                                <input type="hidden" name="id_stock" value="<?= $data['id_stock']; ?>>
+                                <input type="hidden" name="id_stock" value="<?= $data['id_stock']; ?>">
                                 <div class=" form-group">
-                                <label for="posisi">Posisi</label>
-                                <input type="text" class="form-control <?= ($validation->hasError('posisi')) ? 'is-invalid' : ''; ?>" id="posisi" name="posisi" autofocus value="<?= (old('posisi')) ? old('posisi') : $data['posisi']; ?>">
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('posisi'); ?>
+                                    <label for="posisi">Posisi</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('posisi')) ? 'is-invalid' : ''; ?>" id="posisi" name="posisi" autofocus value="<?= (old('posisi')) ? old('posisi') : $data['posisi']; ?>" autocomplete="off" placeholder="Masukan posisi barang">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('posisi'); ?>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                        </form>
                     </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                    </form>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

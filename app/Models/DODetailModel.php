@@ -66,12 +66,15 @@ class DODetailModel extends Model
             ->join('barang_ukuran', 'barang_ukuran.id_barang_ukuran=barang.id_ukuran')
             // ->join('supplier', 'supplier.id_supplier=barang.id_supplier')
             ->join('barang_keterangan', 'barang_keterangan.id_barang_keterangan=barang.id_keterangan')
-            ->select('* , barang_keterangan.keterangan as barang_keterangan')
+
             ->join('barang_grade', 'barang_grade.id_barang_grade=barang.id_grade')
             ->join('do', 'do.id_do = do_detail.id_do')
             ->join('so', 'so.id_so = do.id_so')
-            ->join('so_detail', 'so_detail.id_so = so.id_so and so_detail.id_barang=do_detail.id_barang')
+            ->join('so_detail', '(so_detail.id_so = so.id_so and so_detail.id_barang=do_detail.id_barang)')
+
             ->join('customer_detail', 'customer_detail.id_customer_detail = so_detail.keterangan_so')
+            ->select('* , barang_keterangan.keterangan as barang_keterangan')
+
             ->get()->getResultArray();
     }
     public function getBarang($id)

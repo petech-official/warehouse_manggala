@@ -38,7 +38,6 @@ class Barang extends BaseController
     // Tambah Jenis
     public function tambahJenis()
     {
-
         $data = [
             'judul' => $this->controller,
             'aksi' => ' / Tambah Data',
@@ -71,7 +70,6 @@ class Barang extends BaseController
     // Tambah Lot
     public function tambahLot()
     {
-
         $data = [
             'judul' => $this->controller,
             'aksi' => ' / Tambah Data',
@@ -98,7 +96,7 @@ class Barang extends BaseController
             'keterangan' => [
                 'rules' => 'required|is_unique[barang_keterangan.keterangan]',
                 'errors' => [
-                    'required' => 'Masukan keterangan !',
+                    'required' => 'Data tidak boleh kosong!',
                     'is_unique' => 'keterangan harus unik !'
                 ]
 
@@ -121,7 +119,7 @@ class Barang extends BaseController
             'jenis' => [
                 'rules' => 'required|is_unique[barang_jenis.jenis]',
                 'errors' => [
-                    'required' => 'Masukan jenis !',
+                    'required' => 'Data tidak boleh kosong!',
                     'is_unique' => 'jenis harus unik !'
                 ]
 
@@ -144,7 +142,7 @@ class Barang extends BaseController
             'grade' => [
                 'rules' => 'required|is_unique[barang_grade.grade]',
                 'errors' => [
-                    'required' => 'Masukan grade !',
+                    'required' => 'Data tidak boleh kosong!',
                     'is_unique' => 'grade harus unik !'
                 ]
 
@@ -166,7 +164,7 @@ class Barang extends BaseController
             'lot' => [
                 'rules' => 'required|is_unique[barang_lot.lot]',
                 'errors' => [
-                    'required' => 'Masukan lot !',
+                    'required' => 'Data tidak boleh kosong!',
                     'is_unique' => 'lot harus unik !'
                 ]
 
@@ -188,7 +186,7 @@ class Barang extends BaseController
             'ukuran' => [
                 'rules' => 'required|is_unique[barang_ukuran.ukuran]',
                 'errors' => [
-                    'required' => 'Masukan ukuran !',
+                    'required' => 'Data tidak boleh kosong!',
                     'is_unique' => 'ukuran harus unik !'
                 ]
 
@@ -202,6 +200,8 @@ class Barang extends BaseController
         session()->setFlashdata('pesan', 'Data ukuran barang berhasil ditambah');
         return redirect()->to('/' . $this->controller);
     }
+
+
 
     // edit Grade
     public function editGrade($id)
@@ -220,14 +220,13 @@ class Barang extends BaseController
         //Validasi
         if (!$this->validate([
             'grade' => [
-                'rules' => 'required|is_unique[barang_grade.grade]',
+                'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan grade !',
-                    'is_unique' => 'grade harus unik !'
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ]
         ])) {
-            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+            return redirect()->to('/' . $this->controller . '/editGrade/' . $id)->withInput();
         };
         $this->BarangGrade->save([
             'id_barang_grade' => $id,
@@ -255,14 +254,13 @@ class Barang extends BaseController
         //Validasi
         if (!$this->validate([
             'keterangan' => [
-                'rules' => 'required|is_unique[barang_keterangan.keterangan]',
+                'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan keterangan !',
-                    'is_unique' => 'keterangan harus unik !'
+                    'required' => 'Data tidak boleh kosong! ',
                 ]
             ]
         ])) {
-            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+            return redirect()->to('/' . $this->controller . '/editKeterangan/' . $id)->withInput();
         };
         $this->BarangKeterangan->save([
             'id_barang_keterangan' => $id,
@@ -290,14 +288,13 @@ class Barang extends BaseController
         //Validasi
         if (!$this->validate([
             'jenis' => [
-                'rules' => 'required|is_unique[barang_jenis.jenis]',
+                'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan jenis !',
-                    'is_unique' => 'jenis harus unik !'
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ]
         ])) {
-            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+            return redirect()->to('/' . $this->controller . '/editJenis/' . $id)->withInput();
         };
         $this->BarangJenis->save([
             'id_barang_jenis' => $id,
@@ -325,14 +322,13 @@ class Barang extends BaseController
         //Validasi
         if (!$this->validate([
             'lot' => [
-                'rules' => 'required|is_unique[barang_lot.lot]',
+                'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan lot !',
-                    'is_unique' => 'lot harus unik !'
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ]
         ])) {
-            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+            return redirect()->to('/' . $this->controller . '/editLot/' . $id)->withInput();
         };
         $this->BarangLot->save([
             'id_barang_lot' => $id,
@@ -360,14 +356,13 @@ class Barang extends BaseController
         //Validasi
         if (!$this->validate([
             'ukuran' => [
-                'rules' => 'required|is_unique[barang_ukuran.ukuran]',
+                'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan ukuran !',
-                    'is_unique' => 'ukuran harus unik !'
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ]
         ])) {
-            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+            return redirect()->to('/' . $this->controller . '/editUkuran/' . $id)->withInput();
         };
         $this->BarangUkuran->save([
             'id_barang_ukuran' => $id,

@@ -36,7 +36,10 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" <?= ($validation->hasError('telp_supir')) ? 'is-invalid' : ''; ?>" id="telp_supir" name="telp_supir" autofocus value="<?= old('telp_supir'); ?>" placeholder="Masukan Telepon" autocomplete="off">
+                                        <input type="text" class="form-control <?= ($validation->hasError('telp_supir')) ? 'is-invalid' : ''; ?>" id="telp_supir" name="telp_supir" autofocus value="<?= old('telp_supir'); ?>" placeholder="Masukan no telepon" autocomplete="off">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('telp_supir'); ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

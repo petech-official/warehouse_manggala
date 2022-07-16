@@ -54,44 +54,56 @@ class Stock extends BaseController
             'jenis' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan jenis !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'lot' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan lot !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
 
             'ukuran' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan ukuran !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'keterangan' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan keterangan !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'grade' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan grade !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'produksi' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan produksi !',
+                    'required' => 'Data tidak boleh kosong!',
+                ]
+            ],
+            'jenis_box' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'berat' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan berat !',
+                    'required' => 'Data tidak boleh kosong!',
+                ]
+            ],
+            'max_berat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
         ])) {
@@ -106,6 +118,7 @@ class Stock extends BaseController
             'id_ukuran' => $this->request->getVar('ukuran'),
             'id_grade' => $this->request->getVar('grade'),
             'id_supplier' => $this->request->getVar('produksi'),
+            'jenis_box' => $this->request->getVar('jenis_box'),
             'berat' => $this->request->getVar('berat'),
             'max_berat' => $this->request->getVar('max_berat'),
 
@@ -136,44 +149,56 @@ class Stock extends BaseController
             'jenis' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan jenis !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'lot' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan lot !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
 
             'ukuran' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan ukuran !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'keterangan' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan keterangan !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'grade' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan grade !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'produksi' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan produksi !',
+                    'required' => 'Data tidak boleh kosong!',
+                ]
+            ],
+            'jenis_box' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'berat' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan berat !',
+                    'required' => 'Data tidak boleh kosong!',
+                ]
+            ],
+            'max_berat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
         ])) {
@@ -192,6 +217,7 @@ class Stock extends BaseController
             'id_ukuran' => $this->request->getVar('ukuran'),
             'id_grade' => $this->request->getVar('grade'),
             'id_supplier' => $this->request->getVar('produksi'),
+            'jenis_box' => $this->request->getVar('jenis_box'),
             'berat' => $this->request->getVar('berat'),
             'max_berat' => $this->request->getVar('max_berat'),
         ]);

@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Ubah Data <?= $judul; ?></h3>
+                            <h3 class="card-title">Form Ubah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -26,7 +26,7 @@
                                 <input type="hidden" name="id">
                                 <div class="form-group">
                                     <label for="ukuran">Ukuran</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('ukuran')) ? 'is-invalid' : ''; ?>" id="ukuran" name="ukuran" autofocus value="<?= (old('ukuran')) ? old('ukuran') : $data['ukuran']; ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('ukuran')) ? 'is-invalid' : ''; ?>" id="ukuran" name="ukuran" autofocus value="<?= (old('ukuran')) ? old('ukuran') : $data['ukuran']; ?>" placeholder="Masukan ukuran barang" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('ukuran'); ?>
                                     </div>

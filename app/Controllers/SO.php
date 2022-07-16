@@ -42,13 +42,13 @@ class SO extends BaseController
             'tgl_so' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan tgl_so !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'customer' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan customer !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
 
@@ -112,18 +112,18 @@ class SO extends BaseController
             'tgl_so' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan tgl_so !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'customer' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan customer !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
 
         ])) {
-            return redirect()->to('/' . $this->controller . '/edit')->withInput();
+            return redirect()->to('/' . $this->controller . '/edit/' . $id)->withInput();
         };
         $pieces = explode("/", $this->request->getVar('tgl_so'));
         $tanggal = $pieces[2] . '-' . $pieces[1] . '-' . $pieces[0];
@@ -132,7 +132,6 @@ class SO extends BaseController
             'id_so' => $id,
             'tgl_so' => $tanggal,
             'id_customer' => $this->request->getVar('customer'),
-            'alamat_kirim' => $this->request->getVar('alamat_kirim'),
             'keterangan' => $this->request->getVar('keterangan'),
         ]);
 

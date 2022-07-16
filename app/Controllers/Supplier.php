@@ -39,25 +39,31 @@ class Supplier extends BaseController
             'nama' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan nama !',
+                    'required' => 'Data tidak boleh kosong!',
+                ]
+            ],
+            'singkatan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'telp' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan telp !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'alamat' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan alamat !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'lead_time' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan lead_time !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ]
         ])) {
@@ -92,35 +98,35 @@ class Supplier extends BaseController
             'nama' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan nama !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'singkatan' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan singkatan !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'telp' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan telp !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'alamat' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan alamat !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'lead_time' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan lead_time !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ]
         ])) {
-            return redirect()->to('/' . $this->controller . '/tambah')->withInput();
+            return redirect()->to('/' . $this->controller . '/edit/' . $id)->withInput();
         };
 
         $model = $this->controller . 'Model';

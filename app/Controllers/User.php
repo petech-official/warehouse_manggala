@@ -26,7 +26,6 @@ class User extends BaseController
             'judul' => 'User',
             'aksi' => ' / Tambah Data',
             'validation' => \Config\Services::validation(),
-            'status' => $this->roleModel->findAll()
         ];
         return view('user/tambah', $data);
     }
@@ -83,7 +82,6 @@ class User extends BaseController
             'aksi' => ' / Ubah Data',
             'validation' => \Config\Services::validation(),
             'user'  => $this->adminModel->getUser($id),
-            'status' => $this->roleModel->findAll()
         ];
         return view('user/ubah', $data);
     }

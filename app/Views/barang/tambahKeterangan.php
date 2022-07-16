@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Tambah Data Keterangan <?= $judul; ?></h3>
+                            <h3 class="card-title">Form Tambah Data</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -25,7 +25,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="keterangan">Keterangan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" id="keterangan" name="keterangan" autofocus value="<?= old('keterangan'); ?>" placeholder="Masukan keterangan">
+                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" id="keterangan" name="keterangan" autofocus value="<?= old('keterangan'); ?>" placeholder="Masukan keterangan" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('keterangan'); ?>
                                     </div>

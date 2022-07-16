@@ -55,14 +55,20 @@ class SODetail extends BaseController
             'id_barang' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan barang !',
+                    'required' => 'Data tidak boleh kosong!',
 
                 ]
             ],
             'berat_total' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan berat !',
+                    'required' => 'Data tidak boleh kosong!',
+                ]
+            ],
+            'keterangan_so' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
         ])) {
@@ -118,19 +124,19 @@ class SODetail extends BaseController
     public function update($id)
     {
         //Validasi
-        if (!$this->validate([
-            'id_barang' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Masukan barang !',
-                ]
-            ],
-        ])) {
-            return redirect()->to('/' . $this->controller . '/edit/' . $this->request->getVar('id_so'))->withInput();
-        };
+        // if (!$this->validate([
+        //     'id_barang' => [
+        //         'rules' => 'required',
+        //         'errors' => [
+        //             'required' => 'Data tidak boleh kosong!',
+        //         ]
+        //     ],
+        // ])) {
+        //     return redirect()->to('/' . $this->controller . '/edit/' . $this->request->getVar('id_so'))->withInput();
+        // };
         $model = $this->controller . 'Model';
-        $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
-        $totalBerat = $barang['berat'] * $this->request->getVar('quantitas');
+        // $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
+        // $totalBerat = $barang['berat'] * $this->request->getVar('quantitas');
         // if ($totalBerat != 0) {
         //     $keterangan_so = 'Barang Standar, 1 Box emiliki berat ' . $barang['berat'] . 'Kg';
         // } else {
@@ -140,7 +146,7 @@ class SODetail extends BaseController
         $this->$model->save([
             'id_so_detail' => $id,
             'id_so' => $this->request->getVar('id_so'),
-            'id_barang' => $this->request->getVar('id_barang'),
+            // 'id_barang' => $this->request->getVar('id_barang'),
             'keterangan_so' => $this->request->getVar('keterangan_so')
         ]);
         session()->setFlashdata('pesan', 'Data berhasil diubah');

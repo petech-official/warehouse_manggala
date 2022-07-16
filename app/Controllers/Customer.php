@@ -40,20 +40,20 @@ class Customer extends BaseController
             'nama' => [
                 'rules' => 'required|is_unique[customer.nama_customer]',
                 'errors' => [
-                    'required' => 'Masukan nama !',
+                    'required' => 'Data tidak boleh kosong!',
                     'is_unique' => 'nama harus unik !'
                 ]
             ],
             'telp' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan telp !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'alamat' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan alamat !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ]
 
@@ -84,26 +84,26 @@ class Customer extends BaseController
     {
         //Validasi
         if (!$this->validate([
-            'nama' => [
+            'nama_customer' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan nama !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'telp' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan telp !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'alamat' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan alamat !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ]
         ])) {
-            return redirect()->to('/' . $this->controller . '/tambah')->withInput();
+            return redirect()->to('/' . $this->controller . '/edit/' . $id)->withInput();
         };
         $model = $this->controller . 'Model';
         $this->$model->save([

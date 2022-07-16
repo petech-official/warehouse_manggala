@@ -33,7 +33,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="tipe">Tipe</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('tipe')) ? 'is-invalid' : ''; ?>" id="tipe" name="tipe" autofocus value="<?= (old('tipe')) ? old('tipe') : $data['tipe']; ?>">
+                                    <select class="form-select form-control select2bs4  <?= ($validation->hasError('tipe')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('tipe'); ?>" name="tipe" id="tipe">
+                                        <option selected disabled>Pilih tipe kendaraan</option>
+                                        <option value="Double" <?php if ($data['tipe'] == "Double") : ?> selected <?php endif ?>>Double</option>
+                                        <option value="Engkel" <?php if ($data['tipe'] == "Engkel") : ?> selected <?php endif ?>>Engkel</option>
+                                        <option value="Losbak" <?php if ($data['tipe'] == "Losbak") : ?> selected <?php endif ?>>Losbak</option>
+                                        <option value="SS" <?php if ($data['tipe'] == "SS") : ?> selected <?php endif ?>>SS</option>
+                                    </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('tipe'); ?>
                                     </div>

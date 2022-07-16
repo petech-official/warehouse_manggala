@@ -33,7 +33,10 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_so" name="tgl_so" value="<?= $tanggal; ?>">
+                                        <input type="text" class="form-control <?= ($validation->hasError('tgl_so')) ? 'is-invalid' : ''; ?>" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_so" name="tgl_so" value="<?= $tanggal; ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('tgl_so'); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -58,7 +61,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                         ?>
                                             <option value="<? // $value['id_customer']; 
                                                             ?>" <? //php if ($value['id_customer'] == $data['alamat_kirim']) {echo "selected";} 
-                                                                                            ?>>
+                                                                ?>>
                                                 <? //= $value['alamat']; 
                                                 ?>
                                             </option>
@@ -72,7 +75,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                 </div> -->
                                 <div class="form-group">
                                     <label for="keterangan">Keterangan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" id="keterangan" name="keterangan" autofocus value="<?= (old('keterangan')) ? old('keterangan') : $data['keterangan']; ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" id="keterangan" name="keterangan" autofocus value="<?= (old('keterangan')) ? old('keterangan') : $data['keterangan']; ?>" placeholder="Masukan keterangan" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('keterangan'); ?>
                                     </div>

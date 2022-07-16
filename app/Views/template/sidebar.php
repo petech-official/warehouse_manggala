@@ -11,112 +11,115 @@
       <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
       <!-- Data Master -->
-      <li class="nav-item">
-        <a href="#" class="nav-link">
-          <i class="nav-icon fas fa-server"></i>
-          <p>
-            Data Master
-            <i class="fas fa-angle-left right"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="/supplier/index" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>
-                Supplier
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/customer/" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>
-                Customer
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/supir/" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>
-                Supir
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/kendaraan/" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>
-                Kendaraan
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/stock/" class="nav-link">
-              <i class="nav-icon far fa-circle text-info"></i>
-              <p>
-                Barang
-              </p>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item">
-        <a href="/barang/" class="nav-link">
-          <i class="nav-icon fas fa-database"></i>
-          <p>
-            Sub Master Barang
-          </p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="/po/" class="nav-link">
-          <i class="nav-icon far fa-calendar-alt"></i>
-          <p>
-            PO
-            <!-- <span class="badge badge-info right">2</span> -->
-          </p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="/bpb/" class="nav-link">
-          <i class="nav-icon far fa-calendar-alt"></i>
-          <p>
-            BPB
-            <!-- <span class="badge badge-info right">2</span> -->
-          </p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="/stockbarang/" class="nav-link">
-          <i class="nav-icon far fa-calendar-alt"></i>
-          <p>
-            Stock
-            <!-- <span class="badge badge-info right">2</span> -->
-          </p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="/so/" class="nav-link">
-          <i class="nav-icon far fa-calendar-alt"></i>
-          <p>
-            SO
-            <!-- <span class="badge badge-info right">2</span> -->
-          </p>
-        </a>
-      </li>
+      <?php if (session()->get('status')  == 'Manager Warehouse') : ?>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-server"></i>
+            <p>
+              Data Master
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/supplier/index" class="nav-link">
+                <i class="nav-icon far fa-circle text-info"></i>
+                <p>
+                  Supplier
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/customer/" class="nav-link">
+                <i class="nav-icon far fa-circle text-info"></i>
+                <p>
+                  Customer
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/supir/" class="nav-link">
+                <i class="nav-icon far fa-circle text-info"></i>
+                <p>
+                  Supir
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/kendaraan/" class="nav-link">
+                <i class="nav-icon far fa-circle text-info"></i>
+                <p>
+                  Kendaraan
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/stock/" class="nav-link">
+                <i class="nav-icon far fa-circle text-info"></i>
+                <p>
+                  Barang
+                </p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="/barang/" class="nav-link">
+            <i class="nav-icon fas fa-database"></i>
+            <p>
+              Sub Master Barang
+            </p>
+          </a>
+        </li>
+      <?php endif ?>
+      <?php if ((session()->get('status')  == 'Manager Warehouse') || (session()->get('status')  == 'Admin')) : ?>
+        <li class="nav-item">
+          <a href="/po/" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+            <p>
+              PO
+              <!-- <span class="badge badge-info right">2</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/bpb/" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+            <p>
+              BPB
+              <!-- <span class="badge badge-info right">2</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/stockbarang/" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+            <p>
+              Stock
+              <!-- <span class="badge badge-info right">2</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/so/" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+            <p>
+              SO
+              <!-- <span class="badge badge-info right">2</span> -->
+            </p>
+          </a>
+        </li>
 
-      <li class="nav-item">
-        <a href="/dorder/" class="nav-link">
-          <i class="nav-icon far fa-calendar-alt"></i>
-          <p>
-            DO
-            <!-- <span class="badge badge-info right">2</span> -->
-          </p>
-        </a>
-      </li>
-
+        <li class="nav-item">
+          <a href="/dorder/" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+            <p>
+              DO
+              <!-- <span class="badge badge-info right">2</span> -->
+            </p>
+          </a>
+        </li>
+      <?php endif ?>
     </ul>
   </nav>
   <!-- /.sidebar-menu -->

@@ -30,16 +30,17 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_bpb" name="tgl_bpb" autofocus value="<?= old('tgl_bpb'); ?>">
+                                        <input type="text" class="form-control  <?= ($validation->hasError('tgl_bpb')) ? 'is-invalid' : ''; ?>" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_bpb" name="tgl_bpb" autofocus value="<?= old('tgl_bpb'); ?>">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('tgl_bpb'); ?>
+                                        </div>
                                     </div>
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('tgl_bpb'); ?>
-                                    </div>
+
                                 </div>
 
                                 <div class="form-group">
                                     <label for="no_surat_jalan">No Surat Jalan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('no_surat_jalan')) ? 'is-invalid' : ''; ?>" id="no_surat_jalan" name="no_surat_jalan" autofocus value="<?= old('no_surat_jalan'); ?>" placeholder="Masukan no surat jalan">
+                                    <input type="text" class="form-control <?= ($validation->hasError('no_surat_jalan')) ? 'is-invalid' : ''; ?>" id="no_surat_jalan" name="no_surat_jalan" autofocus value="<?= old('no_surat_jalan'); ?>" placeholder="Masukan no surat jalan" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('no_surat_jalan'); ?>
                                     </div>
@@ -48,7 +49,6 @@
                                 <div class="form-group">
                                     <label for="packing_list" class="col-sm-2 col-form-label">Packing List</label>
                                     <input class="form-control <?= ($validation->hasError('packing_list')) ? 'is-invalid' : ''; ?>" type="file" id="packing_list" name="packing_list">
-
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('packing_list'); ?>
                                     </div>
@@ -56,7 +56,7 @@
 
                                 <div class="form-group">
                                     <label for="supir">Supir Supplier</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('supir')) ? 'is-invalid' : ''; ?>" id="supir" name="supir" autofocus value="<?= old('supir'); ?>" placeholder="Masukan nama supir">
+                                    <input type="text" class="form-control <?= ($validation->hasError('supir')) ? 'is-invalid' : ''; ?>" id="supir" name="supir" autofocus value="<?= old('supir'); ?>" placeholder="Masukan nama supir" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('supir'); ?>
                                     </div>
@@ -64,7 +64,7 @@
 
                                 <div class="form-group">
                                     <label for="no_mobil">No Kendaraan</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('no_mobil')) ? 'is-invalid' : ''; ?>" id="no_mobil" name="no_mobil" autofocus value="<?= old('no_mobil'); ?>" placeholder="Masukan no surat jalan">
+                                    <input type="text" class="form-control <?= ($validation->hasError('no_mobil')) ? 'is-invalid' : ''; ?>" id="no_mobil" name="no_mobil" autofocus value="<?= old('no_mobil'); ?>" placeholder="Masukan no kendaraan" autocomplete="off">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('no_mobil'); ?>
                                     </div>

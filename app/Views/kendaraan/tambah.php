@@ -40,13 +40,7 @@
                                         <option value="SS">SS</option>
                                     </select>
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('status'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="hidden" class="form-control <?= ($validation->hasError('status')) ? 'is-invalid' : ''; ?>" id="status" name="status" autofocus value="Ada" placeholder="Masukan status">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('status'); ?>
+                                        <?= $validation->getError('tipe'); ?>
                                     </div>
                                 </div>
                             </div>

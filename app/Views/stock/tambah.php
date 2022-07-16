@@ -101,6 +101,18 @@
                                         <?= $validation->getError('produksi'); ?>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="jenis_box">Jenis Box</label>
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('jenis_box')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('jenis_box'); ?>" name="jenis_box" id="jenis_box">
+                                        <option selected disabled>Pilih jenis box</option>
+                                        <option value="Standar">Standar</option>
+                                        <option value="Small">Small</option>
+                                        <option value="Jumbo">Jumbo</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('jenis_box'); ?>
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="berat">Berat (kg)</label>

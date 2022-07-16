@@ -45,31 +45,31 @@ class DOrder extends BaseController
             'tgl_do' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan tgl_do !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'so' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan so !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'no_po' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan no_po !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'kendaraan' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan kendaraan !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'supir' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan supir !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
 
@@ -135,25 +135,25 @@ class DOrder extends BaseController
             'tgl_do' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan tgl_do !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'no_po' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan no_po !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'kendaraan' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan kendaraan !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
             'supir' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan supir !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
             ],
         ])) {

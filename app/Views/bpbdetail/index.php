@@ -71,7 +71,7 @@
                             </td>
                             <td><?= $data[0]['lot']; ?></td>
                             <td class="rupiah"><?= $dataMain['quantitas'] ?></td>
-                            <td class="rupiah"><?= number_format($dataMain['berat'], 2)
+                            <td class="rupiah"><?= $dataMain['berat']
                                                 ?></td>
                         </tbody>
                         <tfoot>
