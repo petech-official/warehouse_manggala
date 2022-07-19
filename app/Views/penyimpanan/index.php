@@ -1,5 +1,6 @@
 <?= $this->extend('template/index'); ?>
 <?= $this->section('content'); ?>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col">
@@ -10,60 +11,67 @@
                 <!-- /.card-header -->
                 <!-- Tambah data -->
                 <div class="card-body">
-                    <a href="/<?= $judul; ?>/tambah" class="btn btn-primary">Tambah Data</a><br><br>
-                    <?php if (session()->getFlashdata('pesan')) : ?>
-                        <div class="alert alert-success" role="alert">
-                            <?= session()->getFlashdata('pesan'); ?>
-                        </div>
-                    <?php endif ?>
+                    <h4>Jadwal Penerimaan Barang <?= date('d - M - Y') ?></h4>
+                    <hr>
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>Nama</th>
-                                <th>Telp</th>
-                                <th>Status</th>
-                                <th>Keterangan</th>
+                                <th>No Po</th>
+                                <th>Nama Barang</th>
+                                <th>Lot</th>
+                                <th>Status Penerimaan</th>
+                                <th>Supplier</th>
+                                <th>Quantity (kg)</th>
                                 <!-- Selesai Disini -->
-                                <th>Aksi</th>
+
                             </tr>
                         </thead>
-                        <tbody style="padding: 50px;">
-                            <?php
-                            $i = 1;
-                            foreach ($data as $key => $value) : ?>
-                                <tr>
-                                    <!-- Masukan Disini -->
-                                    <td><?= $value['nama']; ?></td>
-                                    <td><?= $value['telp']; ?></td>
-                                    <td><?= $value['status']; ?></td>
-                                    <td><?= $value['keterangan']; ?></td>
-                                    <!-- Selesai Disini -->
-                                    <td>
-                                        <?= csrf_field(); ?>
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <!-- Aksi edit di sesuaikan -->
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
-                                        <!-- Aksi hapus di sesuaikan -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id']; ?>)" class="btn btn-danger" data-toggle="modal">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            <?php endforeach ?>
+                        <?php
+                        $i = 1;
+                        foreach ($data as $key => $value) : ?>
+                            <tr>
+                                <td><?= $i++; ?></td>
+                                <!-- Masukan Disini -->
+
+                                <td><?= $value['no_po']; ?></td>
+                                <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?></td>
+                                <td><?= $value['lot']; ?></td>
+
+                                <td><?php
+                                    if ($value['status_penerimaan'] == 0) {
+                                    ?>
+                                        <span class="badge bg-warning">Belum Terkonfirmasi</span>
+                                    <?php } else { ?>
+                                        <span class="badge bg-success">Terkonfirmasi</span>
+                                    <?php } ?>
+                                </td>
+                                <td><?= $value['nama']; ?></td>
+                                <td class="rupiah"><?= $value['berat_penerimaan']; ?></td>
+                                <!-- Selesai Disini -->
+
+                            </tr>
+                        <?php endforeach ?>
                         </tbody>
                         <tfoot>
                             <tr>
+                                <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>Nama</th>
-                                <th>Telp</th>
-                                <th>Status</th>
-                                <th>Keterangan</th>
+                                <th>No Po</th>
+                                <th>Nama Barang</th>
+                                <th>Lot</th>
+                                <th>Status Penerimaan</th>
+                                <th>Supplier</th>
+                                <th>Quantity (kg)</th>
                                 <!-- Selesai Disini -->
-                                <th>Aksi</th>
+
                             </tr>
                         </tfoot>
                     </table>
+                </div>
+                <div class="card-footer">
+                    <a href="/bpb/index" class="btn btn-primary">Bukti Penerimaan Barang (BPB)</a>
                 </div>
             </div>
         </div>

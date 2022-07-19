@@ -5,16 +5,20 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><?= $judul; ?></h3>
+                    <h3 class="card-title">Pengeluaran</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
                 <div class="card-body">
-                    <a href="/<?= $judul; ?>/tambah" class="btn btn-primary">Tambah Data</a><br><br>
-                    <?php if (session()->getFlashdata('pesan')) : ?>
-                        <div class="alert alert-success" role="alert">
-                            <?= session()->getFlashdata('pesan'); ?>
-                        </div>
+                    <h4>Pengiriman Barang (DO)</h4>
+                    <hr>
+                    <?php if (session()->get('status')  != 'Manager Marketing') : ?>
+                        <a href="/<?= $judul; ?>/tambah" class="btn btn-primary">Tambah Data</a><br><br>
+                        <?php if (session()->getFlashdata('pesan')) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= session()->getFlashdata('pesan'); ?>
+                            </div>
+                        <?php endif ?>
                     <?php endif ?>
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
@@ -53,13 +57,15 @@
                                         <!-- hapus jika perlu -->
                                         <a href="/DODetail/index/<?= $value['id_do']; ?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
                                         <!-- end hapus -->
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_do']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
-                                        <?= csrf_field(); ?>
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_do']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                        <?php if (session()->get('status')  != 'Manager Marketing') : ?>
+                                            <a href="/<?= $judul; ?>/edit/<?= $value['id_do']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
+                                            <?= csrf_field(); ?>
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_do']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        <?php endif ?>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
@@ -81,6 +87,16 @@
                         </tfoot>
                     </table>
                 </div>
+                <?php if (session()->get('status')  == 'Manager Marketing') : ?>
+                    <div class="card-footer">
+                        <a href="/schedulepengeluaran/index" class="btn btn-primary">Jadwal Pengeluaran (Schedule) </a>
+                    </div>
+                <?php endif ?>
+                <?php if (session()->get('status')  != 'Manager Marketing') : ?>
+                    <div class="card-footer">
+                        <a href="/pengeluaran/cek_so" class="btn btn-primary">Penjualan Barang (SO)</a>
+                    </div>
+                <?php endif ?>
             </div>
         </div>
     </div>

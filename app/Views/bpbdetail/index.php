@@ -7,8 +7,8 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><a href="/<?= $judulMain; ?>/index"><?= $judulMain; ?></a>
-                        <?= $aksi; ?> <?= $dataMain['no_bpb'] ?></h3>
+                    <h3 class="card-title"><a href="/<?= $judulMain; ?>/index">Bukti Penerimaan Barang</a>
+                        <?= $aksi; ?></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
@@ -59,6 +59,7 @@
                                 <th rowspan="2">Nama Barang</th>
                                 <th rowspan="2">Lot</th>
                                 <th colspan="2">Quantity</th>
+                                <th rowspan="2">Aksi</th>
                                 <!-- Selesai Disini -->
                             </tr>
                             <tr>
@@ -73,6 +74,7 @@
                             <td class="rupiah"><?= $dataMain['quantitas'] ?></td>
                             <td class="rupiah"><?= $dataMain['berat']
                                                 ?></td>
+                            <td><a href="/StockBarangDetail/dariBPB/<?= $data[0]['id_barang']; ?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-arrow-right"></i></a></td>
                         </tbody>
                         <tfoot>
                             <tr>
@@ -82,6 +84,8 @@
                                 <th>Box</th>
                                 <th>Kg </th>
                                 <!-- Selesai Disini -->
+                                <th>Aksi</th>
+
                             </tr>
                         </tfoot>
                     </table>

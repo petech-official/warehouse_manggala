@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <!-- <h3 class="card-title"><? //= $judul; 
                                                 ?></h3> -->
-                    <h3 class="card-title"><a href="/StockBarang/index">Stock Barang</a>/ Stock Barang detail <?= $dataMain['jenis']; ?> <?= $dataMain['ukuran']; ?> <?= $dataMain['keterangan']; ?> - <?= $dataMain['grade']; ?></h3>
+                    <h3 class="card-title"><a href="/StockBarang/index">Stock Barang</a>/ Stock Barang detail </h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
@@ -18,6 +18,19 @@
                             <?= session()->getFlashdata('pesan'); ?>
                         </div>
                     <?php endif ?>
+                    <table>
+                        <tr>
+                            <th>Nama</th>
+                            <td>:</td>
+                            <td><?= $dataMain['jenis']; ?> <?= $dataMain['ukuran']; ?> <?= $dataMain['keterangan']; ?> - <?= $dataMain['grade']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Ukuran Box</th>
+                            <td>:</td>
+                            <td><?= $dataMain['jenis_box'] ?></td>
+                        </tr>
+                    </table>
+                    <br>
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
@@ -26,7 +39,9 @@
                                 <th>Berat (Kg)</th>
                                 <th>Posisi</th>
                                 <!-- Selesai Disini -->
-                                <th>Aksi</th>
+                                <?php if (session()->get('status')  != 'Manager Marketing') : ?>
+                                    <th>Aksi</th>
+                                <?php endif ?>
                             </tr>
                         </thead>
                         <tbody style="padding: 50px;">
@@ -40,12 +55,14 @@
                                     <td><?= $value['posisi'];
                                         ?></td>
                                     <!-- Selesai Disini -->
-                                    <td>
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_stock_detail']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
-                                        <?= csrf_field(); ?>
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <!-- Button trigger modal -->
-                                    </td>
+                                    <?php if (session()->get('status')  != 'Manager Marketing') : ?>
+                                        <td>
+                                            <a href="/<?= $judul; ?>/edit/<?= $value['id_stock_detail']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
+                                            <?= csrf_field(); ?>
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <!-- Button trigger modal -->
+                                        </td>
+                                    <?php endif ?>
                                 </tr>
                             <?php endforeach ?>
                         </tbody>
@@ -56,10 +73,15 @@
                                 <th>Berat (Kg)</th>
                                 <th>Posisi</th>
                                 <!-- Selesai Disini -->
-                                <th>Aksi</th>
+                                <?php if (session()->get('status')  != 'Manager Marketing') : ?>
+                                    <th>Aksi</th>
+                                <?php endif ?>
                             </tr>
                         </tfoot>
                     </table>
+                </div>
+                <div class="card-footer">
+                    <a href="/bpb/index" class="btn btn-primary">Bukti Penerimaan Barang</a>
                 </div>
             </div>
         </div>

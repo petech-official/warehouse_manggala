@@ -43,4 +43,9 @@ class LoginAdmin extends BaseController
         $session->destroy();
         return redirect()->to('/loginAdmin');
     }
+
+    function verifikasi()
+    {
+        return view('login_admin/verifikasi');
+    }
 }

@@ -6,7 +6,7 @@
         <?php $aksiKosong = '' ?>
         <h1 class="m-0">PT. MANGGALA INDOPRATAMA
         </h1>
-        <p><?= $session->get('status'); ?> : <?= $session->get('username'); ?></p>
+        <p><span class="text-danger"><b><?= $session->get('status'); ?></b></span> : <?= $session->get('username'); ?></p>
       </div><!-- /.col -->
     </div><!-- /.row -->
   </div><!-- /.container-fluid -->

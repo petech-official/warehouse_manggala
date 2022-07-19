@@ -6,9 +6,8 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><a href="/dorder/index"><?= $judulMain; ?></a>
-                        <?= $aksi; ?> <?= $dataMain['id_do']
-                                        ?></h3>
+                    <h3 class="card-title"><a href="/dorder/index">Pengiriman Barang</a>
+                        <?= $aksi; ?> </h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
@@ -65,12 +64,14 @@
                         </tr>
                     </table>
                     <hr>
-                    <a href="/<?= $judul; ?>/tambah/<?= $dataMain['id_do']
-                                                    ?>" class="btn btn-primary">Tambah Barang</a><br><br>
-                    <?php if (session()->getFlashdata('pesan')) : ?>
-                        <div class="alert alert-success" role="alert">
-                            <?= session()->getFlashdata('pesan'); ?>
-                        </div>
+                    <?php if (session()->get('status')  != 'Manager Marketing') : ?>
+                        <a href="/<?= $judul; ?>/tambah/<?= $dataMain['id_do']
+                                                        ?>" class="btn btn-primary">Tambah Barang</a><br><br>
+                        <?php if (session()->getFlashdata('pesan')) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= session()->getFlashdata('pesan'); ?>
+                            </div>
+                        <?php endif ?>
                     <?php endif ?>
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
@@ -81,7 +82,9 @@
                                 <th colspan="2">Saldo</th>
                                 <th rowspan="2">Alamat Kirim</th>
                                 <!-- Selesai Disini -->
-                                <th rowspan="2">Aksi</th>
+                                <?php if (session()->get('status')  != 'Manager Marketing') : ?>
+                                    <th rowspan="2">Aksi</th>
+                                <?php endif ?>
                             </tr>
                             <tr>
                                 <th>Box</th>
@@ -102,13 +105,15 @@
 
                                 <!-- Selesai Disini -->
                                 <td>
-                                    <!-- <a href="/<?= $judul; ?>/edit/<?= $value['id_do_detail']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a> -->
-                                    <?= csrf_field(); ?>
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_do_detail']; ?>,<?= $value['id_do'] ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    <?php if (session()->get('status')  != 'Manager Marketing') : ?>
+                                        <!-- <a href="/<?= $judul; ?>/edit/<?= $value['id_do_detail']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a> -->
+                                        <?= csrf_field(); ?>
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_do_detail']; ?>,<?= $value['id_do'] ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    <?php endif ?>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -122,7 +127,9 @@
                                 <th>Kg </th>
                                 <th rowspan="2">Alamat Kirim</th>
                                 <!-- Selesai Disini -->
-                                <th>Aksi</th>
+                                <?php if (session()->get('status')  != 'Manager Marketing') : ?>
+                                    <th>Aksi</th>
+                                <?php endif ?>
                             </tr>
                         </tfoot>
                     </table>

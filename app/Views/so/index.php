@@ -5,11 +5,13 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><?= $judul; ?></h3>
+                    <h3 class="card-title">Pengeluaran</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
                 <div class="card-body">
+                    <h4>Penjualan Barang (SO)</h4>
+                    <hr>
                     <a href="/<?= $judul; ?>/tambah" class="btn btn-primary">Tambah Data</a><br><br>
                     <?php if (session()->getFlashdata('pesan')) : ?>
                         <div class="alert alert-success" role="alert">
@@ -85,6 +87,13 @@
                         </tfoot>
                     </table>
                 </div>
+
+                <?php if (session()->get('status')  == 'Manager Marketing') : ?>
+                    <div class="card-footer">
+                        <a href="/schedulepengeluaran/index" class="btn btn-primary">Jadwal Pengeluaran (Schedule)</a>
+                    </div>
+                <?php endif ?>
+
             </div>
         </div>
     </div>

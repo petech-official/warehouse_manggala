@@ -5,7 +5,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><?= $judul; ?></h3>
+                    <h3 class="card-title">Stock Barang</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
@@ -23,8 +23,9 @@
                                 <!-- Masukan Disini -->
                                 <th rowspan="2">Nama Barang</th>
                                 <th rowspan="2">Lot</th>
-                                <th rowspan="2">Jenis Box</th>
                                 <th rowspan="2">Supplier</th>
+                                <th rowspan="2">Jenis Box</th>
+
                                 <th colspan="3">Stock</th>
                                 <th rowspan="2">ROP</th>
                                 <th rowspan="2">Status Pengadaan</th>
@@ -70,11 +71,13 @@
                                         <!-- <a href="/<?= $judul; ?>/edit/<? //= $value['id_stock']; 
                                                                             ?>" class="btn btn-success"><i class="fas fa-pen"></i></a> -->
                                         <?= csrf_field(); ?>
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_stock']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                        <?php if (session()->get('status')  != 'Manager Marketing') : ?>
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_stock']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        <?php endif ?>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
