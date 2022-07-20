@@ -159,11 +159,30 @@
   <script>
     $(function() {
       $("#data-table1").DataTable({
+
+        "language": {
+          "sProcessing": "Sedang memproses...",
+          "sLengthMenu": "Tampilkan _MENU_ entri",
+          "sZeroRecords": "Tidak ditemukan data yang sesuai",
+          "sInfo": "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
+          "sInfoEmpty": "Menampilkan 0 sampai 0 dari 0 entri",
+          "sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
+          "sInfoPostFix": "",
+          "sSearch": "Cari:",
+          "sUrl": "",
+          "oPaginate": {
+            "sFirst": "Pertama",
+            "sPrevious": "Sebelumnya",
+            "sNext": "Selanjutnya",
+            "sLast": "Terakhir"
+          }
+        },
         "responsive": true,
         "lengthChange": true,
         "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
       }).buttons().container().appendTo('#data-table1_wrapper .col-md-6:eq(0)');
+      // https://cdn.datatables.net/plug-ins/1.12.1/i18n/id.json
       $('#data-table2').DataTable({
         "paging": true,
         "lengthChange": false,
@@ -175,15 +194,13 @@
 
       });
       $('.data-table1').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": true,
-        "responsive": true,
+        "language": {
+          "url": "https://cdn.datatables.net/plug-ins/1.12.1/i18n/id.json",
 
-      });
+          "sEmptyTable": "Tidads",
+          "url": "http://cdn.datatables.net/plug-ins/1.10.9/i18n/Indonesian-Alternative.json",
+        },
+      })
       $('.select2').select2()
       //Initialize Select2 Elements
       $('.select2bs4').select2({

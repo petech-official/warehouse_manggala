@@ -62,4 +62,20 @@ class StockBarangDetail extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/' . $this->controller . '/index/' . $this->request->getVar('id_stock'));
     }
+    public function dariBPB($id_barang)
+    {
+        $id_stock = $this->StockBarangModel->where('id_barang', $id_barang)->findColumn('id_stock')[0];
+
+        $modelMain = $this->controllerMain . 'Model';
+        $model = $this->controller . 'Model';
+        $data = [
+            'judul' => $this->controller,
+            'judulMain' => $this->controllerMain,
+            'aksi' => ' / Detail Data',
+            'validation' => \Config\Services::validation(),
+            'dataMain' => $this->$modelMain->getDataStockDetail($id_stock),
+            'data'  => $this->$model->getStockBarangDetail($id_stock),
+        ];
+        return view($this->controller . '/index', $data);
+    }
 }

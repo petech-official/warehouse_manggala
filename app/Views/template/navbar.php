@@ -7,7 +7,7 @@
     </li>
     <li class="nav-item">
       <a href="/dashboard/index" class="nav-link">
-        Dashboard
+        Halaman Utama
       </a>
     </li>
   </ul>
@@ -25,19 +25,22 @@
         <i class="fas fa-th-large"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+
         <?php if (session()->get('status')  == 'Manager Warehouse') : ?>
-          <a href="/user/index" class="nav-link">
-            <i class=" fas fa-user"></i>
+          <div class="dropdown-divider"></div>
+          <a href="/user/index" class="dropdown-item">
             Admin
           </a>
         <?php endif ?>
-        <a class="nav-link" href="https://www.manggala-id.com/" target="blank">
-          <i class="fas fa-users"></i>
-          Profil Perusaahaan
+
+        <div class="dropdown-divider"></div>
+        <a href="https://www.manggala-id.com/" target="blank" class="dropdown-item">
+          Tentang Perusahaan
         </a>
-        <a class="nav-link" href="/loginAdmin/logout">
-          <i class="fas fa-sign-out-alt"></i>
-          Logout
+
+        <div class="dropdown-divider"></div>
+        <a href="/loginAdmin/logout" class="dropdown-item">
+          Keluar
         </a>
       </div>
     </li>

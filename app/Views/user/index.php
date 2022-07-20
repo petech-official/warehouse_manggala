@@ -5,7 +5,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><?= $judul; ?></h3>
+                    <h3 class="card-title">Pengguna</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->

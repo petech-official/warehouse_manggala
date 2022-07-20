@@ -10,7 +10,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/<?= $judul; ?>/index"><?= $judul; ?></a>
+                        <a href="/<?= $judul; ?>/index">Bukti Penerimaan Barang</a>
                         <?= $aksi; ?>
                     </h3>
                 </div>
@@ -119,7 +119,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </form>
 

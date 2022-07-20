@@ -10,7 +10,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/<?= $judul; ?>/index"><?= $judul; ?></a>
+                        <a href="/<?= $judul; ?>/index">Pengiriman</a>
                         <?= $aksi; ?>
                     </h3>
                 </div>

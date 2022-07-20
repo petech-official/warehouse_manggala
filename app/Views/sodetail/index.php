@@ -6,8 +6,8 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><a href="/<?= $judulMain; ?>/index"><?= $judulMain; ?></a>
-                        <?= $aksi; ?> <?= $dataMain['no_so'] ?></h3>
+                    <h3 class="card-title"><a href="/<?= $judulMain; ?>/index">Penjualan</a>
+                        <?= $aksi; ?> </h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->

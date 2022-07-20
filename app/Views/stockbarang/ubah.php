@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/<?= $judul; ?>/index"><?= $judul; ?></a>
+                        <a href="/<?= $judul; ?>/index">Stock Barang</a>
                         <?= $aksi; ?>
                     </h3>
                 </div>
@@ -52,7 +52,7 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </form>
                     </div>

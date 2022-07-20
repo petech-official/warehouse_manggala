@@ -13,7 +13,10 @@ class Dashboard extends BaseController
         $this->BarangModel = new \App\Models\BarangModel();
         $this->POModel = new \App\Models\POModel();
         $this->SOModel = new \App\Models\SOModel();
+
+        $this->BarangModel = new \App\Models\BarangModel();
     }
+    public $controller = 'StockBarang';
     public function index()
     {
         $session = session();
@@ -24,14 +27,14 @@ class Dashboard extends BaseController
         // if (empty($username)) {
         //     return redirect()->to('/loginAdmin');
         // }
-
         $data = [
             'data' => $this->StockBarangModel->getKebutuhan(),
             'dataPO' => $this->POModel->where('status', 0)->findAll(),
             'dataSO' => $this->SOModel->where('status', 0)->findAll(),
+            'judul' => $this->controller,
             // 'data_pengeluaran' => $this->StockBarangModel->getPengeluaran(),
         ];
-        return view('dashboard/index', $data);
+        return view('stockbarang/index', $data);
     }
     public function Pengeluaran()
     {
