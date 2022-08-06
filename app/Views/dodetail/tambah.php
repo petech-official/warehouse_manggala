@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">
-                    <a href="/<?= $judul; ?>/index/<?= $id_do; ?>"><?= $judul; ?></a>
+                    <a href="/<?= $judul; ?>/index/<?= $id_do; ?>">Pengiriman Detail</a>
                     <?= $aksi; ?>
                 </h3>
             </div>
@@ -39,7 +39,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="berat_total">Berat (kg)</label>
-                                <input type="number" class="form-control <?= ($validation->hasError('berat_total')) ? 'is-invalid' : ''; ?>" id="berat_total" name="berat_total" autofocus value="<?= old('berat_total'); ?>" placeholder="Masukan berat" autocomplete="off">
+                                <input type="number" class="form-control <?= ($validation->hasError('berat_total')) ? 'is-invalid' : ''; ?>" id="berat_total" name="berat_total" autofocus value="<?= old('berat_total'); ?>" placeholder="Masukan berat" autocomplete="off" min="0" oninput="validity.valid||(value='');">
                                 <div class="invalid-feedback">
                                     <?= $validation->getError('berat_total'); ?>
                                 </div>

@@ -8,8 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/<?= $judul; ?>/index/<?= $data['id_stock']; ?>">Stock Barang Detail</a>
-                        <?= $aksi; ?>
+                        <a href="/Pengadaan/list_barang/">Proses Pengadaan</a>
                     </h3>
                 </div>
                 <!-- /.card-header -->
@@ -21,14 +20,18 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update/<?= $data['id_stock_detail']; ?>">
+                        <form id="quickForm" method="POST" action="/<?= $judul; ?>/update">
                             <div class="card-body">
-                                <input type="hidden" name="id_stock" value="<?= $data['id_stock']; ?>">
-                                <div class=" form-group">
-                                    <label for="posisi">Posisi</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('posisi')) ? 'is-invalid' : ''; ?>" id="posisi" name="posisi" autofocus value="<?= (old('posisi')) ? old('posisi') : $data['posisi']; ?>" autocomplete="off" placeholder="Masukan posisi barang">
+                                <input type="hidden" name="id_stock" value="<?= $id_stock; ?>">
+                                <div class="form-group">
+                                    <label for="status_pengadaan">Status pengadaan</label>
+                                    <select class="form-select form-control select2bs4  <?= ($validation->hasError('status_pengadaan')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('status_pengadaan'); ?>" name="status_pengadaan" id="status_pengadaan">
+                                        <option selected disabled>Pilih status </option>
+                                        <option value="0" <?php if ($data[0]['status_pengadaan'] == 0) : ?> selected <?php endif ?>>Belum diproses</option>
+                                        <option value="1" <?php if ($data[0]['status_pengadaan'] == 1) : ?> selected <?php endif ?>>Sedang diproses</option>
+                                    </select>
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('posisi'); ?>
+                                        <?= $validation->getError('status_pengadaan'); ?>
                                     </div>
                                 </div>
                             </div>

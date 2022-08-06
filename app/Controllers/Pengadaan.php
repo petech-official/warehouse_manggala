@@ -68,4 +68,24 @@ class Pengadaan extends BaseController
     ];
     return view($this->controller . '/cek_overload', $data);
   }
+  public function edit($id)
+  {
+    $data = [
+      'judul' => $this->controller,
+      'id_stock' => $id,
+      'validation' => \Config\Services::validation(),
+      'data' => $this->StockBarangModel->where('id_stock', $id)->findAll(),
+    ];
+    return view($this->controller . '/list_barang_ubah', $data);
+  }
+  public function update()
+  {
+
+    $this->StockBarangModel->save([
+      'id_stock' => $this->request->getVar('id_stock'),
+      'status_pengadaan' => $this->request->getVar('status_pengadaan'),
+    ]);
+    session()->setFlashdata('pesan', 'Data berhasil diubah');
+    return redirect()->to('Pengadaan/list_barang/');
+  }
 }

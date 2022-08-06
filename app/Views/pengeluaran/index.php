@@ -18,15 +18,9 @@
                             <tr>
                                 <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>No SO</th>
-                                <th>Nama Barang</th>
-                                <th>Lot</th>
-                                <th>Status pengeluaran</th>
-                                <th>Customer</th>
-                                <th>Alamat Kirim</th>
-                                <th>Quantity (kg)</th>
+                                <th>Tanggal Pengeluaran</th>
                                 <!-- Selesai Disini -->
-
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <?php
@@ -36,23 +30,11 @@
                                 <td><?= $i++; ?></td>
                                 <!-- Masukan Disini -->
 
-                                <td><?= $value['no_so']; ?></td>
-                                <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?></td>
-                                <td><?= $value['lot']; ?></td>
-
-                                <td><?php
-                                    if ($value['status_pengeluaran'] == 0) {
-                                    ?>
-                                        <span class="badge bg-warning">Belum Terkonfirmasi</span>
-                                    <?php } else { ?>
-                                        <span class="badge bg-success">Terkonfirmasi</span>
-                                    <?php } ?>
-                                </td>
-                                <td><?= $value['nama_customer']; ?></td>
-                                <td><?= $value['alamat']; ?></td>
-                                <td class="rupiah"><?= $value['berat_pengeluaran']; ?></td>
+                                <td class="tanggal"><?= $value['tgl_pengeluaran']; ?></td>
                                 <!-- Selesai Disini -->
-
+                                <td>
+                                    <a href="/SchedulePengeluaranDetail/index/<?= $value['tgl_pengeluaran']; ?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
+                                </td>
                             </tr>
                         <?php endforeach ?>
                         </tbody>
@@ -60,56 +42,20 @@
                             <tr>
                                 <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>No SO</th>
-                                <th>Nama Barang</th>
-                                <th>Lot</th>
-                                <th>Status pengeluaran</th>
-                                <th>Customer</th>
-                                <th>Alamat Kirim</th>
-                                <th>Quantity (kg)</th>
+                                <th>Tanggal Pengeluaran</th>
                                 <!-- Selesai Disini -->
+                                <th>Aksi</th>
 
                             </tr>
                         </tfoot>
                     </table>
                 </div>
                 <div class="card-footer">
-                    <a href="/pengeluaran/cek_so" class="btn btn-primary">Penjualan Barang (SO)</a>
+                    <a href="/Pengeluaran/cek_so" class="btn btn-primary">Penjualan Barang (SO)</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Modal -->
-<form action="/<?= $judul; ?>/delete" method="POST" class="d-inline">
-    <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Apakah anda yakin akan menghapus data ini ?
-                    <input type="hidden" id="id" name="id">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger">Hapus</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
-<script>
-    // delete
-    function konfirmasiDelete(id) {
-        $('#id').val(id);
-    }
-</script>
 
 <?= $this->endSection(); ?>

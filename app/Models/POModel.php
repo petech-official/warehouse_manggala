@@ -44,6 +44,8 @@ class POModel extends Model
     {
         return $this->db->table('po')
             ->join('supplier', 'supplier.id_supplier=po.id_supplier')
+            ->orderBy('tgl_po', 'desc')
+
             ->get()->getResultArray();
     }
     public function getNoPo()

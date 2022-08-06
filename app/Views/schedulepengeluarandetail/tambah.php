@@ -58,50 +58,52 @@
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('alamat_kirim'); ?>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="id_barang">Barang</label>
-                                        <select class="form-select form-control select2bs4 <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" id="id_barang">
-                                            <option value="" selected disabled>Pilih Barang</option>
-                                            <?php foreach ($dataBarang as $key => $value) : ?>
-                                                <option value="<?= $value['id_barang']; ?>" } ?>
-                                                    <?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> <?= $value['lot']; ?> <?= $value['grade']; ?>
-                                                </option>
-                                            <?php endforeach ?>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            <?= $validation->getError('id_barang'); ?>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="berat_pengeluaran">Berat (kg)</label>
-                                        <input type="number" class="form-control <?= ($validation->hasError('berat_pengeluaran')) ? 'is-invalid' : ''; ?>" id="berat_pengeluaran" name="berat_pengeluaran" autofocus value="<?= old('berat_pengeluaran'); ?>" placeholder="Masukan berat">
-                                        <div class="invalid-feedback">
-                                            <?= $validation->getError('berat_pengeluaran'); ?>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tipe">Status pengeluaran</label>
-                                        <select class="form-select form-control select2bs4  <?= ($validation->hasError('status_pengeluaran')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('status_pengeluaran'); ?>" name="status_pengeluaran" id="status_pengeluaran">
-                                            <option selected disabled>Pilih status pengeluaran</option>
-                                            <option value="1">Terkonfirmasi</option>
-                                            <option value="0">Belum Terkonfirmasi</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            <?= $validation->getError('status_pengeluaran'); ?>
-                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_barang">Barang</label>
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" id="id_barang">
+                                        <option value="" selected disabled>Pilih Barang</option>
+                                        <?php foreach ($dataBarang as $key => $value) : ?>
+                                            <option value="<?= $value['id_barang']; ?>" } ?>
+                                                <?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> <?= $value['lot']; ?> <?= $value['grade']; ?>
+                                            </option>
+                                        <?php endforeach ?>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('id_barang'); ?>
                                     </div>
                                 </div>
-                                <!-- /.card-body -->
+                                <div class="form-group">
+                                    <label for="berat_pengeluaran">Berat (kg)</label>
+                                    <input type="number" class="form-control <?= ($validation->hasError('berat_pengeluaran')) ? 'is-invalid' : ''; ?>" id="berat_pengeluaran" name="berat_pengeluaran" autofocus value="<?= old('berat_pengeluaran'); ?>" placeholder="Masukan berat" min="0" oninput="validity.valid||(value='');">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('berat_pengeluaran'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipe">Status pengeluaran</label>
+                                    <select class="form-select form-control select2bs4  <?= ($validation->hasError('status_pengeluaran')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('status_pengeluaran'); ?>" name="status_pengeluaran" id="status_pengeluaran">
+                                        <option selected disabled>Pilih status pengeluaran</option>
+                                        <option value="1">Terkonfirmasi</option>
+                                        <option value="0">Belum Terkonfirmasi</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('status_pengeluaran'); ?>
+                                    </div>
+                                </div>
                             </div>
+                            <!-- /.card-body -->
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 <script>
     $('#customer').change(function() {

@@ -42,7 +42,7 @@
                                         <input type="username" class="form-control" placeholder="username" name="username">
                                         <div class="input-group-append">
                                             <div class="input-group-text">
-                                                <span class="fas fa-envelope"></span>
+                                                @
                                             </div>
                                         </div>
                                     </div>

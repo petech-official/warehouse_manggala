@@ -29,7 +29,7 @@
         <?php if (session()->get('status')  == 'Manager Warehouse') : ?>
           <div class="dropdown-divider"></div>
           <a href="/user/index" class="dropdown-item">
-            Admin
+            Pengguna
           </a>
         <?php endif ?>
 

@@ -11,8 +11,8 @@ class SchedulePengeluaranDetail extends BaseController
   public function __construct()
   {
     // $this->roleModel = new \App\Models\RoleModel();
-    $this->SchedulePengeluaranModel = new \App\Models\SchedulepengeluaranModel();
-    $this->SchedulePengeluaranDetailModel = new \App\Models\SchedulepengeluaranDetailModel();
+    $this->SchedulePengeluaranModel = new \App\Models\SchedulePengeluaranModel();
+    $this->SchedulePengeluaranDetailModel = new \App\Models\SchedulePengeluaranDetailModel();
     $this->CustomerModel = new \App\Models\CustomerModel();
     $this->CustomerDetailModel = new \App\Models\CustomerDetailModel();
     $this->BarangModel = new \App\Models\BarangModel();
@@ -22,15 +22,12 @@ class SchedulePengeluaranDetail extends BaseController
   public $controller = 'SchedulePengeluaranDetail';
   public function index($id)
   {
-    $model = $this->controllerMain . 'Model';
-    $modelDetail = $this->controller . 'Model';
     $data = [
+      'tanggal' => $id,
       'judul' => $this->controller,
-      'judulMain' => $this->controllerMain,
       'aksi' => ' / Detail Data',
       'validation' => \Config\Services::validation(),
-      'dataMain' => $this->$model->getData($id),
-      'data'  => $this->$modelDetail->getpengeluaranDetail($id),
+      'data'  => $this->SchedulePengeluaranModel->getPengeluaranDetail($id),
     ];
     return view('/' . $this->controller . '/index', $data);
   }

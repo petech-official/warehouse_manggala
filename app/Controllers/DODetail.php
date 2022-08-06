@@ -91,17 +91,18 @@ class DODetail extends BaseController
         $pengeluaran = $this->StockBarangModel->getPengeluaran($id_barang);
 
         if (count($pengeluaran) >= 3) {
-            $pengeluaran1 = $pengeluaran[0]['berat_total'];
-            $pengeluaran2 = $pengeluaran[1]['berat_total'];
-            $pengeluaran3 = $pengeluaran[2]['berat_total'];
+            $pengeluaran1 = $pengeluaran[0]['do_berat_total'];
+            $pengeluaran2 = $pengeluaran[1]['do_berat_total'];
+            $pengeluaran3 = $pengeluaran[2]['do_berat_total'];
 
             // cari demand rata-rata
-            $rata2pengeluaran = ($pengeluaran1 + $pengeluaran2 + $pengeluaran3) / count($pengeluaran);
+            $rata2pengeluaran = ($pengeluaran1 + $pengeluaran2 + $pengeluaran3) / 3;
 
             // Cari lead time
             $id_supplier = $this->BarangModel->getData($id_barang);
 
             $leadtime = $this->BarangModel->getLeadTime($id_supplier['id_supplier'], $id_barang);
+            
 
             // service level
             $z = 1.34;
@@ -124,7 +125,6 @@ class DODetail extends BaseController
             $safetyStock = 0;
             $rop = 0;
         }
-
 
 
         // die;

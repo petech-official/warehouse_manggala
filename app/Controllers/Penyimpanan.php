@@ -21,13 +21,22 @@ class Penyimpanan extends BaseController
   public function index()
   {
     // ubah tanggal saat ini
-    $tanggalSekarang = date('Y-m-d');
-    $id_schedule_penerimaan = $this->SchedulePenerimaanModel->where('tgl_penerimaan', $tanggalSekarang)->findColumn('id_schedule_penerimaan')[0];
+    // $tanggalSekarang = date('Y-m-d');
+    // $id_schedule_penerimaan = $this->SchedulePenerimaanModel->where('tgl_penerimaan', $tanggalSekarang)->findColumn('id_schedule_penerimaan');
 
-    $dataScheduleSekarang = $this->SchedulePenerimaanDetailModel->getPenerimaanDetail($id_schedule_penerimaan);
+    // if ($id_schedule_penerimaan) {
+    //   $id_schedule_penerimaan = $this->SchedulePenerimaanModel->where('tgl_penerimaan', $tanggalSekarang)->findColumn('id_schedule_penerimaan')[0];
+    // } else {
+    //   $id_schedule_penerimaan = 0;
+    // };
+
+    $data = $this->SchedulePenerimaanModel->findAll();
+
+
+    // $dataScheduleSekarang = $this->SchedulePenerimaanDetailModel->getPenerimaanDetail($id_schedule_penerimaan);
     $data = [
       'judul' => $this->controller,
-      'data' => $dataScheduleSekarang,
+      'data' => $data,
     ];
     return view($this->controller . '/index', $data);
   }

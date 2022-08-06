@@ -48,7 +48,7 @@
 
 
                   <td class="rupiah"><?= $value['max_berat']; ?></td>
-                  <td><?php if ($value['berat_total'] < $value['max_berat']) { ?>
+                  <td><?php if ($value['berat_total'] <= $value['max_berat']) { ?>
                       <span class="badge bg-success">Tidak Overload</span>
 
                     <?php } else { ?>

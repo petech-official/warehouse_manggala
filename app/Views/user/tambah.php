@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="/user/index"><?= $judul; ?></a>
+                        <a href="/user/index">Pengguna</a>
                         <?= $aksi; ?>
                     </h3>
                 </div>
@@ -23,6 +23,18 @@
                         <!-- form start -->
                         <form id="quickForm" method="POST" action="/user/save">
                             <div class="card-body">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Masukan email" value="<?= old('email'); ?>" autocomplete="off">
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('email'); ?>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="username">Username</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" id="username" name="username" placeholder="Masukan username" value="<?= old('username'); ?>" autocomplete="off">
