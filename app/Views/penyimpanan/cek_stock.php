@@ -22,8 +22,9 @@
                                 <th rowspan="2">Lot</th>
 
                                 <th colspan="3">Stock</th>
-                                <th rowspan="2">ROP</th>
-                                <th rowspan="2">Status Pengadaan</th>
+                                <th rowspan="2">Jenis Box</th>
+                                <th rowspan="2">Penyimpanan Barang</th>
+                                <th rowspan="2">Posisi</th>
 
                                 <!-- Selesai Disini -->
                                 <th rowspan="2">Aksi</th>
@@ -48,15 +49,29 @@
                                     <td><?= $value['berat']; ?></td>
 
 
-                                    <td class="rupiah"><?= $value['rop']; ?></td>
-                                    <td><?php if ($value['berat_total'] < $value['rop']) { ?>
+                                    <td><?= $value['jenis_box']; ?></td>
+                                    <td><?= $value['penyimpanan_barang']; ?></td>
+                                    <td>
+                                        <?php if ($value['posisi'] == 1) {
+                                            echo "Jalur Panjang";
+                                        } elseif ($value['posisi'] == 2) {
+                                            echo "Jalur Pendek";
+                                        } elseif ($value['posisi'] == 3) {
+                                            echo "Jalur Tengah";
+                                        } else {
+                                            echo "Area Bongkar Muat";
+                                        } ?>
+
+                                    </td>
+                                    <!-- <td class="rupiah"><?= $value['rop']; ?></td> -->
+                                    <!-- <td><?php if ($value['berat_total'] < $value['rop']) { ?>
 
                                             <span class="badge bg-warning">Perlu Pengadaan</span>
                                         <?php } else { ?>
 
                                             <span class="badge bg-primary">Tidak Perlu Pengadaan</span>
                                         <?php } ?>
-                                    </td>
+                                    </td> -->
 
                                     <!-- Selesai Disini -->
                                     <td>
@@ -78,9 +93,9 @@
                                 <th>Box</th>
                                 <th>Kg</th>
                                 <th>Keterangan</th>
-                                <th>ROP</th>
-                                <th>Status Pengadaan</th>
-
+                                <th>Jenis Box</th>
+                                <th>Penyimpanan Barang</th>
+                                <th>Posisi</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>

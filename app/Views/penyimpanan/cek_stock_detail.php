@@ -29,6 +29,26 @@
               <td>:</td>
               <td><?= $dataMain['jenis_box'] ?></td>
             </tr>
+            <tr>
+              <th>Penyimpanan Barang</th>
+              <td>:</td>
+              <td><?= $dataMain['penyimpanan_barang'] ?></td>
+            </tr>
+            <tr>
+              <th>Posisi</th>
+              <td>:</td>
+              <td>
+                <?php if ($dataMain['posisi'] == 1) {
+                  echo "Jalur Panjang";
+                } elseif ($dataMain['posisi'] == 2) {
+                  echo "Jalur Pendek";
+                } elseif ($dataMain['posisi'] == 3) {
+                  echo "Jalur Tengah";
+                } else {
+                  echo "Area Bongkar Muat";
+                } ?>
+              </td>
+            </tr>
           </table>
           <br>
           <table class="table table-bordered table-striped" id="data-table1">

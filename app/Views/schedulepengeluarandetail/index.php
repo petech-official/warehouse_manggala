@@ -31,8 +31,10 @@
                                 <th>Nama Barang</th>
                                 <th>Lot</th>
                                 <th>Status pengeluaran</th>
-
-                                <th>Quantity (kg)</th>
+                                <th>Stock (kg)</th>
+                                <th>Out (kg)</th>
+                                <th>Penyimpanan Barang</th>
+                                <th>Aksi</th>
                                 <!-- Selesai Disini -->
                             </tr>
                         </thead>
@@ -57,8 +59,11 @@
                                         <span class="badge bg-success">Terkonfirmasi</span>
                                     <?php } ?>
                                 </td>
-
+                                <td class="rupiah"><?= $value['berat_total']; ?></td>
                                 <td class="rupiah"><?= $value['berat_pengeluaran']; ?></td>
+                                <td><?= $value['penyimpanan_barang']; ?></td>
+                                <td><a href="/StockBarangDetail/index/<?= $value['id_stock']; ?>" target="blank" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a></td>
+
                                 <!-- Selesai Disini -->
 
                             </tr>
@@ -74,7 +79,10 @@
                                 <th>Nama Barang</th>
                                 <th>Lot</th>
                                 <th>Status pengeluaran</th>
-                                <th>Quantity (kg)</th>
+                                <th>Stock (kg)</th>
+                                <th>Out (kg)</th>
+                                <th>Penyimpanan Barang</th>
+                                <th>Aksi</th>
                                 <!-- Selesai Disini -->
                             </tr>
                         </tfoot>

@@ -29,6 +29,11 @@
                             <td>:</td>
                             <td><?= $dataMain['jenis_box'] ?></td>
                         </tr>
+                        <tr>
+                            <th>Penyimpanan Barang</th>
+                            <td>:</td>
+                            <td><?= $dataMain['penyimpanan Barang'] ?></td>
+                        </tr>
                     </table>
                     <br>
                     <table class="table table-bordered table-striped" id="data-table1">

@@ -106,6 +106,18 @@ class Stock extends BaseController
                     'required' => 'Data tidak boleh kosong!',
                 ]
             ],
+            'penyimpanan_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
+                ]
+            ],
+            'posisi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
+                ]
+            ],
         ])) {
             return redirect()->to('/Stock/tambah')->withInput();
         };
@@ -121,7 +133,8 @@ class Stock extends BaseController
             'jenis_box' => $this->request->getVar('jenis_box'),
             'berat' => $this->request->getVar('berat'),
             'max_berat' => $this->request->getVar('max_berat'),
-
+            'penyimpanan_barang' => $this->request->getVar('penyimpanan_barang'),
+            'posisi' => $this->request->getVar('posisi'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/Stock/index');
@@ -201,6 +214,18 @@ class Stock extends BaseController
                     'required' => 'Data tidak boleh kosong!',
                 ]
             ],
+            'penyimpanan_barang' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
+                ]
+            ],
+            'posisi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
+                ]
+            ],
         ])) {
             return redirect()->to('/Stock/edit/' . $id)->withInput();
         };
@@ -220,6 +245,8 @@ class Stock extends BaseController
             'jenis_box' => $this->request->getVar('jenis_box'),
             'berat' => $this->request->getVar('berat'),
             'max_berat' => $this->request->getVar('max_berat'),
+            'penyimpanan_barang' => $this->request->getVar('penyimpanan_barang'),
+            'posisi' => $this->request->getVar('posisi'),
         ]);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/Stock');

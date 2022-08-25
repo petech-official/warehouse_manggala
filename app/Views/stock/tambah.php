@@ -124,9 +124,31 @@
 
                                 <div class="form-group">
                                     <label for="max_berat">Max Berat (kg)</label>
-                                    <input type="number" class="form-control <?= ($validation->hasError('max_berat')) ? 'is-invalid' : ''; ?>" id="max_berat" name="max_berat" autofocus value="<?= old('max_berat'); ?>" placeholder="Masukan max berat" autocomplete="off">
+                                    <input type="number" class="form-control <?= ($validation->hasError('max_berat')) ? 'is-invalid' : ''; ?>" id="max_berat" name="max_berat" autofocus value="<?= old('max_berat'); ?>" placeholder="Masukan max berat" autocomplete="off" min="0" oninput="validity.valid||(value='');">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('max_berat'); ?>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="penyimpanan_barang">Penyimpanan Barang</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('penyimpanan_barang')) ? 'is-invalid' : ''; ?>" id="penyimpanan_barang" name="penyimpanan_barang" autofocus value="<?= old('penyimpanan_barang'); ?>" placeholder="Masukan Penyimpanan Barang" autocomplete="off">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('penyimpanan_barang'); ?>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="posisi">Posisi</label>
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('posisi')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('posisi'); ?>" name="posisi" id="posisi">
+                                        <option selected disabled>Pilih Posisi</option>
+                                        <option value="1">Jalur Panjang</option>
+                                        <option value="2">Jalur Pendek</option>
+                                        <option value="3">Jalur Tengah</option>
+                                        <option value="4">Area Bongkar Muat</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('posisi'); ?>
                                     </div>
                                 </div>
                             </div>

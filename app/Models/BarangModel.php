@@ -14,7 +14,7 @@ class BarangModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_jenis', 'id_keterangan', 'id_ukuran', 'id_lot', 'id_grade', 'id_supplier', 'jenis_box', 'berat', 'max_berat'];
+    protected $allowedFields    = ['id_jenis', 'id_keterangan', 'id_ukuran', 'id_lot', 'id_grade', 'id_supplier', 'jenis_box', 'berat', 'max_berat', 'penyimpanan_barang', 'posisi'];
 
     // Dates
     protected $useTimestamps = false;

@@ -86,46 +86,6 @@ class DODetail extends BaseController
 
         // 
 
-        $beratbaru = $this->request->getVar('berat_total');
-        $id_barang = $this->request->getVar('id_barang');
-        $pengeluaran = $this->StockBarangModel->getPengeluaran($id_barang);
-
-        if (count($pengeluaran) >= 3) {
-            $pengeluaran1 = $pengeluaran[0]['do_berat_total'];
-            $pengeluaran2 = $pengeluaran[1]['do_berat_total'];
-            $pengeluaran3 = $pengeluaran[2]['do_berat_total'];
-
-            // cari demand rata-rata
-            $rata2pengeluaran = ($pengeluaran1 + $pengeluaran2 + $pengeluaran3) / 3;
-
-            // Cari lead time
-            $id_supplier = $this->BarangModel->getData($id_barang);
-
-            $leadtime = $this->BarangModel->getLeadTime($id_supplier['id_supplier'], $id_barang);
-            
-
-            // service level
-            $z = 1.34;
-
-            // Safety Stock
-            // standar deviasi
-            $sd = sqrt((pow(($pengeluaran1 - $rata2pengeluaran), 2)) + (pow(($pengeluaran2 - $rata2pengeluaran), 2)) + (pow(($pengeluaran3 - $rata2pengeluaran), 2))) / (count($pengeluaran) - 1);
-
-            $akarleadtime = sqrt($leadtime['lead_time']);
-
-            // standar deviasi * akar leadtime
-            $sdl = $sd * $akarleadtime;
-
-            // safetystock
-            $safetyStock = $z * $sdl;
-
-            // rop
-            $rop = ($rata2pengeluaran * $leadtime['lead_time']) + $safetyStock;
-        } else {
-            $safetyStock = 0;
-            $rop = 0;
-        }
-
 
         // die;
 
@@ -147,7 +107,7 @@ class DODetail extends BaseController
         $BeratAwal = $GetQuantitas['berat_total'];
         $BeratBaru = $GetQuantitas['berat_total_mutasi'] + $totalBerat;
 
-        // Ganti Status
+        // // Ganti Status
         if ($QuantitasBaru >= $QuantitasAwal and $BeratBaru >= $BeratAwal) {
             $status = 1;
         } else {
@@ -172,6 +132,65 @@ class DODetail extends BaseController
                 'status' => 1
             ]);
         };
+
+
+        $beratbaru = $this->request->getVar('berat_total');
+        $id_barang = $this->request->getVar('id_barang');
+        $pengeluaran = $this->StockBarangModel->getPengeluaran($id_barang);
+
+        if (count($pengeluaran) >= 3) {
+            $pengeluaran3 = $pengeluaran[0]['do_berat_total'];
+            $pengeluaran2 = $pengeluaran[1]['do_berat_total'];
+            $pengeluaran1 = $pengeluaran[2]['do_berat_total'];
+
+            // cari demand rata-rata
+            $rata2pengeluaran = ($pengeluaran1 + $pengeluaran2 + $pengeluaran3) / 3;
+
+            // Cari lead time
+            $id_supplier = $this->BarangModel->getData($id_barang);
+
+            $leadtime = $this->BarangModel->getLeadTime($id_supplier['id_supplier'], $id_barang);
+
+
+            // service level
+            $z = 1.34;
+
+            // Safety Stock
+            // standar deviasi
+            $sd = sqrt(
+                ((pow(($pengeluaran1 - $rata2pengeluaran), 2)) +
+                    (pow(($pengeluaran2 - $rata2pengeluaran), 2)) +
+                    (pow(($pengeluaran3 - $rata2pengeluaran), 2))) / 2
+            );
+
+            $akarleadtime = sqrt($leadtime['lead_time']);
+
+            // standar deviasi * akar leadtime
+            $sdl = $sd * $akarleadtime;
+
+            // safetystock
+            $safetyStock = $z * $sdl;
+
+            // rop
+            $rop = ($rata2pengeluaran * $leadtime['lead_time']) + $safetyStock;
+        } else {
+            $safetyStock = 0;
+            $rop = 0;
+        }
+
+
+        // dd($pengeluaran1, 
+        // $pengeluaran2, 
+        // $pengeluaran3, 
+        // $rata2pengeluaran, 
+        // $leadtime['lead_time'],
+        // $akarleadtime,
+        // $z,
+        // $sd, 
+        // $sdl,
+        // $safetyStock,
+        // $rop
+        // );
 
         // Motong Stock        
         $id_stock = ($this->StockBarangModel->getIdStock($barang['id_barang']));
@@ -264,6 +283,6 @@ class DODetail extends BaseController
         $id = $this->request->getVar('id');
         $this->$model->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
-        return redirect()->to('/dorder');
+        return redirect()->to('/DOrder');
     }
 }

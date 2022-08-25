@@ -49,9 +49,9 @@
                                 <!-- Masukan Disini -->
                                 <th rowspan="2">Nama Barang</th>
                                 <th rowspan="2">Lot</th>
-                                <th colspan="2">Saldo Awal</th>
-                                <th colspan="2">Mutasi</th>
-                                <th colspan="2">Saldo Akhir</th>
+                                <th colspan="2">Jumlah Pengadaan</th>
+                                <th colspan="2">Hasil Pengadaan</th>
+                                <th colspan="2">Sisa Pengadaan</th>
                                 <th rowspan="2">Keterangan</th>
                                 <th rowspan="2">Status</th>
                                 <!-- Selesai Disini -->

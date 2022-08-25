@@ -5,7 +5,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><?= $judul; ?></h3>
+                    <h3 class="card-title"><?= $judul; ?> 2 September 2021</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
@@ -26,6 +26,8 @@
                                 <th>Jenis Box</th>
                                 <th>Berat (Kg)</th>
                                 <th>Max Berat (Kg)</th>
+                                <th>Penyimpanan Barang</th>
+                                <th>Posisi</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -42,6 +44,19 @@
                                     <td><?= $value['jenis_box']; ?></td>
                                     <td class="rupiah"><?= $value['berat']; ?></td>
                                     <td class="rupiah"><?= $value['max_berat']; ?></td>
+                                    <td><?= $value['penyimpanan_barang']; ?></td>
+                                    <td>
+                                        <?php if ($value['posisi'] == 1) {
+                                            echo "Jalur Panjang";
+                                        } elseif ($value['posisi'] == 2) {
+                                            echo "Jalur Pendek";
+                                        } elseif ($value['posisi'] == 3) {
+                                            echo "Jalur Tengah";
+                                        } else {
+                                            echo "Area Bongkar Muat";
+                                        } ?>
+
+                                    </td>
                                     <!-- Selesai Disini -->
 
                                     <td>
@@ -65,6 +80,8 @@
                                 <th>Jenis Box</th>
                                 <th>Berat (Kg)</th>
                                 <th>Max Berat (Kg)</th>
+                                <th>Penyimpanan Barang</th>
+                                <th>Posisi</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>

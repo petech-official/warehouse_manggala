@@ -58,86 +58,88 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Stock Barang</h3>
+                    <h3 class="card-title">Stock Barang 2 September 2021
                 </div>
-                <!-- /.card-header -->
-                <!-- Tambah data -->
-                <div class="card-body">
-                    <?php if (session()->getFlashdata('pesan')) : ?>
-                        <div class="alert alert-success" role="alert">
-                            <?= session()->getFlashdata('pesan'); ?>
-                        </div>
-                    <?php endif ?>
-                    <table class="table table-bordered table-striped" id="data-table1">
-                        <thead>
-                            <tr>
-                                <th rowspan="2">No</th>
-                                <!-- Masukan Disini -->
-                                <th rowspan="2">Nama Barang</th>
-                                <th rowspan="2">Lot</th>
-                                <th rowspan="2">Supplier</th>
-                                <th rowspan="2">Jenis Box</th>
+                </h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- Tambah data -->
+            <div class="card-body">
+                <?php if (session()->getFlashdata('pesan')) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= session()->getFlashdata('pesan'); ?>
+                    </div>
+                <?php endif ?>
+                <table class="table table-bordered table-striped" id="data-table1">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">No</th>
+                            <!-- Masukan Disini -->
+                            <th rowspan="2">Nama Barang</th>
+                            <th rowspan="2">Lot</th>
+                            <th rowspan="2">Supplier</th>
+                            <th rowspan="2">Jenis Box</th>
 
-                                <th colspan="3">Stock</th>
+                            <th colspan="3">Stock</th>
 
-                                <!-- Selesai Disini -->
-                                <th rowspan="2">Aksi</th>
-                            </tr>
+                            <!-- Selesai Disini -->
+                            <th rowspan="2">Aksi</th>
+                        </tr>
+                        <tr>
+                            <th>Box</th>
+                            <th>Kg</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody style="padding: 50px;">
+                        <?php
+                        $i = 1;
+                        foreach ($data as $key => $value) : ?>
                             <tr>
-                                <th>Box</th>
-                                <th>Kg</th>
-                                <th>Keterangan</th>
-                            </tr>
-                        </thead>
-                        <tbody style="padding: 50px;">
-                            <?php
-                            $i = 1;
-                            foreach ($data as $key => $value) : ?>
-                                <tr>
-                                    <td><?= $i++; ?></td>
-                                    <!-- Masukan Disini -->
-                                    <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?></td>
-                                    <td><?= $value['lot']; ?></td>
-                                    <td><?= $value['singkatan']; ?></td>
-                                    <td><?= $value['jenis_box']; ?></td>
-                                    <td class="rupiah"><?= $value['box'] ?></td>
-                                    <td class="rupiah"><?= $value['berat_total'] ?></td>
-                                    <td><?= $value['berat']; ?></td>
-                                    <!-- Selesai Disini -->
-                                    <td>
-                                        <a href="/StockBarangDetail/index/<?= $value['id_stock']; ?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
-                                        <?= csrf_field(); ?>
-                                        <?php if (session()->get('status')  != 'Manager Marketing') : ?>
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <!-- Button trigger modal -->
-                                            <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_stock']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        <?php endif ?>
-                                    </td>
-                                </tr>
-                            <?php endforeach ?>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
+                                <td><?= $i++; ?></td>
                                 <!-- Masukan Disini -->
-                                <th>Nama Barang</th>
-                                <th>Lot</th>
-                                <th>Supplier</th>
-                                <th>Jenis Box</th>
-                                <th>Box</th>
-                                <th>Kg</th>
-                                <th>Keterangan</th>
+                                <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?></td>
+                                <td><?= $value['lot']; ?></td>
+                                <td><?= $value['singkatan']; ?></td>
+                                <td><?= $value['jenis_box']; ?></td>
+                                <td class="rupiah"><?= $value['box'] ?></td>
+                                <td class="rupiah"><?= $value['berat_total'] ?></td>
+                                <td><?= $value['berat']; ?></td>
                                 <!-- Selesai Disini -->
-                                <th>Aksi</th>
+                                <td>
+                                    <a href="/StockBarangDetail/index/<?= $value['id_stock']; ?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
+                                    <?= csrf_field(); ?>
+                                    <?php if (session()->get('status')  != 'Manager Marketing') : ?>
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <!-- Button trigger modal -->
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_stock']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    <?php endif ?>
+                                </td>
                             </tr>
-                        </tfoot>
-                    </table>
-                </div>
+                        <?php endforeach ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>No</th>
+                            <!-- Masukan Disini -->
+                            <th>Nama Barang</th>
+                            <th>Lot</th>
+                            <th>Supplier</th>
+                            <th>Jenis Box</th>
+                            <th>Box</th>
+                            <th>Kg</th>
+                            <th>Keterangan</th>
+                            <!-- Selesai Disini -->
+                            <th>Aksi</th>
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script>
