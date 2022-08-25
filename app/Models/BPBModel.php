@@ -46,6 +46,7 @@ class BPBModel extends Model
             ->join('po_detail', 'po_detail.id_po_detail = bpb.id_po_detail')
             ->join('po', 'po.id_po = po_detail.id_po')
             ->join('supplier', 'supplier.id_supplier = po.id_supplier')
+            ->orderBy('tgl_bpb', 'desc')
             ->get()->getResultArray();
     }
     public function getData($id = false)

@@ -21,10 +21,15 @@ class Pengeluaran extends BaseController
   public function index()
   {
     // ubah tanggal saat ini
-    $tanggalSekarang = date('Y-m-d');
-    $id_schedule_pengeluaran = $this->SchedulePengeluaranModel->where('tgl_Pengeluaran', $tanggalSekarang)->findColumn('id_schedule_pengeluaran')[0];
-
-    $dataScheduleSekarang = $this->SchedulePengeluaranDetailModel->getPengeluaranDetail($id_schedule_pengeluaran);
+    // $tanggalSekarang = date('Y-m-d');
+    // $id_schedule_pengeluaran = $this->SchedulePengeluaranModel->where('tgl_Pengeluaran', $tanggalSekarang)->findColumn('id_schedule_pengeluaran');
+    // if ($id_schedule_pengeluaran) {
+    //   $id_schedule_pengeluaran = $this->SchedulePengeluaranModel->where('tgl_pengeluaran', $tanggalSekarang)->findColumn('id_schedule_pengeluaran')[0];
+    // } else {
+    //   $id_schedule_pengeluaran = 0;
+    // };
+    // $dataScheduleSekarang = $this->SchedulePengeluaranDetailModel->getPengeluaranDetail($id_schedule_pengeluaran);
+    $dataScheduleSekarang = $this->SchedulePengeluaranModel->findAll();
     $data = [
       'judul' => $this->controller,
       'data' => $dataScheduleSekarang,

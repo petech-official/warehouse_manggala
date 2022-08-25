@@ -156,6 +156,39 @@
                                         <?= $validation->getError('max_berat'); ?>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="penyimpanan_barang">Penyimpanan Barang</label>
+                                    <input type="text" class="form-control <?= ($validation->hasError('penyimpanan_barang')) ? 'is-invalid' : ''; ?>" id="penyimpanan_barang" name="penyimpanan_barang" value="<?= (old('penyimpanan_barang')) ? old('penyimpanan_barang') : $data['penyimpanan_barang']; ?>" autocomplete="off" placeholder="Masukan penyimpanan barang">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('penyimpanan_barang'); ?>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="posisi">Jenis Box</label>
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('posisi')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" name="posisi">
+                                        <option value="1" <?php $jenis = "1";
+                                                            if ($jenis == $data['posisi']) {
+                                                                echo "selected";
+                                                            } ?>>Jalur Panjang</option>
+                                        <option value="2" <?php $jenis = "2";
+                                                            if ($jenis == $data['posisi']) {
+                                                                echo "selected";
+                                                            } ?>>Jalur Pendek</option>
+                                        <option value="3" <?php $jenis = "3";
+                                                            if ($jenis == $data['posisi']) {
+                                                                echo "selected";
+                                                            } ?>>Jalur Tengah</option>
+                                        <option value="4" <?php $jenis = "4";
+                                                            if ($jenis == $data['posisi']) {
+                                                                echo "selected";
+                                                            } ?>>Area Bongka Muat</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('jenis_box'); ?>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">

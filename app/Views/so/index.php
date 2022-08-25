@@ -90,7 +90,7 @@
 
                 <?php if (session()->get('status')  == 'Manager Marketing') : ?>
                     <div class="card-footer">
-                        <a href="/schedulepengeluaran/index" class="btn btn-primary">Jadwal Pengeluaran (Schedule)</a>
+                        <a href="/SchedulePengeluaran/index" class="btn btn-primary">Jadwal Pengeluaran (Schedule)</a>
                     </div>
                 <?php endif ?>
 
@@ -115,7 +115,7 @@
                     <input type="hidden" id="id" name="id">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                     <button type="submit" class="btn btn-danger">Hapus</button>
                 </div>
             </div>

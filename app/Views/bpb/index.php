@@ -102,13 +102,13 @@
                 </div>
                 <?php if (session()->get('status')  == 'Manager Marketing') : ?>
                     <div class="card-footer">
-                        <a href="/schedulepenerimaan/index" class="btn btn-primary">Jadwal Penerimaan (Schedule)</a>
+                        <a href="/SchedulePenerimaan/index" class="btn btn-primary">Jadwal Penerimaan (Schedule)</a>
                     </div>
                 <?php endif ?>
                 <?php if (session()->get('status')  != 'Manager Marketing') : ?>
                     <div class="card-footer">
-                        <a href="/penyimpanan/index" class="btn btn-primary mr-2">Jadwal Penerimaan (Schedule)</a>
-                        <a href="/penyimpanan/cek_stock" class="btn btn-primary">Stock Barang</a>
+                        <a href="/Penyimpanan/index" class="btn btn-primary mr-2">Jadwal Penerimaan (Schedule)</a>
+                        <a href="/Penyimpanan/cek_stock" class="btn btn-primary">Stock Barang</a>
                     </div>
                 <?php endif ?>
 
@@ -133,7 +133,7 @@
                     <input type="hidden" id="id" name="id">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                     <button type="submit" class="btn btn-danger">Hapus</button>
                 </div>
             </div>

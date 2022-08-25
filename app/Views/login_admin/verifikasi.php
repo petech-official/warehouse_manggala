@@ -31,9 +31,14 @@
             <div class="card">
               <div class="card-body login-card-body">
                 <p class="login-box-msg">Masukan Email anda</p>
+                <?php if (session()->getFlashdata('msg')) : ?>
+                  <div class="alert alert-danger" role="alert">
+                    <?= session()->getFlashdata('msg'); ?>
+                  </div>
+                <?php endif ?>
                 <form action="/loginAdmin/ganti_password" method="post">
                   <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email" class="form-control" placeholder="Email" name="email" id="email" value="<?= old('email'); ?>">
                     <div class="input-group-append">
                       <div class="input-group-text">
                         <span class="fas fa-envelope"></span>

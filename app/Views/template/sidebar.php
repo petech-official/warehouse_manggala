@@ -23,7 +23,7 @@
             <ul class="nav nav-treeview">
               <?php if (session()->get('status')  == 'Manager Marketing') : ?>
                 <li class="nav-item">
-                  <a href="/supplier/index" class="nav-link">
+                  <a href="/Supplier/index" class="nav-link">
                     <i class="nav-icon far fa-circle text-danger"></i>
                     <p>
                       Supplier
@@ -31,7 +31,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/customer/" class="nav-link">
+                  <a href="/Customer/" class="nav-link">
                     <i class="nav-icon far fa-circle text-danger"></i>
                     <p>
                       Customer
@@ -41,7 +41,7 @@
               <?php endif ?>
               <?php if (session()->get('status')  == 'Manager Warehouse') : ?>
                 <li class="nav-item">
-                  <a href="/supir/" class="nav-link">
+                  <a href="/Supir/" class="nav-link">
                     <i class="nav-icon far fa-circle text-danger"></i>
                     <p>
                       Supir
@@ -49,7 +49,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/kendaraan/" class="nav-link">
+                  <a href="/Kendaraan/" class="nav-link">
                     <i class="nav-icon far fa-circle text-danger"></i>
                     <p>
                       Kendaraan
@@ -57,7 +57,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/stock/" class="nav-link">
+                  <a href="/Stock/" class="nav-link">
                     <i class="nav-icon far fa-circle text-danger"></i>
                     <p>
                       Barang
@@ -69,7 +69,7 @@
           </li>
           <?php if (session()->get('status')  == 'Manager Warehouse') : ?>
             <li class="nav-item">
-              <a href="/barang/" class="nav-link">
+              <a href="/Barang/" class="nav-link">
                 <i class="nav-icon fas fa-database"></i>
                 <p>
                   Sub Barang
@@ -81,7 +81,7 @@
         <?php if ((session()->get('status')  == 'Boss')) : ?>
 
           <li class="nav-item">
-            <a href="/po/" class="nav-link">
+            <a href="/PO/" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 PO
@@ -90,7 +90,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/bpb/" class="nav-link">
+            <a href="/BPB/" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 BPB
@@ -99,7 +99,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/stockbarang/" class="nav-link">
+            <a href="/StockBarang/" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Stock
@@ -108,7 +108,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/so/" class="nav-link">
+            <a href="/SO/" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 SO
@@ -117,7 +117,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/dorder/" class="nav-link">
+            <a href="/DOrder/" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 DO
@@ -128,7 +128,7 @@
 
 
           <li class="nav-item">
-            <a href="/schedulepenerimaan/" class="nav-link">
+            <a href="/SchedulePenerimaan/" class="nav-link">
               <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
               <i class="nav-icon fas fa-money-bill"></i>
               <p>
@@ -138,7 +138,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/schedulepengeluaran/" class="nav-link">
+            <a href="/SchedulePengeluaran/" class="nav-link">
               <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
               <i class="nav-icon fas fa-money-bill"></i>
               <p>
@@ -150,7 +150,7 @@
         <?php endif ?>
         <li class="nav-item">
           <?php if (session()->get('status')  != 'Manager Marketing') : ?>
-            <a href="/pengadaan/" class="nav-link">
+            <a href="/Pengadaan/" class="nav-link">
               <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
@@ -160,19 +160,21 @@
             </a>
           <?php endif ?>
           <?php if (session()->get('status')  == 'Manager Marketing') : ?>
-            <a href="/pengadaan/list_barang" class="nav-link">
+            <a href="/Pengadaan/list_barang" class="nav-link">
               <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Pengadaan
-                <!-- <span class="badge badge-info right">2</span> -->
+                <span class="badge badge-info right"><? //= $data_count;
+                                                      ?></span>
               </p>
+              <!-- <span class="badge badge-info right">Cek</span> -->
             </a>
           <?php endif ?>
         </li>
         <li class="nav-item">
           <?php if (session()->get('status')  != 'Manager Marketing') : ?>
-            <a href="/penyimpanan/" class="nav-link">
+            <a href="/Penyimpanan/" class="nav-link">
               <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
               <i class="nav-icon fas fa-warehouse"></i>
               <p>
@@ -182,7 +184,7 @@
             </a>
           <?php endif ?>
           <?php if (session()->get('status')  == 'Manager Marketing') : ?>
-            <a href="/schedulepenerimaan/" class="nav-link">
+            <a href="/SchedulePenerimaan/" class="nav-link">
               <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
               <i class="nav-icon fas fa-warehouse"></i>
               <p>
@@ -194,7 +196,7 @@
         </li>
         <li class="nav-item">
           <?php if (session()->get('status')  != 'Manager Marketing') : ?>
-            <a href="/pengeluaran/" class="nav-link">
+            <a href="/Pengeluaran/" class="nav-link">
               <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
               <i class="nav-icon fas fa-money-bill"></i>
               <p>
@@ -204,7 +206,7 @@
             </a>
           <?php endif ?>
           <?php if (session()->get('status')  == 'Manager Marketing') : ?>
-            <a href="/so/" class="nav-link">
+            <a href="/SO/" class="nav-link">
               <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
               <i class="nav-icon fas fa-money-bill"></i>
               <p>

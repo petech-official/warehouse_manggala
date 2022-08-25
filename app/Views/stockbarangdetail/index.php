@@ -29,6 +29,11 @@
                             <td>:</td>
                             <td><?= $dataMain['jenis_box'] ?></td>
                         </tr>
+                        <tr>
+                            <th>Penyimpanan Barang</th>
+                            <td>:</td>
+                            <td><?= $dataMain['penyimpanan Barang'] ?></td>
+                        </tr>
                     </table>
                     <br>
                     <table class="table table-bordered table-striped" id="data-table1">
@@ -81,7 +86,7 @@
                     </table>
                 </div>
                 <div class="card-footer">
-                    <a href="/bpb/index" class="btn btn-primary">Bukti Penerimaan Barang</a>
+                    <a href="/BPB/index" class="btn btn-primary">Bukti Penerimaan Barang</a>
                 </div>
             </div>
         </div>
@@ -104,7 +109,7 @@
                     <input type="hidden" id="id" name="id">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                     <button type="submit" class="btn btn-danger">Hapus</button>
                 </div>
             </div>

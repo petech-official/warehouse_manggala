@@ -42,7 +42,7 @@ class SchedulePenerimaanDetailModel extends Model
 
     public function getPenerimaanDetail($id)
     {
-        return $this->db->table('schedule_penerimaan_detail')->where('id_schedule_penerimaan', $id)
+        return $this->db->table('schedule_penerimaan')->where('tgl_penerimaan', $id)
             ->join('barang', 'barang.id_barang=schedule_penerimaan_detail.id_barang')
             ->join('barang_jenis', 'barang_jenis.id_barang_jenis=barang.id_jenis')
             ->join('barang_lot', 'barang_lot.id_barang_lot=barang.id_lot')

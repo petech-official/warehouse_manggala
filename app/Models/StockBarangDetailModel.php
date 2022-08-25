@@ -14,7 +14,7 @@ class StockBarangDetailModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_stock', 'tgl_masuk', 'berat_detail', 'posisi'];
+    protected $allowedFields    = ['id_stock', 'tgl_masuk', 'berat_detail', 'posisi', 'keterangan'];
 
     // Dates
     protected $useTimestamps = false;

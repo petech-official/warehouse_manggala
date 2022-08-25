@@ -50,6 +50,7 @@ class SOModel extends Model
     {
         return $this->db->table('so')
             ->join('customer', 'customer.id_customer=so.id_customer')
+            ->orderBy('tgl_so', 'desc')
             ->get()->getResultArray();
     }
     public function getNoSo()

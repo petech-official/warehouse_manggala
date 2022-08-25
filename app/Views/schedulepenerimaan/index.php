@@ -24,6 +24,12 @@
                                 <!-- Masukan Disini -->
                                 <th>No</th>
                                 <th>Tanggal Penerimaan</th>
+                                <th>No Po</th>
+                                <th>Nama Barang</th>
+                                <th>Lot</th>
+                                <th>Status Penerimaan</th>
+                                <th>Supplier</th>
+                                <th>Quantity (kg)</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -36,10 +42,23 @@
                                     <td><?= $i++; ?></td>
                                     <!-- Masukan Disini -->
                                     <td class="tanggal"><?= $value['tgl_penerimaan']; ?></td>
+                                    <td> <?= $value['no_po']; ?></td>
+                                    <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?></td>
+                                    <td> <?= $value['lot']; ?></td>
+                                    <td><?php
+                                        if ($value['status_penerimaan'] == 0) {
+                                        ?>
+                                            <span class="badge bg-warning">Belum Terkonfirmasi</span>
+                                        <?php } else { ?>
+                                            <span class="badge bg-success">Terkonfirmasi</span>
+                                        <?php } ?>
+                                    </td>
+                                    <td><?= $value['nama']; ?></td>
+                                    <td> <?= $value['berat_penerimaan']; ?></td>
                                     <!-- Selesai Disini -->
                                     <td>
                                         <!-- hapus jika perlu -->
-                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id_schedule_penerimaan']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                        <!-- <a href="/<?= $judul; ?>Detail/index/<?= $value['id_schedule_penerimaan']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a> -->
                                         <!-- end hapus -->
                                         <a href="/<?= $judul; ?>/edit/<?= $value['id_schedule_penerimaan']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
                                         <?= csrf_field(); ?>
@@ -57,6 +76,12 @@
                                 <!-- Masukan Disini -->
                                 <th>No</th>
                                 <th>Tanggal Penerimaan</th>
+                                <th>No Po</th>
+                                <th>Nama Barang</th>
+                                <th>Lot</th>
+                                <th>Status Penerimaan</th>
+                                <th>Supplier</th>
+                                <th>Quantity (kg)</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
@@ -65,7 +90,7 @@
                 </div>
                 <?php if (session()->get('status')  == 'Manager Marketing') : ?>
                     <div class="card-footer">
-                        <a href="/bpb/index" class="btn btn-primary">Bukti Penerimaan Barang (BPB)</a>
+                        <a href="/BPB/index" class="btn btn-primary">Bukti Penerimaan Barang (BPB)</a>
                     </div>
                 <?php endif ?>
             </div>
@@ -89,7 +114,7 @@
                     <input type="hidden" id="id" name="id">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                     <button type="submit" class="btn btn-danger">Hapus</button>
                 </div>
             </div>

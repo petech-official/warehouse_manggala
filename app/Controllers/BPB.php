@@ -150,6 +150,7 @@ class BPB extends BaseController
 
         $GetQuantitas = $this->PODetailModel->getPoDetailBarang($this->request->getVar('po'), $this->request->getVar('barang'), 0);
         $barang = $this->BarangModel->getData($GetQuantitas['id_barang']);
+
         $QuantitasAwal = $GetQuantitas['quantitas'];
         $Box = ceil($this->request->getVar('berat_total') / $barang['berat']);
         $QuantitasBaru = $GetQuantitas['quantitas_mutasi'] + $Box;
@@ -171,8 +172,10 @@ class BPB extends BaseController
         // Ganti Status
         if ($QuantitasBaru >= $QuantitasAwal and $beratBaru >= $BeratAwal) {
             $status = 1;
+            $status_pengadaan = 0;
         } else {
             $status = 0;
+            $status_pengadaan = 1;
         }
         //ambil document
         $filePackingList = $this->request->getFile('packing_list');
@@ -188,6 +191,58 @@ class BPB extends BaseController
             // pindahkan file ke folder img            
             $filePackingList->move('packing_list', $namaPackingList . '.' . $pecah[1]);
         }
+
+        // masuk ke stock   
+        $id_stock = ($this->StockBarangModel->getIdStock($barang['id_barang']));
+
+        $box_stock = ($this->StockBarangModel->getBoxStock($barang['id_barang']));
+        if ($box_stock) {
+            $box_stock = ($this->StockBarangModel->getBoxStock($barang['id_barang']))['box'];
+        } else {
+            $box_stock = 0;
+        }
+
+
+        $berat_stock = ($this->StockBarangModel->getBeratStock($barang['id_barang']));
+
+
+
+        if ($berat_stock) {
+
+            $berat_stock = $this->StockBarangModel->getBeratStock($barang['id_barang'])['berat_total'];
+        } else {
+            $berat_stock = 0;
+        }
+
+
+        // jika ada id barang di stock maka update
+        if ($id_stock) {
+
+            // masuk ke stock
+            $this->StockBarangModel->save([
+                'id_stock' => $id_stock['id_stock'],
+                'id_barang' => $barang['id_barang'],
+                'box' => (int)$box_stock +  $Box,
+                'berat_total' => (int)$berat_stock + $totalBerat,
+                'status_pengadaan' => $status_pengadaan,
+            ]);
+        } else {
+
+            $this->StockBarangModel->save([
+                'id_barang' => $barang['id_barang'],
+                'box' => $Box,
+                'berat_total' => $totalBerat,
+                'status_pengadaan' => $status_pengadaan,
+            ]);
+        }
+
+        $id_stock_detail = ($this->StockBarangModel->getIdStock($barang['id_barang']));
+        // masuk ke stock detail penerimaan
+        $this->StockBarangDetailModel->save([
+            'id_stock' => $id_stock_detail['id_stock'],
+            'tgl_masuk' => $tanggal,
+            'berat_detail' => $this->request->getVar('berat_total'),
+        ]);
 
         $this->$model->save([
             'no_bpb' => 'BPB' . date('ym') . $BPBBaru,
@@ -222,29 +277,6 @@ class BPB extends BaseController
             ]);
         };
 
-
-        // masuk ke stock   
-        $id_stock = ($this->StockBarangModel->getIdStock($barang['id_barang']));
-        $box_stock = ($this->StockBarangModel->getBoxStock($barang['id_barang']))['box'];
-        $berat_stock = ($this->StockBarangModel->getBeratStock($barang['id_barang']))['berat_total'];
-
-
-
-        // masuk ke stock
-        $this->StockBarangModel->save([
-            'id_stock' => $id_stock['id_stock'],
-            'id_barang' => $barang['id_barang'],
-            'box' => (int)$box_stock +  $Box,
-            'berat_total' => (int)$berat_stock + $totalBerat,
-        ]);
-
-        $id_stock_detail = ($this->StockBarangModel->getIdStock($barang['id_barang']));
-        // masuk ke stock detail penerimaan
-        $this->StockBarangDetailModel->save([
-            'id_stock' => $id_stock_detail['id_stock'],
-            'tgl_masuk' => $tanggal,
-            'berat_detail' => $this->request->getVar('berat_total'),
-        ]);
 
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller);

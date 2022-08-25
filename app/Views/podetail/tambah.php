@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label for="id_barang">Barang</label>
                                     <input type="hidden" value="<?= $id_po_detail; ?>" name="id_po" id="id_po">
-                                    <select class="form-select form-control select2bs4  <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" name="id_barang">
+                                    <select class="form-select form-control select2bs4  <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus name="id_barang" id="id_barang">
                                         <option value="" selected disabled>Pilih Barang</option>
                                         <?php foreach ($dataBarang as $key => $value) : ?>
                                             <option value="<?= $value['id_barang']; ?>" } ?>
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="berat_total">Berat (kg)</label>
-                                    <input type="number" class="form-control <?= ($validation->hasError('berat_total')) ? 'is-invalid' : ''; ?>" id="berat_total" name="berat_total" autofocus value="<?= old('berat_total'); ?>" placeholder="Masukan berat">
+                                    <input type="text" class="form-control <?= ($validation->hasError('berat_total')) ? 'is-invalid' : ''; ?>" id="berat_total" name="berat_total" autofocus value="<?= old('berat_total'); ?>" placeholder="Masukan berat" min="0" oninput="validity.valid||(value='');">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('berat_total'); ?>
                                     </div>
@@ -66,5 +66,23 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#id_barang').change(function() {
+        var idBarang = $('#id_barang').val();
+        console.log(idBarang);
+        $.ajax({
+            url: "/PODetail/getBeratMax",
+            type: "POST",
+            data: {
+                IdBarang: idBarang
+            },
+            dataType: "json",
+            success: function(data) {
+                document.getElementById("berat_total").value = data
+            }
+        })
+    });
+</script>
 
 <?= $this->endSection(); ?>

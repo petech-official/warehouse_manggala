@@ -6,7 +6,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><a href="/<?= $judulMain; ?>/index/"><?= $judulMain; ?></a>
+                    <h3 class="card-title"><a href="/Pengeluaran/index/">Pengeluaran</a>
                         <?= $aksi; ?> </h3>
                 </div>
                 <!-- /.card-header -->
@@ -16,16 +16,10 @@
                         <tr>
                             <th>Tanggal Schedule pengeluaran</th>
                             <td>:</td>
-                            <td class="tanggal"><?= $dataMain['tgl_pengeluaran'] ?></td>
+                            <td class="tanggal"><?= $tanggal ?></td>
                         </tr>
                     </table>
                     <hr>
-                    <a href="/<?= $judul; ?>/tambah/<?= $dataMain['id_schedule_pengeluaran'] ?>" class="btn btn-primary">Tambah Barang</a><br><br>
-                    <?php if (session()->getFlashdata('pesan')) : ?>
-                        <div class="alert alert-success" role="alert">
-                            <?= session()->getFlashdata('pesan'); ?>
-                        </div>
-                    <?php endif ?>
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
@@ -37,10 +31,11 @@
                                 <th>Nama Barang</th>
                                 <th>Lot</th>
                                 <th>Status pengeluaran</th>
-
-                                <th>Quantity (kg)</th>
-                                <!-- Selesai Disini -->
+                                <th>Stock (kg)</th>
+                                <th>Out (kg)</th>
+                                <th>Penyimpanan Barang</th>
                                 <th>Aksi</th>
+                                <!-- Selesai Disini -->
                             </tr>
                         </thead>
                         <?php
@@ -64,18 +59,13 @@
                                         <span class="badge bg-success">Terkonfirmasi</span>
                                     <?php } ?>
                                 </td>
-
+                                <td class="rupiah"><?= $value['berat_total']; ?></td>
                                 <td class="rupiah"><?= $value['berat_pengeluaran']; ?></td>
+                                <td><?= $value['penyimpanan_barang']; ?></td>
+                                <td><a href="/StockBarangDetail/index/<?= $value['id_stock']; ?>" target="blank" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a></td>
+
                                 <!-- Selesai Disini -->
-                                <td>
-                                    <a href="/<?= $judul; ?>/edit/<?= $value['id_schedule_pengeluaran_detail']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
-                                    <?= csrf_field(); ?>
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_schedule_pengeluaran_detail']; ?>,<?= $value['id_so'] ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </td>
+
                             </tr>
                         <?php endforeach ?>
                         </tbody>
@@ -89,9 +79,11 @@
                                 <th>Nama Barang</th>
                                 <th>Lot</th>
                                 <th>Status pengeluaran</th>
-                                <th>Quantity (kg)</th>
-                                <!-- Selesai Disini -->
+                                <th>Stock (kg)</th>
+                                <th>Out (kg)</th>
+                                <th>Penyimpanan Barang</th>
                                 <th>Aksi</th>
+                                <!-- Selesai Disini -->
                             </tr>
                         </tfoot>
                     </table>
@@ -100,35 +92,4 @@
         </div>
     </div>
 </div>
-
-<!-- Modal -->
-<form action="/<?= $judul; ?>/delete" method="soST" class="d-inline">
-    <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Apakah anda yakin akan menghapus data ini ?
-                    <input type="text" id="id" name="id">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger">Hapus</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-<script>
-    // delete
-    function konfirmasiDelete(id) {
-        $('#id').val(id);
-    }
-</script>
-
 <?= $this->endSection(); ?>

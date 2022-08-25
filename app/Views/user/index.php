@@ -21,6 +21,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Username</th>
+                                <th>Email</th>
                                 <!-- <th>Password</th> -->
                                 <th>Status</th>
                                 <th>Aksi</th>
@@ -32,8 +33,10 @@
                             foreach ($user as $key => $value) : ?>
                                 <tr>
                                     <td><?= $i++; ?></td>
+                                    <td><?= $value['email']; ?></td>
                                     <td><?= $value['username'] ?></td>
-                                    <!-- <td><?= $value['password'] ?></td> -->
+                                    <!-- <td><? //= $value['password'] 
+                                                ?></td> -->
                                     <td>
                                         <?php if ($value['status'] == 'Admin') { ?>
                                             <span class="badge bg-success"><?= $value['status']; ?></span>
@@ -58,6 +61,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Username</th>
+                                <th>Email</th>
                                 <!-- <th>Password</th> -->
                                 <th>Status</th>
                                 <th>Aksi</th>

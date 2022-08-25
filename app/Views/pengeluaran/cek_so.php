@@ -51,7 +51,7 @@
                   </td>
                   <!-- Selesai Disini -->
                   <td>
-                    <a href="/pengeluaran/cek_so_detail/<?= $value['id_so']; ?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
+                    <a href="/Pengeluaran/cek_so_detail/<?= $value['id_so']; ?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
                   </td>
                 </tr>
               <?php endforeach ?>

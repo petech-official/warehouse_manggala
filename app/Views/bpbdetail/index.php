@@ -22,7 +22,7 @@
                         <tr>
                             <th>Tanggal BPP</th>
                             <td>:</td>
-                            <td><?= $dataMain['tgl_bpb'] ?></td>
+                            <td class="tanggal"><?= $dataMain['tgl_bpb'] ?></td>
                         </tr>
                         <tr>
                             <th>No SJ Supplier</th>
@@ -112,7 +112,7 @@
                     <input type="hidden" id="id_customer" name="id_customer">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                     <button type="submit" class="btn btn-danger">Hapus</button>
                 </div>
             </div>

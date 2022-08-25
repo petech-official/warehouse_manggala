@@ -21,6 +21,8 @@
 
                 <th>Berat (Kg)</th>
                 <th>Supplier</th>
+                <th>Status Proses</th>
+                <th>Aksi</th>
               </tr>
             </thead>
 
@@ -43,9 +45,16 @@
                       <td class="rupiah"><?php
                                           $kebutuhan = $value['max_berat'] - $value['berat_total'];
                                           echo $kebutuhan ?></td>
-                      <td>
-                        <?= $value['singkatan']; ?>
+                      <td><?= $value['singkatan']; ?></td>
+                      <td><?php if ($value['status_pengadaan'] == 0) { ?>
+
+                          <span class="badge bg-warning">Belum diproses</span>
+                        <?php } else { ?>
+                          <span class="badge bg-success">Sedang diproses</span>
+                        <?php } ?>
                       </td>
+
+                      <td><a href="/Pengadaan/edit/<?= $value['id_stock']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a></td>
                     <?php } ?>
                   </tr>
                 <?php } ?>
@@ -57,6 +66,8 @@
 
                   <th>Berat (Kg)</th>
                   <th>Supplier</th>
+                  <th>Status Proses</th>
+                  <th>Aksi</th>
                 </tr>
 
               <?php             } ?>
@@ -68,13 +79,13 @@
         </div>
         <?php if (session()->get('status')  != 'Manager Marketing') : ?>
           <div class="card-footer">
-            <a href="/pengadaan/index" class="btn btn-primary mr-2">Stock Barang</a>
+            <a href="/Pengadaan/index" class="btn btn-primary mr-2">Stock Barang</a>
             <a href="/<?= $judul; ?>/cek_po" class="btn btn-primary">Pengadaan Barang (PO)</a>
           </div>
         <?php endif ?>
         <?php if (session()->get('status')  == 'Manager Marketing') : ?>
           <div class="card-footer">
-            <a href="/po/index" class="btn btn-primary">Pengadaan Barang (PO)</a>
+            <a href="/PO/index" class="btn btn-primary">Pengadaan Barang (PO)</a>
           </div>
         <?php endif ?>
       </div>

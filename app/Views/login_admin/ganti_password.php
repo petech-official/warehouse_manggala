@@ -30,25 +30,41 @@
             <H3>PT. Manggala Indopratama</H3>
             <div class="card">
               <div class="card-body login-card-body">
-                <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
-                <form action="recover-password.html" method="post">
+                <p class="login-box-msg">Masukan Password Baru</p>
+                <form action="/loginAdmin/passwordbaru" method="post">
+                  <input type="hidden" name="id_admin" value="<?= $id_admin; ?>" id="id_admin">
                   <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="password" class="form-control" placeholder="Masukan password" name="passwordbaru">
                     <div class="input-group-append">
                       <div class="input-group-text">
-                        <span class="fas fa-envelope"></span>
+                        <span class="fas fa-lock"></span>
                       </div>
                     </div>
+                    <div class="invalid-feedback">
+                      <?= $validation->getError('passwordbaru'); ?>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Masukan ulang password" name="passwordulangbaru">
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                      </div>
+                    </div>
+                    <?= $validation->getError('passwordulangbaru'); ?>
                   </div>
                   <div class="row">
                     <div class="col-12">
-                      <button type="submit" class="btn btn-primary btn-block">Request new password</button>
+                      <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                     </div>
-
                   </div>
+
                 </form>
+
               </div>
+              <a href="/loginAdmin/" class="mb-3">Masuk</a>
             </div>
+
           </div>
     </center>
   </div>

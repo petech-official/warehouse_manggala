@@ -6,6 +6,10 @@ use App\Models\AdminModel;
 
 class LoginAdmin extends BaseController
 {
+    public function __construct()
+    {
+        $this->adminModel = new \App\Models\AdminModel();
+    }
     public function index()
     {
         helper(['form']);
@@ -47,5 +51,72 @@ class LoginAdmin extends BaseController
     function verifikasi()
     {
         return view('login_admin/verifikasi');
+    }
+    public function ganti_password()
+    {
+        // jika email benar
+        $model = new AdminModel();
+        $email = $this->request->getVar('email');
+        $data = $model->where('email', $email)->first();
+        if ($data) {
+            $id_admin = $data['id_admin'];
+            $email = $data['email'];
+            $data = [
+                'id_admin' => $id_admin,
+                'email' => $email,
+                'validation' => \Config\Services::validation(),
+            ];
+            return view('/login_admin/ganti_password', $data);
+        } else {
+            // jika email tidak ada\
+            $session = session();
+            $session->setFlashdata('msg', 'email tidak ditemukan coba ulangi!');
+            return redirect()->to('/loginAdmin/verifikasi');
+        }
+    }
+    public function passwordbaru()
+    {
+        $id_admin =  $this->request->getVar('id_admin');
+        // $email =  $this->request->getVar('email');
+        // $data = [
+        //     'id_admin' => $id_admin,
+        //     'validation' => \Config\Services::validation(),
+        // ];
+        // if (!$this->validate([
+        //     'passwordbaru' => [
+        //         'rules' => 'required',
+        //         'errors' => [
+        //             'required' => 'Data tidak boleh kosong!'
+        //         ]
+        //     ],
+        //     'passwordulangbaru' => [
+        //         'rules' => 'required',
+        //         'errors' => [
+        //             'required' => 'Data tidak boleh kosong!'
+        //         ]
+        //     ],
+        // ])) {
+        //     $session = session();
+        //     $session->setFlashdata('msg', 'Password tidak sama ulangi!');
+        //     return redirect()->to('/loginAdmin/index');;
+        // };
+        $passwordbaru = $this->request->getVar('passwordbaru');
+        $passwordulangbaru = $this->request->getVar('passwordulangbaru');
+        // cek sama atau tidak
+        if ($passwordbaru != $passwordulangbaru) {
+            // tidak sama
+            $session = session();
+            $session->setFlashdata('msg', 'Password tidak sama ulangi!');
+            return redirect()->to('/loginAdmin/index');
+        } else {
+            // sama
+            $this->adminModel->save([
+                'id_admin' => $id_admin,
+                'password' => $passwordbaru,
+            ]);
+            $session = session();
+            $session->setFlashdata('msg', 'Password sudah diganti silahkan masuk dengan password baru!');
+            return redirect()->to('/loginAdmin/index');
+        }
     }
 }

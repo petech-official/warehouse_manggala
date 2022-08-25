@@ -12,6 +12,7 @@ class Customer extends BaseController
     {
         $this->CustomerModel = new \App\Models\CustomerModel();
         $this->CustomerDetailModel = new \App\Models\CustomerDetailModel();
+        $this->StockBarangModel = new \App\Models\StockBarangModel();
     }
 
     public $controller = 'Customer';
@@ -21,7 +22,11 @@ class Customer extends BaseController
         $data = [
             'judul' => $this->controller,
             'data' => $this->$model->findAll(),
+
         ];
+
+        // var_dump($this->StockBarangModel->where("berat_total < rop")->findAll());
+        // die;        
         return view($this->controller . '/index', $data);
     }
     public function tambah()

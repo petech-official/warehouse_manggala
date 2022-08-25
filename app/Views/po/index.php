@@ -87,7 +87,7 @@
                 </div>
                 <?php if (session()->get('status')  == 'Manager Marketing') : ?>
                     <div class="card-footer">
-                        <a href="/pengadaan/list_barang" class="btn btn-primary">Daftar Kebutuhan Barang </a>
+                        <a href="/Pengadaan/list_barang" class="btn btn-primary">Daftar Kebutuhan Barang </a>
                     </div>
                 <?php endif ?>
             </div>
@@ -111,7 +111,7 @@
                     <input type="hidden" id="id" name="id">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                     <button type="submit" class="btn btn-danger">Hapus</button>
                 </div>
             </div>

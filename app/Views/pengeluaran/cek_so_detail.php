@@ -53,9 +53,9 @@
                 <!-- Masukan Disini -->
                 <th rowspan="2">Nama Barang</th>
                 <th rowspan="2">Lot</th>
-                <th colspan="2">Saldo Awal</th>
-                <th colspan="2">Mutasi</th>
-                <th colspan="2">Saldo Akhir</th>
+                <th colspan="2">Jumlah Pengeluaran</th>
+                <th colspan="2">Hasil Pengeluaran</th>
+                <th colspan="2">Sisa Pengeluaran</th>
                 <th rowspan="2">Alama Kirim</th>
                 <th rowspan="2">Status</th>
                 <!-- Selesai Disini -->

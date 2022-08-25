@@ -12,7 +12,7 @@
                 <!-- Tambah data -->
                 <div class="card-body">
                     <!-- <a href="/<?= $judul; ?>/tambah" class="btn btn-primary">Tambah Data</a><br><br> -->
-                    <h4>Stock Barang <?= date('d - M - Y'); ?></h4>
+                    <h4>Stock Barang</h4>
                     <hr>
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>

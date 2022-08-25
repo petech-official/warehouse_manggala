@@ -50,7 +50,7 @@
                   </td>
                   <!-- Selesai Disini -->
                   <td>
-                    <a href="/pengadaan/cek_po_detail/<?= $value['id_po']; ?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
+                    <a href="/Pengadaan/cek_po_detail/<?= $value['id_po']; ?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
                   </td>
                 </tr>
               <?php endforeach ?>

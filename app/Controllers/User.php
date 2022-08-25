@@ -18,7 +18,7 @@ class User extends BaseController
             'session' => session()
         ];
 
-        return view('user/index', $data);
+        return view('User/index', $data);
     }
     public function tambah()
     {
@@ -27,7 +27,7 @@ class User extends BaseController
             'aksi' => ' / Tambah Data',
             'validation' => \Config\Services::validation(),
         ];
-        return view('user/tambah', $data);
+        return view('User/tambah', $data);
     }
     public function save()
     {
@@ -36,44 +36,53 @@ class User extends BaseController
             'username' => [
                 'rules' => 'required|is_unique[admin.username]',
                 'errors' => [
-                    'required' => 'Masukan username !',
+                    'required' => 'Data tidak boleh kosong!',
                     'is_unique' => 'Username harus unik !'
+                ]
+
+            ],
+            'email' => [
+                'rules' => 'required|is_unique[admin.username]',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
+                    'is_unique' => 'Email harus unik !'
                 ]
 
             ],
             'status' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Pilih status !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
 
             ],
             'password' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan pasword !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
 
             ],
         ])) {
-            return redirect()->to('/user/tambah')->withInput();
+            return redirect()->to('/User/tambah')->withInput();
         }
 
         $this->adminModel->save([
             'username' => $this->request->getVar('username'),
             'password' => $this->request->getVar('password'),
             'status' => $this->request->getVar('status'),
+            'email' => $this->request->getVar('email')
 
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
-        return redirect()->to('/user');
+        return redirect()->to('/User');
     }
     public function delete()
     {
         $id = $this->request->getVar('id_user');
         $this->adminModel->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
-        return redirect()->to('/user');
+        return redirect()->to('/User');
     }
     public function edit($id)
     {
@@ -83,7 +92,7 @@ class User extends BaseController
             'validation' => \Config\Services::validation(),
             'user'  => $this->adminModel->getUser($id),
         ];
-        return view('user/ubah', $data);
+        return view('User/ubah', $data);
     }
 
 
@@ -111,12 +120,12 @@ class User extends BaseController
             'password' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Masukan pasword !',
+                    'required' => 'Data tidak boleh kosong!',
                 ]
 
             ],
         ])) {
-            return redirect()->to('/user/edit/' . $id)->withInput();
+            return redirect()->to('/User/edit/' . $id)->withInput();
         }
 
         $this->adminModel->save([
@@ -124,9 +133,10 @@ class User extends BaseController
             'username' => $this->request->getVar('username'),
             'password' => $this->request->getVar('password'),
             'status' => $this->request->getVar('status'),
+            'email' => $this->request->getVar('email')
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil diubah');
-        return redirect()->to('/user');
+        return redirect()->to('/User');
     }
 }

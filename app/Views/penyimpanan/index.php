@@ -11,21 +11,16 @@
                 <!-- /.card-header -->
                 <!-- Tambah data -->
                 <div class="card-body">
-                    <h4>Jadwal Penerimaan Barang <?= date('d - M - Y') ?></h4>
+                    <h4>Jadwal Penerimaan Barang </h4>
                     <hr>
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>No Po</th>
-                                <th>Nama Barang</th>
-                                <th>Lot</th>
-                                <th>Status Penerimaan</th>
-                                <th>Supplier</th>
-                                <th>Quantity (kg)</th>
+                                <th>Tanggal Penerimaan</th>
                                 <!-- Selesai Disini -->
-
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <?php
@@ -35,22 +30,13 @@
                                 <td><?= $i++; ?></td>
                                 <!-- Masukan Disini -->
 
-                                <td><?= $value['no_po']; ?></td>
-                                <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?></td>
-                                <td><?= $value['lot']; ?></td>
+                                <td class="tanggal"><?= $value['tgl_penerimaan']; ?></td>
 
-                                <td><?php
-                                    if ($value['status_penerimaan'] == 0) {
-                                    ?>
-                                        <span class="badge bg-warning">Belum Terkonfirmasi</span>
-                                    <?php } else { ?>
-                                        <span class="badge bg-success">Terkonfirmasi</span>
-                                    <?php } ?>
-                                </td>
-                                <td><?= $value['nama']; ?></td>
-                                <td class="rupiah"><?= $value['berat_penerimaan']; ?></td>
+
                                 <!-- Selesai Disini -->
-
+                                <td>
+                                    <a href="/SchedulePenerimaanDetail/index/<?= $value['tgl_penerimaan']; ?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
+                                </td>
                             </tr>
                         <?php endforeach ?>
                         </tbody>
@@ -58,20 +44,15 @@
                             <tr>
                                 <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>No Po</th>
-                                <th>Nama Barang</th>
-                                <th>Lot</th>
-                                <th>Status Penerimaan</th>
-                                <th>Supplier</th>
-                                <th>Quantity (kg)</th>
+                                <th>Tanggal Penerimaan</th>
                                 <!-- Selesai Disini -->
-
+                                <th>Aksi</th>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
                 <div class="card-footer">
-                    <a href="/bpb/index" class="btn btn-primary">Bukti Penerimaan Barang (BPB)</a>
+                    <a href="/BPB/index" class="btn btn-primary">Bukti Penerimaan Barang (BPB)</a>
                 </div>
             </div>
         </div>

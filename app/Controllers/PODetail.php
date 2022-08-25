@@ -14,6 +14,7 @@ class PODetail extends BaseController
         $this->PODetailModel = new \App\Models\PODetailModel();
         $this->BarangModel = new \App\Models\BarangModel();
         $this->BarangGradeModel = new \App\Models\BarangGradeModel();
+        $this->StockBarangModel = new \App\Models\StockBarangModel();
     }
     public $controllerMain = 'PO';
     public $controller = 'PODetail';
@@ -159,5 +160,16 @@ class PODetail extends BaseController
         $this->$model->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/' . $this->controller . '/index/' . $id_po);
+    }
+    public function getBeratMax()
+    {
+
+        $id = $this->request->getPost('IdBarang');
+        // Cari max berat
+        $max = $this->BarangModel->where('id_barang', $id)->findColumn('max_berat')[0];
+        $stock = $this->StockBarangModel->where('id_barang', $id)->findColumn('berat_total')[0];
+        // $stock = $this->StockBarangModel->where('id_barang', $id)->findColumn['berat_total'];
+        $total = (int) $max - (int) $stock;
+        echo json_encode($total);
     }
 }
