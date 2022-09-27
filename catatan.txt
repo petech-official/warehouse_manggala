@@ -1,2 +1,0 @@
-1. PO 
-Nama supplier, Alamat supplier, no PO, TGL PO, detail, berat, box, keterangan

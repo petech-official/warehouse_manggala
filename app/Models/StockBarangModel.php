@@ -126,4 +126,14 @@ class StockBarangModel extends Model
 
             ->get()->getResultArray();
     }
+    public function getKebutuhanAutomatis($id_supplier)
+    {
+        return $this->db->table('stock_barang')->where('stock_barang.berat_total < rop')->where('barang.id_supplier', $id_supplier)
+            ->join('barang', 'barang.id_barang=stock_barang.id_barang')
+            // ->join('do_detail', 'do_detail.id_barang=stock_barang.id_barang')
+            // ->orderBy('do_detail.id_do_detail', 'DESC')
+            // ->limit(3)
+
+            ->get()->getResultArray();
+    }
 }

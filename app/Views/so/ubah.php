@@ -41,7 +41,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="dataCustomer">Customer</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('dataCustomer')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus id="customer" name="customer">
+                                    <select class="form-select form-control  <?= ($validation->hasError('dataCustomer')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus id="customer" name="customer" disabled>
                                         <?php foreach ($dataCustomer as $key => $value) : ?>
                                             <option value="<?= $value['id_customer']; ?>" <?php if ($value['id_customer'] == $data['id_customer']) {
                                                                                                 echo "selected";

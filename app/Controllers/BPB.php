@@ -160,7 +160,13 @@ class BPB extends BaseController
 
         // if ($grade == $gradeStandar) {
         $totalBerat = $barang['berat'] * $Box;
-        $beratBaru = $barang['berat'] * $QuantitasBaru;
+
+        // otomatis
+        // $beratBaru = $barang['berat'] * $QuantitasBaru;
+
+        // sesuai inputan
+        $beratBaru = $this->request->getVar('berat_total');
+
         // } else {
         //     if ($this->request->getVar('berat_total') == '') {
         //         return redirect()->to('/' . $this->controller . '/tambah')->withInput();
@@ -213,7 +219,8 @@ class BPB extends BaseController
         } else {
             $berat_stock = 0;
         }
-
+        // dd($beratBaru);
+        // die;
 
         // jika ada id barang di stock maka update
         if ($id_stock) {

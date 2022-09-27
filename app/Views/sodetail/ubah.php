@@ -56,6 +56,18 @@
                                         <?= $validation->getError('keterangan_so'); ?>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label>Tanggal Kirim</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control  <?= ($validation->hasError('tgl_kirim')) ? 'is-invalid' : ''; ?>" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_kirim" name="tgl_kirim">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('tgl_kirim'); ?>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">

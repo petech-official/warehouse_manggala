@@ -14,7 +14,7 @@ class SODetailModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_so_detail', 'id_so', 'id_barang', 'quantitas', 'quantitas_mutasi', 'berat_total', 'berat_total_mutasi', 'keterangan_so', 'status_so'];
+    protected $allowedFields    = ['id_so_detail', 'id_so', 'id_barang', 'quantitas', 'quantitas_mutasi', 'berat_total', 'berat_total_mutasi', 'keterangan_so', 'status_so', 'tgl_kirim'];
 
     // Dates
     protected $useTimestamps = false;

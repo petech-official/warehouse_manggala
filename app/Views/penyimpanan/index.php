@@ -53,6 +53,7 @@
                 </div>
                 <div class="card-footer">
                     <a href="/BPB/index" class="btn btn-primary">Bukti Penerimaan Barang (BPB)</a>
+                    <a href="/PenyimpananBarang/index" class="btn btn-primary">Penyimpanan</a>
                 </div>
             </div>
         </div>

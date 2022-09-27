@@ -71,6 +71,12 @@ class SODetail extends BaseController
                     'required' => 'Data tidak boleh kosong!',
                 ]
             ],
+            'tgl_kirim' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Data tidak boleh kosong!',
+                ]
+            ],
         ])) {
             return redirect()->to('/' . $this->controller . '/tambah/' . $this->request->getVar('id_so'))->withInput();
         };
@@ -92,12 +98,18 @@ class SODetail extends BaseController
         //     $box = ceil($this->request->getVar('quantitas') * $beratBarang);
         // }        
         $model = $this->controller . 'Model';
+        $pieces = explode("/", $this->request->getVar('tgl_kirim'));
+        $tanggal = $pieces[2] . '-' . $pieces[1] . '-' . $pieces[0];
         $this->$model->save([
             'id_so' => $this->request->getVar('id_so'),
             'id_barang' => $this->request->getVar('id_barang'),
             'quantitas' => $Box,
-            'berat_total' => $box,
-            'keterangan_so' => $this->request->getVar('keterangan_so')
+            // otomatis
+            // 'berat_total' => $box,
+            // inputan
+            'berat_total' => $this->request->getVar('berat_total'),
+            'keterangan_so' => $this->request->getVar('keterangan_so'),
+            'tgl_kirim' => $tanggal
         ]);
         session()->setFlashdata('pesan', 'Data berhasil ditambah');
         return redirect()->to('/' . $this->controller . '/index/' . $this->request->getVar('id_so'));
@@ -141,13 +153,15 @@ class SODetail extends BaseController
         //     $keterangan_so = 'Barang Standar, 1 Box emiliki berat ' . $barang['berat'] . 'Kg';
         // } else {
         //     $keterangan_so = 'Barang Non Standar';
-        // }        
-
+        // }                
+        $pieces = explode("/", $this->request->getVar('tgl_kirim'));
+        $tanggal = $pieces[2] . '-' . $pieces[1] . '-' . $pieces[0];
         $this->$model->save([
             'id_so_detail' => $id,
             'id_so' => $this->request->getVar('id_so'),
             // 'id_barang' => $this->request->getVar('id_barang'),
-            'keterangan_so' => $this->request->getVar('keterangan_so')
+            'keterangan_so' => $this->request->getVar('keterangan_so'),
+            'tgl_kirim' => $tanggal
         ]);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/' . $this->controller . '/index/' . $this->request->getVar('id_so'));
