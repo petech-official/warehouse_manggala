@@ -18,6 +18,7 @@ class DODetail extends BaseController
         $this->BarangGradeModel = new \App\Models\BarangGradeModel();
         $this->StockBarangModel = new \App\Models\StockBarangModel();
         $this->StockBarangDetailModel = new \App\Models\StockBarangDetailModel();
+        $this->PenyimpananBarangModel = new \App\Models\PenyimpananBarangModel();
     }
 
     public $controller = 'DODetail';
@@ -76,7 +77,11 @@ class DODetail extends BaseController
         // if ($grade == $gradeStandar) {
         $barang = $this->BarangModel->getData($this->request->getVar('id_barang'));
         $Box = ceil($this->request->getVar('berat_total') / $barang['berat']);
-        $totalBerat = $barang['berat'] * $Box;
+        // otomatis
+        // $totalBerat = $barang['berat'] * $Box;
+
+        // inputan
+        $totalBerat = $this->request->getVar('berat_total');
         // } else {
         //     if ($this->request->getVar('berat_total') == '') {
         //         return redirect()->to('/' . $this->controller . '/tambah/' . $id_do)->withInput();
@@ -211,7 +216,7 @@ class DODetail extends BaseController
         // Motong stock detail yang pertama
         // Cari ID stock detail yang id stock = 8
         $id_stock_detail = $this->StockBarangDetailModel->where('id_stock', $id_stock['id_stock'])->findColumn('id_stock_detail')[0];
-
+        $posisi = $this->StockBarangDetailModel->where('id_stock', $id_stock['id_stock'])->findColumn('posisi')[0];
         // kurangi stock
         $stock_detail = $this->StockBarangDetailModel->where('id_stock_detail', $id_stock_detail)->findColumn('berat_detail')[0];
 
@@ -232,6 +237,66 @@ class DODetail extends BaseController
                 $this->StockBarangDetailModel->delete($id_stock_detail);
                 $totalBerat = $update_stock_detail;
                 $id_stock_detail = $id_stock_detail + 1;
+            }
+        }
+
+        // motong penyimpanan
+        $posisi = $this->StockBarangDetailModel->where('id_stock', $id_stock['id_stock'])->findColumn('posisi')[0];
+        $id_penyimpnan = $this->PenyimpananBarangModel->where('posisi_barang', $posisi)->findColumn('id_penyimpanan')[0];
+
+        // berat keluar        
+        $disimpan = (int) $this->PenyimpananBarangModel->where('id_penyimpanan', $id_penyimpnan)->findColumn('disimpan')[0];
+
+        //1500-3300
+        $berat_baru_disimpan = $disimpan - $totalBerat;
+        if ($berat_baru_disimpan < 0) {
+            // 
+            $berat_baru_disimpan = 0;
+            // sisa 1500
+            $sisa = abs($disimpan - $totalBerat);
+        } else {
+            $sisa = 0;
+        }
+
+        $this->PenyimpananBarangModel->save([
+            'id_penyimpanan' => $id_penyimpnan,
+            'disimpan' => $berat_baru_disimpan,
+            'status_penyimpanan' => 0
+        ]);
+
+
+        // jika ada sisa     
+        // 2000
+        if ($sisa >= 1) {
+            for ($index = 0; $index <= 100; $index++) {
+                $id_barang = $this->PenyimpananBarangModel->where('id_penyimpanan', $id_penyimpnan)->findColumn('id_barang');
+                $id_penyimpanan_sisa = $this->PenyimpananBarangModel->where('id_barang', $id_barang)->where('status_penyimpanan', 1)->findColumn('id_penyimpanan')[0];
+                $disimpan_sisa = (int) $this->PenyimpananBarangModel->where('id_penyimpanan', $id_penyimpanan_sisa)->findColumn('disimpan')[0];
+
+                // = 1500 - 2000
+                $berat_baru_disimpan_sisa = $disimpan_sisa - $sisa;
+
+                if ($berat_baru_disimpan_sisa < 0) {
+                    // 
+                    $berat_baru_disimpan_sisa = 0;
+                    // sisa 300
+                    $sisa = abs($disimpan_sisa - $sisa);
+                } else {
+                    $sisa = 0;
+                }
+
+
+                $this->PenyimpananBarangModel->save([
+                    'id_penyimpanan' => $id_penyimpanan_sisa,
+                    'disimpan' => $berat_baru_disimpan_sisa,
+                    'status_penyimpanan' => 0
+                ]);
+
+                // cek penuh
+                if (($sisa <= 0)) {
+                    $index = 99;
+                }
+                $index++;
             }
         }
 

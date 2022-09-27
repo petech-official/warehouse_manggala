@@ -172,4 +172,29 @@ class PODetail extends BaseController
         $total = (int) $max - (int) $stock;
         echo json_encode($total);
     }
+    public function tambahAutomatisBarang($id_po)
+    {
+
+        $id_supplier = $this->POModel->where('id_po', $id_po)->findColumn('id_supplier')[0];
+        $barang =  $this->StockBarangModel->getKebutuhanAutomatis($id_supplier);
+        $model = $this->controller . 'Model';
+        foreach ($barang as $key => $value) {
+            $this->$model->save([
+                'id_po' => $id_po,
+                'id_barang' => $value['id_barang'],
+                'quantitas' => (($value['max_berat'] / $value['berat']) - $value['box']),
+                'berat_total' => ($value['max_berat'] - $value['berat_total']),
+                'keterangan_po_detail' => "",
+            ]);
+
+            $this->StockBarangModel->save([
+                'id_stock' => $this->StockBarangModel->where('id_barang', $value['id_barang'])->findColumn('id_stock')[0],
+                'id_barang' => $value['id_barang'],
+                'status_pengadaan' => 1
+            ]);
+        }
+
+        session()->setFlashdata('pesan', 'Data berhasil ditambah');
+        return redirect()->to('/' . $this->controller . '/index/' . $id_po);
+    }
 }

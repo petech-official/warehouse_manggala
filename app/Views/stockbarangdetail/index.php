@@ -32,7 +32,7 @@
                         <tr>
                             <th>Penyimpanan Barang</th>
                             <td>:</td>
-                            <td><?= $dataMain['penyimpanan Barang'] ?></td>
+                            <td><?= $dataMain['penyimpanan_barang'] ?></td>
                         </tr>
                     </table>
                     <br>

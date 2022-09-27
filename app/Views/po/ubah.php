@@ -36,7 +36,8 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                         <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask id="tgl_po" name="tgl_po" value="<?= $tanggal; ?>">
                                     </div>
                                 </div>
-                                <div class="form-group">
+
+                                <!-- <div class="form-group">
                                     <label for="dataSupplier">Supplier</label>
                                     <select class="form-select form-control select2bs4 <?= ($validation->hasError('dataSupplier')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus id="supplier" name="supplier">
                                         <?php foreach ($dataSupplier as $key => $value) : ?>
@@ -50,7 +51,11 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('dataSupplier'); ?>
                                     </div>
+                                </div> -->
+                                <div class="form-group">
+                                    <input type="hidden" id="supplier" name="supplier" value="<?= $data['id_supplier']; ?>">
                                 </div>
+
                                 <div class="form-group">
                                     <label for="keterangan_po">Keterangan PO</label>
                                     <input type="text" class="form-control <?= ($validation->hasError('keterangan_po')) ? 'is-invalid' : ''; ?>" id="keterangan_po" name="keterangan_po" autofocus value="<?= (old('keterangan_po')) ? old('keterangan_po') : $data['keterangan_po']; ?>" autocomplete="off" placeholder="Masukan keterangan po">

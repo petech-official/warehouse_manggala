@@ -62,7 +62,8 @@
                                 <th colspan="2">Jumlah Pengeluaran</th>
                                 <th colspan="2">Hasil Pengeluaran</th>
                                 <th colspan="2">Sisa Pengeluaran</th>
-                                <th rowspan="2">Alama Kirim</th>
+                                <th rowspan="2">Alamat Kirim</th>
+                                <th rowspan="2">Tanggal Kirim</th>
                                 <th rowspan="2">Status</th>
                                 <!-- Selesai Disini -->
                                 <th rowspan="2">Aksi</th>
@@ -91,13 +92,17 @@
                                 <td class="rupiah"><?= number_format($value['berat_total_mutasi'], 2)
                                                     ?></td>
                                 <td class="rupiah"><?php $q_akhir = $value['quantitas'] - $value['quantitas_mutasi'];
+                                                    if ($q_akhir < 0) {
+                                                        $q_akhir = 0;
+                                                    }
                                                     echo $q_akhir ?></td>
                                 <td class="rupiah"><?php $q_akhir_berat = $value['berat_total'] - $value['berat_total_mutasi'];
+                                                    if ($q_akhir_berat < 0) {
+                                                        $q_akhir_berat = 0;
+                                                    }
                                                     echo number_format($q_akhir_berat, 2) ?></td>
-
-
-
                                 <td><?= $value['alamat'] ?></td>
+                                <td class="tanggal"><?= $value['tgl_kirim']; ?></td>
                                 <td><?php
                                     if ($value['status_so'] == 0) {
                                     ?>
@@ -131,6 +136,7 @@
                                 <th>Kg </th>
                                 <th>Box</th>
                                 <th>Kg </th>
+                                <th>Tanggal Kirim</th>
                                 <th>Alamat Kirim</th>
                                 <th>Status</th>
                                 <!-- Selesai Disini -->

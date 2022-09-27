@@ -36,7 +36,9 @@
 
                     </table>
                     <hr>
-                    <a href="/<?= $judul; ?>/tambah/<?= $dataMain['id_po'] ?>" class="btn btn-primary">Tambah Barang</a><br><br>
+                    <a href="/<?= $judul; ?>/tambah/<?= $dataMain['id_po'] ?>" class="btn btn-primary">Tambah Barang</a>
+                    <a href="/<?= $judul; ?>/tambahAutomatisBarang/<?= $dataMain['id_po'] ?>" class="btn btn-success">Automatis Barang</a><br><br>
+
                     <?php if (session()->getFlashdata('pesan')) : ?>
                         <div class="alert alert-success" role="alert">
                             <?= session()->getFlashdata('pesan'); ?>
@@ -81,8 +83,14 @@
                                 <td class="rupiah"><?= $value['berat_total_mutasi']
                                                     ?></td>
                                 <td class="rupiah"><?php $q_akhir = $value['quantitas'] - $value['quantitas_mutasi'];
+                                                    if ($q_akhir < 0) {
+                                                        $q_akhir = 0;
+                                                    }
                                                     echo $q_akhir ?></td>
                                 <td class="rupiah"><?php $q_akhir_berat = $value['berat_total'] - $value['berat_total_mutasi'];
+                                                    if ($q_akhir_berat < 0) {
+                                                        $q_akhir_berat = 0;
+                                                    }
                                                     echo $q_akhir_berat ?></td>
 
 

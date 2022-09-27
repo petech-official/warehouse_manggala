@@ -5,13 +5,11 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Pengeluaran</h3>
+                    <h3 class="card-title"><?= $judul; ?></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- Tambah data -->
                 <div class="card-body">
-                    <h4>Penjualan Barang (SO)</h4>
-                    <hr>
                     <a href="/<?= $judul; ?>/tambah" class="btn btn-primary">Tambah Data</a><br><br>
                     <?php if (session()->getFlashdata('pesan')) : ?>
                         <div class="alert alert-success" role="alert">
@@ -21,17 +19,15 @@
                     <table class="table table-bordered table-striped" id="data-table1">
                         <thead>
                             <tr>
-                                <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>No SO</th>
-                                <th>Tanggal SO</th>
-                                <th>Nama Customer</th>
-                                <th width="200px">Alamat NPWP</th>
-                                <!-- <th width="200px">Alamat Kirim</th> -->
-                                <th>Keterangan</th>
-                                <th>Status SO</th>
+                                <th>No</th>
+                                <th>Posisi</th>
+                                <th>Nama Barang</th>
+                                <th>Max Berat</th>
+                                <th>Disimpan</th>
+                                <th>Status</th>
                                 <!-- Selesai Disini -->
-                                <th width="150px">Aksi</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody style="padding: 50px;">
@@ -39,66 +35,56 @@
                             $i = 1;
                             foreach ($data as $key => $value) : ?>
                                 <tr>
-                                    <td><?= $i++; ?></td>
                                     <!-- Masukan Disini -->
-                                    <td><?= $value['no_so']; ?></td>
-                                    <td class="tanggal"><?= $value['tgl_so']; ?></td>
-                                    <td><?= $value['nama_customer']; ?></td>
-                                    <td><?= $value['alamat_npwp']; ?></td>
-                                    <!-- <td><? //= $value['alamat']; 
-                                                ?></td> -->
-                                    <td><?= $value['keterangan']; ?></td>
+                                    <td><?= $i++ ?></td>
+                                    <td><?= $value['posisi_barang']; ?></td>
+                                    <td><?= $value['jenis']; ?> <?= $value['ukuran']; ?> <?= $value['keterangan']; ?> - <?= $value['grade']; ?> - <?= $value['lot']; ?></td>
+                                    <td class="rupiah"><?= $value['berat_penyimpanan']; ?></td>
+                                    <td class=""><?= $value['disimpan']; ?></td>
                                     <td>
                                         <?php
-                                        if ($value['status'] == 0) {
+                                        if ($value['status_penyimpanan'] == 1) {
                                         ?>
-                                            <span class="badge bg-warning">Berjalan</span>
+                                            <span class="badge bg-danger">Penuh</span>
                                         <?php } else { ?>
-                                            <span class="badge bg-success">Selesai</span>
+                                            <span class="badge bg-success">Tersedia</span>
                                         <?php } ?>
                                     </td>
                                     <!-- Selesai Disini -->
                                     <td>
-                                        <a href="/<?= $judul; ?>Detail/index/<?= $value['id_so']; ?>" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
-                                        <a href="/<?= $judul; ?>/edit/<?= $value['id_so']; ?>" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ubah"><i class="fas fa-pen"></i></a>
+                                        <!-- hapus jika perlu -->
+
+                                        <!-- end hapus -->
+                                        <?php
+                                        if ($value['disimpan'] == 0) { ?>
+                                            <a href="/<?= $judul; ?>/edit/<?= $value['id_penyimpanan']; ?>" class="btn btn-success"><i class="fas fa-pen"></i></a>
+                                        <?php } ?>
+
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <?php
-                                        if ($value['status'] == 1) {
-                                        ?>
-                                            <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_so']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        <?php } ?>
-
+                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_penyimpanan']; ?>)" class="btn btn-danger" data-toggle="modal">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>No</th>
                                 <!-- Masukan Disini -->
-                                <th>No SO</th>
-                                <th>Tanggal SO</th>
-                                <th>Nama Customer</th>
-                                <th>Alamat NPWP</th>
-                                <th>Keterangan</th>
-                                <th>Status SO</th>
+                                <th>No</th>
+                                <th>Posisi</th>
+                                <th>Nama Barang</th>
+                                <th>Berat</th>
+                                <th>Disimpan</th>
+                                <th>Status</th>
                                 <!-- Selesai Disini -->
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
-
-                <?php if (session()->get('status')  == 'Manager Marketing') : ?>
-                    <div class="card-footer">
-                        <a href="/SchedulePengeluaran/index" class="btn btn-primary">Jadwal Pengeluaran (Schedule)</a>
-                    </div>
-                <?php endif ?>
-
             </div>
         </div>
     </div>
@@ -120,7 +106,7 @@
                     <input type="hidden" id="id" name="id">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-danger">Hapus</button>
                 </div>
             </div>

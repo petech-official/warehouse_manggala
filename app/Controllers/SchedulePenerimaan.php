@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use phpDocumentor\Reflection\Types\This;
 
 class SchedulePenerimaan extends BaseController
 {
@@ -194,8 +195,25 @@ class SchedulePenerimaan extends BaseController
   }
   public function getBarang()
   {
-    $id = $this->request->getPost('namaSupplier');
-    $dataBarang = $this->BarangModel->getDataPenerimaan($id);
+    $po = $this->request->getPost('namaSupplier');
+    $id_supplier = $this->POModel->where('id_po', $po)->findColumn('id_supplier')[0];
+    $dataBarang = $this->BarangModel->getDataPenerimaan($id_supplier);
     echo json_encode($dataBarang);
+  }
+  public function getSupplierBarang()
+  {
+    $po = $this->request->getPost('namaPo');
+    $id_supplier = $this->POModel->where('id_po', $po)->findColumn('id_supplier')[0];
+    $nama_supplier = $this->SupplierModel->where('id_supplier', $id_supplier)->findColumn('nama')[0];
+    // cari supplier dan barang dari po
+    echo json_encode($nama_supplier);
+  }
+  public function getIDSupplierBarang()
+  {
+    $po = $this->request->getPost('namaPo');
+    $id_supplier = $this->POModel->where('id_po', $po)->findColumn('id_supplier')[0];
+    $nama_supplier = $this->SupplierModel->where('id_supplier', $id_supplier)->findColumn('nama')[0];
+    // cari supplier dan barang dari po
+    echo json_encode($id_supplier);
   }
 }

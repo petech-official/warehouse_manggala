@@ -62,9 +62,15 @@
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <!-- Button trigger modal -->
-                                        <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_po']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                        <?php
+                                        if ($value['status'] == 1) {
+                                        ?>
+                                            <button type="button" href='#modalHapus' onclick="konfirmasiDelete(<?= $value['id_po']; ?>)" class="btn btn-danger" data-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="top" title="Hapus">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        <?php } ?>
+
+
                                     </td>
                                 </tr>
                             <?php endforeach ?>

@@ -49,7 +49,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="supplier">Supplier</label>
                                     <select class="form-select form-control select2bs4 <?= ($validation->hasError('supplier')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('supplier'); ?>" name="supplier" id="supplier">
                                         <option selected disabled>Pilih Supplier</option>
@@ -60,7 +60,14 @@
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('supplier'); ?>
                                     </div>
+                                </div> -->
+
+                                <div class="form-group">
+                                    <label for="supplier">Supplier</label>
+                                    <input type="hidden" class="form-control" name="supplier" id="supplier">
+                                    <input type="text" class="form-control" name="namaSupplier" id="namaSupplier" readonly>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="id_barang">Barang</label>
                                     <select class="form-select form-control  <?= ($validation->hasError('id_barang')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('id_barang'); ?>" name="id_barang" id="id_barang">
@@ -102,8 +109,39 @@
     </div>
 </div>
 <script>
-    $('#supplier').change(function() {
-        var supplier = $('#supplier').val();
+    $('#po').change(function() {
+        var po = $('#po').val();
+        console.log(po);
+        $.ajax({
+            url: "/SchedulePenerimaan/getSupplierBarang",
+            type: "POST",
+            data: {
+                namaPo: po
+            },
+            dataType: "json",
+            success: function(data) {
+                document.getElementById('namaSupplier').value = data;
+            }
+        })
+    });
+    $('#po').change(function() {
+        var po = $('#po').val();
+        console.log(po);
+        $.ajax({
+            url: "/SchedulePenerimaan/getIDSupplierBarang",
+            type: "POST",
+            data: {
+                namaPo: po
+            },
+            dataType: "json",
+            success: function(data) {
+                document.getElementById('supplier').value = data;
+            }
+        })
+    });
+
+    $('#po').change(function() {
+        var supplier = $('#po').val();
         console.log(supplier);
         $.ajax({
             url: "/SchedulePenerimaan/getBarang",

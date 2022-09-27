@@ -41,7 +41,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="cpor">PO</label>
-                                    <select class="form-select form-control  <?= ($validation->hasError('po')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('po'); ?>" name="po" id="po">
+                                    <select class="form-select form-control  <?= ($validation->hasError('po')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('po'); ?>" name="po" id="po" disabled>
                                         <option selected disabled>Pilih PO</option>
                                         <?php foreach ($dataPO as $key => $value) : ?>
                                             <option value="<?= $value['id_po']; ?>" <?php if ($value['id_po'] == $data['id_po']) {
@@ -56,7 +56,7 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
 
                                 <div class="form-group">
                                     <label for="supplier">Supplier</label>
-                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('supplier')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('supplier'); ?>" name="supplier" id="supplier">
+                                    <select class="form-select form-control select2bs4 <?= ($validation->hasError('supplier')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" autofocus value="<?= old('supplier'); ?>" name="supplier" id="supplier" disabled>
                                         <option selected disabled>Pilih Supplier</option>
                                         <?php foreach ($dataSupplier as $key => $value) : ?>
                                             <option value="<?= $value['id_supplier']; ?>" <?php if ($value['id_supplier'] == $data['id_supplier']) {
@@ -129,5 +129,58 @@ $tanggal = $pieces[2] . '/' . $pieces[1] . '/' . $pieces[0]; ?>
     </div>
 </div>
 </div>
+<script>
+    $('#po').change(function() {
+        var po = $('#po').val();
+        console.log(po);
+        $.ajax({
+            url: "/SchedulePenerimaan/getSupplierBarang",
+            type: "POST",
+            data: {
+                namaPo: po
+            },
+            dataType: "json",
+            success: function(data) {
+                document.getElementById('namaSupplier').value = data;
+            }
+        })
+    });
+    $('#po').change(function() {
+        var po = $('#po').val();
+        console.log(po);
+        $.ajax({
+            url: "/SchedulePenerimaan/getIDSupplierBarang",
+            type: "POST",
+            data: {
+                namaPo: po
+            },
+            dataType: "json",
+            success: function(data) {
+                document.getElementById('supplier').value = data;
+            }
+        })
+    });
 
+    $('#po').change(function() {
+        var supplier = $('#po').val();
+        console.log(supplier);
+        $.ajax({
+            url: "/SchedulePenerimaan/getBarang",
+            type: "POST",
+            data: {
+                namaSupplier: supplier
+            },
+            dataType: "json",
+            success: function(data) {
+                // let obj = JSON.parse(data)
+                var baris = '';
+                for (let i = 0; i < data.length; i++) {
+                    const element = data[i];
+                    baris += '<option value="' + element.id_barang + '" >' + element.jenis + ' ' + element.ukuran + ' ' + element.keterangan + ' ' + element.lot + ' ' + element.grade + '</option>';
+                }
+                $('#id_barang').html(baris);
+            }
+        })
+    });
+</script>
 <?= $this->endSection(); ?>
